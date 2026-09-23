@@ -134,6 +134,12 @@
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
     });
   }
+  // Restart a CSS animation class even if it is already applied.
+  function play(node, cls) {
+    node.classList.remove('fc-turn', 'fc-next');
+    void node.offsetWidth;
+    node.classList.add(cls);
+  }
   function shuffle(a) {
     for (var i = a.length - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));
@@ -261,6 +267,8 @@
       current = queue.shift();
       flipped = false;
       card.classList.remove('flipped');
+      front.hidden = false;
+      back.hidden = true;
       grade.classList.remove('show');
       hint.style.visibility = 'visible';
 
@@ -276,12 +284,16 @@
 
       barFill.style.width = (100 * done / total) + '%';
       root.querySelector('.fc-count').textContent = (done + 1) + ' / ' + total;
+      play(inner, 'fc-next');
     }
 
     function flip() {
       if (stage.hidden) return;
       flipped = !flipped;
       card.classList.toggle('flipped', flipped);
+      front.hidden = flipped;
+      back.hidden = !flipped;
+      play(inner, 'fc-turn');
       if (flipped) { grade.classList.add('show'); hint.style.visibility = 'hidden'; }
     }
 
@@ -297,6 +309,7 @@
       }
       saveMisses(misses);
       next();
+      if (!stage.hidden) card.focus();  // so Space flips the new card, not the button
     }
 
     function finish() {

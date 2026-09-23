@@ -524,22 +524,23 @@ table.vocab.hide-en tr:not(.grp):hover td { background: var(--paper-warm); }
 .fc-bar { height: 3px; background: var(--rule); border-radius: 2px; overflow: hidden; margin-bottom: 1rem; }
 .fc-bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .25s ease; }
 
-.fc-card { perspective: 1200px; cursor: pointer; outline: none; }
+.fc-card { cursor: pointer; outline: none; -webkit-tap-highlight-color: transparent; }
 .fc-card:focus-visible .fc-face { outline: 2px solid var(--accent); outline-offset: 2px; }
-.fc-inner {
-  position: relative; min-height: 15rem;
-  transform-style: preserve-3d; transition: transform .45s cubic-bezier(.3,.7,.3,1);
-}
-.fc-card.flipped .fc-inner { transform: rotateY(180deg); }
+/* One face is shown at a time (the other is [hidden]) and the swap is
+   animated with a 2D squash. No 3D/backface tricks: Safari leaves the back
+   face showing, mirrored, after the card turns back. */
 .fc-face {
-  position: absolute; inset: 0;
-  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  position: relative; min-height: 15rem;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; padding: 2.2rem 1.2rem 1.4rem;
   background: var(--paper); border: 1px solid var(--rule); border-radius: 12px;
   box-shadow: 0 1px 0 var(--rule), 0 8px 24px -16px rgba(0,0,0,.25);
 }
-.fc-back { transform: rotateY(180deg); background: var(--paper); }
+.fc-back { border-color: var(--accent); }
+.fc-inner.fc-turn { animation: fc-turn .22s ease-out; }
+.fc-inner.fc-next { animation: fc-next .28s ease-out; }
+@keyframes fc-turn { from { transform: scaleX(.04); } to { transform: none; } }
+@keyframes fc-next { from { transform: translateX(28px); opacity: 0; } to { transform: none; opacity: 1; } }
 .fc-tag {
   position: absolute; top: .8rem; left: 1rem;
   font-family: var(--sans); font-size: .64rem; font-weight: 700;
@@ -574,5 +575,5 @@ kbd {
 .fc-misslist .jp { font-size: 1.1em; }
 .fc-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
 
-@media (prefers-reduced-motion: reduce) { .fc-inner { transition: none; } }
-@media (max-width: 480px) { .fc-label { width: 100%; } .fc-inner { min-height: 13rem; } }
+@media (prefers-reduced-motion: reduce) { .fc-inner.fc-turn, .fc-inner.fc-next { animation: none; } }
+@media (max-width: 480px) { .fc-label { width: 100%; } .fc-face { min-height: 13rem; } }
