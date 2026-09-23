@@ -70,6 +70,23 @@ Three rules:
    those, not to positional anchors. (An earlier `#part1` link pointed at an anchor that
    only existed in a deleted file.)
 
+## Lesson reference sections (grammar + vocabulary)
+
+Each Genki lesson page ends with a **reference block**: a grammar summary and a vocabulary
+table, separated from each other and placed *after* the teaching days. Rationale: the book's
+own 単語/文法 split is **bibliographic, not pedagogical** — Genki's Practice section is
+organised entirely by grammar point (`➡Grammar 1`, `➡Grammar 2`…) and contains **no
+vocabulary exercise at all**. So a word list is a lookup table, not a study day. Keep it last.
+
+Built from `assets/vocab.js` + the `.gcard`/`.vocab` classes in `course.css`. The table is
+plain HTML and readable without JS; `vocab.js` only adds the hide-meanings retrieval mode.
+Unlike `.widget`, these sections **are** in the print stylesheet — they are reference.
+
+**Vocabulary sections use our own selection, grouping and glosses** (grouped by *what you do
+with the word*, not Genki's School/Person/Time/Others), and point at the book's pages for the
+authoritative list. Do not transcribe the book's list, grouping or wording — the repo is
+public, so that would be republishing a commercial textbook.
+
 ## Copyright line for Phase 1 lessons
 
 Genki lesson pages teach the **grammar in my own words with my own examples** and cite page
