@@ -456,3 +456,44 @@ table.vocab.hide-en tr:not(.grp):hover td { background: var(--paper-warm); }
   table.vocab.hide-en td.m { visibility: visible; }
   .gcard, .vocab-block { page-break-inside: avoid; }
 }
+
+/* --- Quick links to a page's reference sections -------------------------
+   Sits directly under the title block. The reason a lesson page gets
+   reopened months later is almost always the grammar summary or the word
+   list, so those get a one-tap path that does not involve scrolling. ----- */
+
+.quicklinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .45rem;
+  margin: -.5rem 0 1.5rem;
+}
+.quicklinks .lbl {
+  font-family: var(--sans);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-right: .15rem;
+}
+.quicklinks a {
+  font-family: var(--sans);
+  font-size: .73rem;
+  font-weight: 600;
+  letter-spacing: .03em;
+  text-decoration: none;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: .3rem .85rem;
+  transition: background .12s ease, color .12s ease;
+}
+.quicklinks a:hover,
+.quicklinks a:focus-visible {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+@media print { .quicklinks { display: none !important; } }
