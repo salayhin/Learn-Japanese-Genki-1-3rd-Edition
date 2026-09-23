@@ -41,7 +41,8 @@ Audio is free from [**OTO Navi**](https://apps.apple.com/us/app/oto-navi-sound-n
 the publisher's own app. Several sessions depend on it — install it before week 1.
 
 The publisher's official site, [**GENKI 3rd Edition**](https://genki3.japantimes.co.jp/en/),
-has the audio downloads, answer keys and free self-study tools that go with the books.
+has a free [Self-study Room](https://genki3.japantimes.co.jp/en/student/): dialogue and
+sentence-pattern videos, the official vocabulary apps, and online drills.
 
 ---
 
