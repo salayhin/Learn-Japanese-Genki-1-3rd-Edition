@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 3 day 3 · The Kana Gate</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  .drill-stage .kana-big { font-size: clamp(2.2rem, 10vw, 4rem); }
+
+  .standard {
+    border: 2px solid var(--accent); border-radius: 10px; padding: 1.2rem 1.3rem;
+    margin: 1.6rem 0; background: var(--accent-dim);
+  }
+  .standard h3 { margin-top: 0; color: var(--accent); }
+  .standard p:last-child { margin-bottom: 0; }
+
+  .testcard {
+    border: 1px solid var(--rule); border-radius: 9px; padding: 1rem 1.2rem;
+    margin: 1.4rem 0 1rem; background: var(--paper-warm);
+  }
+  .testcard .n {
+    font-family: var(--sans); font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .3rem;
+  }
+  .testcard h3 { margin: 0 0 .35rem; text-transform: none; letter-spacing: -.01em;
+                 font-family: var(--serif); font-size: 1.12rem; color: var(--ink); font-weight: 650; }
+  .testcard p { margin: .4rem 0 0; font-size: .9rem; }
+  .testcard p:last-child { margin-bottom: 0; }
+
+  .scoresheet { width: 100%; border-collapse: collapse; margin: 1.3rem 0; }
+  .scoresheet th { font-size: .66rem; }
+  .scoresheet td { padding: .7rem .6rem; }
+  .scoresheet td:first-child { font-weight: 650; font-family: var(--serif); }
+  .scoresheet .fill {
+    display: inline-block; min-width: 4.5rem; border-bottom: 1.5px solid var(--rule);
+    height: 1.2em;
+  }
+  .scoresheet .req { font-family: var(--mono); font-size: .78rem; color: var(--accent); white-space: nowrap; }
+
+  .verdict { margin: 1.4rem 0; }
+  .verdict div {
+    border-left: 4px solid var(--rule); padding: .8rem 1.1rem; margin-bottom: .7rem;
+    background: var(--paper-warm); border-radius: 0 7px 7px 0;
+  }
+  .verdict div.pass { border-left-color: var(--good); }
+  .verdict div.soft { border-left-color: var(--accent); }
+  .verdict div.hard { border-left-color: var(--bad); }
+  .verdict strong { display: block; margin-bottom: .2rem; }
+  .verdict p { margin: 0; font-size: .9rem; }
+
+  .wordbig { font-family: var(--jp); font-size: 2rem; letter-spacing: .04em; display: block; margin: .3rem 0; }
+  .sentence { font-family: var(--jp); font-size: 1.7rem; line-height: 1.7; letter-spacing: .03em; display: block; margin: .3rem 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="topnav"><a href="../index.html">&larr; Course home</a></p>
+
+<p class="eyebrow">Phase 0 · Week 3 · Day 3</p>
+<h1>The Kana Gate</h1>
+<p class="standfirst">Not a lesson. A measurement. Three weeks of work gets tested today, and
+the result decides one thing: whether Genki starts tomorrow, and what carries on into your
+warm-ups when it does.</p>
+
+<div class="note">
+  <span class="label">Rules of engagement</span>
+  <p style="margin-bottom:0"><strong>Nothing open.</strong> No charts, no notes, no
+  re-reading a lesson "just to warm up" first. A gate you prepare for five minutes before
+  measures your short-term memory, not your reading. If that feels uncomfortable, that
+  discomfort is the instrument working — take the test cold and get a true number.</p>
+</div>
+
+<div class="standard">
+  <h3>The standard</h3>
+  <p><strong>Accuracy is the gate. Speed is not.</strong></p>
+  <p>You need <strong>100% accuracy</strong> across all 104 readings in both scripts. You do
+  <em>not</em> need to be fast, and you almost certainly won't be. Three weeks cannot make 92
+  brand-new shapes automatic — nothing can. Sub-second recognition is built by the
+  five-minute warm-up drill over the following weeks and typically arrives around Genki
+  Lesson 3.</p>
+  <p>So: <strong>record your times, but don't chase them.</strong> Today's times are a
+  baseline to beat later, not a pass mark.</p>
+</div>
+
+<h2>Five tests</h2>
+
+<p>Work through them in order. Write each result down as you go — the scoresheet below is
+laid out to fill in, and the pattern across the five is what tells you what to do next.
+A single number can't do that.</p>
+
+<!-- ============================================================ -->
+<div class="testcard">
+  <span class="n">Test 1</span>
+  <h3>Hiragana — all 46</h3>
+  <p>The script you learned first and have had longest. This is the one that should be
+  cleanest, and if it isn't, that outranks everything else below.</p>
+</div>
+<div id="t1"></div>
+
+<!-- ============================================================ -->
+<div class="testcard">
+  <span class="n">Test 2</span>
+  <h3>Katakana — all 46</h3>
+  <p>Newer, and expect it to feel worse. Watch specifically for
+  <span class="jp">シ/ツ</span> and <span class="jp">ン/ソ</span> — if those four are your
+  only misses, that is a very different result from misses scattered across the set.</p>
+</div>
+<div id="t2"></div>
+
+<!-- ============================================================ -->
+<div class="testcard">
+  <span class="n">Test 3</span>
+  <h3>Voiced and contracted — both scripts mixed</h3>
+  <p>The other 58 readings per script: <span class="jp">゛</span>,
+  <span class="jp">゜</span>, and the small <span class="jp">ゃゅょ</span>. Scripts are
+  interleaved deliberately — switching between them is a skill of its own, and real text
+  never sorts itself for you.</p>
+</div>
+<div id="t3"></div>
+
+<!-- ============================================================ -->
+<div class="testcard">
+  <span class="n">Test 4</span>
+  <h3>Beats</h3>
+  <p>The test that decides whether you can read <em>aloud</em> rather than just name
+  characters. Say each word out loud, tap the beats, then answer. Small
+  <span class="jp">っ</span> is silent but counted; small <span class="jp">ゃゅょ</span> fuse
+  into one beat; <span class="jp">ー</span> is a full beat.</p>
+</div>
+<div id="t4"></div>
+
+<!-- ============================================================ -->
+<div class="testcard">
+  <span class="n">Test 5</span>
+  <h3>Mixed-script reading</h3>
+  <p>The closest thing here to real Japanese: hiragana and katakana in the same line, with
+  the particle readings that trip people up — <span class="jp">は</span> as <em>wa</em>,
+  <span class="jp">へ</span> as <em>e</em>, <span class="jp">を</span> as <em>o</em>. Read
+  each line aloud before answering.</p>
+</div>
+<div id="t5"></div>
+
+<!-- ============================================================ -->
+<h2>Scoresheet</h2>
+
+<p>Fill this in. If you are reading on screen, write the numbers somewhere you'll still have
+them in six weeks — the times are worth beating later, and the misses are what your warm-ups
+should contain.</p>
+
+<table class="scoresheet">
+  <thead>
+    <tr><th>Test</th><th>Score</th><th>Time</th><th>Standard</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1 · Hiragana 46</td><td><span class="fill"></span> / 46</td><td><span class="fill"></span> s</td><td class="req">46 / 46</td></tr>
+    <tr><td>2 · Katakana 46</td><td><span class="fill"></span> / 46</td><td><span class="fill"></span> s</td><td class="req">46 / 46</td></tr>
+    <tr><td>3 · Voiced + contracted</td><td><span class="fill"></span> / 30</td><td><span class="fill"></span> s</td><td class="req">30 / 30</td></tr>
+    <tr><td>4 · Beats</td><td><span class="fill"></span> / 8</td><td>—</td><td class="req">7 / 8</td></tr>
+    <tr><td>5 · Mixed reading</td><td><span class="fill"></span> / 8</td><td>—</td><td class="req">7 / 8</td></tr>
+  </tbody>
+</table>
+
+<p class="cite">Tests 4 and 5 allow one miss because they are comprehension questions rather
+than character recall — a slip on one doesn't mean a character is missing. Tests 1–3 do not
+allow any, because a character you can't name is a character you can't read.</p>
+
+<h2>What your result means</h2>
+
+<p>Find the line that matches. Only one of these stops you.</p>
+
+<div class="verdict">
+  <div class="pass">
+    <strong>All five at standard</strong>
+    <p>You're through. <strong>Genki Lesson 1 starts tomorrow.</strong> Keep the five-minute
+    kana drill in every warm-up — it's now about speed, not accuracy, and it runs until
+    roughly Genki Lesson 3.</p>
+  </div>
+
+  <div class="soft">
+    <strong>Tests 1–3 clean, but 4 or 5 below standard</strong>
+    <p>Characters are solid; the <em>timing</em> rules aren't. Re-do
+    <a href="week-03-marks-and-beats.html#part2">week 3, day 2</a> as tomorrow's warm-up,
+    then start Genki. This does not hold you back — beats keep improving through the
+    dialogues, which come with audio.</p>
+  </div>
+
+  <div class="soft">
+    <strong>One script has 1–4 misses, clustered</strong>
+    <p>Typically <span class="jp">シ/ツ/ン/ソ</span>, or
+    <span class="jp">ね/れ/わ</span>. A cluster is a <em>rule</em> you haven't finished
+    installing, not a memory failure. Re-read the relevant part —
+    <a href="week-02-katakana.html#part4">katakana day 4</a> or
+    <a href="week-01-hiragana.html#p5">hiragana day 5</a> — and put exactly those characters
+    in tomorrow's warm-up. <strong>Start Genki anyway.</strong></p>
+  </div>
+
+  <div class="hard">
+    <strong>One script has 5+ misses, scattered</strong>
+    <p>This one is worth a day. Scattered misses mean the set didn't consolidate, and no
+    rule will fix it — it needs retrieval. Repeat that script's consolidation day
+    (<a href="week-01-hiragana.html#p5">hiragana day 5</a> or
+    <a href="week-02-katakana.html#part3">katakana day 3</a>) tomorrow, re-run this gate the
+    day after, and let Genki start two days late. <strong>Two days is a cheap price;
+    carrying a broken script into nine weeks of reading is not.</strong></p>
+  </div>
+
+  <div class="soft">
+    <strong>Everything accurate but very slow</strong>
+    <p>That is a pass. Slow is the expected state at three weeks and is not a reason to
+    delay anything. Speed is a warm-up problem, and the warm-up is already in the plan.</p>
+  </div>
+</div>
+
+<div class="note">
+  <span class="label">A word about the honest version of this</span>
+  <p style="margin-bottom:0">The temptation is to re-run a test until the number looks good
+  and record that one. Every re-run is easier than the last, because you have just seen the
+  answers — so the second score measures something different from the first, and only the
+  first is the one worth keeping. <strong>Record your first attempt.</strong> Re-running
+  afterwards as practice is fine and useful; just don't overwrite the measurement with it.</p>
+</div>
+
+<h2>What comes next</h2>
+
+<p><strong>Tomorrow is Genki Lesson 1</strong> — <span class="jp">あたらしいともだち</span>,
+textbook pp. 36–55, with greetings and numbers first at pp. 30–35. It's the first day of the
+six-day rotation described in <a href="../reference/genki1-roadmap.html">the path</a>: vocab
+and dialogue, two days of grammar, a workbook day, a reading day, then retrieval.</p>
+
+<p>Three things worth doing before you close this page:</p>
+
+<ul>
+  <li><strong>Check OTO Navi is installed and the audio downloads.</strong> From tomorrow
+  every lesson opens with listening, and the day-5 reading protocol depends on it entirely.</li>
+  <li><strong>Put the <a href="../reference/kana-charts.html">kana charts</a> somewhere you
+  can glance at them</strong> — not to study, to check. You'll want them during vocabulary
+  lists for a few weeks yet.</li>
+  <li><strong>Write your miss-list on a sticky note.</strong> That short list, not the whole
+  syllabary, is what the five-minute warm-up drill should contain from tomorrow.</li>
+</ul>
+
+<div class="lesson-foot">
+  <p><strong>You've finished the writing system.</strong> Both scripts, all 104 readings
+  each, the voicing marks, and the timing rules — everything except kanji, which don't start
+  until Genki Lesson 3. Three weeks ago none of this page would have been readable. That is
+  the whole point of measuring: so you can see it.</p>
+
+  <div class="chip-row">
+    <a class="chip" href="../index.html">&#8962; Course home</a>
+    <a class="chip" href="week-01-hiragana.html">Week 1 · Hiragana</a>
+    <a class="chip" href="week-02-katakana.html">Week 2 · Katakana</a>
+    <a class="chip" href="week-02-katakana-in-words.html">Week 2 · Katakana in words</a>
+    <a class="chip" href="week-03-marks-and-beats.html">&larr; Week 3 · Marks &amp; beats</a>
+    <a class="chip" href="../reference/kana-charts.html">Complete kana charts</a>
+    <a class="chip" href="../reference/genki1-roadmap.html">The full path</a>
+  </div>
+
+  <div class="ask-teacher">
+    <strong>Send me all five results, not just the failures.</strong> The <em>pattern</em>
+    across the tests is what's diagnostic, and it's the thing that's hardest to read about
+    yourself. Clean characters with broken beats, clean hiragana with scattered katakana, or
+    fast-but-inaccurate all point to different next steps — and two of those three feel
+    identical from the inside. Tell me the numbers and I'll tell you which one you're
+    looking at, and what tomorrow's warm-up should be.
+  </div>
+</div>
+
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script src="../assets/drill.js"></script>
+<script>
+// ---------------------------------------------------------------------------
+// Character sets
+// ---------------------------------------------------------------------------
+var HIRA = [
+  ['あ','a'],['い','i'],['う','u'],['え','e'],['お','o'],
+  ['か','ka'],['き','ki'],['く','ku'],['け','ke'],['こ','ko'],
+  ['さ','sa'],['し','shi'],['す','su'],['せ','se'],['そ','so'],
+  ['た','ta'],['ち','chi'],['つ','tsu'],['て','te'],['と','to'],
+  ['な','na'],['に','ni'],['ぬ','nu'],['ね','ne'],['の','no'],
+  ['は','ha'],['ひ','hi'],['ふ','fu'],['へ','he'],['ほ','ho'],
+  ['ま','ma'],['み','mi'],['む','mu'],['め','me'],['も','mo'],
+  ['や','ya'],['ゆ','yu'],['よ','yo'],
+  ['ら','ra'],['り','ri'],['る','ru'],['れ','re'],['ろ','ro'],
+  ['わ','wa'],['を','o'],['ん','n']
+];
+
+var KATA = [
+  ['ア','a'],['イ','i'],['ウ','u'],['エ','e'],['オ','o'],
+  ['カ','ka'],['キ','ki'],['ク','ku'],['ケ','ke'],['コ','ko'],
+  ['サ','sa'],['シ','shi'],['ス','su'],['セ','se'],['ソ','so'],
+  ['タ','ta'],['チ','chi'],['ツ','tsu'],['テ','te'],['ト','to'],
+  ['ナ','na'],['ニ','ni'],['ヌ','nu'],['ネ','ne'],['ノ','no'],
+  ['ハ','ha'],['ヒ','hi'],['フ','fu'],['ヘ','he'],['ホ','ho'],
+  ['マ','ma'],['ミ','mi'],['ム','mu'],['メ','me'],['モ','mo'],
+  ['ヤ','ya'],['ユ','yu'],['ヨ','yo'],
+  ['ラ','ra'],['リ','ri'],['ル','ru'],['レ','re'],['ロ','ro'],
+  ['ワ','wa'],['ヲ','o'],['ン','n']
+];
+
+// Voiced + contracted, both scripts interleaved. 30 items.
+var EXTRA = [
+  ['が','ga'],['ジ','ji'],['ず','zu'],['ゼ','ze'],['ぞ','zo'],
+  ['ダ','da'],['で','de'],['ド','do'],['ば','ba'],['ビ','bi'],
+  ['ぶ','bu'],['ベ','be'],['ぼ','bo'],['パ','pa'],['ぴ','pi'],
+  ['プ','pu'],['ぺ','pe'],['ポ','po'],['ぐ','gu'],['ゴ','go'],
+  ['きゃ','kya'],['シュ','shu'],['ちょ','cho'],['ニュ','nyu'],['ひょ','hyo'],
+  ['ミャ','mya'],['りゅ','ryu'],['ギョ','gyo'],['じゃ','ja'],['ビョ','byo']
+];
+
+// Accept common romaji alternates rather than failing a correct reading on spelling.
+var ALT = {
+  'し':['shi','si'],'ち':['chi','ti'],'つ':['tsu','tu'],'ふ':['fu','hu'],
+  'ん':['n','nn'],'を':['o','wo'],
+  'シ':['shi','si'],'チ':['chi','ti'],'ツ':['tsu','tu'],'フ':['fu','hu'],
+  'ン':['n','nn'],'ヲ':['o','wo'],
+  'ジ':['ji','zi'],'シュ':['shu','syu'],'ちょ':['cho','tyo'],
+  'じゃ':['ja','zya','jya']
+};
+
+function items(set) {
+  return set.map(function (p) { return { show: p[0], answer: ALT[p[0]] || [p[1]] }; });
+}
+
+Drill.mount('#t1', { title: 'Test 1 — hiragana, all 46',  target: 55, items: items(HIRA) });
+Drill.mount('#t2', { title: 'Test 2 — katakana, all 46',  target: 60, items: items(KATA) });
+Drill.mount('#t3', { title: 'Test 3 — voiced & contracted', target: 40, items: items(EXTRA) });
+
+// ---------------------------------------------------------------------------
+// Test 4 — beats. Every option is exactly "N beats": same word count, same length.
+// ---------------------------------------------------------------------------
+function bq(word, gloss, answer, explain) {
+  return {
+    prompt: '<span class="wordbig">' + word + '</span><span class="cite">' + gloss
+          + '</span><br>How many beats?',
+    options: ['2 beats','3 beats','4 beats','5 beats'],
+    answer: answer, explain: explain
+  };
+}
+
+Quiz.mount('#t4', {
+  title: 'Test 4 — beats',
+  questions: [
+    bq('きって', '<em>kitte</em> — postage stamp', '3 beats',
+      '<strong>ki · (hold) · te</strong>. The small っ is silent but takes a full beat. Without it, きて is two beats and means "come".'),
+    bq('とうきょう', '<em>Tōkyō</em> — Tokyo', '4 beats',
+      '<strong>to · u · kyo · u</strong>. Both long vowels are real beats; きょ fuses into one. English says it in two.'),
+    bq('コーヒー', '<em>kōhī</em> — coffee', '4 beats',
+      '<strong>ko · o · hi · i</strong>. Each ー holds the previous vowel a full extra beat.'),
+    bq('がっこう', '<em>gakkō</em> — school', '4 beats',
+      '<strong>ga · (hold) · ko · u</strong>. A silent beat and a long vowel in one short word.'),
+    bq('じゅぎょう', '<em>jugyō</em> — class, lesson', '3 beats',
+      '<strong>ju · gyo · u</strong>. Two fusions in a row, then the long vowel. Five characters, three beats.'),
+    bq('チェックイン', '<em>chekkuin</em> — check-in', '5 beats',
+      '<strong>che · (hold) · ku · i · n</strong>. チェ fuses to one; ッ is silent but counted; ン is its own beat.'),
+    bq('しゃしん', '<em>shashin</em> — photograph', '3 beats',
+      '<strong>sha · shi · n</strong>. しゃ is one beat, and ん is always its own.'),
+    bq('ビール', '<em>bīru</em> — beer', '3 beats',
+      '<strong>bi · i · ru</strong>. Worth getting right.')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Test 5 — mixed-script reading. Options are same word count and near-equal length.
+// ---------------------------------------------------------------------------
+function rq(line, hint, answer, options, explain) {
+  return {
+    prompt: '<span class="sentence">' + line + '</span><span class="cite">' + hint
+          + '</span><br>How is it read?',
+    options: options, answer: answer, explain: explain
+  };
+}
+
+Quiz.mount('#t5', {
+  title: 'Test 5 — mixed-script reading',
+  questions: [
+    rq('わたしは がくせいです', 'I am a student', 'watashi wa',
+      ['watashi wa','watashi ha','watashi ga','watashi no'],
+      'は is read <strong>wa</strong> here because it is the topic particle. Inside a word it would still be <em>ha</em>.'),
+    rq('とうきょうへ いきます', 'I go to Tokyo', 'tōkyō e',
+      ['tōkyō e','tōkyō he','tōkyō o','tōkyō ni'],
+      'へ is read <strong>e</strong> as the direction particle.'),
+    rq('パンを たべます', 'I eat bread', 'pan o',
+      ['pan o','pan wo','pan ga','pan wa'],
+      'を is <strong>always</strong> read <em>o</em>. Some romaji systems write "wo", but the sound is <em>o</em>.'),
+    rq('コーヒーを のみます', 'I drink coffee', 'kōhī o',
+      ['kōhī o','kohi o','kōhi o','kohī o'],
+      'Both ー marks lengthen: <strong>kōhī</strong>, four beats. Katakana word, hiragana verb — mixed scripts in one short line.'),
+    rq('でんしゃで いきます', 'I go by train', 'densha de',
+      ['densha de','densya de','denshe de','densa de'],
+      'しゃ fuses to <em>sha</em>, one beat. The second で is the particle "by means of".'),
+    rq('きょうは やすみです', 'Today is a day off', 'kyō wa',
+      ['kyō wa','kiyō wa','kyo wa','kiyo wa'],
+      'きょう is <strong>kyō</strong>, two beats — きょ fused, then the long vowel. And は is <em>wa</em> again.'),
+    rq('シャワーを あびます', 'I take a shower', 'shawā o',
+      ['shawā o','shawa o','shawā wo','syawā o'],
+      'シャ is one beat, ワー is lengthened: <strong>shawā</strong>. Then を as <em>o</em>.'),
+    rq('がっこうに いきました', 'I went to school', 'gakkō ni',
+      ['gakkō ni','gako ni','gakkou ni','gakō ni'],
+      'The small っ doubles the <em>k</em> and takes a beat; こう is the long <em>ō</em>. <strong>gakkō</strong>, four beats.')
+  ]
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 7–8 · Lesson 4 — The First Date</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  .drill-stage .kana-big { font-size: clamp(2rem, 9vw, 3.4rem); }
+  .jp-title { font-size: 1.5rem; color: var(--ink-soft); margin: -.3rem 0 1.3rem; letter-spacing: .04em; }
+
+  .partmap { border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; margin: 1.6rem 0; }
+  .partmap a {
+    display: grid; grid-template-columns: 4.2rem 1fr 4.8rem; gap: .8rem; align-items: baseline;
+    padding: .75rem 1rem; border-bottom: 1px solid var(--rule); text-decoration: none;
+    color: var(--ink); font-size: .93rem;
+  }
+  .partmap a:last-child { border-bottom: 0; }
+  .partmap a:hover { background: var(--paper-warm); }
+  .partmap .s { font-family: var(--sans); font-size: .7rem; font-weight: 700;
+                letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+  .partmap .c { font-family: var(--mono); font-size: .72rem; color: var(--ink-faint); text-align: right; }
+  @media (max-width: 520px) {
+    .partmap a { grid-template-columns: 3.6rem 1fr; }
+    .partmap .c { display: none; }
+  }
+
+  .parthead {
+    margin: 3.4rem 0 .3rem; padding: .9rem 1.1rem; border-radius: 8px;
+    background: var(--accent-dim); border-left: 4px solid var(--accent);
+  }
+  .parthead h2 { border: 0; margin: 0; font-size: 1.3rem; }
+  .parthead .s {
+    font-family: var(--sans); font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .3rem;
+  }
+  .parthead p { margin: .4rem 0 0; font-size: .92rem; color: var(--ink-soft); }
+
+  .pattern {
+    border: 2px solid var(--accent); border-radius: 8px; padding: .9rem 1.1rem;
+    margin: 1.3rem 0; text-align: center; background: var(--paper-warm);
+  }
+  .pattern .jp-pat { font-family: var(--jp); font-size: 1.45rem; letter-spacing: .04em; }
+  .pattern .en { font-size: .88rem; color: var(--ink-soft); display: block; margin-top: .3rem; }
+  .pattern .hi { color: var(--accent); }
+
+  .ex { margin: 1.1rem 0; }
+  .ex div {
+    padding: .6rem 0; border-bottom: 1px solid var(--rule);
+    display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; align-items: baseline;
+  }
+  .ex div:last-child { border-bottom: 0; }
+  .ex .j { font-family: var(--jp); font-size: 1.2rem; line-height: 1.5; }
+  .ex .r { font-family: var(--mono); font-size: .72rem; color: var(--ink-faint); display: block; }
+  .ex .e { font-size: .88rem; color: var(--ink-soft); font-style: italic; }
+  @media (max-width: 520px) { .ex div { grid-template-columns: 1fr; gap: .15rem; } }
+
+  .locgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px,1fr)); gap: .6rem; margin: 1.2rem 0; }
+  .locgrid div { border: 1px solid var(--rule); border-radius: 8px; padding: .7rem .4rem;
+                 text-align: center; background: var(--paper-warm); }
+  .locgrid .j { font-family: var(--jp); font-size: 1.3rem; display: block; }
+  .locgrid .k { font-family: var(--jp); font-size: .9rem; color: var(--ink-faint); display: block; }
+  .locgrid .m { font-size: .76rem; color: var(--ink-soft); display: block; margin-top: .25rem; }
+
+  .tensetable { width: 100%; border-collapse: collapse; margin: 1.2rem 0; }
+  .tensetable th { font-size: .64rem; }
+  .tensetable td { font-family: var(--jp); font-size: 1.12rem; padding: .55rem .5rem; }
+  .tensetable td:first-child { font-family: var(--sans); font-size: .78rem; font-weight: 700;
+                               color: var(--ink-faint); text-transform: uppercase; letter-spacing: .07em; }
+  .tensetable td.new { color: var(--accent); font-weight: 600; }
+
+  .swap { border: 1px solid var(--rule); border-radius: 9px; padding: 1rem 1.2rem;
+          margin: 1.2rem 0; background: var(--paper-warm); }
+  .swap .row { display: grid; grid-template-columns: 1fr auto 1fr; gap: .7rem;
+               align-items: center; text-align: center; padding: .5rem 0; }
+  .swap .row + .row { border-top: 1px solid var(--rule); }
+  .swap .from { font-family: var(--jp); font-size: 1.3rem; }
+  .swap .arr { color: var(--accent); font-size: 1.1rem; }
+  .swap .to { font-family: var(--jp); font-size: 1.3rem; color: var(--accent); font-weight: 600; }
+  .swap .lbl { font-family: var(--sans); font-size: .64rem; text-transform: uppercase;
+               letter-spacing: .08em; color: var(--ink-faint); display: block; margin-top: .2rem; }
+
+  .kanjigrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px,1fr)); gap: .6rem; margin: 1.2rem 0; }
+  .kanjigrid div { border: 1px solid var(--rule); border-radius: 8px; padding: .6rem .3rem;
+                   text-align: center; background: var(--paper-warm); }
+  .kanjigrid .k { font-family: var(--jp); font-size: 2.1rem; line-height: 1.1; display: block; }
+  .kanjigrid .r { font-family: var(--mono); font-size: .64rem; color: var(--accent); display: block; margin-top: .25rem; }
+  .kanjigrid .m { font-size: .7rem; color: var(--ink-soft); display: block; margin-top: .1rem; }
+
+  .weekdays { display: grid; grid-template-columns: repeat(auto-fit, minmax(104px,1fr)); gap: .55rem; margin: 1.1rem 0; }
+  .weekdays div { border: 1px solid var(--rule); border-radius: 8px; padding: .6rem .3rem;
+                  text-align: center; background: var(--paper); }
+  .weekdays .j { font-family: var(--jp); font-size: 1.25rem; display: block; }
+  .weekdays .r { font-family: var(--mono); font-size: .66rem; color: var(--accent); display: block; margin-top: .2rem; }
+  .weekdays .m { font-size: .7rem; color: var(--ink-soft); display: block; }
+
+  .scaffold { border: 1px solid var(--rule); border-radius: 9px; padding: 1.1rem 1.3rem;
+              background: var(--paper-warm); margin: 1.3rem 0; }
+  .scaffold ol { margin: .6rem 0 0; padding-left: 1.3rem; }
+  .scaffold li { margin-bottom: .7rem; font-family: var(--jp); font-size: 1.15rem; line-height: 1.6; }
+  .scaffold li .gloss { font-family: var(--serif); font-size: .84rem; color: var(--ink-soft);
+                        font-style: italic; display: block; margin-top: .1rem; }
+  .scaffold .slot { color: var(--accent); border-bottom: 1.5px dashed var(--accent); padding: 0 .3em; }
+
+  ol.passes { padding-left: 1.3rem; }
+  ol.passes li { margin-bottom: .5rem; }
+  .wordbig { font-family: var(--jp); font-size: 1.8rem; letter-spacing: .04em; display: block; margin: .3rem 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="topnav"><a href="../index.html">&larr; Course home</a></p>
+
+<p class="eyebrow">Phase 1 · Week 7 day 2 → Week 8 day 3</p>
+<h1>Lesson 4 · The First Date</h1>
+<p class="jp-title"><span class="jp">初めてのデート</span></p>
+<p class="standfirst">Seven days. You gain the past tense — which doubles everything you can
+already say — plus the ability to state that something <em>exists</em> and where it is.
+Fourteen more kanji, and they're the days of the week. Textbook pp. 102–127.</p>
+
+<div class="note">
+  <span class="label">What makes this lesson tricky</span>
+  <p style="margin-bottom:0">Not the past tense — that's mechanical and you'll have it in a
+  day. It's <span class="jp">あります/います</span>, which <strong>overturns the particles
+  you spent Lesson 3 learning</strong>. Where you learned <span class="jp">で</span> for
+  place, this needs <span class="jp">に</span>. Where you learned <span class="jp">は</span>
+  for the thing, this needs <span class="jp">が</span>. Expect that to feel wrong for a week.
+  It isn't — it's a different construction with its own rules.</p>
+</div>
+
+<div class="partmap">
+  <a href="#d1"><span class="s">Day 1</span><span><strong>Vocabulary, dialogue, location words</strong></span><span class="c">pp. 102–106</span></a>
+  <a href="#d2"><span class="s">Day 2</span><span><strong><span class="jp">あります</span> and <span class="jp">います</span></strong> — existence, and the particle flip</span><span class="c">pp. 107–108</span></a>
+  <a href="#d3"><span class="s">Day 3</span><span><strong>Describing where things are</strong> — <span class="jp">X は Y の となり です</span></span><span class="c">pp. 108–109</span></a>
+  <a href="#d4"><span class="s">Day 4</span><span><strong>The past tense</strong> — of <span class="jp">です</span> and of verbs</span><span class="c">p. 110</span></a>
+  <a href="#d5"><span class="s">Day 5</span><span><strong><span class="jp">も</span> again, duration, <span class="jp">たくさん</span>, <span class="jp">と</span></strong></span><span class="c">pp. 111–113</span></a>
+  <a href="#d6"><span class="s">Day 6</span><span><strong>Kanji and workbook</strong> — the days of the week</span><span class="c">wb 41–49</span></a>
+  <a href="#d7"><span class="s">Day 7</span><span><strong>Reading and retrieval</strong> — second five-pass passage</span><span class="c">pp. 308–311</span></a>
+</div>
+
+<!-- ==================== DAY 1 ==================== -->
+<div class="parthead" id="d1">
+  <span class="s">Day 1</span>
+  <h2>Vocabulary, Dialogue, and Location Words</h2>
+  <p>Input day, plus a small closed set worth front-loading.</p>
+</div>
+
+<ol>
+  <li><strong>Vocabulary, pp. 104–105</strong>, with the audio. Then the
+  <strong>Location Words</strong> box at p. 106 — ten words, learned as a set, which is how
+  you'll use them.</li>
+  <li><strong>Dialogue, pp. 102–103.</strong> Listen twice reading along. It's a date that
+  goes wrong, narrated afterwards — so it's mostly <em>past tense</em>, which you meet
+  properly on day 4.</li>
+</ol>
+
+<div class="locgrid">
+  <div><span class="j">みぎ</span><span class="k">右</span><span class="m">right</span></div>
+  <div><span class="j">ひだり</span><span class="k">左</span><span class="m">left</span></div>
+  <div><span class="j">まえ</span><span class="k">前</span><span class="m">front</span></div>
+  <div><span class="j">うしろ</span><span class="k">後ろ</span><span class="m">behind</span></div>
+  <div><span class="j">なか</span><span class="k">中</span><span class="m">inside</span></div>
+  <div><span class="j">うえ</span><span class="k">上</span><span class="m">on, above</span></div>
+  <div><span class="j">した</span><span class="k">下</span><span class="m">under</span></div>
+  <div><span class="j">ちかく</span><span class="k">近く</span><span class="m">near</span></div>
+  <div><span class="j">となり</span><span class="k">隣</span><span class="m">next to</span></div>
+  <div><span class="j">あいだ</span><span class="k">間</span><span class="m">between</span></div>
+</div>
+
+<p class="cite">Four of these — <span class="jp">上 下 中</span> and the
+<span class="jp">半</span> in <span class="jp">半分</span> — are in this lesson's kanji list.
+You'll meet them again on day 6, already knowing what they mean.</p>
+
+<!-- ==================== DAY 2 ==================== -->
+<div class="parthead" id="d2">
+  <span class="s">Day 2</span>
+  <h2><span class="jp">あります</span> and <span class="jp">います</span></h2>
+  <p>Textbook pp. 107–108. Two verbs meaning "there is", and a particle pattern that
+  contradicts your instincts.</p>
+</div>
+
+<div class="pattern">
+  <span class="jp-pat">(place <span class="hi">に</span>) &nbsp; thing <span class="hi">が</span> あります<br>
+  (place <span class="hi">に</span>) &nbsp; person <span class="hi">が</span> います</span>
+  <span class="en">There is / there are …</span>
+</div>
+
+<p>Which verb you use depends on the thing:</p>
+
+<table>
+  <thead><tr><th>Verb</th><th>Used for</th></tr></thead>
+  <tbody>
+    <tr><td class="jp" style="font-size:1.2em">あります</td>
+        <td>Non-living things. Objects, buildings, and also abstract things like time or a class.</td></tr>
+    <tr><td class="jp" style="font-size:1.2em">います</td>
+        <td>People and other living, <em>moving</em> things — animals included.</td></tr>
+  </tbody>
+</table>
+
+<p class="cite">The split is really animate-and-moving versus everything else, not
+"alive versus dead" — plants take <span class="jp">あります</span>.</p>
+
+<div class="note">
+  <span class="label">The particle flip — the whole difficulty of this lesson</span>
+  <p>In Lesson 3 you learned <span class="jp">で</span> for where an action happens, and you
+  have used <span class="jp">は</span> for the thing being talked about since Lesson 1. This
+  construction uses <strong>neither</strong>:</p>
+  <div class="swap">
+    <div class="row">
+      <div><span class="from">で</span><span class="lbl">place of action</span></div>
+      <div class="arr">→</div>
+      <div><span class="to">に</span><span class="lbl">place of existence</span></div>
+    </div>
+    <div class="row">
+      <div><span class="from">は</span><span class="lbl">topic</span></div>
+      <div class="arr">→</div>
+      <div><span class="to">が</span><span class="lbl">the thing that exists</span></div>
+    </div>
+  </div>
+  <p style="margin-bottom:0">The usual order is <strong>place first, then the thing</strong>
+  — you set the scene, then say what's in it.</p>
+</div>
+
+<div class="ex">
+  <div><span class="j">あそこに マクドナルドが あります。<span class="r">asoko ni Makudonarudo ga arimasu</span></span>
+       <span class="e">There's a McDonald's over there.</span></div>
+  <div><span class="j">あそこに りゅうがくせいが います。<span class="r">asoko ni ryuugakusee ga imasu</span></span>
+       <span class="e">There's an international student over there.</span></div>
+</div>
+
+<h3>The same verbs mean "have"</h3>
+
+<div class="ex">
+  <div><span class="j">テレビが ありません。<span class="r">terebi ga arimasen</span></span>
+       <span class="e">I don't have a TV.</span></div>
+  <div><span class="j">じかんが ありますか。<span class="r">jikan ga arimasu ka</span></span>
+       <span class="e">Do you have time?</span></div>
+  <div><span class="j">にほんじんの ともだちが います。<span class="r">nihonjin no tomodachi ga imasu</span></span>
+       <span class="e">I have a Japanese friend. — a person, so います</span></div>
+</div>
+
+<h3>And "an event takes place"</h3>
+
+<div class="ex">
+  <div><span class="j">かようびに テストが あります。<span class="r">kayoobi ni tesuto ga arimasu</span></span>
+       <span class="e">There's an exam on Tuesday.</span></div>
+</div>
+
+<div class="note">
+  <span class="label">One exception worth knowing</span>
+  <p style="margin-bottom:0">When <span class="jp">あります</span> means <em>an event takes
+  place</em>, the place goes back to <span class="jp">で</span> — because an event is
+  something that <em>happens</em> rather than something that sits there:
+  <span class="jp">あしたは きょうとで おまつりが あります</span> (there's a festival in
+  Kyoto tomorrow). Existence takes <span class="jp">に</span>; occurrence takes
+  <span class="jp">で</span>.</p>
+</div>
+
+<div class="note">
+  <span class="label"><span class="jp">います</span> is not <span class="jp">です</span></span>
+  <p style="margin-bottom:0">English uses "is" for both, which hides a real distinction.
+  <span class="jp">あそこに りゅうがくせいが います</span> — there <em>exists</em> a student
+  over there. <span class="jp">メアリーさんは りゅうがくせいです</span> — Mary <em>is</em> a
+  student, an attribute. <strong><span class="jp">います/あります</span> are for existence
+  and location; <span class="jp">です</span> is for attributes.</strong> Never swap them.</p>
+</div>
+
+<h3>Check it</h3>
+<div id="q-aru"></div>
+
+<!-- ==================== DAY 3 ==================== -->
+<div class="parthead" id="d3">
+  <span class="s">Day 3</span>
+  <h2>Describing Where Things Are</h2>
+  <p>Textbook pp. 108–109. Yesterday said <em>that</em> something exists; today says
+  <em>where</em>, relative to something else.</p>
+</div>
+
+<p>In Lesson 2 you could only answer <span class="jp">どこですか</span> with
+<span class="jp">あそこです</span> — "over there". Now you can be precise, and the pattern is
+just <span class="jp">Noun の Noun</span> from Lesson 1 with a location word in the second
+slot:</p>
+
+<div class="pattern">
+  <span class="jp-pat">X は Y の <span class="hi">[location]</span> です。</span>
+  <span class="en">X is [location] of Y</span>
+</div>
+
+<div class="ex">
+  <div><span class="j">ぎんこうは としょかんの となりです。<span class="r">ginkoo wa toshokan no tonari desu</span></span>
+       <span class="e">The bank is next to the library.</span></div>
+  <div><span class="j">かさは テーブルの したです。<span class="r">kasa wa teeburu no shita desu</span></span>
+       <span class="e">The umbrella is under the table.</span></div>
+</div>
+
+<p>"Between" needs two reference points and uses <span class="jp">と</span> to join them:</p>
+
+<div class="pattern">
+  <span class="jp-pat">X は Y <span class="hi">と</span> Z の あいだ です。</span>
+  <span class="en">X is between Y and Z</span>
+</div>
+
+<div class="ex">
+  <div><span class="j">レストランは スーパーと びょういんの あいだです。
+       <span class="r">resutoran wa suupaa to byooin no aida desu</span></span>
+       <span class="e">The restaurant is between the supermarket and the hospital.</span></div>
+</div>
+
+<div class="note">
+  <span class="label"><span class="jp">となり</span> means <em>side by side, same kind</em></span>
+  <p style="margin-bottom:0"><span class="jp">となり</span> is for two things of the same
+  category standing next to each other — two buildings, two people.
+  <span class="jp">かばんは つくえの となりです</span> is odd, because a bag and a desk aren't
+  peers. For "beside" in a general sense, use <span class="jp">よこ</span>. And
+  <span class="jp">そば</span> is another everyday word for "near", alongside
+  <span class="jp">ちかく</span>.</p>
+</div>
+
+<h3>Using a location with a verb</h3>
+
+<p>If something <em>happens</em> at that spot rather than just sitting there, you're back to
+<span class="jp">で</span> — the Lesson 3 rule, unchanged:</p>
+
+<div class="ex">
+  <div><span class="j">モスバーガーの まえで メアリーさんを まちました。
+       <span class="r">Mosubaagaa no mae de Mearii san o machimashita</span></span>
+       <span class="e">I waited for Mary in front of the Mos Burger.</span></div>
+</div>
+
+<p class="cite">Note <span class="jp">まえ</span> often means <strong>opposite</strong> or
+<em>across the street from</em>, not literally "in front of the entrance" — and
+<span class="jp">むかい</span> is the more explicit word for that. Similarly
+<span class="jp">うら</span> is used for something round the back and out of sight, where
+<span class="jp">うしろ</span> would be merely "behind".</p>
+
+<h3>Check it</h3>
+<div id="q-location"></div>
+
+<!-- ==================== DAY 4 ==================== -->
+<div class="parthead" id="d4">
+  <span class="s">Day 4</span>
+  <h2>The Past Tense</h2>
+  <p>Textbook p. 110. The easiest day in the lesson and the one that buys the most.</p>
+</div>
+
+<p>Two tables, and you have doubled your expressive range. Nothing irregular, nothing to
+work out — the forms just swap.</p>
+
+<h3><span class="jp">です</span></h3>
+
+<table class="tensetable">
+  <thead><tr><th></th><th>Affirmative</th><th>Negative</th></tr></thead>
+  <tbody>
+    <tr><td>Present</td><td>〜です</td><td>〜じゃないです</td></tr>
+    <tr><td>Past</td><td class="new">〜でした</td><td class="new">〜じゃなかったです</td></tr>
+  </tbody>
+</table>
+
+<div class="ex">
+  <div><span class="j">やましたせんせいは がくせいでした。<span class="r">…gakusee deshita</span></span>
+       <span class="e">Professor Yamashita was a student.</span></div>
+  <div><span class="j">あれは にほんの えいがじゃなかったです。<span class="r">…ja nakatta desu</span></span>
+       <span class="e">That was not a Japanese film.</span></div>
+</div>
+
+<h3>Verbs</h3>
+
+<table class="tensetable">
+  <thead><tr><th></th><th>Affirmative</th><th>Negative</th></tr></thead>
+  <tbody>
+    <tr><td>Present</td><td>〜ます</td><td>〜ません</td></tr>
+    <tr><td>Past</td><td class="new">〜ました</td><td class="new">〜ませんでした</td></tr>
+  </tbody>
+</table>
+
+<div class="ex">
+  <div><span class="j">メアリーさんは くじごろ うちに かえりました。<span class="r">…kaerimashita</span></span>
+       <span class="e">Mary went home at about nine.</span></div>
+  <div><span class="j">きのう にほんごを べんきょうしませんでした。<span class="r">…benkyooshimasen deshita</span></span>
+       <span class="e">I didn't study Japanese yesterday.</span></div>
+</div>
+
+<div class="note">
+  <span class="label">The hard work was already done</span>
+  <p style="margin-bottom:0">The <span class="jp">る</span>/<span class="jp">う</span>/irregular
+  machinery from Lesson 3 <strong>applies unchanged</strong>. Get to
+  <span class="jp">〜ます</span> and the past is simply <span class="jp">〜ました</span>. So
+  <span class="jp">かえる → かえります → かえりました</span>. If your verb groups are solid,
+  you learned the past tense in about ninety seconds. If they're not, this is the moment that
+  shows it — go back to <a href="week-05-lesson-03-making-a-date.html#d2">Lesson 3, day 2</a>.</p>
+</div>
+
+<h3>Conjugate against the clock</h3>
+<p>Dictionary form in, <strong>past affirmative</strong> out. Type romaji.</p>
+<div id="d-past"></div>
+
+<!-- ==================== DAY 5 ==================== -->
+<div class="parthead" id="d5">
+  <span class="s">Day 5</span>
+  <h2><span class="jp">も</span>, Duration, <span class="jp">たくさん</span>, <span class="jp">と</span></h2>
+  <p>Textbook pp. 111–113. Four small points, one of which is genuinely subtle.</p>
+</div>
+
+<h3>1 · <span class="jp">も</span>, and what it does to other particles</h3>
+
+<p>You met <span class="jp">も</span> in Lesson 2 replacing <span class="jp">は</span>. It
+also works when two people do the same thing, or one person does two things. The new and
+important part is what happens with <em>other</em> particles:</p>
+
+<div class="swap">
+  <div class="row">
+    <div><span class="from">は · が · を</span><span class="lbl">replaced</span></div>
+    <div class="arr">→</div>
+    <div><span class="to">も</span><span class="lbl">the particle disappears</span></div>
+  </div>
+  <div class="row">
+    <div><span class="from">に · で · …</span><span class="lbl">kept</span></div>
+    <div class="arr">→</div>
+    <div><span class="to">にも · でも</span><span class="lbl">も stacks on top</span></div>
+  </div>
+</div>
+
+<div class="ex">
+  <div><span class="j">メアリーさんは かばんも かいました。<span class="r">…kaban mo kaimashita</span></span>
+       <span class="e">Mary bought a bag too. — を replaced by も</span></div>
+  <div><span class="j">おおさかにも いきました。<span class="r">Oosaka ni mo ikimashita</span></span>
+       <span class="e">I went to Osaka too. — に kept, も added</span></div>
+  <div><span class="j">カフェでも ほんを よみました。<span class="r">kafe de mo hon o yomimashita</span></span>
+       <span class="e">He read a book at a café too. — で kept, も added</span></div>
+</div>
+
+<p>The logic: <span class="jp">は・が・を</span> mark grammatical <em>roles</em>, and
+<span class="jp">も</span> is filling that same slot. <span class="jp">に</span> and
+<span class="jp">で</span> carry actual <em>meaning</em> — destination, location — which
+would be lost if <span class="jp">も</span> replaced them. So they survive and
+<span class="jp">も</span> is added.</p>
+
+<h3>2 · Duration takes no particle at all</h3>
+
+<div class="pattern">
+  <span class="jp-pat">〜じかん &nbsp;+&nbsp; verb</span>
+  <span class="en">for N hours — a bare noun, no particle</span>
+</div>
+
+<div class="ex">
+  <div><span class="j">たけしさんを いちじかん まちました。<span class="r">…ichijikan machimashita</span></span>
+       <span class="e">I waited for Takeshi for an hour.</span></div>
+  <div><span class="j">にほんごを さんじかんぐらい べんきょうしました。<span class="r">…sanjikan gurai…</span></span>
+       <span class="e">I studied Japanese for about three hours.</span></div>
+  <div><span class="j">きのう ななじかんはん ねました。<span class="r">…nanajikan han nemashita</span></span>
+       <span class="e">I slept seven and a half hours last night.</span></div>
+</div>
+
+<p>Add <span class="jp">ぐらい</span> for "about", <span class="jp">半</span> for "and a
+half". If you want both, <strong><span class="jp">ぐらい</span> goes last</strong>:
+<span class="jp">いちじかんはんぐらい</span>.</p>
+
+<div class="note">
+  <span class="label">Don't confuse this with <span class="jp">〜じ</span></span>
+  <p style="margin-bottom:0"><span class="jp">いちじ</span> is <em>one o'clock</em> — a point
+  in time, and it takes <span class="jp">に</span>. <span class="jp">いちじかん</span> is
+  <em>one hour</em> — a duration, and it takes nothing. One syllable apart, completely
+  different grammar. <span class="jp">ごろ</span> goes with the point;
+  <span class="jp">ぐらい</span> goes with the duration.</p>
+</div>
+
+<h3>3 · <span class="jp">たくさん</span> sits in either place</h3>
+
+<p>Unusually flexible — before the noun, or after the particle. Both are correct:</p>
+
+<div class="ex">
+  <div><span class="j">しゃしんを たくさん とりました。<span class="r">shashin o takusan torimashita</span></span>
+       <span class="e">I took lots of photos.</span></div>
+  <div><span class="j">たくさん しゃしんを とりました。<span class="r">takusan shashin o torimashita</span></span>
+       <span class="e">Same meaning, other order.</span></div>
+</div>
+
+<h3>4 · <span class="jp">と</span> — "and", and "with"</h3>
+
+<div class="ex">
+  <div><span class="j">にほんごと えいごを はなします。<span class="r">nihongo to eego o hanashimasu</span></span>
+       <span class="e">I speak Japanese <strong>and</strong> English.</span></div>
+  <div><span class="j">ソラさんと かんこくに いきます。<span class="r">Sora san to Kankoku ni ikimasu</span></span>
+       <span class="e"><strong>With</strong> Sora, I'll go to Korea.</span></div>
+</div>
+
+<div class="note">
+  <span class="label"><span class="jp">と</span> joins nouns only</span>
+  <p style="margin-bottom:0">You cannot use <span class="jp">と</span> to join two verbs or
+  two sentences — "I ate and went home" does not work this way. Connecting actions needs the
+  <span class="jp">て</span>-form, which is Lesson 6. This is a very common early error
+  precisely because English "and" does both jobs.</p>
+</div>
+
+<h3>Check it</h3>
+<div id="q-misc"></div>
+
+<!-- ==================== DAY 6 ==================== -->
+<div class="parthead" id="d6">
+  <span class="s">Day 6</span>
+  <h2>Kanji and Workbook</h2>
+  <p>Fourteen kanji, then workbook pp. 41–49 and the kanji sheets at workbook pp. 135–136.</p>
+</div>
+
+<div class="kanjigrid">
+  <div><span class="k">日</span><span class="r">nichi · hi</span><span class="m">day, sun</span></div>
+  <div><span class="k">本</span><span class="r">hon</span><span class="m">book, origin</span></div>
+  <div><span class="k">人</span><span class="r">jin · hito</span><span class="m">person</span></div>
+  <div><span class="k">月</span><span class="r">getsu · gatsu</span><span class="m">moon, month</span></div>
+  <div><span class="k">火</span><span class="r">ka · hi</span><span class="m">fire</span></div>
+  <div><span class="k">水</span><span class="r">sui · mizu</span><span class="m">water</span></div>
+  <div><span class="k">木</span><span class="r">moku · ki</span><span class="m">tree, wood</span></div>
+  <div><span class="k">金</span><span class="r">kin · kane</span><span class="m">gold, money</span></div>
+  <div><span class="k">土</span><span class="r">do · tsuchi</span><span class="m">earth, soil</span></div>
+  <div><span class="k">曜</span><span class="r">yoo</span><span class="m">day of week</span></div>
+  <div><span class="k">上</span><span class="r">ue · joo</span><span class="m">above</span></div>
+  <div><span class="k">下</span><span class="r">shita · ka</span><span class="m">below</span></div>
+  <div><span class="k">中</span><span class="r">naka · chuu</span><span class="m">middle</span></div>
+  <div><span class="k">半</span><span class="r">han</span><span class="m">half</span></div>
+</div>
+
+<h3>Seven of them are one system</h3>
+
+<p>Look at what happens when you combine them with <span class="jp">曜日</span>. The days of
+the week are named after the classical planets — moon, fire, water, wood, gold, earth, sun —
+exactly as the English and Romance names are. You already know all the characters:</p>
+
+<div class="weekdays">
+  <div><span class="j">月曜日</span><span class="r">getsuyoobi</span><span class="m">Monday · moon</span></div>
+  <div><span class="j">火曜日</span><span class="r">kayoobi</span><span class="m">Tuesday · fire</span></div>
+  <div><span class="j">水曜日</span><span class="r">suiyoobi</span><span class="m">Wednesday · water</span></div>
+  <div><span class="j">木曜日</span><span class="r">mokuyoobi</span><span class="m">Thursday · wood</span></div>
+  <div><span class="j">金曜日</span><span class="r">kinyoobi</span><span class="m">Friday · gold</span></div>
+  <div><span class="j">土曜日</span><span class="r">doyoobi</span><span class="m">Saturday · earth</span></div>
+  <div><span class="j">日曜日</span><span class="r">nichiyoobi</span><span class="m">Sunday · sun</span></div>
+</div>
+
+<p>Seven kanji, one suffix, and a whole calendar becomes readable. <strong>This is the block
+after which a shop's opening days and a train timetable stop being decoration.</strong> Note
+<span class="jp">日本</span> too — "sun origin", the origin of the sun. That's what the
+country's name means.</p>
+
+<h3>Read them</h3>
+<div id="d-kanji"></div>
+
+<h3>Then the workbook</h3>
+
+<p>Nine sheets at workbook pp. 41–49, ending with the written questions and the listening
+practice. The kanji sheets are at workbook pp. 135–136 — trace once for shape memory, then
+spend your time on the <em>Using Kanji</em> half, which is reading in context.</p>
+
+<p><strong>Also read p. 127</strong>, Useful Expressions —
+<span class="jp">日・週・月・年</span>, the words for days, weeks, months and years. It's a
+reference sheet, not a drill, and it pairs naturally with today's kanji.</p>
+
+<!-- ==================== DAY 7 ==================== -->
+<div class="parthead" id="d7">
+  <span class="s">Day 7</span>
+  <h2>Reading: <span class="jp">メアリーさんのしゅうまつ</span></h2>
+  <p>Textbook pp. 308–311. Your second five-pass passage — and the first with a
+  comparison point.</p>
+</div>
+
+<p>Mary's weekend, told in the past tense you learned three days ago. Run the same protocol
+as Lesson 3:</p>
+
+<ol class="passes">
+  <li><strong>Listen only.</strong> Audio on, eyes following, nothing looked up.</li>
+  <li><strong>Silent read.</strong> Mark where you stall; look up only those.</li>
+  <li><strong>Chorus read.</strong> Aloud, along with the audio, keeping up.</li>
+  <li><strong>Solo read, timed.</strong> Write the time down.</li>
+  <li><strong>Solo read, timed again.</strong> Beat pass 4.</li>
+</ol>
+
+<div class="note">
+  <span class="label">Now you have something to compare against</span>
+  <p style="margin-bottom:0">Pull out your Lesson 3 times. This passage is
+  <em>longer and harder</em> than that one, so <strong>a similar time is real
+  improvement</strong> and a faster one is substantial. The thing to watch is the gap between
+  pass 4 and pass 5 — if it's narrowing across lessons, your decoding is becoming automatic,
+  which is exactly what the whole plan is for.</p>
+</div>
+
+<h3>Describe your own weekend</h3>
+
+<p>All past tense, all Lesson 4 grammar:</p>
+
+<div class="scaffold">
+  <ol>
+    <li>せんしゅうの しゅうまつ、<span class="slot">ばしょ</span>に いきました。<span class="gloss">Last weekend I went to ___.</span></li>
+    <li><span class="slot">ひと</span>と いきました。<span class="gloss">I went with ___. と = "together with".</span></li>
+    <li>そこに <span class="slot">もの</span>が ありました。<span class="gloss">There was a ___ there. に for place, が for the thing.</span></li>
+    <li><span class="slot">ばしょ</span>の となりでした。<span class="gloss">It was next to ___. Past of です.</span></li>
+    <li><span class="slot">すうじ</span>じかんぐらい いました。<span class="gloss">I was there for about ___ hours. No particle on duration.</span></li>
+    <li><span class="slot">もの</span>を たくさん たべました。<span class="gloss">I ate lots of ___.</span></li>
+    <li>でも、<span class="slot">なに</span>は しませんでした。<span class="gloss">But I didn't do ___. Past negative.</span></li>
+  </ol>
+</div>
+
+<h3>Mixed retrieval</h3>
+<div id="q-mixed"></div>
+
+<h3>Finish with the culture note</h3>
+
+<p><strong>p. 114</strong> — <span class="jp">日本の祝日</span>, Japanese national holidays.
+Read it. Genuinely practical: Japan has a lot of public holidays, several cluster into
+consecutive weeks, and if you travel there without knowing which ones they are you will find
+yourself competing with the entire country for a train seat.</p>
+
+<!-- ==================== CLOSE ==================== -->
+<h2>What you can do now</h2>
+
+<ul>
+  <li>Talk about the past — the single biggest jump in range so far.</li>
+  <li>Say that something exists, that you have it, or that an event is happening.</li>
+  <li>Describe where anything is, relative to anything else.</li>
+  <li>Say how long something took, who you did it with, and that you did two things.</li>
+  <li>Read the days of the week, and therefore any calendar or opening-hours sign.</li>
+</ul>
+
+<div class="note">
+  <span class="label">Roughly two-thirds through</span>
+  <p style="margin-bottom:0">You have all 104 kana, 29 kanji, about 160 words, and enough
+  grammar to describe your life in two tenses. One lesson left in this plan — Lesson 5,
+  adjectives — and then the week-9 assessment. If you're planning what comes after,
+  <strong>Lesson 6 is the て-form</strong>, and it is the highest-leverage thing in
+  elementary Japanese.</p>
+</div>
+
+<h2>Before Lesson 5</h2>
+
+<p><strong>Drill the past tense until it's automatic.</strong> Lesson 5 conjugates
+<em>adjectives</em> through present, past, affirmative and negative — four forms, two
+adjective types, so eight patterns. That's manageable only if verb conjugation no longer
+costs you any thought. Convert verbs in your head, both tenses, whenever you have a spare
+minute.</p>
+
+<div class="lesson-foot">
+  <p><strong>Next:</strong>
+  <a href="week-08-lesson-05-okinawa.html">Genki Lesson 5, <span class="jp">沖縄旅行</span> —
+  A Trip to Okinawa</a>. Six days: adjectives in both tenses, the
+  <span class="jp">い</span>/<span class="jp">な</span> split that most later mistakes trace
+  back to, <span class="jp">好き/きらい</span>, <span class="jp">〜ましょう</span>, counting,
+  and fourteen more kanji including <span class="jp">女 男 見 行 食 飲</span>.</p>
+
+  <div class="chip-row">
+    <a class="chip" href="../index.html">&#8962; Course home</a>
+    <a class="chip" href="week-05-lesson-03-making-a-date.html">&larr; Lesson 3</a>
+    <a class="chip" href="../reference/genki1-roadmap.html#genki-4">The plan · Lesson 4</a>
+    <a class="chip" href="week-08-lesson-05-okinawa.html">Lesson 5 &rarr;</a>
+    <a class="chip" href="../reference/kana-charts.html">Kana charts</a>
+  </div>
+
+  <div class="ask-teacher">
+    <strong>Send me your weekend paragraph and both reading times.</strong> The paragraph
+    will show whether the particle flip has landed — <span class="jp">で</span> where
+    <span class="jp">に</span> belongs in an <span class="jp">あります</span> sentence is
+    <em>the</em> Lesson 4 error, and so is <span class="jp">は</span> where
+    <span class="jp">が</span> is needed. Both feel completely correct from the inside,
+    because they're what Lesson 3 taught you. I can also check whether your
+    <span class="jp">も</span> is stacking or replacing in the right places.
+  </div>
+</div>
+
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script src="../assets/drill.js"></script>
+<script>
+function q(prompt, answer, options, explain) {
+  return { prompt: prompt, options: options, answer: answer, explain: explain };
+}
+var PART = ['が','に','で','を'];
+
+// ---------------------------------------------------------------------------
+// Day 2 — arimasu / imasu
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-aru', {
+  title: 'あります and います',
+  questions: [
+    q('<span class="wordbig">あそこに マクドナルドが ＿</span>', 'あります',
+      ['あります','います','です','でした'],
+      '<strong>あります</strong> — a building is a non-living thing.'),
+    q('<span class="wordbig">あそこに りゅうがくせいが ＿</span>', 'います',
+      ['います','あります','です','でした'],
+      '<strong>います</strong> — a person.'),
+    q('A cat is in the room. Which verb?', 'います', ['います','あります','です','でした'],
+      '<strong>います.</strong> The split is animate <em>and moving</em> — animals included. A plant would take あります.'),
+    q('<span class="wordbig">あそこ＿ マクドナルドが あります</span>Which particle marks the place?',
+      'に', PART,
+      '<strong>に.</strong> This is the flip — Lesson 3 taught you で for where an action happens, but existence takes に.'),
+    q('<span class="wordbig">あそこに マクドナルド＿ あります</span>Which particle marks the thing?',
+      'が', PART,
+      '<strong>が.</strong> Not は. The thing being presented as existing takes が.'),
+    q('"I don\'t have a TV" is…', 'テレビがありません',
+      ['テレビがありません','テレビじゃありません','テレビはありません','テレビをありません'],
+      '<strong>テレビがありません.</strong> Note テレビじゃありません means "it isn\'t a TV" — a completely different sentence.'),
+    q('"There\'s a festival in Kyoto tomorrow" — which particle after <span class="jp">きょうと</span>?',
+      'で', PART,
+      '<strong>で.</strong> The exception: when あります means an <em>event takes place</em>, the place reverts to で. Existence takes に; occurrence takes で.'),
+    q('"Mary is an international student" uses…', 'です', ['です','います','あります','でした'],
+      '<strong>です.</strong> That is an attribute, not existence. います/あります are for existence and location only.')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 3 — location
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-location', {
+  title: 'Where things are',
+  questions: [
+    q('"The bank is next to the library."', 'ぎんこうは としょかんの となりです',
+      ['ぎんこうは としょかんの となりです','としょかんは ぎんこうの となりです',
+       'ぎんこうは となりの としょかんです','ぎんこうの としょかんは となりです'],
+      '<strong>ぎんこうは としょかんの となりです.</strong> The thing you are locating comes first; the reference point takes の plus the location word.'),
+    q('"The umbrella is under the table" — which location word?', 'した',
+      ['した','うえ','なか','まえ'],
+      '<strong>した</strong> — under. うえ is on top of.'),
+    q('"X is between Y and Z" — which particle joins Y and Z?', 'と', ['と','の','も','に'],
+      '<strong>と.</strong> X は Y<strong>と</strong>Z の あいだです。'),
+    q('<span class="wordbig">かばんは つくえの ＿ です</span>"The bag is beside the desk." Best word?',
+      'よこ', ['よこ','となり','あいだ','なか'],
+      '<strong>よこ.</strong> となり is for two things of the <em>same kind</em> side by side — two buildings, two people. A bag and a desk are not peers, so となり sounds odd here.'),
+    q('"I waited in front of the shop" — which particle after <span class="jp">まえ</span>?',
+      'で', PART,
+      '<strong>で.</strong> Something <em>happens</em> at that spot, so the Lesson 3 rule applies unchanged. に would be for existence.'),
+    q('<span class="jp">Xのまえ</span> often actually means…', 'opposite',
+      ['opposite','behind','inside','beneath'],
+      '<strong>Opposite</strong> — across the street from X, as well as literally in front. むかい is the more explicit word for it.')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 4 — past tense drill
+// ---------------------------------------------------------------------------
+Drill.mount('#d-past', {
+  title: 'Dictionary form → past affirmative (〜ました)',
+  target: 65,
+  items: [
+    { show: 'たべる', answer: ['tabemashita'] },
+    { show: 'ねる',   answer: ['nemashita'] },
+    { show: 'おきる', answer: ['okimashita'] },
+    { show: 'みる',   answer: ['mimashita'] },
+    { show: 'のむ',   answer: ['nomimashita'] },
+    { show: 'よむ',   answer: ['yomimashita'] },
+    { show: 'はなす', answer: ['hanashimashita','hanasimasita'] },
+    { show: 'きく',   answer: ['kikimashita'] },
+    { show: 'いく',   answer: ['ikimashita'] },
+    { show: 'かえる', answer: ['kaerimashita'] },
+    { show: 'する',   answer: ['shimashita','simasita'] },
+    { show: 'くる',   answer: ['kimashita'] }
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 5 — mo, duration, takusan, to
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-misc', {
+  title: 'も, duration, たくさん, と',
+  questions: [
+    q('"Mary bought a bag too." <span class="jp">かばん＿ かいました</span>', 'も',
+      ['も','をも','はも','がも'],
+      '<strong>も</strong> alone. It <em>replaces</em> を — the two never appear together.'),
+    q('"I went to Osaka too." <span class="jp">おおさか＿ いきました</span>', 'にも',
+      ['にも','も','をも','では'],
+      '<strong>にも.</strong> に carries meaning — destination — so it survives and も stacks on top. This is the difference from を.'),
+    q('"He read a book at a café too." <span class="jp">カフェ＿ よみました</span>', 'でも',
+      ['でも','も','にも','をも'],
+      '<strong>でも.</strong> Same rule as にも — で carries locational meaning, so it is kept.'),
+    q('Which particles does <span class="jp">も</span> <em>replace</em>?', 'は が を',
+      ['は が を','に で と','の と や','が に で'],
+      '<strong>は・が・を</strong> — they mark grammatical roles, and も fills the same slot. に and で carry meaning and survive as にも, でも.'),
+    q('"I waited for an hour." <span class="jp">いちじかん＿ まちました</span>', 'nothing',
+      ['nothing','に','で','を'],
+      '<strong>Nothing.</strong> Duration is a bare noun with no particle at all.'),
+    q('<span class="jp">いちじ</span> and <span class="jp">いちじかん</span> differ how?',
+      'duration', ['duration','politeness','formality','direction'],
+      'いちじかん is a <strong>duration</strong> (one hour, no particle); いちじ is a point in time (one o\'clock, takes に). One syllable apart, different grammar.'),
+    q('"For about three hours" is…', 'さんじかんぐらい',
+      ['さんじかんぐらい','さんじかんごろ','さんじごろ','さんじぐらい'],
+      '<strong>さんじかんぐらい.</strong> ぐらい goes with durations; ごろ goes with points in time.'),
+    q('"One and a half hours, roughly" — correct order?', 'いちじかんはんぐらい',
+      ['いちじかんはんぐらい','いちじかんぐらいはん','ぐらいいちじかんはん','はんいちじかんぐらい'],
+      '<strong>いちじかんはんぐらい.</strong> 半 attaches directly to 〜じかん, and ぐらい always comes last.'),
+    q('Can <span class="jp">と</span> join two <em>verbs</em>?', 'never',
+      ['never','always','sometimes','formally'],
+      '<strong>Never.</strong> と joins nouns only. Connecting actions needs the て-form in Lesson 6 — a very common early error, because English "and" does both jobs.')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 6 — kanji
+// ---------------------------------------------------------------------------
+Drill.mount('#d-kanji', {
+  title: 'Lesson 4 kanji',
+  target: 40,
+  items: [
+    { show: '日', answer: ['nichi','hi','ni'] }, { show: '本', answer: ['hon','moto'] },
+    { show: '人', answer: ['jin','hito','nin'] }, { show: '月', answer: ['getsu','gatsu','tsuki'] },
+    { show: '火', answer: ['ka','hi'] },          { show: '水', answer: ['sui','mizu'] },
+    { show: '木', answer: ['moku','ki'] },        { show: '金', answer: ['kin','kane'] },
+    { show: '土', answer: ['do','tsuchi'] },      { show: '曜', answer: ['yoo','you','yo'] },
+    { show: '上', answer: ['ue','joo','jou'] },   { show: '下', answer: ['shita','ka','sita'] },
+    { show: '中', answer: ['naka','chuu','chu'] },{ show: '半', answer: ['han'] },
+    { show: '月曜日', answer: ['getsuyoobi','getsuyoubi','getsuyobi'] },
+    { show: '水曜日', answer: ['suiyoobi','suiyoubi','suiyobi'] },
+    { show: '金曜日', answer: ['kinyoobi','kinyoubi','kinyobi'] },
+    { show: '日本', answer: ['nihon','nippon'] }
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 7 — mixed
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-mixed', {
+  title: 'Mixed retrieval',
+  questions: [
+    q('<span class="wordbig">かえる → ？</span>past affirmative', 'かえりました',
+      ['かえりました','かえました','かえましだ','かえりまた'],
+      '<strong>かえりました.</strong> う-verb, so かえります → かえりました.'),
+    q('"Professor Yamashita was a student."', 'がくせいでした',
+      ['がくせいでした','がくせいました','がくせいだった','がくせいでしだ'],
+      '<strong>がくせいでした.</strong> Past of です is でした. ました is for verbs.'),
+    q('"I did not study yesterday."', 'べんきょうしませんでした',
+      ['べんきょうしませんでした','べんきょうしましたない','べんきょうしなませんだ','べんきょうじゃなかったです'],
+      '<strong>べんきょうしませんでした.</strong> Past negative of a verb is ませんでした.'),
+    q('"That was not a Japanese film."', 'えいがじゃなかったです',
+      ['えいがじゃなかったです','えいがませんでした','えいがじゃないでした','えいがでわなかった'],
+      '<strong>えいがじゃなかったです.</strong> Past negative of です — not ませんでした, which is for verbs.'),
+    q('<span class="wordbig">あそこに ねこ＿ います</span>', 'が', PART,
+      '<strong>が.</strong> The existing thing takes が; the place takes に.'),
+    q('<span class="jp">木曜日</span> is read…', 'もくようび',
+      ['もくようび','きようび','もくよび','きようじつ'],
+      '<strong>もくようび</strong> — Thursday, "wood day". 木 is もく in this compound.'),
+    q('<span class="jp">日本</span> literally means…', 'sun origin',
+      ['sun origin','book day','day book','origin sun'],
+      '<strong>Sun origin</strong> — 日 (sun) + 本 (origin). That is what the country\'s name means, and both characters are in this lesson.'),
+    q('"I went to Kyoto with Sora" — which particle after <span class="jp">ソラさん</span>?',
+      'と', ['と','に','で','も'],
+      '<strong>と</strong> — "together with". Its other job is joining two nouns.')
+  ]
+});
+</script>
+</body>
+</html>

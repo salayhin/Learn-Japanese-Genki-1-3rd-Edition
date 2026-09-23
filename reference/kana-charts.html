@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Complete Kana</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  .chart { width: 100%; border-collapse: collapse; margin: 1rem 0 1.6rem; table-layout: fixed; }
+  .chart th {
+    text-align: center; font-family: var(--sans); font-size: .68rem; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint);
+    padding: .4rem .2rem; border: 0;
+  }
+  .chart th.rh {
+    width: 2.2rem; text-align: right; padding-right: .6rem;
+    border-right: 1.5px solid var(--rule); color: var(--accent);
+  }
+  .chart td {
+    text-align: center; border: 1px solid var(--rule); padding: .5rem .15rem;
+    background: var(--paper-warm); vertical-align: middle;
+  }
+  .chart td.empty { background: transparent; border-color: transparent; }
+  .chart .k { font-family: var(--jp); font-size: 1.85rem; line-height: 1.15; display: block; }
+  .chart .r {
+    font-family: var(--mono); font-size: .68rem; color: var(--ink-faint);
+    display: block; margin-top: .1rem; letter-spacing: .02em;
+  }
+  .chart td.odd { background: var(--accent-dim); }
+  .chart td.odd .r { color: var(--accent); font-weight: 700; }
+  .two-up { display: grid; grid-template-columns: 1fr; gap: 0; }
+  @media (min-width: 900px) {
+    body { padding-left: 24px; padding-right: 24px; }
+    .wrap { max-width: 58rem; }
+  }
+  @media (max-width: 560px) {
+    .chart .k { font-size: 1.45rem; }
+    .chart .r { font-size: .58rem; }
+    .chart th.rh { width: 1.5rem; padding-right: .3rem; font-size: .6rem; }
+  }
+  .count-badge {
+    font-family: var(--mono); font-size: .72rem; color: var(--ink-faint);
+    border: 1px solid var(--rule); border-radius: 999px; padding: .15rem .6rem;
+    margin-left: .6rem; white-space: nowrap;
+  }
+  h2 .count-badge { text-transform: none; letter-spacing: 0; }
+  .sumtable td.num2 { font-family: var(--mono); text-align: right; width: 4rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="topnav"><a href="../index.html">&larr; Course home</a></p>
+
+<p class="eyebrow">Reference · Kana</p>
+<h1>The Complete Kana</h1>
+<p class="standfirst">All 104 characters of both syllabaries, with the seven irregular
+readings marked. This is the chart to print and keep next to the textbook — the
+<a href="kana-confusables.html">confusables card</a> is its companion for the ones
+that look alike.</p>
+
+<div class="note">
+  <span class="label">How to use this</span>
+  <p>Do not sit and memorise this page. Charts are for <em>looking things up</em> and for
+  <em>checking yourself against</em> — reading a chart feels like learning and produces
+  almost none. The learning happens in the lessons and the drills; this page exists so you
+  always have ground truth to check against, and so you can see the shape of the whole
+  system on one sheet.</p>
+  <p style="margin-bottom:0">Cells shaded <span style="background:var(--accent-dim);padding:0 .3rem;border-radius:3px">like
+  this</span> are the ones whose reading does <strong>not</strong> follow the pattern of its
+  row. There are seven. They cause a disproportionate share of beginner mistakes, so they
+  are worth knowing as exceptions rather than discovering by accident.</p>
+</div>
+
+<!-- ==================== HIRAGANA ==================== -->
+<h2>Hiragana <span class="jp">ひらがな</span> <span class="count-badge">46 basic</span></h2>
+
+<p>The default script. Native Japanese words, all grammar — particles, verb endings,
+adjective endings — and any word whose kanji you haven't met yet. Roughly everything in
+a Genki sentence that isn't a kanji or a loanword is hiragana.</p>
+
+<table class="chart">
+  <tr><th class="rh"></th><th>a</th><th>i</th><th>u</th><th>e</th><th>o</th></tr>
+  <tr><th class="rh">—</th>
+    <td><span class="k">あ</span><span class="r">a</span></td>
+    <td><span class="k">い</span><span class="r">i</span></td>
+    <td><span class="k">う</span><span class="r">u</span></td>
+    <td><span class="k">え</span><span class="r">e</span></td>
+    <td><span class="k">お</span><span class="r">o</span></td></tr>
+  <tr><th class="rh">k</th>
+    <td><span class="k">か</span><span class="r">ka</span></td>
+    <td><span class="k">き</span><span class="r">ki</span></td>
+    <td><span class="k">く</span><span class="r">ku</span></td>
+    <td><span class="k">け</span><span class="r">ke</span></td>
+    <td><span class="k">こ</span><span class="r">ko</span></td></tr>
+  <tr><th class="rh">s</th>
+    <td><span class="k">さ</span><span class="r">sa</span></td>
+    <td class="odd"><span class="k">し</span><span class="r">shi</span></td>
+    <td><span class="k">す</span><span class="r">su</span></td>
+    <td><span class="k">せ</span><span class="r">se</span></td>
+    <td><span class="k">そ</span><span class="r">so</span></td></tr>
+  <tr><th class="rh">t</th>
+    <td><span class="k">た</span><span class="r">ta</span></td>
+    <td class="odd"><span class="k">ち</span><span class="r">chi</span></td>
+    <td class="odd"><span class="k">つ</span><span class="r">tsu</span></td>
+    <td><span class="k">て</span><span class="r">te</span></td>
+    <td><span class="k">と</span><span class="r">to</span></td></tr>
+  <tr><th class="rh">n</th>
+    <td><span class="k">な</span><span class="r">na</span></td>
+    <td><span class="k">に</span><span class="r">ni</span></td>
+    <td><span class="k">ぬ</span><span class="r">nu</span></td>
+    <td><span class="k">ね</span><span class="r">ne</span></td>
+    <td><span class="k">の</span><span class="r">no</span></td></tr>
+  <tr><th class="rh">h</th>
+    <td><span class="k">は</span><span class="r">ha</span></td>
+    <td><span class="k">ひ</span><span class="r">hi</span></td>
+    <td class="odd"><span class="k">ふ</span><span class="r">fu</span></td>
+    <td><span class="k">へ</span><span class="r">he</span></td>
+    <td><span class="k">ほ</span><span class="r">ho</span></td></tr>
+  <tr><th class="rh">m</th>
+    <td><span class="k">ま</span><span class="r">ma</span></td>
+    <td><span class="k">み</span><span class="r">mi</span></td>
+    <td><span class="k">む</span><span class="r">mu</span></td>
+    <td><span class="k">め</span><span class="r">me</span></td>
+    <td><span class="k">も</span><span class="r">mo</span></td></tr>
+  <tr><th class="rh">y</th>
+    <td><span class="k">や</span><span class="r">ya</span></td>
+    <td class="empty"></td>
+    <td><span class="k">ゆ</span><span class="r">yu</span></td>
+    <td class="empty"></td>
+    <td><span class="k">よ</span><span class="r">yo</span></td></tr>
+  <tr><th class="rh">r</th>
+    <td><span class="k">ら</span><span class="r">ra</span></td>
+    <td><span class="k">り</span><span class="r">ri</span></td>
+    <td><span class="k">る</span><span class="r">ru</span></td>
+    <td><span class="k">れ</span><span class="r">re</span></td>
+    <td><span class="k">ろ</span><span class="r">ro</span></td></tr>
+  <tr><th class="rh">w</th>
+    <td><span class="k">わ</span><span class="r">wa</span></td>
+    <td class="empty"></td><td class="empty"></td><td class="empty"></td>
+    <td class="odd"><span class="k">を</span><span class="r">o</span></td></tr>
+  <tr><th class="rh">n</th>
+    <td class="odd"><span class="k">ん</span><span class="r">n</span></td>
+    <td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+</table>
+
+<div class="rule-box">
+  <p style="margin-bottom:.5rem"><strong>The seven oddities, and why they exist</strong></p>
+  <ul style="margin:0;padding-left:1.2rem">
+    <li><span class="jp">し</span> is <strong>shi</strong>, not <em>si</em>; <span class="jp">ち</span> is <strong>chi</strong>, not <em>ti</em>; <span class="jp">つ</span> is <strong>tsu</strong>, not <em>tu</em>; <span class="jp">ふ</span> is <strong>fu</strong>, not <em>hu</em>. Japanese sounds simply shifted over the centuries while the chart's logic stayed put. Four exceptions, learn them as exceptions.</li>
+    <li><span class="jp">を</span> is read <strong>o</strong>, identical to <span class="jp">お</span>. It survives for exactly one job: marking the object of a verb. You will never see it inside a word.</li>
+    <li><span class="jp">ん</span> is the only kana that is a bare consonant — every other one is a full syllable. It cannot start a word, which is the whole basis of the word game <em>shiritori</em>.</li>
+  </ul>
+</div>
+
+<!-- ==================== KATAKANA ==================== -->
+<h2>Katakana <span class="jp">カタカナ</span> <span class="count-badge">46 basic</span></h2>
+
+<p>Same 46 sounds, different shapes. Used for loanwords, foreign names, onomatopoeia and
+emphasis — which for a traveller means <strong>most of the words you will actually need
+on a sign</strong>: <span class="jp">ホテル</span>, <span class="jp">タクシー</span>,
+<span class="jp">コンビニ</span>, <span class="jp">レストラン</span>,
+<span class="jp">パスポート</span>. Note the grid is identical: learn the sound layout once,
+apply it twice.</p>
+
+<table class="chart">
+  <tr><th class="rh"></th><th>a</th><th>i</th><th>u</th><th>e</th><th>o</th></tr>
+  <tr><th class="rh">—</th>
+    <td><span class="k">ア</span><span class="r">a</span></td>
+    <td><span class="k">イ</span><span class="r">i</span></td>
+    <td><span class="k">ウ</span><span class="r">u</span></td>
+    <td><span class="k">エ</span><span class="r">e</span></td>
+    <td><span class="k">オ</span><span class="r">o</span></td></tr>
+  <tr><th class="rh">k</th>
+    <td><span class="k">カ</span><span class="r">ka</span></td>
+    <td><span class="k">キ</span><span class="r">ki</span></td>
+    <td><span class="k">ク</span><span class="r">ku</span></td>
+    <td><span class="k">ケ</span><span class="r">ke</span></td>
+    <td><span class="k">コ</span><span class="r">ko</span></td></tr>
+  <tr><th class="rh">s</th>
+    <td><span class="k">サ</span><span class="r">sa</span></td>
+    <td class="odd"><span class="k">シ</span><span class="r">shi</span></td>
+    <td><span class="k">ス</span><span class="r">su</span></td>
+    <td><span class="k">セ</span><span class="r">se</span></td>
+    <td><span class="k">ソ</span><span class="r">so</span></td></tr>
+  <tr><th class="rh">t</th>
+    <td><span class="k">タ</span><span class="r">ta</span></td>
+    <td class="odd"><span class="k">チ</span><span class="r">chi</span></td>
+    <td class="odd"><span class="k">ツ</span><span class="r">tsu</span></td>
+    <td><span class="k">テ</span><span class="r">te</span></td>
+    <td><span class="k">ト</span><span class="r">to</span></td></tr>
+  <tr><th class="rh">n</th>
+    <td><span class="k">ナ</span><span class="r">na</span></td>
+    <td><span class="k">ニ</span><span class="r">ni</span></td>
+    <td><span class="k">ヌ</span><span class="r">nu</span></td>
+    <td><span class="k">ネ</span><span class="r">ne</span></td>
+    <td><span class="k">ノ</span><span class="r">no</span></td></tr>
+  <tr><th class="rh">h</th>
+    <td><span class="k">ハ</span><span class="r">ha</span></td>
+    <td><span class="k">ヒ</span><span class="r">hi</span></td>
+    <td class="odd"><span class="k">フ</span><span class="r">fu</span></td>
+    <td><span class="k">ヘ</span><span class="r">he</span></td>
+    <td><span class="k">ホ</span><span class="r">ho</span></td></tr>
+  <tr><th class="rh">m</th>
+    <td><span class="k">マ</span><span class="r">ma</span></td>
+    <td><span class="k">ミ</span><span class="r">mi</span></td>
+    <td><span class="k">ム</span><span class="r">mu</span></td>
+    <td><span class="k">メ</span><span class="r">me</span></td>
+    <td><span class="k">モ</span><span class="r">mo</span></td></tr>
+  <tr><th class="rh">y</th>
+    <td><span class="k">ヤ</span><span class="r">ya</span></td>
+    <td class="empty"></td>
+    <td><span class="k">ユ</span><span class="r">yu</span></td>
+    <td class="empty"></td>
+    <td><span class="k">ヨ</span><span class="r">yo</span></td></tr>
+  <tr><th class="rh">r</th>
+    <td><span class="k">ラ</span><span class="r">ra</span></td>
+    <td><span class="k">リ</span><span class="r">ri</span></td>
+    <td><span class="k">ル</span><span class="r">ru</span></td>
+    <td><span class="k">レ</span><span class="r">re</span></td>
+    <td><span class="k">ロ</span><span class="r">ro</span></td></tr>
+  <tr><th class="rh">w</th>
+    <td><span class="k">ワ</span><span class="r">wa</span></td>
+    <td class="empty"></td><td class="empty"></td><td class="empty"></td>
+    <td class="odd"><span class="k">ヲ</span><span class="r">o</span></td></tr>
+  <tr><th class="rh">n</th>
+    <td class="odd"><span class="k">ン</span><span class="r">n</span></td>
+    <td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+</table>
+
+<div class="note">
+  <span class="label">Two katakana you can almost ignore</span>
+  <p style="margin-bottom:0"><span class="jp">ヲ</span> is vanishingly rare in modern
+  Japanese — learn to recognise it and move on. <span class="jp">ン</span>, by contrast, is
+  everywhere, because English words ending in <em>-n</em> are common loanwords:
+  <span class="jp">レストラン</span>, <span class="jp">パン</span>,
+  <span class="jp">チェックイン</span>. Do not let it blur with <span class="jp">ソ</span>
+  — see <a href="../lessons/week-02-katakana.html#part4">week 2, day 4</a>.</p>
+</div>
+
+<!-- ==================== DAKUTEN ==================== -->
+<h2>Voiced kana <span class="jp">濁音・半濁音</span> <span class="count-badge">25</span></h2>
+
+<p>Not 25 new shapes — two small marks applied to rows you already know.
+<strong><span class="jp">゛</span> (dakuten)</strong> voices the consonant;
+<strong><span class="jp">゜</span> (handakuten)</strong> turns <em>h</em> into <em>p</em>.
+The shape underneath never changes.</p>
+
+<table class="chart">
+  <tr><th class="rh"></th><th>a</th><th>i</th><th>u</th><th>e</th><th>o</th></tr>
+  <tr><th class="rh">g</th>
+    <td><span class="k">が ガ</span><span class="r">ga</span></td>
+    <td><span class="k">ぎ ギ</span><span class="r">gi</span></td>
+    <td><span class="k">ぐ グ</span><span class="r">gu</span></td>
+    <td><span class="k">げ ゲ</span><span class="r">ge</span></td>
+    <td><span class="k">ご ゴ</span><span class="r">go</span></td></tr>
+  <tr><th class="rh">z</th>
+    <td><span class="k">ざ ザ</span><span class="r">za</span></td>
+    <td class="odd"><span class="k">じ ジ</span><span class="r">ji</span></td>
+    <td><span class="k">ず ズ</span><span class="r">zu</span></td>
+    <td><span class="k">ぜ ゼ</span><span class="r">ze</span></td>
+    <td><span class="k">ぞ ゾ</span><span class="r">zo</span></td></tr>
+  <tr><th class="rh">d</th>
+    <td><span class="k">だ ダ</span><span class="r">da</span></td>
+    <td class="odd"><span class="k">ぢ ヂ</span><span class="r">ji</span></td>
+    <td class="odd"><span class="k">づ ヅ</span><span class="r">zu</span></td>
+    <td><span class="k">で デ</span><span class="r">de</span></td>
+    <td><span class="k">ど ド</span><span class="r">do</span></td></tr>
+  <tr><th class="rh">b</th>
+    <td><span class="k">ば バ</span><span class="r">ba</span></td>
+    <td><span class="k">び ビ</span><span class="r">bi</span></td>
+    <td><span class="k">ぶ ブ</span><span class="r">bu</span></td>
+    <td><span class="k">べ ベ</span><span class="r">be</span></td>
+    <td><span class="k">ぼ ボ</span><span class="r">bo</span></td></tr>
+  <tr><th class="rh">p</th>
+    <td><span class="k">ぱ パ</span><span class="r">pa</span></td>
+    <td><span class="k">ぴ ピ</span><span class="r">pi</span></td>
+    <td><span class="k">ぷ プ</span><span class="r">pu</span></td>
+    <td><span class="k">ぺ ペ</span><span class="r">pe</span></td>
+    <td><span class="k">ぽ ポ</span><span class="r">po</span></td></tr>
+</table>
+
+<div class="rule-box">
+  <p style="margin-bottom:.5rem"><strong>The whole system in one line:</strong></p>
+  <p style="margin-bottom:.5rem;text-align:center;font-family:var(--mono);font-size:.95rem">
+    k → g &nbsp;·&nbsp; s → z &nbsp;·&nbsp; t → d &nbsp;·&nbsp; h → b &nbsp;·&nbsp; h → p
+  </p>
+  <p style="margin-bottom:0"><strong>The catch:</strong> the four oddities carry over.
+  <span class="jp">し</span> shi → <span class="jp">じ</span> <strong>ji</strong> (not <em>zi</em>),
+  <span class="jp">ち</span> chi → <span class="jp">ぢ</span> <strong>ji</strong>,
+  <span class="jp">つ</span> tsu → <span class="jp">づ</span> <strong>zu</strong>.
+  So <span class="jp">じ</span>/<span class="jp">ぢ</span> sound identical and
+  <span class="jp">ず</span>/<span class="jp">づ</span> sound identical. In practice you will
+  almost always see <span class="jp">じ</span> and <span class="jp">ず</span>; the other two
+  appear in a handful of words and you can safely treat them as curiosities.</p>
+</div>
+
+<!-- ==================== YOON ==================== -->
+<h2>Contracted sounds <span class="jp">拗音</span> <span class="count-badge">33</span></h2>
+
+<p>An <em>i</em>-column kana followed by a <strong>small</strong>
+<span class="jp">ゃ ゅ ょ</span>. The two characters fuse into a <strong>single beat</strong>
+— this is the part that matters for reading aloud, and the part almost everyone gets wrong
+at first. <span class="jp">きょ</span> is <em>kyo</em>, one beat; it is not
+<em>ki-yo</em>, two beats.</p>
+
+<table class="chart">
+  <tr><th class="rh"></th><th>ya</th><th>yu</th><th>yo</th></tr>
+  <tr><th class="rh">ky</th>
+    <td><span class="k">きゃ キャ</span><span class="r">kya</span></td>
+    <td><span class="k">きゅ キュ</span><span class="r">kyu</span></td>
+    <td><span class="k">きょ キョ</span><span class="r">kyo</span></td></tr>
+  <tr><th class="rh">sh</th>
+    <td class="odd"><span class="k">しゃ シャ</span><span class="r">sha</span></td>
+    <td class="odd"><span class="k">しゅ シュ</span><span class="r">shu</span></td>
+    <td class="odd"><span class="k">しょ ショ</span><span class="r">sho</span></td></tr>
+  <tr><th class="rh">ch</th>
+    <td class="odd"><span class="k">ちゃ チャ</span><span class="r">cha</span></td>
+    <td class="odd"><span class="k">ちゅ チュ</span><span class="r">chu</span></td>
+    <td class="odd"><span class="k">ちょ チョ</span><span class="r">cho</span></td></tr>
+  <tr><th class="rh">ny</th>
+    <td><span class="k">にゃ ニャ</span><span class="r">nya</span></td>
+    <td><span class="k">にゅ ニュ</span><span class="r">nyu</span></td>
+    <td><span class="k">にょ ニョ</span><span class="r">nyo</span></td></tr>
+  <tr><th class="rh">hy</th>
+    <td><span class="k">ひゃ ヒャ</span><span class="r">hya</span></td>
+    <td><span class="k">ひゅ ヒュ</span><span class="r">hyu</span></td>
+    <td><span class="k">ひょ ヒョ</span><span class="r">hyo</span></td></tr>
+  <tr><th class="rh">my</th>
+    <td><span class="k">みゃ ミャ</span><span class="r">mya</span></td>
+    <td><span class="k">みゅ ミュ</span><span class="r">myu</span></td>
+    <td><span class="k">みょ ミョ</span><span class="r">myo</span></td></tr>
+  <tr><th class="rh">ry</th>
+    <td><span class="k">りゃ リャ</span><span class="r">rya</span></td>
+    <td><span class="k">りゅ リュ</span><span class="r">ryu</span></td>
+    <td><span class="k">りょ リョ</span><span class="r">ryo</span></td></tr>
+  <tr><th class="rh">gy</th>
+    <td><span class="k">ぎゃ ギャ</span><span class="r">gya</span></td>
+    <td><span class="k">ぎゅ ギュ</span><span class="r">gyu</span></td>
+    <td><span class="k">ぎょ ギョ</span><span class="r">gyo</span></td></tr>
+  <tr><th class="rh">j</th>
+    <td class="odd"><span class="k">じゃ ジャ</span><span class="r">ja</span></td>
+    <td class="odd"><span class="k">じゅ ジュ</span><span class="r">ju</span></td>
+    <td class="odd"><span class="k">じょ ジョ</span><span class="r">jo</span></td></tr>
+  <tr><th class="rh">by</th>
+    <td><span class="k">びゃ ビャ</span><span class="r">bya</span></td>
+    <td><span class="k">びゅ ビュ</span><span class="r">byu</span></td>
+    <td><span class="k">びょ ビョ</span><span class="r">byo</span></td></tr>
+  <tr><th class="rh">py</th>
+    <td><span class="k">ぴゃ ピャ</span><span class="r">pya</span></td>
+    <td><span class="k">ぴゅ ピュ</span><span class="r">pyu</span></td>
+    <td><span class="k">ぴょ ピョ</span><span class="r">pyo</span></td></tr>
+</table>
+
+<p class="cite">Shaded rows again follow the <em>shi/chi/ji</em> pattern rather than the
+mechanical one: <span class="jp">しゃ</span> is <em>sha</em>, not <em>sya</em>;
+<span class="jp">ちゅ</span> is <em>chu</em>, not <em>tyu</em>;
+<span class="jp">じょ</span> is <em>jo</em>, not <em>zyo</em>. If you already know the four
+basic oddities, these follow for free.</p>
+
+<div class="note">
+  <span class="label">Katakana goes further</span>
+  <p style="margin-bottom:0">Because katakana has to spell foreign sounds Japanese doesn't
+  have, it uses extra small-vowel combinations that hiragana never does:
+  <span class="jp">ファ</span> <em>fa</em>, <span class="jp">フィ</span> <em>fi</em>,
+  <span class="jp">ウェ</span> <em>we</em>, <span class="jp">ティ</span> <em>ti</em>,
+  <span class="jp">チェ</span> <em>che</em>, <span class="jp">ジェ</span> <em>je</em>,
+  <span class="jp">ヴ</span> <em>vu</em>. You meet these constantly in travel vocabulary —
+  <span class="jp">チェックイン</span> (<em>check-in</em>),
+  <span class="jp">カフェ</span> (<em>café</em>),
+  <span class="jp">フォーク</span> (<em>fork</em>). Don't memorise the set; just know that a
+  small vowel after a consonant means "fuse them," and read it phonetically.
+  Full table in the textbook, p. 27.</p>
+</div>
+
+<!-- ==================== THE COUNT ==================== -->
+<h2>Where "104" comes from</h2>
+
+<table class="sumtable">
+  <tbody>
+    <tr><td>Basic <span class="jp">五十音</span> — the main grid</td><td class="num2">46</td></tr>
+    <tr><td>Voiced and semi-voiced <span class="jp">゛ ゜</span></td><td class="num2">25</td></tr>
+    <tr><td>Contracted <span class="jp">ゃ ゅ ょ</span></td><td class="num2">33</td></tr>
+    <tr><td><strong>Total, per script</strong></td><td class="num2"><strong>104</strong></td></tr>
+  </tbody>
+</table>
+
+<p>Both scripts share the same 104 sounds, so the real memory load is 92 shapes
+(46 × 2) plus two diacritic rules and one fusion rule — not 208 separate things.
+That reframing is the single most useful thing on this page.</p>
+
+<!-- ==================== NOT CHARACTERS ==================== -->
+<h2>Three marks that aren't sounds</h2>
+
+<table>
+  <thead><tr><th>Mark</th><th>What it does</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr>
+      <td class="jp" style="font-size:1.6em">ー</td>
+      <td>Long-vowel bar, <strong>katakana only</strong>. Holds the previous vowel for a second beat. Hiragana instead doubles the vowel (<span class="jp">おう</span>, <span class="jp">えい</span>).</td>
+      <td class="jp" style="font-size:1.25em">コーヒー<br><span style="font-family:var(--sans);font-size:.65em;color:var(--ink-faint)">kōhī, 4 beats</span></td>
+    </tr>
+    <tr>
+      <td class="jp" style="font-size:1.6em">っ ッ</td>
+      <td>Small <em>tsu</em>. Silent. Doubles the <strong>next</strong> consonant and inserts a beat of held breath.</td>
+      <td class="jp" style="font-size:1.25em">きって<br><span style="font-family:var(--sans);font-size:.65em;color:var(--ink-faint)">kitte, not kite</span></td>
+    </tr>
+    <tr>
+      <td class="jp" style="font-size:1.6em">ゃ ゅ ょ</td>
+      <td>Small <em>y</em>-kana. Fuses with the preceding character into one beat. Compare against the full-size versions, which do not.</td>
+      <td class="jp" style="font-size:1.25em">きょう / きよう<br><span style="font-family:var(--sans);font-size:.65em;color:var(--ink-faint)">kyō (2) vs kiyō (3)</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="rule-box">
+  <p style="margin-bottom:.5rem"><strong>And three kana that lie about their reading</strong></p>
+  <p style="margin-bottom:0">Only when acting as grammatical particles — which, in a Genki
+  sentence, is most of the time:</p>
+  <table style="margin-top:.6rem;margin-bottom:0">
+    <tbody>
+      <tr><td class="jp" style="font-size:1.4em;width:3rem">は</td><td>read <strong>wa</strong> as the topic particle</td><td class="jp">私は → <span style="font-family:var(--sans);color:var(--ink-faint)">watashi <strong>wa</strong></span></td></tr>
+      <tr><td class="jp" style="font-size:1.4em">へ</td><td>read <strong>e</strong> as the direction particle</td><td class="jp">東京へ → <span style="font-family:var(--sans);color:var(--ink-faint)">Tōkyō <strong>e</strong></span></td></tr>
+      <tr><td class="jp" style="font-size:1.4em">を</td><td>read <strong>o</strong>, always</td><td class="jp">パンを → <span style="font-family:var(--sans);color:var(--ink-faint)">pan <strong>o</strong></span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="lesson-foot">
+  <p class="cite">Charts cross-checked against <em>GENKI I</em> 3rd ed., Japanese Writing
+  System (pp. 20–27) and 読み書き編 Lessons 1–2 (pp. 296–303), with mnemonic guidance from
+  <a href="https://www.tofugu.com/japanese/learn-hiragana/">Tofugu's hiragana</a> and
+  <a href="https://www.tofugu.com/japanese/learn-katakana/">katakana</a> guides.</p>
+  <div class="chip-row">
+    <a class="chip" href="../index.html">&#8962; Course home</a>
+    <a class="chip" href="kana-confusables.html">Confusables card</a>
+    <a class="chip" href="genki1-roadmap.html">Roadmap</a>
+    <a class="chip" href="../lessons/week-02-katakana.html">Week 2 · Katakana</a>
+    <a class="chip" href="../lessons/week-01-hiragana.html">Week 1 · Hiragana</a>
+    <a class="chip" href="../lessons/week-03-marks-and-beats.html">Week 3 · Marks &amp; beats</a>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 1 · Hiragana, End to End</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  .partmap { border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; margin: 1.6rem 0; }
+  .partmap a {
+    display: grid; grid-template-columns: 4.2rem 1fr 3rem; gap: .8rem; align-items: baseline;
+    padding: .75rem 1rem; border-bottom: 1px solid var(--rule); text-decoration: none;
+    color: var(--ink); font-size: .93rem;
+  }
+  .partmap a:last-child { border-bottom: 0; }
+  .partmap a:hover { background: var(--paper-warm); }
+  .partmap .s { font-family: var(--sans); font-size: .7rem; font-weight: 700;
+                letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+  .partmap .c { font-family: var(--mono); font-size: .74rem; color: var(--ink-faint); text-align: right; }
+  @media (max-width: 520px) {
+    .partmap a { grid-template-columns: 3.6rem 1fr; }
+    .partmap .c { display: none; }
+  }
+
+  .parthead {
+    margin: 3.4rem 0 .3rem; padding: .9rem 1.1rem; border-radius: 8px;
+    background: var(--accent-dim); border-left: 4px solid var(--accent);
+  }
+  .parthead h2 { border: 0; margin: 0; font-size: 1.32rem; }
+  .parthead .s {
+    font-family: var(--sans); font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .3rem;
+  }
+  .parthead p { margin: .4rem 0 0; font-size: .92rem; color: var(--ink-soft); }
+
+  .row { margin: 1.3rem 0; }
+  .rowlabel {
+    font-family: var(--sans); font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-faint); margin-bottom: .5rem;
+  }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap: .7rem; }
+  .cards div {
+    border: 1px solid var(--rule); border-radius: 8px; padding: .8rem .6rem;
+    text-align: center; background: var(--paper-warm);
+  }
+  .cards div.odd { border-color: var(--accent); border-width: 2px; }
+  .cards .g { font-family: var(--jp); font-size: 2.7rem; line-height: 1.05; display: block; }
+  .cards .rm {
+    font-family: var(--sans); font-weight: 700; font-size: .92rem; color: var(--accent);
+    display: block; margin-top: .15rem; letter-spacing: .05em;
+  }
+  .cards .hint { font-size: .77rem; color: var(--ink-soft); display: block; margin-top: .35rem; line-height: 1.4; }
+
+  .gridtable { width: 100%; border-collapse: collapse; margin: 1.3rem 0; table-layout: fixed; }
+  .gridtable th { text-align: center; font-family: var(--sans); font-size: .66rem; font-weight: 700;
+                  letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint);
+                  padding: .4rem .2rem; border: 0; }
+  .gridtable th.rh { width: 2.2rem; text-align: right; padding-right: .5rem;
+                     border-right: 1.5px solid var(--rule); color: var(--accent); }
+  .gridtable td { text-align: center; border: 1px solid var(--rule); padding: .5rem .15rem;
+                  background: var(--paper-warm); }
+  .gridtable td.empty { background: transparent; border-color: transparent; }
+  .gridtable td.dim { opacity: .28; }
+  .gridtable .k { font-family: var(--jp); font-size: 1.7rem; line-height: 1.15; display: block; }
+  .gridtable .r { font-family: var(--mono); font-size: .64rem; color: var(--ink-faint); display: block; }
+
+  .trio { display: grid; grid-template-columns: repeat(auto-fit, minmax(135px,1fr)); gap: .8rem; margin: 1.2rem 0; }
+  .trio div { border: 1px solid var(--rule); border-radius: 8px; padding: .9rem .7rem;
+              text-align: center; background: var(--paper); }
+  .trio .g { font-family: var(--jp); font-size: 2.8rem; line-height: 1; display: block; }
+  .trio .rm { font-family: var(--sans); font-weight: 700; font-size: .95rem; color: var(--accent);
+              display: block; margin-top: .2rem; letter-spacing: .04em; }
+  .trio .verdict { font-family: var(--mono); font-size: .66rem; text-transform: uppercase;
+                   letter-spacing: .08em; display: block; margin-top: .4rem; color: var(--ink-faint); }
+  .trio .hint { font-size: .78rem; color: var(--ink-soft); display: block; margin-top: .35rem; line-height: 1.45; }
+
+  .qbox { border: 1px solid var(--rule); border-left: 4px solid var(--accent);
+          border-radius: 0 8px 8px 0; padding: 1rem 1.2rem; margin: 1.3rem 0;
+          background: var(--paper-warm); }
+  .qbox .qnum { font-family: var(--sans); font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+                text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .4rem; }
+  .qbox p:last-child { margin-bottom: 0; }
+
+  .blankword { font-family: var(--jp); font-size: 2rem; letter-spacing: .06em; }
+  .blankword b { color: var(--accent); font-weight: 400; }
+  @media (max-width: 520px) { .cards .g, .trio .g { font-size: 2.2rem; } .gridtable .k { font-size: 1.35rem; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="topnav"><a href="../index.html">&larr; Course home</a></p>
+
+<p class="eyebrow">Phase 0 · Week 1</p>
+<h1>Hiragana, End to End</h1>
+<p class="standfirst">All 46 characters in five sittings, from nothing. Hiragana is the
+default script of Japanese — the grammar, the particles, the verb endings, and any word
+whose kanji you haven't met. It is the first thing to learn and the last thing you stop
+using.</p>
+
+<div class="note">
+  <span class="label">One part per day — don't do this in one sitting</span>
+  <p style="margin-bottom:0">Forty-six characters will not fit in one session, and trying is
+  how people end up recognising none of them. Each part below is one weekday.
+  <strong>Stop at the end of a part even if you feel fine.</strong> The overnight gap is
+  doing work you cannot do by pushing harder.</p>
+</div>
+
+<div class="partmap">
+  <a href="#p1"><span class="s">Day 1</span><span><strong>The vowels and the <span class="jp">か</span> row</strong> — and the grid idea that makes the rest cheap</span><span class="c">10</span></a>
+  <a href="#p2"><span class="s">Day 2</span><span><strong><span class="jp">さ</span> and <span class="jp">た</span> rows</strong> — where three of the four irregular readings live</span><span class="c">10</span></a>
+  <a href="#p3"><span class="s">Day 3</span><span><strong><span class="jp">な</span> and <span class="jp">は</span> rows</strong> — and the fourth irregular</span><span class="c">10</span></a>
+  <a href="#p4"><span class="s">Day 4</span><span><strong>The remaining rows</strong> — <span class="jp">ま や ら わ ん</span></span><span class="c">16</span></a>
+  <a href="#p5"><span class="s">Day 5</span><span><strong>Consolidation and the look-alikes</strong> — all 46, plus the traps</span><span class="c">—</span></a>
+</div>
+
+<h2>The one idea to take from today</h2>
+
+<p><strong>Hiragana is a grid, not an alphabet.</strong> There are five vowel sounds. Every
+other character is a consonant plus one of those five vowels, always in the same order:
+<strong>a, i, u, e, o</strong>. So the script isn't 46 unrelated things — it's five sounds
+and ten rows that reuse them.</p>
+
+<table class="gridtable">
+  <tr><th class="rh"></th><th>a</th><th>i</th><th>u</th><th>e</th><th>o</th></tr>
+  <tr><th class="rh">—</th>
+    <td><span class="k">あ</span><span class="r">a</span></td><td><span class="k">い</span><span class="r">i</span></td>
+    <td><span class="k">う</span><span class="r">u</span></td><td><span class="k">え</span><span class="r">e</span></td>
+    <td><span class="k">お</span><span class="r">o</span></td></tr>
+  <tr><th class="rh">k</th>
+    <td><span class="k">か</span><span class="r">ka</span></td><td><span class="k">き</span><span class="r">ki</span></td>
+    <td><span class="k">く</span><span class="r">ku</span></td><td><span class="k">け</span><span class="r">ke</span></td>
+    <td><span class="k">こ</span><span class="r">ko</span></td></tr>
+  <tr><th class="rh">s</th>
+    <td class="dim"><span class="k">さ</span><span class="r">sa</span></td><td class="dim"><span class="k">し</span><span class="r">shi</span></td>
+    <td class="dim"><span class="k">す</span><span class="r">su</span></td><td class="dim"><span class="k">せ</span><span class="r">se</span></td>
+    <td class="dim"><span class="k">そ</span><span class="r">so</span></td></tr>
+  <tr><th class="rh">t</th>
+    <td class="dim"><span class="k">た</span><span class="r">ta</span></td><td class="dim"><span class="k">ち</span><span class="r">chi</span></td>
+    <td class="dim"><span class="k">つ</span><span class="r">tsu</span></td><td class="dim"><span class="k">て</span><span class="r">te</span></td>
+    <td class="dim"><span class="k">と</span><span class="r">to</span></td></tr>
+  <tr><th class="rh">n</th>
+    <td class="dim"><span class="k">な</span><span class="r">na</span></td><td class="dim"><span class="k">に</span><span class="r">ni</span></td>
+    <td class="dim"><span class="k">ぬ</span><span class="r">nu</span></td><td class="dim"><span class="k">ね</span><span class="r">ne</span></td>
+    <td class="dim"><span class="k">の</span><span class="r">no</span></td></tr>
+  <tr><th class="rh">h</th>
+    <td class="dim"><span class="k">は</span><span class="r">ha</span></td><td class="dim"><span class="k">ひ</span><span class="r">hi</span></td>
+    <td class="dim"><span class="k">ふ</span><span class="r">fu</span></td><td class="dim"><span class="k">へ</span><span class="r">he</span></td>
+    <td class="dim"><span class="k">ほ</span><span class="r">ho</span></td></tr>
+  <tr><th class="rh">m</th>
+    <td class="dim"><span class="k">ま</span><span class="r">ma</span></td><td class="dim"><span class="k">み</span><span class="r">mi</span></td>
+    <td class="dim"><span class="k">む</span><span class="r">mu</span></td><td class="dim"><span class="k">め</span><span class="r">me</span></td>
+    <td class="dim"><span class="k">も</span><span class="r">mo</span></td></tr>
+  <tr><th class="rh">y</th>
+    <td class="dim"><span class="k">や</span><span class="r">ya</span></td><td class="empty"></td>
+    <td class="dim"><span class="k">ゆ</span><span class="r">yu</span></td><td class="empty"></td>
+    <td class="dim"><span class="k">よ</span><span class="r">yo</span></td></tr>
+  <tr><th class="rh">r</th>
+    <td class="dim"><span class="k">ら</span><span class="r">ra</span></td><td class="dim"><span class="k">り</span><span class="r">ri</span></td>
+    <td class="dim"><span class="k">る</span><span class="r">ru</span></td><td class="dim"><span class="k">れ</span><span class="r">re</span></td>
+    <td class="dim"><span class="k">ろ</span><span class="r">ro</span></td></tr>
+  <tr><th class="rh">w</th>
+    <td class="dim"><span class="k">わ</span><span class="r">wa</span></td><td class="empty"></td><td class="empty"></td><td class="empty"></td>
+    <td class="dim"><span class="k">を</span><span class="r">o</span></td></tr>
+  <tr><th class="rh">n</th>
+    <td class="dim"><span class="k">ん</span><span class="r">n</span></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+</table>
+
+<p class="cite">Faded rows are still to come. The two full rows are today's ten characters.</p>
+
+<p>Once you know the order <strong>a-i-u-e-o</strong>, you can predict what a row contains
+before you learn it: the <em>s</em> row will be <em>sa-shi-su-se-so</em>, the <em>m</em> row
+<em>ma-mi-mu-me-mo</em>. You are not memorising 46 sounds — you're memorising 46 shapes and
+attaching them to a pattern you already hold.</p>
+
+<!-- ==================== PART 1 ==================== -->
+<div class="parthead" id="p1">
+  <span class="s">Part 1 · Day 1</span>
+  <h2>The Vowels and the <span class="jp">か</span> Row</h2>
+  <p>Ten characters. The five vowels are the backbone of everything that follows.</p>
+</div>
+
+<p>Hooks below are starting points, not gospel. A mnemonic you invent yourself is always
+stickier than one you were handed — if a better one occurs to you, use yours.</p>
+
+<div class="row">
+  <div class="rowlabel">The five vowels</div>
+  <div class="cards">
+    <div><span class="g">あ</span><span class="rm">a</span><span class="hint">A capital <strong>A</strong> with a curve looping through it.</span></div>
+    <div><span class="g">い</span><span class="rm">i</span><span class="hint">Two strokes leaning together — like two <strong>ee</strong>ls side by side.</span></div>
+    <div><span class="g">う</span><span class="rm">u</span><span class="hint">A tick and a curve: a face in profile going "<strong>oo</strong>".</span></div>
+    <div><span class="g">え</span><span class="rm">e</span><span class="hint">A bar, then a zigzag body — an <strong>e</strong>xotic bird with a long neck.</span></div>
+    <div><span class="g">お</span><span class="rm">o</span><span class="hint">Like あ, plus a small flick top-right. That flick is the whole difference.</span></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="rowlabel">The <span class="jp">か</span> row — k + each vowel</div>
+  <div class="cards">
+    <div><span class="g">か</span><span class="rm">ka</span><span class="hint">A <strong>ka</strong>ite (kite) with a tail and a tick.</span></div>
+    <div><span class="g">き</span><span class="rm">ki</span><span class="hint">A <strong>ke</strong>y: two teeth on a stem.</span></div>
+    <div><span class="g">く</span><span class="rm">ku</span><span class="hint">A beak opening — a <strong>cu</strong>ckoo.</span></div>
+    <div><span class="g">け</span><span class="rm">ke</span><span class="hint">A <strong>ke</strong>g: upright barrel with a tap on the left.</span></div>
+    <div><span class="g">こ</span><span class="rm">ko</span><span class="hint">Two short bars — two <strong>co</strong>mmas stacked.</span></div>
+  </div>
+</div>
+
+<h3>Check them</h3>
+<div id="q1"></div>
+<h3>Character to sound</h3>
+<div id="d1"></div>
+
+<p class="cite"><strong>Stop here for day 1.</strong> Ten down, and more importantly you
+have the grid.</p>
+
+<!-- ==================== PART 2 ==================== -->
+<div class="parthead" id="p2">
+  <span class="s">Part 2 · Day 2</span>
+  <h2>The <span class="jp">さ</span> and <span class="jp">た</span> Rows</h2>
+  <p>Ten characters, and the first place the grid's logic breaks.</p>
+</div>
+
+<div class="note">
+  <span class="label">Four characters don't follow the pattern</span>
+  <p style="margin-bottom:0">By the grid, the <em>s</em> row should read
+  <em>sa-si-su-se-so</em> and the <em>t</em> row <em>ta-ti-tu-te-to</em>. Three of them
+  don't: <span class="jp">し</span> is <strong>shi</strong>,
+  <span class="jp">ち</span> is <strong>chi</strong>, <span class="jp">つ</span> is
+  <strong>tsu</strong>. The fourth exception, <span class="jp">ふ</span> <em>fu</em>, arrives
+  tomorrow. Japanese sounds drifted over centuries while the chart's logic stayed put. Four
+  exceptions in the whole script — learn them as exceptions and move on.</p>
+</div>
+
+<div class="row">
+  <div class="rowlabel">The <span class="jp">さ</span> row</div>
+  <div class="cards">
+    <div><span class="g">さ</span><span class="rm">sa</span><span class="hint">Like き but with <strong>one</strong> crossbar instead of two.</span></div>
+    <div class="odd"><span class="g">し</span><span class="rm">shi</span><span class="hint">A single hook — a fishing line. <strong>Not</strong> <em>si</em>.</span></div>
+    <div><span class="g">す</span><span class="rm">su</span><span class="hint">A bar, then a vertical straight <strong>through</strong> a small loop.</span></div>
+    <div><span class="g">せ</span><span class="rm">se</span><span class="hint">A bar with a vertical and a hook — like a <strong>se</strong>esaw frame.</span></div>
+    <div><span class="g">そ</span><span class="rm">so</span><span class="hint">A zigzag dropping down-left.</span></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="rowlabel">The <span class="jp">た</span> row</div>
+  <div class="cards">
+    <div><span class="g">た</span><span class="rm">ta</span><span class="hint">A cross on the left, two marks on the right.</span></div>
+    <div class="odd"><span class="g">ち</span><span class="rm">chi</span><span class="hint">さ flipped — the curve opens <strong>right</strong>. Reads <em>chi</em>, not <em>ti</em>.</span></div>
+    <div class="odd"><span class="g">つ</span><span class="rm">tsu</span><span class="hint">A single horizontal wave — a <strong>tsu</strong>nami curl. Not <em>tu</em>.</span></div>
+    <div><span class="g">て</span><span class="rm">te</span><span class="hint">One stroke, bending down and left.</span></div>
+    <div><span class="g">と</span><span class="rm">to</span><span class="hint">A vertical with a <strong>to</strong>e-tick poking out.</span></div>
+  </div>
+</div>
+
+<h3>Check them</h3>
+<div id="q2"></div>
+<h3>Character to sound — today plus day 1</h3>
+<div id="d2"></div>
+
+<!-- ==================== PART 3 ==================== -->
+<div class="parthead" id="p3">
+  <span class="s">Part 3 · Day 3</span>
+  <h2>The <span class="jp">な</span> and <span class="jp">は</span> Rows</h2>
+  <p>Ten characters, and the last irregular reading.</p>
+</div>
+
+<div class="row">
+  <div class="rowlabel">The <span class="jp">な</span> row</div>
+  <div class="cards">
+    <div><span class="g">な</span><span class="rm">na</span><span class="hint">A cross, a tick, and a small loop bottom-right.</span></div>
+    <div><span class="g">に</span><span class="rm">ni</span><span class="hint">A vertical on the left, two bars on the right.</span></div>
+    <div><span class="g">ぬ</span><span class="rm">nu</span><span class="hint">Crossed body ending in a <strong>closed loop</strong> — <strong>noo</strong>dles, knotted.</span></div>
+    <div><span class="g">ね</span><span class="rm">ne</span><span class="hint">Vertical, then a body ending in a <strong>closed loop</strong>.</span></div>
+    <div><span class="g">の</span><span class="rm">no</span><span class="hint">A single spiral — the <strong>no</strong>-entry sign.</span></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="rowlabel">The <span class="jp">は</span> row</div>
+  <div class="cards">
+    <div><span class="g">は</span><span class="rm">ha</span><span class="hint">Vertical, one crossbar, loop on the right.</span></div>
+    <div><span class="g">ひ</span><span class="rm">hi</span><span class="hint">A wide curve like a smile — <strong>hee</strong> hee.</span></div>
+    <div class="odd"><span class="g">ふ</span><span class="rm">fu</span><span class="hint">Four pieces balanced around a centre. Reads <em>fu</em>, <strong>not</strong> <em>hu</em>.</span></div>
+    <div><span class="g">へ</span><span class="rm">he</span><span class="hint">A low hill. The simplest character in the script.</span></div>
+    <div><span class="g">ほ</span><span class="rm">ho</span><span class="hint">は with a <strong>second</strong> crossbar — は wearing a hat.</span></div>
+  </div>
+</div>
+
+<h3>Check them</h3>
+<div id="q3"></div>
+<h3>Character to sound — thirty so far</h3>
+<div id="d3"></div>
+
+<!-- ==================== PART 4 ==================== -->
+<div class="parthead" id="p4">
+  <span class="s">Part 4 · Day 4</span>
+  <h2>The Remaining Rows</h2>
+  <p>Sixteen characters, but three of these rows are short — <span class="jp">や</span> has
+  three, <span class="jp">わ</span> has two, <span class="jp">ん</span> stands alone.</p>
+</div>
+
+<div class="row">
+  <div class="rowlabel">The <span class="jp">ま</span> row</div>
+  <div class="cards">
+    <div><span class="g">ま</span><span class="rm">ma</span><span class="hint">Two crossbars, then a loop at the <strong>bottom</strong>.</span></div>
+    <div><span class="g">み</span><span class="rm">mi</span><span class="hint">A loop with a tail — contains a shape like the number 21.</span></div>
+    <div><span class="g">む</span><span class="rm">mu</span><span class="hint">A low loop with a flick — a cow saying <strong>moo</strong>.</span></div>
+    <div><span class="g">め</span><span class="rm">me</span><span class="hint">Like ぬ but the tail <strong>stops short</strong> — no loop.</span></div>
+    <div><span class="g">も</span><span class="rm">mo</span><span class="hint">A hook crossed by two bars — a fishing hook with <strong>mo</strong>re line.</span></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="rowlabel">The <span class="jp">や</span> row — three only</div>
+  <div class="cards">
+    <div><span class="g">や</span><span class="rm">ya</span><span class="hint">A loop, a crossbar, a diagonal leg.</span></div>
+    <div><span class="g">ゆ</span><span class="rm">yu</span><span class="hint">A fish shape with a line through it.</span></div>
+    <div><span class="g">よ</span><span class="rm">yo</span><span class="hint">A vertical crossed once, with a loop at the bottom.</span></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="rowlabel">The <span class="jp">ら</span> row</div>
+  <div class="cards">
+    <div><span class="g">ら</span><span class="rm">ra</span><span class="hint">A tick above a curve.</span></div>
+    <div><span class="g">り</span><span class="rm">ri</span><span class="hint">Two strokes, the right one <strong>long</strong> and hooking left.</span></div>
+    <div><span class="g">る</span><span class="rm">ru</span><span class="hint">Ends in a tight <strong>closed</strong> curl. <em>ru</em> is round.</span></div>
+    <div><span class="g">れ</span><span class="rm">re</span><span class="hint">Like ね but the tail <strong>kicks outward</strong> — no loop.</span></div>
+    <div><span class="g">ろ</span><span class="rm">ro</span><span class="hint">Like る but the tail <strong>runs off open</strong>.</span></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="rowlabel">The last three</div>
+  <div class="cards">
+    <div><span class="g">わ</span><span class="rm">wa</span><span class="hint">Like ね/れ but the tail curves <strong>inward</strong> and stops.</span></div>
+    <div class="odd"><span class="g">を</span><span class="rm">o</span><span class="hint">Read <strong>o</strong>, same as お. Used only as the object particle — never inside a word.</span></div>
+    <div class="odd"><span class="g">ん</span><span class="rm">n</span><span class="hint">The only <strong>bare consonant</strong> — every other kana is a full syllable. Cannot start a word.</span></div>
+  </div>
+</div>
+
+<h3>Check them</h3>
+<div id="q4"></div>
+<h3>Character to sound — all 46</h3>
+<div id="d4"></div>
+
+<!-- ==================== PART 5 ==================== -->
+<div class="parthead" id="p5">
+  <span class="s">Part 5 · Day 5</span>
+  <h2>Consolidation and the Look-Alikes</h2>
+  <p>No new characters. Retrieval, then the shapes that blur into each other.</p>
+</div>
+
+<p>You have met all 46. You have not yet <em>retrieved</em> them cold, mixed, out of the
+order you learned them in — and recognition inside a lesson is a different skill from
+recognition on a page. Run the drill below before reading further.</p>
+
+<div id="d5a"></div>
+
+<h2>The two questions</h2>
+
+<p>Hiragana's confusable characters aren't randomly confusable. Almost all of them split
+along one of two features. Stop comparing whole shapes and ask:</p>
+
+<div class="qbox">
+  <span class="qnum">Question 1</span>
+  <p><strong>Does the final stroke close into a loop, or stay open?</strong></p>
+  <p>This one question separates <span class="jp">ね</span> from <span class="jp">れ</span>,
+  <span class="jp">る</span> from <span class="jp">ろ</span>, and <span class="jp">ぬ</span>
+  from <span class="jp">め</span> — three of the most common beginner misreadings, all one rule.</p>
+</div>
+
+<div class="qbox">
+  <span class="qnum">Question 2</span>
+  <p><strong>How many horizontal crossbars?</strong></p>
+  <p>This separates <span class="jp">さ</span> from <span class="jp">き</span>, and
+  <span class="jp">は</span> from <span class="jp">ほ</span>. In both pairs, the character
+  with the <em>extra</em> bar is the less common one.</p>
+</div>
+
+<h3>Loop or no loop</h3>
+
+<div class="trio">
+  <div><span class="g">ね</span><span class="rm">ne</span><span class="verdict">loop</span>
+    <span class="hint">Tail curls round and <strong>closes</strong> on itself.</span></div>
+  <div><span class="g">れ</span><span class="rm">re</span><span class="verdict">open · flicks out</span>
+    <span class="hint">Same body, tail kicks <strong>outward</strong> right.</span></div>
+  <div><span class="g">わ</span><span class="rm">wa</span><span class="verdict">open · curves in</span>
+    <span class="hint">Same body, tail curves <strong>inward</strong> and stops.</span></div>
+</div>
+
+<div class="trio">
+  <div><span class="g">る</span><span class="rm">ru</span><span class="verdict">loop</span>
+    <span class="hint">Ends in a tight closed curl.</span></div>
+  <div><span class="g">ろ</span><span class="rm">ro</span><span class="verdict">open</span>
+    <span class="hint">Identical path, tail runs off. <strong>ru</strong> is round.</span></div>
+  <div><span class="g">ぬ</span><span class="rm">nu</span><span class="verdict">loop</span>
+    <span class="hint">Crossed body, then a closed loop.</span></div>
+  <div><span class="g">め</span><span class="rm">me</span><span class="verdict">open</span>
+    <span class="hint">Same crossed body, tail stops short.</span></div>
+</div>
+
+<div class="note">
+  <span class="label">One hook for all three pairs</span>
+  <p style="margin-bottom:0">The looped one of each pair is
+  <span class="jp">ね</span> / <span class="jp">る</span> / <span class="jp">ぬ</span> —
+  <em>ne, ru, nu</em>. All three are <strong>n-or-r sounds ending in a knot</strong>. Tie the
+  knot, get the n. It's arbitrary, which is exactly why it works: the characters are
+  arbitrary too, so an artificial hook beats trying to reason about them.</p>
+</div>
+
+<h3>Count the bars</h3>
+
+<div class="trio">
+  <div><span class="g">さ</span><span class="rm">sa</span><span class="verdict">one bar</span>
+    <span class="hint">Single crossbar, curve opening left.</span></div>
+  <div><span class="g">き</span><span class="rm">ki</span><span class="verdict">two bars</span>
+    <span class="hint">Same shape, one extra bar. The key's extra tooth.</span></div>
+  <div><span class="g">ち</span><span class="rm">chi</span><span class="verdict">one bar · mirrored</span>
+    <span class="hint">さ flipped — the curve opens <strong>right</strong>.</span></div>
+</div>
+
+<div class="trio">
+  <div><span class="g">は</span><span class="rm">ha</span><span class="verdict">one bar</span>
+    <span class="hint">Vertical, one crossbar, right-hand loop.</span></div>
+  <div><span class="g">ほ</span><span class="rm">ho</span><span class="verdict">two bars</span>
+    <span class="hint">は with a hat.</span></div>
+  <div><span class="g">ま</span><span class="rm">ma</span><span class="verdict">two bars · bottom loop</span>
+    <span class="hint">Two bars, but the loop is at the <strong>bottom</strong>, not the side.</span></div>
+</div>
+
+<h3>The leftovers</h3>
+
+<div class="trio">
+  <div><span class="g">あ</span><span class="rm">a</span><span class="hint">Curve <strong>crosses</strong> the vertical and loops below.</span></div>
+  <div><span class="g">お</span><span class="rm">o</span><span class="hint">Nearly the same, plus a flick <strong>top-right</strong>.</span></div>
+  <div><span class="g">す</span><span class="rm">su</span><span class="hint">Vertical runs straight <strong>through</strong> a small loop.</span></div>
+  <div><span class="g">む</span><span class="rm">mu</span><span class="hint">Loop sits low, with a separate flick right.</span></div>
+  <div><span class="g">い</span><span class="rm">i</span><span class="hint">Two <strong>short</strong> strokes, both leaning the same way.</span></div>
+  <div><span class="g">り</span><span class="rm">ri</span><span class="hint">Right stroke is <strong>long</strong> and hooks left.</span></div>
+</div>
+
+<h3>Check the rules</h3>
+<div id="q5"></div>
+
+<h3>Read some words</h3>
+<p>Every word below uses only characters from this week. These are words you'll use in your
+first week in Japan.</p>
+<div id="q5w"></div>
+
+<h3>All 46, one more time</h3>
+<p>Fresh shuffle. Compare against your drill at the start of today — both the score and the
+time.</p>
+<div id="d5b"></div>
+
+<div class="note">
+  <span class="label">What a good result looks like</span>
+  <p style="margin-bottom:0">Accurate and <strong>slow</strong>. That is correct at the end of
+  week 1 and shouldn't discourage you. Forty-six characters learned in five days will not be
+  automatic in five days; nothing is. Speed comes from the five-minute warm-up drill over the
+  following weeks and typically arrives around Genki Lesson 3. If you're below about 80%
+  accuracy, repeat day 5 at the start of week 2 rather than starting katakana — the week-2 lesson leans
+  directly on solid hiragana.</p>
+</div>
+
+<h2>Before week 2</h2>
+
+<p><strong>Primary source:</strong>
+<a href="https://www.tofugu.com/japanese/learn-hiragana/">Tofugu's <em>Learn Hiragana:
+Ultimate Guide</em></a> — the best free kana resource in existence, and mnemonic-led, which
+is the right approach for shapes that are arbitrary by nature. Use it as a <em>second angle</em>
+on whichever characters this week left shaky, rather than reading it end to end.</p>
+
+<p>Check yourself against the <a href="../reference/kana-charts.html">Complete Kana charts</a>
+and print them. Install <a href="https://apps.apple.com/us/app/oto-navi-sound-navigator/id1490391845">OTO
+Navi</a> if you haven't — the audio is free and every reading session from Genki Lesson 1
+depends on it.</p>
+
+<div class="lesson-foot">
+  <p><strong>Next:</strong> week 2 is
+  <a href="week-02-katakana.html">katakana</a>, and it opens by cashing in what you did
+  this week — about <strong>twenty katakana come from the same source kanji as a hiragana you
+  now read</strong>: <span class="jp">か→カ</span>, <span class="jp">き→キ</span>,
+  <span class="jp">せ→セ</span>, and <span class="jp">へ→ヘ</span>, which is the identical
+  shape. Solid hiragana is what makes next week cheap.</p>
+
+  <div class="chip-row">
+    <a class="chip" href="../index.html">&#8962; Course home</a>
+    <a class="chip" href="../reference/kana-charts.html">Complete kana charts</a>
+    <a class="chip" href="../reference/kana-confusables.html">Confusables card</a>
+    <a class="chip" href="week-02-katakana.html">Week 2 · Katakana →</a>
+    <a class="chip" href="week-03-marks-and-beats.html">Week 3 · Marks &amp; beats</a>
+    <a class="chip" href="../reference/genki1-roadmap.html">The full path</a>
+  </div>
+
+  <div class="ask-teacher">
+    <strong>Ask your teacher about anything here.</strong> If a hook isn't landing, say so and
+    a different one can be built — arbitrary shapes need whatever hook works for <em>you</em>,
+    not the one in the book. Note which characters your day-5 drill kept missing: those, not
+    the whole script, are what next week's warm-ups should contain.
+  </div>
+</div>
+
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script src="../assets/drill.js"></script>
+<script>
+// ---------------------------------------------------------------------------
+// Single source of truth for the whole script.
+// ---------------------------------------------------------------------------
+var HIRAGANA = [
+  ['あ','a'],  ['い','i'],  ['う','u'],  ['え','e'],  ['お','o'],
+  ['か','ka'], ['き','ki'], ['く','ku'], ['け','ke'], ['こ','ko'],
+  ['さ','sa'], ['し','shi'],['す','su'], ['せ','se'], ['そ','so'],
+  ['た','ta'], ['ち','chi'],['つ','tsu'],['て','te'], ['と','to'],
+  ['な','na'], ['に','ni'], ['ぬ','nu'], ['ね','ne'], ['の','no'],
+  ['は','ha'], ['ひ','hi'], ['ふ','fu'], ['へ','he'], ['ほ','ho'],
+  ['ま','ma'], ['み','mi'], ['む','mu'], ['め','me'], ['も','mo'],
+  ['や','ya'], ['ゆ','yu'], ['よ','yo'],
+  ['ら','ra'], ['り','ri'], ['る','ru'], ['れ','re'], ['ろ','ro'],
+  ['わ','wa'], ['を','o'],  ['ん','n']
+];
+
+// Romaji systems differ; accept the common alternates rather than marking a
+// correct reading wrong on a spelling technicality. Keyed by CHARACTER, since
+// を and お both read "o" but only を may be typed "wo".
+var ALT = {
+  'し': ['shi','si'], 'ち': ['chi','ti'], 'つ': ['tsu','tu'],
+  'ふ': ['fu','hu'],  'ん': ['n','nn'],   'を': ['o','wo']
+};
+
+function item(p) { return { show: p[0], answer: ALT[p[0]] || [p[1]] }; }
+function itemsFor(chars) {
+  return HIRAGANA.filter(function (p) { return chars.indexOf(p[0]) !== -1; }).map(item);
+}
+
+var P1 = ['あ','い','う','え','お','か','き','く','け','こ'];
+var P2 = ['さ','し','す','せ','そ','た','ち','つ','て','と'];
+var P3 = ['な','に','ぬ','ね','の','は','ひ','ふ','へ','ほ'];
+var P4 = ['ま','み','む','め','も','や','ゆ','よ',
+          'ら','り','る','れ','ろ','わ','を','ん'];
+
+// ---------------------------------------------------------------------------
+// Drills — each day adds to the pool, so review is built in rather than bolted on.
+// ---------------------------------------------------------------------------
+Drill.mount('#d1',  { title: 'Day 1 — the first ten',       target: 14, items: itemsFor(P1) });
+Drill.mount('#d2',  { title: 'Day 2 — twenty so far',      target: 26, items: itemsFor(P1.concat(P2)) });
+Drill.mount('#d3',  { title: 'Day 3 — thirty so far',    target: 38, items: itemsFor(P1.concat(P2, P3)) });
+Drill.mount('#d4',  { title: 'Day 4 — all forty-six',     target: 58, items: HIRAGANA.map(item) });
+Drill.mount('#d5a', { title: 'Day 5 — cold start, all 46',  target: 58, items: HIRAGANA.map(item) });
+Drill.mount('#d5b', { title: 'Day 5 — re-test, all 46',     target: 55, items: HIRAGANA.map(item) });
+
+// ---------------------------------------------------------------------------
+// Quizzes. Options are always single characters, so option length never leaks
+// the answer.
+// ---------------------------------------------------------------------------
+function q(sound, answer, options, explain) {
+  return {
+    prompt: 'Which character is read <strong>' + sound + '</strong>?',
+    options: options, answer: answer, explain: explain
+  };
+}
+
+Quiz.mount('#q1', {
+  title: 'Day 1 — sound to character',
+  questions: [
+    q('a',  'あ', ['あ','お','ぬ','め'], 'あ — the curve crosses the vertical and loops below. お is nearly the same but has a flick top-right.'),
+    q('o',  'お', ['お','あ','ほ','む'], 'お — あ plus the small flick at top-right. That flick is the entire difference.'),
+    q('u',  'う', ['う','く','つ','ら'], 'う — a tick above a curve, like a face in profile.'),
+    q('e',  'え', ['え','そ','ん','ろ'], 'え — a bar, then a zigzag body.'),
+    q('i',  'い', ['い','り','こ','け'], 'い — two <strong>short</strong> strokes. り has one long hooking stroke.'),
+    q('ka', 'か', ['か','や','な','た'], 'か — kite with a tail and a tick.'),
+    q('ki', 'き', ['き','さ','ち','ら'], 'き — <strong>two</strong> crossbars. さ has one; ち is さ mirrored.'),
+    q('ku', 'く', ['く','へ','し','つ'], 'く — a sharp opening beak. へ is much flatter and wider.'),
+    q('ke', 'け', ['け','は','ほ','に'], 'け — upright with a tap on the left.'),
+    q('ko', 'こ', ['こ','に','い','り'], 'こ — two short stacked bars.')
+  ]
+});
+
+Quiz.mount('#q2', {
+  title: 'Day 2 — sound to character',
+  questions: [
+    q('shi','し', ['し','つ','く','へ'], 'し — a single hook. Reads <em>shi</em>, <strong>not</strong> <em>si</em>. One of the four irregulars.'),
+    q('chi','ち', ['ち','さ','き','ら'], 'ち — さ mirrored, curve opening right. Reads <em>chi</em>, not <em>ti</em>.'),
+    q('tsu','つ', ['つ','し','く','う'], 'つ — a horizontal wave. Reads <em>tsu</em>, not <em>tu</em>.'),
+    q('sa', 'さ', ['さ','き','ち','ら'], 'さ — <strong>one</strong> crossbar. き has two; ち is the mirror image.'),
+    q('su', 'す', ['す','む','お','あ'], 'す — the vertical runs straight <strong>through</strong> a small loop.'),
+    q('se', 'せ', ['せ','は','ほ','ま'], 'せ — a bar with a vertical and a hook.'),
+    q('so', 'そ', ['そ','え','ん','ろ'], 'そ — a zigzag dropping down and left.'),
+    q('ta', 'た', ['た','な','に','こ'], 'た — a cross on the left, two marks on the right.'),
+    q('te', 'て', ['て','と','ん','へ'], 'て — one stroke bending down and left.'),
+    q('to', 'と', ['と','て','り','い'], 'と — a vertical with a tick poking out.')
+  ]
+});
+
+Quiz.mount('#q3', {
+  title: 'Day 3 — sound to character',
+  questions: [
+    q('fu', 'ふ', ['ふ','み','い','む'], 'ふ — four pieces around a centre. Reads <em>fu</em>, <strong>not</strong> <em>hu</em>. The last of the four irregulars.'),
+    q('na', 'な', ['な','た','ね','に'], 'な — a cross, a tick, and a small loop bottom-right.'),
+    q('ni', 'に', ['に','こ','た','け'], 'に — a vertical on the left, two bars on the right.'),
+    q('nu', 'ぬ', ['ぬ','め','る','ろ'], 'ぬ — crossed body ending in a <strong>closed loop</strong>. め stops short.'),
+    q('ne', 'ね', ['ね','れ','わ','ぬ'], 'ね — body ends in a <strong>closed loop</strong>. れ flicks outward; わ curves inward.'),
+    q('no', 'の', ['の','ぬ','め','る'], 'の — a single spiral, like a no-entry sign.'),
+    q('ha', 'は', ['は','ほ','ま','け'], 'は — <strong>one</strong> crossbar plus the right-hand loop.'),
+    q('hi', 'ひ', ['ひ','へ','く','し'], 'ひ — a wide curve like a smile.'),
+    q('he', 'へ', ['へ','く','し','つ'], 'へ — a low, flat hill. The simplest shape in the script.'),
+    q('ho', 'ほ', ['ほ','は','ま','も'], 'ほ — <strong>two</strong> crossbars plus the loop. は with a hat.')
+  ]
+});
+
+Quiz.mount('#q4', {
+  title: 'Day 4 — sound to character',
+  questions: [
+    q('ma', 'ま', ['ま','ほ','は','も'], 'ま — two bars, loop at the <strong>bottom</strong> rather than the side.'),
+    q('mi', 'み', ['み','ふ','ぬ','む'], 'み — a loop with a tail.'),
+    q('mu', 'む', ['む','す','お','あ'], 'む — low loop plus a separate flick right. す has the vertical through the loop.'),
+    q('me', 'め', ['め','ぬ','の','る'], 'め — like ぬ but the tail <strong>stops short</strong>. No loop.'),
+    q('mo', 'も', ['も','ま','ほ','は'], 'も — a hook crossed by two bars.'),
+    q('ya', 'や', ['や','か','な','ま'], 'や — loop, crossbar, diagonal leg.'),
+    q('yu', 'ゆ', ['ゆ','め','ぬ','る'], 'ゆ — a fish shape with a line through it.'),
+    q('yo', 'よ', ['よ','ま','も','は'], 'よ — vertical crossed once, loop at the bottom.'),
+    q('ra', 'ら', ['ら','う','さ','ち'], 'ら — a tick above a curve.'),
+    q('ri', 'り', ['り','い','こ','け'], 'り — two strokes, the right one <strong>long</strong> and hooking left.'),
+    q('ru', 'る', ['る','ろ','ぬ','め'], 'る — ends in a <strong>closed</strong> curl. <em>ru</em> is round.'),
+    q('ro', 'ろ', ['ろ','る','そ','ん'], 'ろ — same path as る, but the tail runs off <strong>open</strong>.'),
+    q('re', 'れ', ['れ','ね','わ','ぬ'], 'れ — tail kicks <strong>outward</strong> right. No loop.'),
+    q('wa', 'わ', ['わ','ね','れ','ぬ'], 'わ — tail curves <strong>inward</strong> and stops.'),
+    q('n',  'ん', ['ん','そ','え','ろ'], 'ん — the only bare consonant in the script. It cannot start a word.')
+  ]
+});
+
+Quiz.mount('#q5', {
+  title: 'Day 5 — the look-alikes',
+  questions: [
+    q('ne', 'ね', ['ね','れ','わ','ぬ'], 'ね — the tail <strong>closes into a loop</strong>.'),
+    q('re', 'れ', ['れ','ね','わ','ぬ'], 'れ — open tail that <strong>kicks out</strong> right.'),
+    q('wa', 'わ', ['わ','ね','れ','ぬ'], 'わ — open tail curving <strong>inward</strong>. No loop, no kick.'),
+    q('ru', 'る', ['る','ろ','ぬ','め'], 'る — <strong>closed</strong> curl. Round.'),
+    q('ro', 'ろ', ['ろ','る','ぬ','め'], 'ろ — same path, tail runs off <strong>open</strong>.'),
+    q('nu', 'ぬ', ['ぬ','め','る','ろ'], 'ぬ — crossed body plus a <strong>loop</strong>. Knotted.'),
+    q('me', 'め', ['め','ぬ','る','ろ'], 'め — same body, tail <strong>stops short</strong>.'),
+    q('sa', 'さ', ['さ','き','ち','ら'], 'さ — <strong>one</strong> crossbar.'),
+    q('ki', 'き', ['き','さ','ち','ら'], 'き — <strong>two</strong> crossbars.'),
+    q('ha', 'は', ['は','ほ','ま','も'], 'は — <strong>one</strong> crossbar plus the side loop.'),
+    q('ho', 'ほ', ['ほ','は','ま','も'], 'ほ — <strong>two</strong> crossbars plus the side loop.'),
+    q('ma', 'ま', ['ま','ほ','は','も'], 'ま — two bars, but the loop is at the <strong>bottom</strong>.')
+  ]
+});
+
+function wq(before, after, gloss, answer, options, explain) {
+  return {
+    prompt: '<span class="blankword">' + before + '<b>＿</b>' + after + '</span>'
+          + '<br><span class="cite">' + gloss + '</span><br>Which character fills the gap?',
+    options: options, answer: answer, explain: explain
+  };
+}
+
+Quiz.mount('#q5w', {
+  title: 'Day 5 — read the word',
+  questions: [
+    wq('す','ません', '<em>sumimasen</em> — "excuse me" / "sorry"', 'み', ['み','め','ぬ','む'],
+      'す<strong>み</strong>ません. Note it ends in ん, the one bare-consonant kana.'),
+    wq('い','ら', '<em>ikura</em> — "how much?"', 'く', ['く','へ','し','つ'],
+      'い<strong>く</strong>ら. Compare へ, which is flatter and wider.'),
+    wq('え','', '<em>eki</em> — "station"', 'き', ['き','さ','ち','ら'],
+      'え<strong>き</strong>. Two crossbars, so き not さ. You will read this on every platform sign in Japan.'),
+    wq('あ','がとう', '<em>arigatou</em> — "thank you"', 'り', ['り','い','し','つ'],
+      'あ<strong>り</strong>がとう. り has one <strong>long</strong> hooking stroke; い has two short ones.'),
+    wq('や','い', '<em>yasui</em> — "cheap"', 'す', ['す','む','お','あ'],
+      'や<strong>す</strong>い. The vertical runs straight <em>through</em> the loop — that is す, not む.'),
+    wq('','かい', '<em>takai</em> — "expensive" (also "tall")', 'た', ['た','な','は','ほ'],
+      '<strong>た</strong>かい. Learn it as a pair with やすい and you can react to any price.'),
+    wq('こ','にちは', '<em>konnichiwa</em> — "hello"', 'ん', ['ん','そ','ろ','く'],
+      'こ<strong>ん</strong>にちは. Look at the ending: written は but read <strong>wa</strong>, because that は is the topic particle fossilised inside the greeting. More on this in week 3.'),
+    wq('お','がいします', '<em>onegaishimasu</em> — "please" / "I ask this of you"', 'ね', ['ね','れ','わ','ぬ'],
+      'お<strong>ね</strong>がいします. Closed loop, so ね. Arguably the most useful phrase in Japan — it ends almost any polite request.')
+  ]
+});
+</script>
+</body>
+</html>

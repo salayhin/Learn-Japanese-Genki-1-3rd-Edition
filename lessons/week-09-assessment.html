@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 9 day 5 · Assessment</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  .drill-stage .kana-big { font-size: clamp(1.9rem, 8vw, 3.2rem); }
+
+  .standard {
+    border: 2px solid var(--accent); border-radius: 10px; padding: 1.2rem 1.3rem;
+    margin: 1.6rem 0; background: var(--accent-dim);
+  }
+  .standard h3 { margin-top: 0; color: var(--accent); }
+  .standard p:last-child { margin-bottom: 0; }
+
+  .testcard {
+    border: 1px solid var(--rule); border-radius: 9px; padding: 1rem 1.2rem;
+    margin: 1.8rem 0 1rem; background: var(--paper-warm);
+  }
+  .testcard .n {
+    font-family: var(--sans); font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .3rem;
+  }
+  .testcard h3 { margin: 0 0 .35rem; text-transform: none; letter-spacing: -.01em;
+                 font-family: var(--serif); font-size: 1.12rem; color: var(--ink); font-weight: 650; }
+  .testcard p { margin: .4rem 0 0; font-size: .9rem; }
+  .testcard p:last-child { margin-bottom: 0; }
+  .testcard .age {
+    font-family: var(--mono); font-size: .68rem; color: var(--ink-faint);
+    float: right; margin-top: .1rem;
+  }
+
+  .scoresheet { width: 100%; border-collapse: collapse; margin: 1.3rem 0; }
+  .scoresheet th { font-size: .66rem; }
+  .scoresheet td { padding: .6rem .5rem; }
+  .scoresheet td:first-child { font-weight: 650; font-family: var(--serif); font-size: .92rem; }
+  .scoresheet .fill {
+    display: inline-block; min-width: 3.4rem; border-bottom: 1.5px solid var(--rule);
+    height: 1.2em;
+  }
+  .scoresheet .req { font-family: var(--mono); font-size: .74rem; color: var(--accent); white-space: nowrap; }
+  .scoresheet tr.grp td {
+    background: var(--accent-dim); font-family: var(--sans); font-size: .64rem;
+    font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent);
+    padding: .4rem .5rem;
+  }
+
+  .verdict { margin: 1.4rem 0; }
+  .verdict div {
+    border-left: 4px solid var(--rule); padding: .8rem 1.1rem; margin-bottom: .7rem;
+    background: var(--paper-warm); border-radius: 0 7px 7px 0;
+  }
+  .verdict div.pass { border-left-color: var(--good); }
+  .verdict div.soft { border-left-color: var(--accent); }
+  .verdict div.hard { border-left-color: var(--bad); }
+  .verdict strong { display: block; margin-bottom: .2rem; }
+  .verdict p { margin: 0; font-size: .9rem; }
+
+  .agescale { margin: 1.4rem 0; border: 1px solid var(--rule); border-radius: 9px; overflow: hidden; }
+  .agescale div {
+    display: grid; grid-template-columns: 7.5rem 1fr; gap: .9rem; align-items: baseline;
+    padding: .7rem 1rem; border-bottom: 1px solid var(--rule); font-size: .9rem;
+  }
+  .agescale div:last-child { border-bottom: 0; }
+  .agescale .t { font-family: var(--mono); font-size: .72rem; color: var(--accent); }
+  @media (max-width: 520px) {
+    .agescale div { grid-template-columns: 1fr; gap: .1rem; }
+  }
+
+  .timegrid { width: 100%; border-collapse: collapse; margin: 1.2rem 0; }
+  .timegrid th { font-size: .66rem; }
+  .timegrid td { padding: .6rem .5rem; text-align: center; }
+  .timegrid td:first-child { text-align: left; font-family: var(--serif); font-weight: 650; font-size: .92rem; }
+  .timegrid .fill {
+    display: inline-block; min-width: 3rem; border-bottom: 1.5px solid var(--rule); height: 1.2em;
+  }
+
+  .monthplan { counter-reset: mp; margin: 1.3rem 0; padding: 0; list-style: none; }
+  .monthplan li {
+    position: relative; padding: .8rem 0 .8rem 2.6rem; border-bottom: 1px solid var(--rule);
+  }
+  .monthplan li:last-child { border-bottom: 0; }
+  .monthplan li::before {
+    counter-increment: mp; content: counter(mp);
+    position: absolute; left: 0; top: .8rem;
+    width: 1.7rem; height: 1.7rem; border-radius: 50%;
+    background: var(--accent); color: var(--paper);
+    font-family: var(--sans); font-size: .76rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .monthplan strong { display: block; margin-bottom: .15rem; }
+  .monthplan p { margin: 0; font-size: .9rem; color: var(--ink-soft); }
+
+  .wordbig { font-family: var(--jp); font-size: 2rem; letter-spacing: .04em; display: block; margin: .3rem 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="topnav"><a href="../index.html">&larr; Course home</a></p>
+
+<p class="eyebrow">Final session · Week 9 · Day 5</p>
+<h1>The Assessment</h1>
+<p class="standfirst">The last session in the plan, and the only one with nothing new in it.
+Nine weeks of work gets measured today. Nothing is gated behind the result — there is no next
+lesson to unlock — so this exists for exactly one purpose: to write the syllabus for month
+three out of evidence instead of guesswork.</p>
+
+<div class="note">
+  <span class="label">Rules of engagement</span>
+  <p style="margin-bottom:0"><strong>Nothing open, and no warming up.</strong> Don't re-read
+  Lesson 5 first, don't glance at the kanji list, don't run a practice round. A test you
+  prepare for measures your last ten minutes; a cold test measures the nine weeks. The whole
+  value of this page is destroyed by five minutes of revision, and the temptation to do it is
+  strongest on the material you are least sure of — which is precisely the material you most
+  need a true number for.</p>
+</div>
+
+<div class="standard">
+  <h3>What changed since the kana gate</h3>
+  <p>In <a href="week-03-kana-gate.html">week 3</a> the standard was <strong>accuracy, and
+  explicitly not speed</strong>. Today that reverses. Accuracy is now assumed, and
+  <strong>speed is the measurement</strong>.</p>
+  <p>That isn't a stylistic preference. Reading comprehension runs on working memory, and
+  working memory is small. Every character you have to <em>decode</em> consumes some of it,
+  and whatever is spent on decoding is unavailable for meaning. Automatic recognition doesn't
+  make you a slightly faster reader — it is what makes you a reader at all. So the numbers
+  below are the point, not a footnote to the scores.</p>
+</div>
+
+<h2>How to read your own scoresheet</h2>
+
+<p>Before you start, one thing about the order of the tests, because it determines what the
+numbers mean.</p>
+
+<p>The six tests run <strong>oldest material first, newest last</strong>. That is deliberate,
+and it makes the scores non-comparable with each other on purpose:</p>
+
+<div class="agescale">
+  <div><span class="t">~6 weeks old</span><span>Kana — finished in week 3, drilled daily since. Should be automatic.</span></div>
+  <div><span class="t">~4 weeks old</span><span>Lesson 3 verbs and kanji. Old enough that the score means something.</span></div>
+  <div><span class="t">~2 weeks old</span><span>Lesson 4 — past tense, existence, the days of the week.</span></div>
+  <div><span class="t">4 days old</span><span>Lesson 5 — adjectives, <span class="jp">好き</span>, counting. Still warm.</span></div>
+</div>
+
+<div class="note">
+  <span class="label">A high score on Lesson 5 predicts almost nothing</span>
+  <p>You finished it four days ago. It will feel fluent, and it will score well, and neither
+  fact tells you whether you will still have it in March. What you are measuring there is
+  <em>fluency strength</em> — how readily something comes to hand right now — which decays
+  fast and is a notoriously bad guide to whether anything was actually learned.</p>
+  <p style="margin-bottom:0">The tests worth staring at are the <strong>old</strong> ones.
+  A clean score on Lesson 3's verbs, four weeks after you last studied them deliberately, is
+  evidence of <em>storage strength</em>, and storage strength is the only kind that predicts
+  anything. So read the scoresheet top-down, and weight it accordingly: the first numbers are
+  the informative ones, and the last number is the flattering one.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>Six tests</h2>
+
+<p>Run them in order, in one sitting, and write each result down as you go. Record your
+<strong>first attempt</strong> at every test — re-running afterwards as practice is useful,
+but a second score measures something different, because you have just seen the answers.</p>
+
+<!-- ============================================================ -->
+<div class="testcard">
+  <span class="age">~6 weeks old</span>
+  <span class="n">Test 1</span>
+  <h3>Kana — the same three drills as the gate</h3>
+  <p>Identical character sets to <a href="week-03-kana-gate.html">week 3, day 3</a>, so your
+  times are directly comparable. Back then the targets were 55s, 60s and 40s and speed was
+  explicitly not the standard. They are tighter now, and they are the standard.</p>
+  <p>Dig out your week-3 numbers before you start. The gap between then and now is six weeks
+  of five-minute warm-ups, and it is the cleanest measurement of deliberate practice on this
+  whole page.</p>
+</div>
+<div id="t1a"></div>
+<div id="t1b"></div>
+<div id="t1c"></div>
+
+<!-- ============================================================ -->
+<div class="testcard">
+  <span class="age">~4 to 1 weeks old</span>
+  <span class="n">Test 2</span>
+  <h3>Kanji — all 43, in isolation</h3>
+  <p>Fifteen from <a href="week-05-lesson-03-making-a-date.html">Lesson 3</a> (numbers, yen,
+  time), fourteen from <a href="week-07-lesson-04-first-date.html">Lesson 4</a> (days of the
+  week), fourteen from <a href="week-08-lesson-05-okinawa.html">Lesson 5</a>. Shuffled, and
+  stripped of the words they normally sit in — which makes this considerably harder than
+  meeting them in a sentence, and is the point.</p>
+  <p>Any reading the book taught for a character counts. This is the thinnest material on the
+  page, so the standard allows misses.</p>
+</div>
+<div id="t2"></div>
+
+<!-- ============================================================ -->
+<div class="testcard">
+  <span class="age">~4 weeks old</span>
+  <span class="n">Test 3</span>
+  <h3>Verbs against the clock</h3>
+  <p>Twenty verbs, ten into the past affirmative and ten into the past negative, across all
+  three groups. The groups are shuffled together, because choosing the right rule is the
+  actual skill and you never practise choosing by doing ten of one kind in a row.</p>
+  <p>This is the most important test on the page. Verb conjugation is the load-bearing wall
+  of everything after it — the <span class="jp">て</span>-form, the plain forms, the
+  potential, the passive all start from these stems — and it is old enough now for the score
+  to be honest.</p>
+</div>
+<div id="t3a"></div>
+<div id="t3b"></div>
+
+<!-- ============================================================ -->
+<div class="testcard">
+  <span class="age">4 days old</span>
+  <span class="n">Test 4</span>
+  <h3>Adjectives against the clock</h3>
+  <p>Eight into the past affirmative, eight into the present negative, with
+  <span class="jp">い</span>- and <span class="jp">な</span>-adjectives mixed throughout. What
+  is being tested is not the endings but the <strong>class</strong> — whether you know, without
+  stopping, which of the two rules a given word takes.</p>
+  <p>Expect to do well. Note the caveat above about what that does and doesn't mean.</p>
+</div>
+<div id="t4a"></div>
+<div id="t4b"></div>
+
+<!-- ============================================================ -->
+<div class="testcard">
+  <span class="age">all nine weeks</span>
+  <span class="n">Test 5</span>
+  <h3>Grammar — thirteen questions, all five lessons</h3>
+  <p>Particles and structures, which no timed drill can reach. Drills test whether you can
+  produce a form; these test whether you know which form the sentence needs, and that is where
+  almost all real errors live.</p>
+  <p>No clock on this one. Take the time to think — a rushed wrong answer here tells you
+  nothing you can act on.</p>
+</div>
+<div id="t5"></div>
+
+<!-- ============================================================ -->
+<div class="testcard">
+  <span class="age">~3 weeks since last read</span>
+  <span class="n">Test 6</span>
+  <h3>Cold read — <span class="jp">まいにちのせいかつ</span></h3>
+  <p>Textbook <strong>pp. 304–307</strong>, the Lesson 3 reading. You last worked on it in
+  week 7, and you ran it five times with audio that day.</p>
+  <p><strong>One pass. Timed. Nothing looked up, no audio, no re-reading a line you
+  stumbled on.</strong> Then close the book and answer its comprehension questions from
+  memory. Write down both the time and how many you got.</p>
+</div>
+
+<div class="note">
+  <span class="label">What this number is, and what it isn't</span>
+  <p>It has no exact precedent. Your pass-4 and pass-5 times that day came after you had
+  already read the passage three times with an audio model, so they measure something this
+  doesn't. Don't line them up and conclude you've got worse — you are comparing a cold first
+  pass against a warm fifth one.</p>
+  <p style="margin-bottom:0">What the comparison <em>can</em> tell you is whether the gain
+  survived. If today's cold read lands anywhere near that week-7 pass-5 time, the repeated
+  reading consolidated into something durable rather than a within-session effect — which is
+  precisely the transfer the
+  <a href="../reference/genki1-roadmap.html#n1">Gorsuch, Taguchi and Umehara study</a>
+  measured. If it is dramatically slower, the gain was local to the session. Either way this
+  becomes your baseline, and month three's job is to beat it.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>Scoresheet</h2>
+
+<p>Fill it in. Keep it — in three months these numbers will be the only evidence you have of
+what changed, and by then you will not be able to reconstruct them.</p>
+
+<table class="scoresheet">
+  <thead>
+    <tr><th>Test</th><th>Score</th><th>Time</th><th>Standard</th></tr>
+  </thead>
+  <tbody>
+    <tr class="grp"><td colspan="4">Oldest material — these numbers matter most</td></tr>
+    <tr><td>1a · Hiragana 46</td><td><span class="fill"></span> / 46</td><td><span class="fill"></span> s</td><td class="req">46/46 · &lt;50s</td></tr>
+    <tr><td>1b · Katakana 46</td><td><span class="fill"></span> / 46</td><td><span class="fill"></span> s</td><td class="req">46/46 · &lt;55s</td></tr>
+    <tr><td>1c · Voiced + contracted</td><td><span class="fill"></span> / 30</td><td><span class="fill"></span> s</td><td class="req">30/30 · &lt;35s</td></tr>
+    <tr><td>2 · Kanji 43</td><td><span class="fill"></span> / 43</td><td><span class="fill"></span> s</td><td class="req">39/43 · &lt;110s</td></tr>
+    <tr><td>3a · Verbs &rarr; past</td><td><span class="fill"></span> / 10</td><td><span class="fill"></span> s</td><td class="req">10/10 · &lt;55s</td></tr>
+    <tr><td>3b · Verbs &rarr; past neg.</td><td><span class="fill"></span> / 10</td><td><span class="fill"></span> s</td><td class="req">10/10 · &lt;65s</td></tr>
+    <tr class="grp"><td colspan="4">Newest material — expect these to flatter you</td></tr>
+    <tr><td>4a · Adjectives &rarr; past</td><td><span class="fill"></span> / 8</td><td><span class="fill"></span> s</td><td class="req">8/8 · &lt;55s</td></tr>
+    <tr><td>4b · Adjectives &rarr; neg.</td><td><span class="fill"></span> / 8</td><td><span class="fill"></span> s</td><td class="req">8/8 · &lt;55s</td></tr>
+    <tr class="grp"><td colspan="4">Everything at once</td></tr>
+    <tr><td>5 · Grammar</td><td><span class="fill"></span> / 13</td><td>—</td><td class="req">11/13</td></tr>
+    <tr><td>6 · Cold read, time</td><td>—</td><td><span class="fill"></span> s</td><td class="req">no standard</td></tr>
+    <tr><td>6 · Cold read, questions</td><td><span class="fill"></span> / 4</td><td>—</td><td class="req">3/4</td></tr>
+  </tbody>
+</table>
+
+<p class="cite">The kanji standard allows four misses; nothing else does. Forty-three
+characters across seven weeks is a thin diet — most of them have been seen a handful of
+times, and several only within a single lesson. A few gaps there is the expected result, not
+a failure, and the fix is a month-three habit rather than a repeated day.</p>
+
+<h3>Your six reading times, in one place</h3>
+
+<p>You were asked to keep these after Lessons 3, 4 and 5. Put them here, with today's cold
+read at the bottom — this table is the single most direct answer to whether nine weeks
+produced reading fluency.</p>
+
+<table class="timegrid">
+  <thead>
+    <tr><th>Passage</th><th>Pass 4</th><th>Pass 5</th><th>Gap</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>L3 · <span class="jp">まいにちのせいかつ</span></td><td><span class="fill"></span>s</td><td><span class="fill"></span>s</td><td><span class="fill"></span>s</td></tr>
+    <tr><td>L4 · <span class="jp">メアリーさんのしゅうまつ</span></td><td><span class="fill"></span>s</td><td><span class="fill"></span>s</td><td><span class="fill"></span>s</td></tr>
+    <tr><td>L5 · <span class="jp">りょこう</span></td><td><span class="fill"></span>s</td><td><span class="fill"></span>s</td><td><span class="fill"></span>s</td></tr>
+    <tr><td>Today · cold read of L3</td><td colspan="2"><span class="fill"></span>s</td><td>—</td></tr>
+  </tbody>
+</table>
+
+<p class="cite">Read the <strong>Gap</strong> column downwards, not the raw times. Each
+passage is harder than the one before it, so falling times would be remarkable and steady
+times are already good. A <em>narrowing gap between pass 4 and pass 5</em> is the real
+signal: it means the fourth reading is leaving less for the fifth to improve, because the
+decoding was already close to automatic.</p>
+
+<!-- ============================================================ -->
+<h2>What your result means</h2>
+
+<p>Find the lines that match. More than one can apply, and none of them is a failure — every
+branch below ends in a specific thing to do, which is the only output this page was built to
+produce.</p>
+
+<div class="verdict">
+  <div class="pass">
+    <strong>Kana under target, kanji and verbs at standard</strong>
+    <p>The foundation is done and it is holding. <strong>Month three opens with Lesson 6 and
+    the <span class="jp">て</span>-form.</strong> Drop the kana warm-up entirely and give
+    those five minutes to kanji — it is now the slowest-growing thing you own.</p>
+  </div>
+
+  <div class="soft">
+    <strong>Kana accurate but still over target</strong>
+    <p>Recognition works; automaticity hasn't arrived. This is the one result that should
+    change your daily routine rather than your syllabus, because slow decoding taxes every
+    other thing on this list. <strong>Keep the five-minute warm-up drill</strong> and expect
+    another three or four weeks. It does arrive, and when it does you will notice it in
+    reading speed rather than in the drill.</p>
+  </div>
+
+  <div class="soft">
+    <strong>Kanji well below 39, everything else clean</strong>
+    <p>The expected shape of this result, and not a problem — it is a consequence of how few
+    kanji Genki introduces in its first five lessons. <strong>Add a standing daily kanji
+    block in month three</strong> and stop treating them as a by-product of lessons. Genki I
+    has 145 in total; you have 43, which means the rate has to roughly triple, and that only
+    works as its own habit.</p>
+  </div>
+
+  <div class="hard">
+    <strong>Verbs slow or scattered, adjectives fast</strong>
+    <p>The most important result on the page, and the easiest one to talk yourself out of.
+    It is not evidence that adjectives are easier — it is the four-week gap versus the
+    four-day one, which is to say it is exactly the pattern of something that was learned and
+    then not retrieved. <strong>Put verb conjugation into every warm-up for the next month</strong>,
+    interleaved and cold. The <span class="jp">て</span>-form is built on these stems, and
+    starting Lesson 6 on shaky ones makes a hard lesson much harder.</p>
+  </div>
+
+  <div class="soft">
+    <strong>Grammar below 11, drills all clean</strong>
+    <p>You can produce forms but you're choosing the wrong ones — which means the gap is in
+    particles, not conjugation. Go back through your misses and sort them by lesson. If
+    they cluster on <span class="jp">に</span>/<span class="jp">で</span> or
+    <span class="jp">は</span>/<span class="jp">が</span>, that is the
+    <a href="week-07-lesson-04-first-date.html#d2">Lesson 4 particle flip</a> not having
+    settled, and it is worth one deliberate re-read.</p>
+  </div>
+
+  <div class="hard">
+    <strong>Cold read far slower than the week-7 pass 5, and comprehension gone</strong>
+    <p>Honest interpretation: decay, which is what spacing exists to prevent, and this is the
+    first time the plan has asked you to retrieve anything across a three-week gap. The fix
+    is not to re-study Lesson 3. <strong>Add one old passage to every week in month
+    three</strong> — a single cold re-read of something you last saw a month ago. It costs
+    ten minutes a week and it is the difference between a course you completed and a language
+    you have.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>Month three</h2>
+
+<p>Whatever the numbers said, the shape of the next month is the same. Five things, in
+priority order:</p>
+
+<ol class="monthplan">
+  <li><strong>Lesson 6 — the <span class="jp">て</span>-form</strong>
+    <p>The highest-leverage single item in elementary Japanese, and the thing this plan had
+    to leave out. It joins clauses, makes requests, grants permission and builds the
+    progressive — most of what you currently can't say is behind it. Give it the same
+    treatment Lesson 3 got: seven sessions, not five.</p></li>
+
+  <li><strong>A standing kanji block</strong>
+    <p>Fifteen minutes, every session, separate from the lesson. This is the one habit that
+    doesn't emerge naturally from working through Genki, and the one whose absence compounds
+    fastest.</p></li>
+
+  <li><strong>Keep the five-pass protocol, and add extensive reading beside it</strong>
+    <p>The protocol is intensive reading — one passage, deeply. It needs a counterweight:
+    lots of text, far below your level, read once and not analysed.
+    <a href="https://tadoku.org/japanese/free-books/">Tadoku's free graded readers</a> start
+    at a level you can already handle, and reading something easy end to end is a different
+    and necessary skill.</p></li>
+
+  <li><strong>One cold re-read a week</strong>
+    <p>Whatever today's test 6 told you. A passage from a month ago, read once, timed. It is
+    the cheapest insurance against everything above quietly decaying.</p></li>
+
+  <li><strong>Decide about the JLPT</strong>
+    <p>N5 is roughly Genki I plus a little. On this pace you'd be ready for a July sitting
+    rather than December. That is worth deciding now rather than later, because a booked exam
+    changes how much test-format reading is worth folding in — and an unbooked one tends to
+    stay unbooked.</p></li>
+</ol>
+
+<!-- ============================================================ -->
+<div class="lesson-foot">
+  <p><strong>Nine weeks.</strong> Two writing systems and 104 readings in each, five Genki
+  lessons, 43 kanji, around 200 words, verbs and adjectives in two tenses and both polarities,
+  and four timed readings of real Japanese text. On day one none of this page would have been
+  legible to you — not the title, not a single character in any drill on it. That is worth
+  stopping on for a moment before you plan month three, because it is the kind of progress
+  that is invisible from the inside and obvious from any distance at all.</p>
+
+  <div class="chip-row">
+    <a class="chip" href="../index.html">&#8962; Course home</a>
+    <a class="chip" href="week-08-lesson-05-okinawa.html">&larr; Lesson 5</a>
+    <a class="chip" href="week-03-kana-gate.html">The week-3 gate</a>
+    <a class="chip" href="../reference/genki1-roadmap.html#assessment">The plan · Assessment</a>
+    <a class="chip" href="../reference/kana-charts.html">Kana charts</a>
+  </div>
+
+  <div class="ask-teacher">
+    <strong>Send me the whole scoresheet — every number, not the bad ones.</strong> A single
+    low score is almost never interpretable on its own; the <em>pattern</em> is, and the
+    pattern is the thing that is hardest to read about yourself. Fast kana with weak kanji,
+    weak verbs with strong adjectives, and clean drills with poor grammar point to three
+    completely different next months, and at least two of those three feel identical from the
+    inside. Include the six reading times and today's cold-read number. Tell me what you got
+    and I'll tell you what month three should actually open with, and in what order.
+  </div>
+</div>
+
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script src="../assets/drill.js"></script>
+<script>
+function q(prompt, answer, options, explain) {
+  return { prompt: prompt, options: options, answer: answer, explain: explain };
+}
+var PART = ['が','に','で','を'];
+
+// ---------------------------------------------------------------------------
+// Test 1 — kana. Identical sets and helpers to the week-3 gate, so times compare.
+// ---------------------------------------------------------------------------
+var HIRA = [
+  ['あ','a'],['い','i'],['う','u'],['え','e'],['お','o'],
+  ['か','ka'],['き','ki'],['く','ku'],['け','ke'],['こ','ko'],
+  ['さ','sa'],['し','shi'],['す','su'],['せ','se'],['そ','so'],
+  ['た','ta'],['ち','chi'],['つ','tsu'],['て','te'],['と','to'],
+  ['な','na'],['に','ni'],['ぬ','nu'],['ね','ne'],['の','no'],
+  ['は','ha'],['ひ','hi'],['ふ','fu'],['へ','he'],['ほ','ho'],
+  ['ま','ma'],['み','mi'],['む','mu'],['め','me'],['も','mo'],
+  ['や','ya'],['ゆ','yu'],['よ','yo'],
+  ['ら','ra'],['り','ri'],['る','ru'],['れ','re'],['ろ','ro'],
+  ['わ','wa'],['を','o'],['ん','n']
+];
+
+var KATA = [
+  ['ア','a'],['イ','i'],['ウ','u'],['エ','e'],['オ','o'],
+  ['カ','ka'],['キ','ki'],['ク','ku'],['ケ','ke'],['コ','ko'],
+  ['サ','sa'],['シ','shi'],['ス','su'],['セ','se'],['ソ','so'],
+  ['タ','ta'],['チ','chi'],['ツ','tsu'],['テ','te'],['ト','to'],
+  ['ナ','na'],['ニ','ni'],['ヌ','nu'],['ネ','ne'],['ノ','no'],
+  ['ハ','ha'],['ヒ','hi'],['フ','fu'],['ヘ','he'],['ホ','ho'],
+  ['マ','ma'],['ミ','mi'],['ム','mu'],['メ','me'],['モ','mo'],
+  ['ヤ','ya'],['ユ','yu'],['ヨ','yo'],
+  ['ラ','ra'],['リ','ri'],['ル','ru'],['レ','re'],['ロ','ro'],
+  ['ワ','wa'],['ヲ','o'],['ン','n']
+];
+
+var EXTRA = [
+  ['が','ga'],['ジ','ji'],['ず','zu'],['ゼ','ze'],['ぞ','zo'],
+  ['ダ','da'],['で','de'],['ド','do'],['ば','ba'],['ビ','bi'],
+  ['ぶ','bu'],['ベ','be'],['ぼ','bo'],['パ','pa'],['ぴ','pi'],
+  ['プ','pu'],['ぺ','pe'],['ポ','po'],['ぐ','gu'],['ゴ','go'],
+  ['きゃ','kya'],['シュ','shu'],['ちょ','cho'],['ニュ','nyu'],['ひょ','hyo'],
+  ['ミャ','mya'],['りゅ','ryu'],['ギョ','gyo'],['じゃ','ja'],['ビョ','byo']
+];
+
+// Keyed by character, not romaji — を and お are not interchangeable.
+var ALT = {
+  'し':['shi','si'],'ち':['chi','ti'],'つ':['tsu','tu'],'ふ':['fu','hu'],
+  'ん':['n','nn'],'を':['o','wo'],
+  'シ':['shi','si'],'チ':['chi','ti'],'ツ':['tsu','tu'],'フ':['fu','hu'],
+  'ン':['n','nn'],'ヲ':['o','wo'],
+  'ジ':['ji','zi'],'シュ':['shu','syu'],'ちょ':['cho','tyo'],
+  'じゃ':['ja','zya','jya']
+};
+
+function items(set) {
+  return set.map(function (p) { return { show: p[0], answer: ALT[p[0]] || [p[1]] }; });
+}
+
+Drill.mount('#t1a', { title: 'Test 1a — hiragana, all 46',      target: 50, items: items(HIRA) });
+Drill.mount('#t1b', { title: 'Test 1b — katakana, all 46',      target: 55, items: items(KATA) });
+Drill.mount('#t1c', { title: 'Test 1c — voiced & contracted',   target: 35, items: items(EXTRA) });
+
+// ---------------------------------------------------------------------------
+// Test 2 — all 43 kanji from Lessons 3, 4 and 5
+// ---------------------------------------------------------------------------
+Drill.mount('#t2', {
+  title: 'Test 2 — kanji, all 43',
+  target: 110,
+  items: [
+    // Lesson 3 — numbers, yen, time
+    { show: '一', answer: ['ichi','iti','hito'] },
+    { show: '二', answer: ['ni','futa'] },
+    { show: '三', answer: ['san','mit','mi'] },
+    { show: '四', answer: ['yon','shi','yo','si'] },
+    { show: '五', answer: ['go','itsu','itu'] },
+    { show: '六', answer: ['roku','mu'] },
+    { show: '七', answer: ['nana','shichi','siti'] },
+    { show: '八', answer: ['hachi','hati','ya'] },
+    { show: '九', answer: ['kyuu','kyu','ku','kokono'] },
+    { show: '十', answer: ['juu','ju','too','to'] },
+    { show: '百', answer: ['hyaku'] },
+    { show: '千', answer: ['sen','chi','ti'] },
+    { show: '万', answer: ['man','ban'] },
+    { show: '円', answer: ['en','maru'] },
+    { show: '時', answer: ['ji','toki'] },
+    // Lesson 4 — days of the week
+    { show: '日', answer: ['nichi','niti','hi','ni','ka'] },
+    { show: '本', answer: ['hon','moto'] },
+    { show: '人', answer: ['jin','hito','nin'] },
+    { show: '月', answer: ['getsu','getu','gatsu','gatu','tsuki','tuki'] },
+    { show: '火', answer: ['ka','hi'] },
+    { show: '水', answer: ['sui','mizu'] },
+    { show: '木', answer: ['moku','ki'] },
+    { show: '金', answer: ['kin','kane'] },
+    { show: '土', answer: ['do','tsuchi','tuti'] },
+    { show: '曜', answer: ['you','yoo','yo'] },
+    { show: '上', answer: ['ue','joo','jou','jo'] },
+    { show: '下', answer: ['shita','sita','ka','shimo'] },
+    { show: '中', answer: ['naka','chuu','chu','tyuu'] },
+    { show: '半', answer: ['han'] },
+    // Lesson 5 — travel
+    { show: '山', answer: ['yama','san','zan'] },
+    { show: '川', answer: ['kawa','sen','gawa'] },
+    { show: '元', answer: ['gen','gan','moto'] },
+    { show: '気', answer: ['ki'] },
+    { show: '天', answer: ['ten'] },
+    { show: '私', answer: ['watashi','watasi','shi','si'] },
+    { show: '今', answer: ['ima','kon'] },
+    { show: '田', answer: ['ta','da'] },
+    { show: '女', answer: ['onna','jo'] },
+    { show: '男', answer: ['otoko','dan'] },
+    { show: '見', answer: ['mi','ken'] },
+    { show: '行', answer: ['i','kou','koo','ko','gyou','gyoo'] },
+    { show: '食', answer: ['ta','shoku','syoku'] },
+    { show: '飲', answer: ['no','in'] }
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Test 3 — verbs, all three groups shuffled together
+// ---------------------------------------------------------------------------
+Drill.mount('#t3a', {
+  title: 'Test 3a — verbs → past affirmative (〜ました)',
+  target: 55,
+  items: [
+    { show: 'たべる', answer: ['tabemashita','tabemasita'] },
+    { show: 'ねる',   answer: ['nemashita','nemasita'] },
+    { show: 'みる',   answer: ['mimashita','mimasita'] },
+    { show: 'のむ',   answer: ['nomimashita','nomimasita'] },
+    { show: 'よむ',   answer: ['yomimashita','yomimasita'] },
+    { show: 'はなす', answer: ['hanashimashita','hanasimasita','hanashimasita','hanasimashita'] },
+    { show: 'いく',   answer: ['ikimashita','ikimasita'] },
+    { show: 'かえる', answer: ['kaerimashita','kaerimasita'] },
+    { show: 'する',   answer: ['shimashita','simasita','shimasita','simashita'] },
+    { show: 'くる',   answer: ['kimashita','kimasita'] }
+  ]
+});
+
+Drill.mount('#t3b', {
+  title: 'Test 3b — verbs → past negative (〜ませんでした)',
+  target: 65,
+  items: [
+    { show: 'おきる',       answer: ['okimasendeshita','okimasendesita'] },
+    { show: 'でかける',     answer: ['dekakemasendeshita','dekakemasendesita'] },
+    { show: 'きく',         answer: ['kikimasendeshita','kikimasendesita'] },
+    { show: 'かう',         answer: ['kaimasendeshita','kaimasendesita'] },
+    { show: 'まつ',         answer: ['machimasendeshita','matimasendesita','machimasendesita','matimasendeshita'] },
+    { show: 'およぐ',       answer: ['oyogimasendeshita','oyogimasendesita'] },
+    { show: 'のる',         answer: ['norimasendeshita','norimasendesita'] },
+    { show: 'とる',         answer: ['torimasendeshita','torimasendesita'] },
+    { show: 'べんきょうする',answer: ['benkyoushimasendeshita','benkyoshimasendeshita','benkyousimasendesita','benkyosimasendesita'] },
+    { show: 'くる',         answer: ['kimasendeshita','kimasendesita'] }
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Test 4 — adjectives, both classes mixed
+// ---------------------------------------------------------------------------
+Drill.mount('#t4a', {
+  title: 'Test 4a — adjectives → past affirmative',
+  target: 55,
+  items: [
+    { show: 'さむい',     answer: ['samukattadesu','samukatta'] },
+    { show: 'たかい',     answer: ['takakattadesu','takakatta'] },
+    { show: 'おもしろい', answer: ['omoshirokattadesu','omoshirokatta','omosirokattadesu','omosirokatta'] },
+    { show: 'いい',       answer: ['yokattadesu','yokatta'] },
+    { show: 'げんきな',   answer: ['genkideshita','genkidesita'] },
+    { show: 'しずかな',   answer: ['shizukadeshita','sizukadesita','shizukadesita','sizukadeshita'] },
+    { show: 'きれいな',   answer: ['kireideshita','kireidesita'] },
+    { show: 'ひまな',     answer: ['himadeshita','himadesita'] }
+  ]
+});
+
+Drill.mount('#t4b', {
+  title: 'Test 4b — adjectives → present negative',
+  target: 55,
+  items: [
+    { show: 'あつい',     answer: ['atsukunaidesu','atsukunai','atukunaidesu','atukunai'] },
+    { show: 'やさしい',   answer: ['yasashikunaidesu','yasashikunai','yasasikunaidesu','yasasikunai'] },
+    { show: 'つまらない', answer: ['tsumaranakunaidesu','tsumaranakunai','tumaranakunaidesu','tumaranakunai'] },
+    { show: 'かっこいい', answer: ['kakkoyokunaidesu','kakkoyokunai'] },
+    { show: 'にぎやかな', answer: ['nigiyakajanaidesu','nigiyakajanai'] },
+    { show: 'きらいな',   answer: ['kiraijanaidesu','kiraijanai'] },
+    { show: 'すきな',     answer: ['sukijanaidesu','sukijanai'] },
+    { show: 'げんきな',   answer: ['genkijanaidesu','genkijanai'] }
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Test 5 — grammar across all five lessons, in lesson order
+// ---------------------------------------------------------------------------
+Quiz.mount('#t5', {
+  title: 'Test 5 — grammar, Lessons 1 to 5',
+  questions: [
+    q('In <span class="jp">A の B</span>, which word is the main thing?', 'B',
+      ['B','A','の','both'],
+      '<strong>B.</strong> <span class="jp">の</span> modifies leftwards, so A describes B. The test is to ask what the thing <em>is</em>: <span class="jp">にほんごのせんせい</span> is a teacher, not a language.'),
+    q('Putting <span class="jp">さん</span> on your own name is…', 'never done',
+      ['never done','always done','sometimes done','formally done'],
+      '<strong>Never done.</strong> <span class="jp">さん</span> is honorific, so applying it to yourself elevates yourself. Give your bare name.'),
+    q('<span class="wordbig">にまん</span>is…', 'twenty thousand',
+      ['twenty thousand','two thousand','two hundred','twenty hundred'],
+      '<strong>Twenty thousand.</strong> Japanese groups large numbers in ten-thousands, so <span class="jp">まん</span> is 10,000 — which is also why <span class="jp">ひゃくまん</span> is a million.'),
+    q('<span class="wordbig">だれ＿ きましたか</span>', 'が', PART,
+      '<strong>が.</strong> Question words take <span class="jp">が</span>, never <span class="jp">は</span> — <span class="jp">は</span> marks something already known, and a question word is by definition unknown.'),
+    q('<span class="jp">かえる</span> belongs to which group?', 'う-verbs',
+      ['う-verbs','る-verbs','irregulars','compounds'],
+      '<strong><span class="jp">う</span>-verbs.</strong> It ends in <em>-eru</em> and is still an <span class="jp">う</span>-verb: <span class="jp">かえります</span>, not <span class="jp">×かえます</span>.'),
+    q('"I study at the library." Particle after <span class="jp">としょかん</span>?', 'で', PART,
+      '<strong>で</strong> — where an action happens. <span class="jp">に</span> is for a destination or a point of existence.'),
+    q('Japanese "present tense" never means…', 'right now',
+      ['right now','every day','next week','tomorrow morning'],
+      '<strong>Right now.</strong> <span class="jp">〜ます</span> is habitual or future. An action actually in progress needs the <span class="jp">て</span>-form, which is Lesson 7.'),
+    q('<span class="wordbig">あそこ＿ ぎんこうが あります</span>', 'に', PART,
+      '<strong>に.</strong> Existence takes <span class="jp">に</span>, overriding the <span class="jp">で</span> you learned in Lesson 3. The exception: when <span class="jp">あります</span> means an event <em>takes place</em>, <span class="jp">で</span> returns.'),
+    q('"To Osaka too" is…', 'おおさかにも',
+      ['おおさかにも','おおさかをも','おおさかはも','おおさかもに'],
+      '<strong>おおさかにも.</strong> <span class="jp">に</span> carries meaning, so <span class="jp">も</span> stacks on it. <span class="jp">は・が・を</span> carry grammatical role only, so <span class="jp">も</span> replaces those.'),
+    q('<span class="jp">いちじかん</span> takes which particle?', 'none', ['none','に','で','を'],
+      '<strong>None.</strong> Durations take no particle at all. <span class="jp">いちじ</span> (one o\'clock) takes <span class="jp">に</span>; <span class="jp">いちじかん</span> (one hour) takes nothing.'),
+    q('"a quiet room" is…', 'しずかなへや',
+      ['しずかなへや','しずかいへや','しずかのへや','しずかへやな'],
+      '<strong>しずかなへや.</strong> A <span class="jp">な</span>-adjective, so the <span class="jp">な</span> returns in front of a noun.'),
+    q('"I like fish." Particle after <span class="jp">さかな</span>?', 'が', PART,
+      '<strong>が.</strong> <span class="jp">好き</span> is an adjective, not a verb, so it takes no object — the thing liked is the subject.'),
+    q('<span class="jp">×さむいでした</span> wrongly puts tense on…', 'です',
+      ['です','さむい','くない','かった'],
+      '<strong>です</strong>, which is only politeness and never changes shape after an <span class="jp">い</span>-adjective. Tense belongs in <span class="jp">かった</span>: <span class="jp">さむかったです</span>.')
+  ]
+});
+</script>
+</body>
+</html>

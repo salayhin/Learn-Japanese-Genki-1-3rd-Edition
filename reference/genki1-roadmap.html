@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Genki I Path</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  .weekhead {
+    display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap;
+    margin: 2.6rem 0 .3rem; padding-bottom: .4rem; border-bottom: 2px solid var(--accent);
+  }
+  .weekhead h3 { border: 0; margin: 0; font-size: 1.05rem; text-transform: none;
+                 letter-spacing: -.01em; color: var(--ink); font-family: var(--serif); font-weight: 650; }
+  .weekhead .tagline { font-family: var(--mono); font-size: .74rem; color: var(--ink-faint); }
+
+  .days { list-style: none; padding: 0; margin: .9rem 0 0; }
+  .days li {
+    display: grid; grid-template-columns: 3.4rem 1fr; gap: .9rem;
+    padding: .6rem 0; border-bottom: 1px solid var(--rule); font-size: .94rem;
+  }
+  .days .d {
+    font-family: var(--sans); font-size: .7rem; font-weight: 700; letter-spacing: .09em;
+    text-transform: uppercase; color: var(--accent); padding-top: .22rem;
+  }
+  @media (max-width: 480px) { .days li { grid-template-columns: 1fr; gap: .1rem; } }
+
+  .phase-head {
+    display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap;
+    margin: 3.4rem 0 .5rem; padding: .9rem 1.1rem; border-radius: 8px;
+    background: var(--accent-dim); border-left: 4px solid var(--accent);
+  }
+  .phase-head h2 { border: 0; margin: 0; }
+  .phase-head .when { font-family: var(--mono); font-size: .78rem; color: var(--accent); }
+
+  .block {
+    border: 1px solid var(--rule); border-radius: 8px;
+    padding: 1rem 1.2rem; margin: 1.3rem 0; background: var(--paper);
+  }
+  .block > h3 { margin-top: 0; }
+  .block .meta {
+    font-family: var(--mono); font-size: .75rem; color: var(--ink-faint);
+    margin-bottom: .7rem; line-height: 1.65;
+  }
+  .kanji-strip {
+    font-family: var(--jp); font-size: 1.45rem; line-height: 1.9;
+    letter-spacing: .18em; margin: .5rem 0 .2rem;
+  }
+  .clock-table td:first-child { font-family: var(--mono); font-size: .8rem; white-space: nowrap; color: var(--accent); }
+  ol.passes { padding-left: 1.3rem; }
+  ol.passes li { margin-bottom: .5rem; }
+  .wk { font-family: var(--mono); font-size: .8rem; white-space: nowrap; }
+  @media print { .block, .phase-head, .weekhead { page-break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="topnav"><a href="../index.html">&larr; Course home</a></p>
+
+<p class="eyebrow">Reference · Course plan</p>
+<h1>The Genki I Path</h1>
+<p class="standfirst">Nine weeks, five weekdays each, fifty minutes a day. From no Japanese
+at all to reading both syllabaries fluently and holding the first five lessons of Genki I.
+No prior knowledge assumed, and nothing to do at weekends.</p>
+
+<h2>Who this is for</h2>
+
+<p>Someone starting from <strong>zero</strong> — no kana, no vocabulary, no grammar — who
+has about <strong>45–50 minutes on weekdays and nothing at weekends</strong>, and who wants
+<strong>reading</strong> as the primary outcome rather than a side effect. It assumes you own
+the Genki I textbook and workbook and are working without a teacher, so every exercise here
+is self-scoring.</p>
+
+<p>The plan is <strong>45 sessions</strong>: nine weeks, five days per week, one session a day.
+It uses no calendar dates, so it starts whenever you start.</p>
+
+<div class="note">
+  <span class="label">What nine weeks actually buys — read this before starting</span>
+  <p>45 sessions of 50 minutes is about <strong>37 hours</strong>. Genki I is a full
+  university semester, conventionally 90–120 hours of study. So <strong>this plan does not
+  cover all twelve lessons, and any plan that claims to at this pace is lying to you.</strong></p>
+  <p style="margin-bottom:0">What it does cover, properly: <strong>the entire writing system
+  except kanji, then Genki Lessons 1–5.</strong> That is roughly 43 kanji, 200 words, and the
+  grammar to talk about what you do, what you did, and what things are like — the core of
+  JLPT N5. Lessons 6–12 are mapped at the bottom for the months after. Covering five lessons
+  you retain beats covering twelve you don't.</p>
+</div>
+
+<h2>What you need</h2>
+
+<p>Two books, both by Banno, Ikeda, Ohno, Shinagawa and Tokashiki, published by The Japan
+Times:</p>
+
+<ul>
+  <li><strong>GENKI I: An Integrated Course in Elementary Japanese</strong>, 3rd edition
+      <span class="cite">(ISBN 978-4-7890-1730-5)</span></li>
+  <li><strong>GENKI I Workbook</strong>, 3rd edition
+      <span class="cite">(ISBN 978-4-7890-1731-2)</span></li>
+</ul>
+
+<p>Page references below are the numbers <strong>printed on the page</strong>, so they work
+in any copy — print or official ebook. Workbook references are marked
+<span class="cite">workbook</span>; everything else is the textbook.</p>
+
+<p>Audio is free from the publisher's <strong>OTO Navi</strong> app
+(<a href="https://apps.apple.com/us/app/oto-navi-sound-navigator/id1490391845">iOS</a> /
+Android) — search the textbook's ISBN inside the app. <strong>Install it before day 1</strong>;
+the reading protocol below does not work without it. The publisher also runs a free
+<a href="https://genki3.japantimes.co.jp/en/student/">Self-Study Room</a> with extra
+materials.</p>
+
+<p>The textbook has two halves numbered continuously: <span class="jp">会話・文法編</span>
+(Conversation &amp; Grammar, pp. 30–293) and <span class="jp">読み書き編</span>
+(Reading &amp; Writing, from p. 296). <strong>That second half is the one most self-learners
+skip, and it is the one this plan is built around.</strong> The workbook mirrors the split,
+with one worksheet per grammar point, numbered to match the textbook's own grammar numbering.</p>
+
+<!-- ================================================================== -->
+<div class="phase-head">
+  <h2>Phase 0 · The Writing System</h2>
+  <span class="when">Weeks 1–3 · 13 sessions</span>
+</div>
+
+<p>Everything downstream is gated on this. Every vocabulary list, every grammar drill, every
+passage is written in kana — so time spent here is not time away from Japanese, it is the
+only thing that makes the rest possible.</p>
+
+<p>There are <strong>104 readings per script</strong>: 46 basic characters, 25 voiced, 33
+contracted. That sounds enormous and isn't, because the last 58 are three rules applied to
+the first 46. Two and a half weeks is enough if the order is right.</p>
+
+<div class="note">
+  <span class="label">Two principles behind the ordering</span>
+  <p><strong>Hiragana before katakana.</strong> Hiragana is the default script — grammar,
+  particles, verb endings, anything without a kanji. It also pays forward: about twenty
+  katakana come from the same source kanji as a hiragana, so they come almost free once
+  hiragana is solid. Learning katakana first throws that away.</p>
+  <p style="margin-bottom:0"><strong>Look-alikes last, within each script.</strong> Telling
+  <span class="jp">シ</span> from <span class="jp">ツ</span> is <em>discrimination</em> — it
+  sharpens a distinction between two things you already hold. Taught before you know the
+  characters, it just produces shapes that all blur together. So each script ends with a
+  consolidation day and a traps day, never starts with one.</p>
+</div>
+
+<div class="weekhead">
+  <h3>Week 1 — Hiragana</h3>
+  <span class="tagline">46 characters</span>
+</div>
+
+<p>Ten characters a day for three days, sixteen on the fourth, then a day of nothing but
+retrieval. Hiragana is a <em>grid</em>, not an alphabet: five vowels, then each consonant
+row is that consonant plus the same five vowels in the same order. Learn the skeleton on
+day one and the rest is filling it in.</p>
+
+<ul class="days">
+  <li><span class="d">Day 1</span><span><strong>The vowels and the <span class="jp">か</span> row</strong> — <span class="jp">あいうえお かきくけこ</span>. The grid logic, which is the single most useful idea in the script. <span class="cite">10 characters</span></span></li>
+  <li><span class="d">Day 2</span><span><strong><span class="jp">さ</span> and <span class="jp">た</span> rows</strong> — <span class="jp">さしすせそ たちつてと</span>. Three of the four irregular readings live here: <span class="jp">し</span> <em>shi</em>, <span class="jp">ち</span> <em>chi</em>, <span class="jp">つ</span> <em>tsu</em>. <span class="cite">10 characters</span></span></li>
+  <li><span class="d">Day 3</span><span><strong><span class="jp">な</span> and <span class="jp">は</span> rows</strong> — <span class="jp">なにぬねの はひふへほ</span>. The fourth irregular: <span class="jp">ふ</span> <em>fu</em>. <span class="cite">10 characters</span></span></li>
+  <li><span class="d">Day 4</span><span><strong>The rest</strong> — <span class="jp">まみむめも やゆよ らりるれろ わを ん</span>. Sixteen, but three rows are short. <span class="cite">16 characters</span></span></li>
+  <li><span class="d">Day 5</span><span><strong>Consolidation and the look-alikes</strong> — all 46 mixed, then the traps: <span class="jp">ね/れ/わ</span>, <span class="jp">る/ろ</span>, <span class="jp">ぬ/め</span>, <span class="jp">さ/き</span>, <span class="jp">は/ほ</span>. Two questions settle almost all of them. <span class="cite">Text 読み書き L1, pp. 296–299 · workbook pp. 121–125</span></span></li>
+</ul>
+
+<div class="weekhead">
+  <h3>Week 2 — Katakana</h3>
+  <span class="tagline">46 characters</span>
+</div>
+
+<p>Katakana writes foreign loanwords, which for anyone travelling is most of the words that
+matter: <span class="jp">ホテル</span>, <span class="jp">タクシー</span>,
+<span class="jp">コンビニ</span>, <span class="jp">レストラン</span>,
+<span class="jp">パスポート</span>. Same 46 sounds as hiragana, different shapes — and about
+twenty of those shapes you will already half-know on day 1.</p>
+
+<ul class="days">
+  <li><span class="d">Day 1</span><span><strong>The twenty you already know</strong> — katakana built from the same kanji as a hiragana: <span class="jp">か→カ</span>, <span class="jp">き→キ</span>, <span class="jp">せ→セ</span>, <span class="jp">り→リ</span>, and <span class="jp">へ→ヘ</span>, which is the identical shape. No memorising. <span class="cite">20 characters</span></span></li>
+  <li><span class="d">Day 2</span><span><strong>The families</strong> — the remaining 22, sixteen of them one stroke from a day-1 shape: <span class="jp">ク→タ→ケ</span>, <span class="jp">ノ→メ→ヌ→ス</span>, <span class="jp">フ→ワ→ヲ</span>, <span class="jp">ホ→オ→ネ</span>. Only six need a mnemonic. The heaviest single session in the plan. <span class="cite">22 characters · Text pp. 24–27</span></span></li>
+  <li><span class="d">Day 3</span><span><strong>Consolidation</strong> — all 42 mixed and drilled to accuracy, then read as whole words. No new characters. This day feels unproductive and is among the most important.</span></li>
+  <li><span class="d">Day 4</span><span><strong>The four traps</strong> — <span class="jp">シ ツ ン ソ</span>, which cause more misreadings than the other 42 combined, and the one stroke-direction rule that settles all four. <span class="cite">4 characters</span></span></li>
+  <li><span class="d">Day 5</span><span><strong>Katakana in the wild</strong> — whole travel words, not characters. <span class="cite">Text 読み書き L2, pp. 300–303 · workbook pp. 128–132</span></span></li>
+</ul>
+
+<div class="weekhead">
+  <h3>Week 3 — The marks, the gate, and Genki begins</h3>
+  <span class="tagline">Marks, beats, gate — then Genki begins</span>
+</div>
+
+<ul class="days">
+  <li><span class="d">Day 1</span><span><strong>The voicing marks</strong> — <span class="jp">゛</span> and <span class="jp">゜</span>, in both scripts. <span class="jp">か→が</span>, <span class="jp">さ→ざ</span>, <span class="jp">た→だ</span>, <span class="jp">は→ば/ぱ</span>. One rule, 25 readings per script, no new shapes. <span class="cite">workbook p. 126</span></span></li>
+  <li><span class="d">Day 2</span><span><strong>Beats</strong> — small <span class="jp">ゃゅょ</span> (two characters, one beat), small <span class="jp">っ</span> (silent but counted), and <span class="jp">ー</span>. Plus <span class="jp">は・へ・を</span> read <em>wa, e, o</em> as particles. Most "I know the kana but still can't read" complaints are this day. <span class="cite">workbook p. 127</span></span></li>
+  <li><span class="d">Day 3</span><span><strong>Kana gate</strong> — all 104 readings, both scripts, timed. See the standard below.</span></li>
+  <li><span class="d">Day 4</span><span><strong>Genki Lesson 1 begins.</strong></span></li>
+  <li><span class="d">Day 5</span><span>Genki Lesson 1 continues.</span></li>
+</ul>
+
+<div class="note">
+  <span class="label">The gate is accuracy, not speed</span>
+  <p style="margin-bottom:0">Two and a half weeks gets both scripts to <strong>accurate but
+  slow</strong>. It will not make 92 brand-new shapes automatic, and nothing would. So the
+  standard splits: <strong>100% accuracy on all 104 readings, with speed still short of
+  target.</strong> Sub-second recognition is built by the five-minute warm-up drill over the
+  following weeks and typically arrives around Genki Lesson 3. Holding Genki hostage to kana
+  speed costs three weeks and gains nothing — move on, and keep drilling in the warm-up.</p>
+</div>
+
+<!-- ================================================================== -->
+<div class="phase-head">
+  <h2>Phase 1 · Genki Lessons 1–5</h2>
+  <span class="when">Weeks 3–9 · 32 sessions</span>
+</div>
+
+<p>Five to seven sessions per lesson on a fixed rotation. The rotation matters more than its
+contents: knowing that day 5 of every block is always the reading day removes the daily
+"what should I do today" tax, which at fifty minutes is expensive.</p>
+
+<table>
+  <thead><tr><th>Day of block</th><th>What you do</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1</strong></td><td>Vocabulary list + dialogue. Listen to the audio while reading along, twice. No analysis yet.</td></tr>
+    <tr><td><strong>2</strong></td><td>Grammar, first half. Textbook explanation, then its own <span class="jp">練習</span> drills, aloud.</td></tr>
+    <tr><td><strong>3</strong></td><td>Grammar, second half. Same shape.</td></tr>
+    <tr><td><strong>4</strong></td><td>Workbook sheets + the lesson's kanji (from Lesson 3 on).</td></tr>
+    <tr><td><strong>5</strong></td><td><strong><span class="jp">読み書き</span> passage, five-pass repeated reading.</strong> The fluency engine — protocol below.</td></tr>
+    <tr><td><strong>6–7</strong></td><td>Interleaved retrieval: this lesson mixed with <em>all</em> previous ones, closed book. Longer lessons get two of these.</td></tr>
+  </tbody>
+</table>
+
+<div class="block" id="genki-1">
+  <h3>Lesson 1 · <a href="../lessons/week-03-lesson-01-new-friends.html"><span class="jp">あたらしいともだち</span> — New Friends</a></h3>
+  <p class="meta">5 sessions · <span class="wk">Week 3 Day 4 → Week 4 Day 3</span><br>
+     Grammar pp. 36–55 &nbsp;·&nbsp; Greetings + Numbers pp. 30–35<br>
+     workbook pp. 16–21</p>
+  <p><span class="jp">X は Y です</span> · question sentences with <span class="jp">か</span> ·
+  <span class="jp">Noun の Noun</span>. Short block: only three grammar points, and this
+  lesson's 読み書き half was Phase 0.</p>
+  <p class="cite">The workbook adds a sheet the textbook doesn't headline — <em>Time and
+  Telephone Numbers</em> (workbook p. 19). Do it: numbers are the first thing you will need to
+  understand out loud in a shop.</p>
+</div>
+
+<div class="block" id="genki-2">
+  <h3>Lesson 2 · <a href="../lessons/week-04-lesson-02-shopping.html"><span class="jp">かいもの</span> — Shopping</a></h3>
+  <p class="meta">6 sessions · <span class="wk">Week 4 Day 4 → Week 5 Day 4</span><br>
+     Grammar pp. 56–81 &nbsp;·&nbsp; workbook pp. 25–31</p>
+  <p><span class="jp">これ/それ/あれ/どれ</span> · <span class="jp">この/その/あの/どの</span> ·
+  <span class="jp">ここ/そこ/あそこ/どこ</span> · <span class="jp">だれの</span> ·
+  <span class="jp">も</span> · <span class="jp">じゃないです</span> · <span class="jp">ね/よ</span>.</p>
+  <p class="cite">The first lesson that does something in the real world: after this block you
+  can ask what a thing is, whose it is, how much it costs, and say no to it politely.</p>
+</div>
+
+<div class="block" id="genki-3">
+  <h3>Lesson 3 · <a href="../lessons/week-05-lesson-03-making-a-date.html"><span class="jp">デートの約束</span> — Making a Date</a></h3>
+  <p class="meta">7 sessions · <span class="wk">Week 5 Day 5 → Week 7 Day 1</span><br>
+     Grammar pp. 82–101 &nbsp;·&nbsp; Reading <span class="jp">まいにちのせいかつ</span> pp. 304–307<br>
+     workbook pp. 32–39 &nbsp;·&nbsp; workbook kanji pp. 133–134</p>
+  <p>Verbs arrive: conjugation, <span class="jp">る/う</span> verb types, present tense,
+  particles <span class="jp">を・で・に・へ</span>, time references,
+  <span class="jp">〜ませんか</span>, frequency adverbs, word order, topic
+  <span class="jp">は</span>. <strong>The hardest lesson in this phase</strong>, which is why
+  it gets seven sessions.</p>
+  <p><strong>Kanji begin here — 15:</strong></p>
+  <p class="kanji-strip">一 二 三 四 五 六 七 八 九 十 百 千 万 円 時</p>
+  <p class="cite">Numbers, yen and time. At the end of this block you can read a price tag
+  and an opening-hours sign.</p>
+</div>
+
+<div class="block" id="genki-4">
+  <h3>Lesson 4 · <a href="../lessons/week-07-lesson-04-first-date.html"><span class="jp">初めてのデート</span> — The First Date</a></h3>
+  <p class="meta">7 sessions · <span class="wk">Week 7 Day 2 → Week 8 Day 3</span><br>
+     Grammar pp. 102–127 &nbsp;·&nbsp; Reading <span class="jp">メアリーさんのしゅうまつ</span> pp. 308–311<br>
+     workbook pp. 41–49 &nbsp;·&nbsp; workbook kanji pp. 135–136</p>
+  <p><span class="jp">あります/います</span> · describing where things are · past tense of
+  <span class="jp">です</span> · <strong>past tense of verbs</strong> ·
+  <span class="jp">も</span> · <span class="jp">一時間</span> · <span class="jp">たくさん</span> ·
+  <span class="jp">と</span>.</p>
+  <p><strong>Kanji — 14:</strong></p>
+  <p class="kanji-strip">日 本 人 月 火 水 木 金 土 曜 上 下 中 半</p>
+  <p class="cite">Days of the week. After this block a Japanese calendar, a shop's opening
+  days, and a timetable stop being decoration.</p>
+</div>
+
+<div class="block" id="genki-5">
+  <h3>Lesson 5 · <a href="../lessons/week-08-lesson-05-okinawa.html"><span class="jp">沖縄旅行</span> — A Trip to Okinawa</a></h3>
+  <p class="meta">6 sessions · <span class="wk">Week 8 Day 4 → Week 9 Day 4</span><br>
+     Grammar pp. 128–145 &nbsp;·&nbsp; Reading <span class="jp">りょこう</span> pp. 312–317<br>
+     workbook pp. 50–58 &nbsp;·&nbsp; workbook kanji pp. 137–138</p>
+  <p>Adjectives — present, past, and modifying nouns — plus
+  <span class="jp">好き(な)/きらい(な)</span>, <span class="jp">〜ましょう/〜ましょうか</span>,
+  and counting. The <span class="jp">い</span>/<span class="jp">な</span> adjective split is
+  the thing to get right; most later mistakes trace back to it.</p>
+  <p><strong>Kanji — 14:</strong></p>
+  <p class="kanji-strip">山 川 元 気 天 私 今 田 女 男 見 行 食 飲</p>
+  <p class="cite"><span class="jp">女・男</span> are the two characters on every public toilet
+  door in Japan. <span class="jp">食・飲</span> give you eat and drink on a menu.</p>
+</div>
+
+<div class="block" id="assessment" style="border-color:var(--accent)">
+  <h3>Final session · <a href="../lessons/week-09-assessment.html">Assessment</a></h3>
+  <p class="meta"><span class="wk">Week 9 Day 5</span> &nbsp;·&nbsp; Cold read
+     <span class="jp">まいにちのせいかつ</span> pp. 304–307</p>
+  <p>No new material. Six tests: the three kana drills from the week-3 gate again, this time
+  against the clock; all 43 kanji from Lessons 3–5 in isolation; twenty verbs into past and
+  past negative; sixteen adjectives across both classes; thirteen grammar questions spanning
+  every lesson; and a cold, timed, single-pass read of a passage you last saw three weeks ago.</p>
+  <p class="cite">The tests run oldest material first. That ordering is the diagnostic — a
+  score on four-day-old material measures fluency strength and predicts little, while a score
+  on four-week-old material measures storage strength and predicts everything. What breaks
+  tells you what month three opens with.</p>
+</div>
+
+<!-- ================================================================== -->
+<h2>The fifty-minute session</h2>
+
+<p>Fixed, so you never spend decision-making time on it. New material gets less than half
+the clock, which is deliberate: re-reading an explanation feels productive and builds almost
+nothing, while retrieving it cold is uncomfortable and builds almost everything.</p>
+
+<table class="clock-table">
+  <thead><tr><th>Clock</th><th>Activity</th><th>Why</th></tr></thead>
+  <tbody>
+    <tr><td>0–7 min</td><td><strong>Cold retrieval</strong>, book closed. Yesterday's material, plus one item from a previous lesson.</td><td>Retrieval practice. The discomfort is the mechanism.</td></tr>
+    <tr><td>7–12 min</td><td><strong>Kana speed drill.</strong> Stays at 5 minutes through Genki Lesson 3, then drops to 3.</td><td>Automaticity, not accuracy — a different goal needing a different tool. This slot is where kana speed gets built after the gate.</td></tr>
+    <tr><td>12–33 min</td><td><strong>New material</strong> from the textbook.</td><td>The only block where difficulty is the enemy. Keep it easy here.</td></tr>
+    <tr><td>33–46 min</td><td><strong>Production</strong> — workbook, or saying and writing your own sentences aloud.</td><td>Recognising is not producing. You don't own a structure until you can build one.</td></tr>
+    <tr><td>46–50 min</td><td><strong>Log it.</strong> Three lines: what stuck, what didn't, what to re-test.</td><td>Tomorrow's warm-up writes itself.</td></tr>
+  </tbody>
+</table>
+
+<div class="note">
+  <span class="label">Day 1 of each week is different</span>
+  <p style="margin-bottom:0">Two days off means day 1's warm-up will feel bad. That is the
+  spacing effect working, not evidence of failure — material retrieved after a gap is
+  retained better than material retrieved while still warm. Give day 1's cold retrieval 12
+  minutes instead of 7, and don't re-read your notes first.</p>
+</div>
+
+<!-- ================================================================== -->
+<h2>The reading protocol</h2>
+
+<p>This is what produces reading fluency, and it is the part that will feel most like a
+waste of time while you do it. It isn't. Gorsuch, Taguchi and Umehara ran a semester-long
+study on Japanese learners in which repeatedly re-reading the <em>same</em> passage with an
+audio model improved both reading speed and comprehension — and critically, the gains
+<strong>transferred to passages the learners had never seen</strong>.<sup><a href="#n1">1</a></sup>
+Re-reading one passage five times beats reading five passages once.</p>
+
+<p>On day 5 of each lesson block, take that lesson's <span class="jp">読み書き</span> passage
+and run:</p>
+
+<ol class="passes">
+  <li><strong>Listen only.</strong> Audio playing, eyes following the text. Don't read aloud,
+  don't look anything up. You are installing a model of what it should sound like.</li>
+  <li><strong>Silent read.</strong> Mark every place you stalled. <em>Now</em> look up only
+  those — not the whole passage.</li>
+  <li><strong>Chorus read.</strong> Read aloud along with the audio, keeping up. Where you
+  fall behind is where your decoding is too slow.</li>
+  <li><strong>Solo read, timed.</strong> Aloud, alone, stopwatch running. Write the time in
+  the margin.</li>
+  <li><strong>Solo read, timed again.</strong> Beat pass 4. Write that time down too.</li>
+</ol>
+
+<p>Then close the book and answer the textbook's comprehension questions from memory. Keep
+the times — watching pass 5 of Lesson 5 come in faster than pass 5 of Lesson 3 is the
+clearest evidence of progress you will get in nine weeks.</p>
+
+<p class="cite" id="n1">1. Gorsuch, Taguchi &amp; Umehara, "Repeated Reading for Japanese
+Language Learners," <em>The Reading Matrix</em> 15(2), 2015 —
+<a href="https://eric.ed.gov/?id=EJ1075950">ERIC record EJ1075950</a>. Audio for Genki comes from
+the publisher's free <a href="https://apps.apple.com/us/app/oto-navi-sound-navigator/id1490391845">OTO
+Navi</a> app — search your book's ISBN inside it. <strong>This protocol does not work without
+audio</strong>, so install it in week 1.</p>
+
+<!-- ================================================================== -->
+<h2>Milestones</h2>
+
+<table>
+  <thead><tr><th>By the end of</th><th>You can</th></tr></thead>
+  <tbody>
+    <tr><td class="wk">Week 1</td><td>Read all 46 hiragana accurately, including the look-alikes.</td></tr>
+    <tr><td class="wk">Week 2</td><td>Read all 46 katakana, and sound out a katakana travel word: <span class="jp">ホテル</span>, <span class="jp">タクシー</span>, <span class="jp">コンビニ</span>.</td></tr>
+    <tr><td class="wk">Week 3</td><td>All 104 readings in both scripts, at 100% accuracy. Read any all-kana sentence aloud with correct beats.</td></tr>
+    <tr><td class="wk">Week 4</td><td>Introduce yourself, say where you're from and what you do, and ask the same of someone else.</td></tr>
+    <tr><td class="wk">Week 5</td><td>Shop: ask what something is, whose it is, how much, and decline politely.</td></tr>
+    <tr><td class="wk">Week 6</td><td>Use verbs in the present tense with correct particles. Read prices, times and dates in kanji. <strong>Kana speed should reach target around here.</strong></td></tr>
+    <tr><td class="wk">Week 7</td><td>Talk about the past. Read a weekday and calendar sign. <strong>Open a Tadoku Level 0 graded reader</strong> and get through it.</td></tr>
+    <tr><td class="wk">Week 9</td><td>Describe things with both adjective types in both tenses. Read a menu's eat and drink sections. ~43 kanji, ~200 words, all 104 kana.</td></tr>
+  </tbody>
+</table>
+
+<!-- ================================================================== -->
+<h2>When you fall behind</h2>
+
+<p>You will, somewhere around Lesson 3. The rule is: <strong>drop breadth, never drop the
+day-5 reading session and never drop the warm-up.</strong> In priority order, what to cut
+from a block that is running over:</p>
+
+<table>
+  <thead><tr><th>Cut first</th><th>Cut last</th></tr></thead>
+  <tbody>
+    <tr><td>Culture Notes pages</td><td>The <span class="jp">読み書き</span> passage (day 5)</td></tr>
+    <tr><td>Half the workbook sheets — do the odd-numbered ones</td><td>The cold-retrieval warm-up</td></tr>
+    <tr><td>Kanji <em>writing</em>; keep kanji <em>reading</em></td><td>Grammar points 1–3 of the lesson</td></tr>
+    <tr><td>Useful Expressions pages</td><td>Vocabulary</td></tr>
+  </tbody>
+</table>
+
+<p>If a whole lesson block slips by more than two sessions, re-cut the plan rather than carry
+a silent debt to the end. A nine-week plan that honestly delivers four lessons is worth more
+than one that nominally promises twelve and actually delivers three.</p>
+
+<!-- ================================================================== -->
+<h2>After week nine · Lessons 6–12</h2>
+
+<p>Same rotation, same arithmetic — roughly seven sessions per lesson, so about
+<strong>ten further weeks</strong> at this pace, and the remaining 102 kanji. Recorded here
+so finishing the book stays a visible goal rather than quietly disappearing.</p>
+
+<table>
+  <thead><tr><th>Lesson</th><th>Core grammar</th><th>Kanji</th></tr></thead>
+  <tbody>
+    <tr><td><strong>6</strong> <span class="jp">ロバートさんの一日</span></td><td><strong>The て-form</strong>, <span class="jp">〜てください</span>, joining activities, <span class="jp">〜てもいいです</span>, <span class="jp">〜てはいけません</span>, <span class="jp">〜から</span></td><td class="num">15</td></tr>
+    <tr><td><strong>7</strong> <span class="jp">家族の写真</span></td><td><span class="jp">〜ている</span> (progressive and result), adjective/noun て-forms, <span class="jp">verb stem + に行く</span></td><td class="num">14</td></tr>
+    <tr><td><strong>8</strong> <span class="jp">バーベキュー</span></td><td>Short forms, casual speech, <span class="jp">〜と思います</span>, <span class="jp">〜ないでください</span>, subject <span class="jp">が</span></td><td class="num">14</td></tr>
+    <tr><td><strong>9</strong> <span class="jp">かぶき</span></td><td>Past short forms, qualifying nouns with verbs, <span class="jp">もう〜ました / まだ〜ていません</span></td><td class="num">15</td></tr>
+    <tr><td><strong>10</strong> <span class="jp">冬休みの予定</span></td><td>Comparison, <span class="jp">〜つもりだ</span>, <span class="jp">adjective + なる</span>, <span class="jp">で</span></td><td class="num">14</td></tr>
+    <tr><td><strong>11</strong> <span class="jp">休みのあと</span></td><td><span class="jp">〜たい</span>, <span class="jp">〜たり〜たりする</span>, <span class="jp">〜ことがある</span>, <span class="jp">や</span></td><td class="num">16</td></tr>
+    <tr><td><strong>12</strong> <span class="jp">病気</span></td><td><span class="jp">〜んです</span>, <span class="jp">〜すぎる</span>, <span class="jp">〜ほうがいいです</span>, <span class="jp">〜ので</span>, <span class="jp">〜なければいけません</span></td><td class="num">14</td></tr>
+  </tbody>
+</table>
+
+<p class="cite"><strong>Lesson 6 is the one to protect.</strong> The て-form is the highest-leverage
+structure in elementary Japanese and the gateway to most of Genki II. It is irregular enough
+that it must be drilled to automaticity rather than understood once — give it the full block
+and expect it in your warm-ups for months. Lesson 6's kanji
+(<span class="jp">東 西 南 北 口 出 右 左</span>) are also the most immediately useful set in
+the book: <span class="jp">出口</span> is <em>exit</em> and <span class="jp">北口</span> is
+<em>north gate</em>, the characters on the signs in any Japanese station.</p>
+
+<!-- ================================================================== -->
+<div class="lesson-foot">
+  <p><strong>Before week 1, day 1:</strong> install
+  <a href="https://apps.apple.com/us/app/oto-navi-sound-navigator/id1490391845">OTO Navi</a>
+  and find your book by ISBN — the audio is free and the reading protocol depends on it. Print
+  the <a href="kana-charts.html">Complete Kana charts</a>. Bookmark the publisher's
+  <a href="https://genki3.japantimes.co.jp/en/student/">Self-Study Room</a>.</p>
+
+  <div class="chip-row">
+    <a class="chip" href="../index.html">&#8962; Course home</a>
+    <a class="chip" href="kana-charts.html">Complete kana charts</a>
+    <a class="chip" href="kana-confusables.html">Confusables card</a>
+    <a class="chip" href="../lessons/week-01-hiragana.html">Week 1 · Hiragana</a>
+    <a class="chip" href="../lessons/week-02-katakana.html">Week 2 · Katakana</a>
+    <a class="chip" href="../lessons/week-03-marks-and-beats.html">Week 3 · Marks &amp; beats</a>
+    <a class="chip" href="../RESOURCES.md">Resources</a>
+  </div>
+
+  <div class="ask-teacher">
+    <strong>This plan is a hypothesis, not a contract.</strong> It assumes an average pace
+    through material that suits different people differently. Re-cut it the moment it stops
+    matching reality — if Lesson 3 takes nine sessions instead of seven, that is information,
+    not failure. Ask about anything above that is unclear, and say when something is too hard
+    or too easy.
+  </div>
+</div>
+
+</div>
+</body>
+</html>

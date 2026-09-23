@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confusable Kana</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  .matrix { width: 100%; border-collapse: collapse; margin: 1.4rem 0; table-layout: fixed; }
+  .matrix th { text-align: center; font-size: .68rem; padding: .5rem .3rem; }
+  .matrix th.rowhead {
+    text-align: right; width: 8.5rem; border-bottom: 0; border-right: 1.5px solid var(--rule);
+    vertical-align: middle; font-size: .68rem; line-height: 1.4;
+  }
+  .matrix td {
+    text-align: center; padding: 1rem .4rem; border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+  .matrix td .glyph { font-family: var(--jp); font-size: 3.3rem; line-height: 1; display: block; }
+  .matrix td .romaji {
+    font-family: var(--sans); font-weight: 700; font-size: .95rem;
+    color: var(--accent); letter-spacing: .05em; display: block; margin-top: .25rem;
+  }
+  .arrow { font-size: 1.5rem; color: var(--accent); line-height: 1; }
+  .group { margin: 1.8rem 0; }
+  .group h3 { margin-bottom: .5rem; }
+  .row-kana {
+    font-family: var(--jp); font-size: 2.4rem; letter-spacing: .3em;
+    margin: .2rem 0 .4rem; line-height: 1.4;
+  }
+  .tight { font-size: .9rem; color: var(--ink-soft); margin: 0 0 .3rem; }
+  @media (max-width: 520px) {
+    .matrix th.rowhead { width: 5.5rem; font-size: .6rem; }
+    .matrix td .glyph { font-size: 2.4rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="topnav"><a href="../index.html">&larr; Course home</a></p>
+
+<p class="eyebrow">Reference · Kana</p>
+<h1>The Confusable Kana</h1>
+<p class="standfirst">The two dozen characters that cause almost all beginner
+misreadings, and the rules that separate them. Print this one.</p>
+
+<h2>The big four: <span class="jp">シ ツ ン ソ</span></h2>
+
+<p>These four account for more katakana errors than every other character combined.
+They are not four separate problems — they are one 2×2 grid, decided by two questions.</p>
+
+<div class="rule-box">
+  <p style="margin-bottom:.6rem"><strong>Question 1 — how many short strokes?</strong><br>
+  Two short strokes → it's <em>shi</em> or <em>tsu</em>. One → it's <em>n</em> or <em>so</em>.</p>
+  <p style="margin-bottom:0"><strong>Question 2 — which way does the long stroke sweep?</strong><br>
+  Upward, from bottom-left to top-right → <em>shi</em> or <em>n</em>.
+  Downward, from top-right to bottom-left → <em>tsu</em> or <em>so</em>.</p>
+</div>
+
+<table class="matrix">
+  <tr>
+    <th class="rowhead"></th>
+    <th>Two short strokes</th>
+    <th>One short stroke</th>
+  </tr>
+  <tr>
+    <th class="rowhead">Long stroke sweeps<br><span class="arrow">↗</span> <strong>UP</strong></th>
+    <td><span class="glyph">シ</span><span class="romaji">shi</span></td>
+    <td><span class="glyph">ン</span><span class="romaji">n</span></td>
+  </tr>
+  <tr>
+    <th class="rowhead">Long stroke sweeps<br><span class="arrow">↙</span> <strong>DOWN</strong></th>
+    <td><span class="glyph">ツ</span><span class="romaji">tsu</span></td>
+    <td><span class="glyph">ソ</span><span class="romaji">so</span></td>
+  </tr>
+</table>
+
+<div class="note">
+  <span class="label">Why the rule is true, not just a trick</span>
+  <p>Each katakana was carved out of a kanji, and it inherited that kanji's writing
+  direction — which is also the direction of its hiragana cousin. So the sweep is not
+  arbitrary:</p>
+  <ul style="margin:.4rem 0 0;padding-left:1.2rem">
+    <li><span class="jp" style="font-size:1.3em">し → シ</span> — <span class="jp">し</span> ends by curving <em>upward</em> to the right. So does <span class="jp">シ</span>.</li>
+    <li><span class="jp" style="font-size:1.3em">つ → ツ</span> — <span class="jp">つ</span> is drawn from the <em>top</em>, moving across and down. So is <span class="jp">ツ</span>.</li>
+    <li><span class="jp" style="font-size:1.3em">ん → ン</span> — <span class="jp">ん</span> finishes sweeping <em>upward</em>. So does <span class="jp">ン</span>.</li>
+    <li><span class="jp" style="font-size:1.3em">そ → ソ</span> — <span class="jp">そ</span> finishes sweeping <em>down</em> to the left. So does <span class="jp">ソ</span>.</li>
+  </ul>
+  <p style="margin-top:.6rem;margin-bottom:0">A secondary cue for when a font makes the sweep
+  hard to judge: on <span class="jp">シ</span> and <span class="jp">ン</span> the short strokes
+  stack <em>vertically</em> down the left edge. On <span class="jp">ツ</span> and
+  <span class="jp">ソ</span> they sit <em>side by side</em> along the top.</p>
+</div>
+
+<h3>Seen in the wild</h3>
+<table>
+  <thead><tr><th>Word</th><th>Reading</th><th>Watch</th></tr></thead>
+  <tbody>
+    <tr><td class="jp" style="font-size:1.35em">タクシー</td><td>takushī — taxi</td><td>ends <span class="jp">シ</span>, sweeps up</td></tr>
+    <tr><td class="jp" style="font-size:1.35em">スーツケース</td><td>sūtsukēsu — suitcase</td><td><span class="jp">ツ</span> sweeps down</td></tr>
+    <tr><td class="jp" style="font-size:1.35em">コンビニ</td><td>konbini — convenience store</td><td><span class="jp">ン</span>, one stroke, up</td></tr>
+    <tr><td class="jp" style="font-size:1.35em">ソース</td><td>sōsu — sauce</td><td><span class="jp">ソ</span>, one stroke, down</td></tr>
+    <tr><td class="jp" style="font-size:1.35em">シャワー</td><td>shawā — shower</td><td><span class="jp">シ</span> + small <span class="jp">ャ</span></td></tr>
+    <tr><td class="jp" style="font-size:1.35em">ツアー</td><td>tsuā — tour</td><td>contrast with the row above</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Katakana look-alikes</h2>
+
+<div class="group">
+  <h3>The <span class="jp">ク</span> family — count the corners</h3>
+  <p class="row-kana">ウ ワ ク タ ケ</p>
+  <p class="tight"><strong>u · wa · ku · ta · ke</strong></p>
+  <div class="pair-grid">
+    <div class="pair"><span class="glyph">ウ</span><span class="romaji">u</span><span class="hint">Has the little hat tick on top. Nothing else here does.</span></div>
+    <div class="pair"><span class="glyph">ワ</span><span class="romaji">wa</span><span class="hint">Same as ウ but bare-headed. Wide, open, round shoulder.</span></div>
+    <div class="pair"><span class="glyph">ク</span><span class="romaji">ku</span><span class="hint">Narrower than ワ; the top stroke cuts in from the left.</span></div>
+    <div class="pair"><span class="glyph">タ</span><span class="romaji">ta</span><span class="hint">ク with a slash through it. ku + 1 stroke = ta.</span></div>
+    <div class="pair"><span class="glyph">ケ</span><span class="romaji">ke</span><span class="hint">A tall vertical drops right through the body.</span></div>
+  </div>
+</div>
+
+<div class="group">
+  <h3>The <span class="jp">ノ</span> family — build by adding strokes</h3>
+  <p class="row-kana">ノ メ ヌ ス</p>
+  <p class="tight"><strong>no · me · nu · su</strong></p>
+  <div class="pair-grid">
+    <div class="pair"><span class="glyph">ノ</span><span class="romaji">no</span><span class="hint">One stroke. The base of the whole family.</span></div>
+    <div class="pair"><span class="glyph">メ</span><span class="romaji">me</span><span class="hint">ノ crossed by a stroke — an X. Two strokes.</span></div>
+    <div class="pair"><span class="glyph">ヌ</span><span class="romaji">nu</span><span class="hint">メ that grew a flat roof on top.</span></div>
+    <div class="pair"><span class="glyph">ス</span><span class="romaji">su</span><span class="hint">Roof + one leg, no crossing. ヌ minus the crossbar.</span></div>
+  </div>
+</div>
+
+<div class="group">
+  <h3>Three straight-line traps</h3>
+  <div class="pair-grid">
+    <div class="pair"><span class="glyph">コ</span><span class="romaji">ko</span><span class="hint">Two strokes, open to the left.</span></div>
+    <div class="pair"><span class="glyph">ユ</span><span class="romaji">yu</span><span class="hint">Foot at the bottom. Like a キ without the cross.</span></div>
+    <div class="pair"><span class="glyph">エ</span><span class="romaji">e</span><span class="hint">Closed top and bottom — an I-beam.</span></div>
+    <div class="pair"><span class="glyph">ア</span><span class="romaji">a</span><span class="hint">Has the descending left leg.</span></div>
+    <div class="pair"><span class="glyph">マ</span><span class="romaji">ma</span><span class="hint">Leg tucks inward, no separate stroke.</span></div>
+    <div class="pair"><span class="glyph">チ</span><span class="romaji">chi</span><span class="hint">Two crossbars, vertical hooks left.</span></div>
+    <div class="pair"><span class="glyph">テ</span><span class="romaji">te</span><span class="hint">Two crossbars, vertical drops straight from centre.</span></div>
+    <div class="pair"><span class="glyph">ル</span><span class="romaji">ru</span><span class="hint">Two legs, right one hooks up.</span></div>
+    <div class="pair"><span class="glyph">レ</span><span class="romaji">re</span><span class="hint">One leg only.</span></div>
+    <div class="pair"><span class="glyph">オ</span><span class="romaji">o</span><span class="hint">Crossbar, vertical, and a diagonal flick.</span></div>
+    <div class="pair"><span class="glyph">ホ</span><span class="romaji">ho</span><span class="hint">オ with two symmetrical feet.</span></div>
+    <div class="pair"><span class="glyph">キ</span><span class="romaji">ki</span><span class="hint">Two crossbars, no flick.</span></div>
+  </div>
+</div>
+
+<hr>
+
+<h2>Hiragana look-alikes</h2>
+
+<p>Fewer problems here since you already read hiragana at ~80%, but these are the
+usual suspects — check yourself against them before assuming the gap is elsewhere.</p>
+
+<div class="pair-grid">
+  <div class="pair"><span class="glyph">ね</span><span class="romaji">ne</span><span class="hint">Loop at the end, curls inward.</span></div>
+  <div class="pair"><span class="glyph">れ</span><span class="romaji">re</span><span class="hint">Same start, but the tail flicks outward.</span></div>
+  <div class="pair"><span class="glyph">わ</span><span class="romaji">wa</span><span class="hint">Same start, tail drops straight with no flick.</span></div>
+  <div class="pair"><span class="glyph">る</span><span class="romaji">ru</span><span class="hint">Ends in a closed loop.</span></div>
+  <div class="pair"><span class="glyph">ろ</span><span class="romaji">ro</span><span class="hint">Same shape, loop left open.</span></div>
+  <div class="pair"><span class="glyph">は</span><span class="romaji">ha</span><span class="hint">Vertical + crossbar + right loop.</span></div>
+  <div class="pair"><span class="glyph">ほ</span><span class="romaji">ho</span><span class="hint">は with a second crossbar.</span></div>
+  <div class="pair"><span class="glyph">ま</span><span class="romaji">ma</span><span class="hint">Two crossbars, vertical loops at the bottom.</span></div>
+  <div class="pair"><span class="glyph">さ</span><span class="romaji">sa</span><span class="hint">Crossbar on top, curve opens left.</span></div>
+  <div class="pair"><span class="glyph">き</span><span class="romaji">ki</span><span class="hint">さ with an extra crossbar.</span></div>
+  <div class="pair"><span class="glyph">ぬ</span><span class="romaji">nu</span><span class="hint">Ends in a loop.</span></div>
+  <div class="pair"><span class="glyph">め</span><span class="romaji">me</span><span class="hint">No loop — the tail just ends.</span></div>
+</div>
+
+<hr>
+
+<h2>Not characters, but they break reading anyway</h2>
+
+<table>
+  <thead><tr><th>Mark</th><th>What it does</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td class="jp" style="font-size:1.5em">ー</td><td>Long vowel, <strong>katakana only</strong>. Holds the previous vowel for a second beat.</td><td class="jp" style="font-size:1.2em">コーヒー <span style="font-family:var(--sans);font-size:.75em;color:var(--ink-faint)">kōhī</span></td></tr>
+    <tr><td class="jp" style="font-size:1.5em">っ / ッ</td><td>Small tsu. Not read — it doubles the <em>next</em> consonant and inserts a pause.</td><td class="jp" style="font-size:1.2em">きって <span style="font-family:var(--sans);font-size:.75em;color:var(--ink-faint)">kitte</span></td></tr>
+    <tr><td class="jp" style="font-size:1.5em">ゃ ゅ ょ</td><td>Small y-kana. Fuse with the previous character into one beat, not two.</td><td class="jp" style="font-size:1.2em">きょう <span style="font-family:var(--sans);font-size:.75em;color:var(--ink-faint)">kyō, not ki-yo-u</span></td></tr>
+    <tr><td class="jp" style="font-size:1.5em">は</td><td>Read <strong>wa</strong> when it is the topic particle.</td><td class="jp" style="font-size:1.2em">私は <span style="font-family:var(--sans);font-size:.75em;color:var(--ink-faint)">watashi wa</span></td></tr>
+    <tr><td class="jp" style="font-size:1.5em">へ</td><td>Read <strong>e</strong> when it is the direction particle.</td><td class="jp" style="font-size:1.2em">東京へ <span style="font-family:var(--sans);font-size:.75em;color:var(--ink-faint)">Tōkyō e</span></td></tr>
+    <tr><td class="jp" style="font-size:1.5em">を</td><td>Always read <strong>o</strong>. Only ever used as the object particle.</td><td class="jp" style="font-size:1.2em">パンを <span style="font-family:var(--sans);font-size:.75em;color:var(--ink-faint)">pan o</span></td></tr>
+  </tbody>
+</table>
+
+<div class="lesson-foot">
+  <p class="cite">Character shapes and mnemonics cross-checked against
+  <a href="https://www.tofugu.com/japanese/learn-katakana/">Tofugu's Learn Katakana guide</a>
+  and the kana charts in <em>GENKI I</em> 3rd ed. (pp. 20–27),
+  with the reading rules from 読み書き編 Lessons 1–2 (pp. 296–303).</p>
+  <div class="chip-row">
+    <a class="chip" href="../index.html">&#8962; Course home</a>
+    <a class="chip" href="kana-charts.html">Complete kana charts</a>
+    <a class="chip" href="genki1-roadmap.html">Roadmap</a>
+    <a class="chip" href="../lessons/week-02-katakana.html">Week 2 · Katakana</a>
+    <a class="chip" href="../lessons/week-01-hiragana.html">Week 1 · Hiragana</a>
+    <a class="chip" href="../lessons/week-03-marks-and-beats.html">Week 3 · Marks &amp; beats</a>
+    <a class="chip" href="../MISSION.md">Mission</a>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

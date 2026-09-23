@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 5–7 · Lesson 3 — Making a Date</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  .drill-stage .kana-big { font-size: clamp(2rem, 9vw, 3.4rem); }
+  .jp-title { font-size: 1.5rem; color: var(--ink-soft); margin: -.3rem 0 1.3rem; letter-spacing: .04em; }
+
+  .partmap { border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; margin: 1.6rem 0; }
+  .partmap a {
+    display: grid; grid-template-columns: 4.2rem 1fr 4.8rem; gap: .8rem; align-items: baseline;
+    padding: .75rem 1rem; border-bottom: 1px solid var(--rule); text-decoration: none;
+    color: var(--ink); font-size: .93rem;
+  }
+  .partmap a:last-child { border-bottom: 0; }
+  .partmap a:hover { background: var(--paper-warm); }
+  .partmap .s { font-family: var(--sans); font-size: .7rem; font-weight: 700;
+                letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+  .partmap .c { font-family: var(--mono); font-size: .72rem; color: var(--ink-faint); text-align: right; }
+  @media (max-width: 520px) {
+    .partmap a { grid-template-columns: 3.6rem 1fr; }
+    .partmap .c { display: none; }
+  }
+
+  .parthead {
+    margin: 3.4rem 0 .3rem; padding: .9rem 1.1rem; border-radius: 8px;
+    background: var(--accent-dim); border-left: 4px solid var(--accent);
+  }
+  .parthead h2 { border: 0; margin: 0; font-size: 1.3rem; }
+  .parthead .s {
+    font-family: var(--sans); font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .3rem;
+  }
+  .parthead p { margin: .4rem 0 0; font-size: .92rem; color: var(--ink-soft); }
+
+  .pattern {
+    border: 2px solid var(--accent); border-radius: 8px; padding: .9rem 1.1rem;
+    margin: 1.3rem 0; text-align: center; background: var(--paper-warm);
+  }
+  .pattern .jp-pat { font-family: var(--jp); font-size: 1.45rem; letter-spacing: .04em; }
+  .pattern .en { font-size: .88rem; color: var(--ink-soft); display: block; margin-top: .3rem; }
+
+  .ex { margin: 1.1rem 0; }
+  .ex div {
+    padding: .6rem 0; border-bottom: 1px solid var(--rule);
+    display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; align-items: baseline;
+  }
+  .ex div:last-child { border-bottom: 0; }
+  .ex .j { font-family: var(--jp); font-size: 1.2rem; line-height: 1.5; }
+  .ex .r { font-family: var(--mono); font-size: .72rem; color: var(--ink-faint); display: block; }
+  .ex .e { font-size: .88rem; color: var(--ink-soft); font-style: italic; }
+  @media (max-width: 520px) { .ex div { grid-template-columns: 1fr; gap: .15rem; } }
+
+  .vgroup { border: 1px solid var(--rule); border-radius: 9px; padding: 1rem 1.2rem;
+            margin: 1.1rem 0; background: var(--paper); }
+  .vgroup h3 { margin: 0 0 .4rem; }
+  .vgroup .rule { font-family: var(--mono); font-size: .82rem; color: var(--accent);
+                  background: var(--paper-warm); padding: .45rem .7rem; border-radius: 6px;
+                  display: inline-block; margin-bottom: .6rem; }
+  .vgroup .verbs { font-family: var(--jp); font-size: 1.2rem; line-height: 2; letter-spacing: .04em; }
+  .vgroup p { margin: .5rem 0 0; font-size: .9rem; }
+
+  .conj { width: 100%; border-collapse: collapse; margin: 1.1rem 0; }
+  .conj th { font-size: .64rem; }
+  .conj td { font-family: var(--jp); font-size: 1.1rem; padding: .5rem .55rem; }
+  .conj td:first-child { color: var(--ink-faint); }
+  .conj td.hl { color: var(--accent); font-weight: 600; }
+
+  .partgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: .7rem; margin: 1.2rem 0; }
+  .partgrid div { border: 1px solid var(--rule); border-radius: 8px; padding: .85rem .7rem;
+                  background: var(--paper-warm); text-align: center; }
+  .partgrid .p { font-family: var(--jp); font-size: 2.2rem; color: var(--accent); line-height: 1.1; }
+  .partgrid .m { font-family: var(--sans); font-weight: 700; font-size: .82rem; display: block; margin-top: .2rem; }
+  .partgrid .n { font-size: .77rem; color: var(--ink-soft); display: block; margin-top: .3rem; line-height: 1.4; }
+
+  .order { display: flex; flex-wrap: wrap; gap: .4rem; align-items: stretch; margin: 1.2rem 0; justify-content: center; }
+  .order div { border: 1px solid var(--rule); border-radius: 7px; padding: .5rem .7rem;
+               text-align: center; background: var(--paper-warm); min-width: 4.6rem; }
+  .order div.verb { border-color: var(--accent); border-width: 2px; }
+  .order .j { font-family: var(--jp); font-size: 1.1rem; display: block; }
+  .order .l { font-family: var(--sans); font-size: .6rem; text-transform: uppercase;
+              letter-spacing: .08em; color: var(--ink-faint); display: block; margin-top: .2rem; }
+  .order div.verb .l { color: var(--accent); }
+
+  .kanjigrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px,1fr)); gap: .6rem; margin: 1.2rem 0; }
+  .kanjigrid div { border: 1px solid var(--rule); border-radius: 8px; padding: .6rem .3rem;
+                   text-align: center; background: var(--paper-warm); }
+  .kanjigrid .k { font-family: var(--jp); font-size: 2.1rem; line-height: 1.1; display: block; }
+  .kanjigrid .r { font-family: var(--mono); font-size: .66rem; color: var(--accent); display: block; margin-top: .25rem; }
+  .kanjigrid .m { font-size: .7rem; color: var(--ink-soft); display: block; margin-top: .1rem; }
+
+  .scaffold { border: 1px solid var(--rule); border-radius: 9px; padding: 1.1rem 1.3rem;
+              background: var(--paper-warm); margin: 1.3rem 0; }
+  .scaffold ol { margin: .6rem 0 0; padding-left: 1.3rem; }
+  .scaffold li { margin-bottom: .7rem; font-family: var(--jp); font-size: 1.15rem; line-height: 1.6; }
+  .scaffold li .gloss { font-family: var(--serif); font-size: .84rem; color: var(--ink-soft);
+                        font-style: italic; display: block; margin-top: .1rem; }
+  .scaffold .slot { color: var(--accent); border-bottom: 1.5px dashed var(--accent); padding: 0 .3em; }
+
+  ol.passes { padding-left: 1.3rem; }
+  ol.passes li { margin-bottom: .5rem; }
+  .wordbig { font-family: var(--jp); font-size: 1.8rem; letter-spacing: .04em; display: block; margin: .3rem 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="topnav"><a href="../index.html">&larr; Course home</a></p>
+
+<p class="eyebrow">Phase 1 · Week 5 day 5 → Week 7 day 1</p>
+<h1>Lesson 3 · Making a Date</h1>
+<p class="jp-title"><span class="jp">デートの約束</span></p>
+<p class="standfirst">Seven days, eight grammar points, four particles, and the first fifteen
+kanji. This is the hardest block in the plan and it is where Japanese stops being a
+vocabulary exercise and becomes a language. Textbook pp. 82–101.</p>
+
+<div class="note">
+  <span class="label">Why this one gets seven days</span>
+  <p><strong>Verbs arrive.</strong> Everything you have said so far has been
+  <span class="jp">X は Y です</span> — nouns and a copula. From today you can describe
+  <em>actions</em>, which means verb groups, conjugation, and the particles that tell you who
+  did what to what and where.</p>
+  <p style="margin-bottom:0">If it feels like a step up, that is accurate and it was planned
+  for. If a day runs over, take an eighth — the plan has slack precisely here.</p>
+</div>
+
+<div class="partmap">
+  <a href="#d1"><span class="s">Day 1</span><span><strong>Vocabulary and dialogue</strong> — input only</span><span class="c">pp. 82–85</span></a>
+  <a href="#d2"><span class="s">Day 2</span><span><strong>The three verb groups and the <span class="jp">ます</span> form</strong> — the spine of everything after this</span><span class="c">pp. 86–88</span></a>
+  <a href="#d3"><span class="s">Day 3</span><span><strong>Particles</strong> — <span class="jp">を・で・に・へ</span></span><span class="c">pp. 88–89</span></a>
+  <a href="#d4"><span class="s">Day 4</span><span><strong>Time, frequency, word order</strong> — when <span class="jp">に</span> is required and when it is wrong</span><span class="c">pp. 90–91</span></a>
+  <a href="#d5"><span class="s">Day 5</span><span><strong>Inviting, refusing, and topic <span class="jp">は</span></strong> — plus the kanji</span><span class="c">pp. 90–93</span></a>
+  <a href="#d6"><span class="s">Day 6</span><span><strong>Workbook and kanji practice</strong></span><span class="c">wb 32–39</span></a>
+  <a href="#d7"><span class="s">Day 7</span><span><strong>Reading</strong> — the first real passage, five-pass protocol</span><span class="c">pp. 304–307</span></a>
+</div>
+
+<!-- ==================== DAY 1 ==================== -->
+<div class="parthead" id="d1">
+  <span class="s">Day 1</span>
+  <h2>Vocabulary and Dialogue</h2>
+  <p>Input only. Resist the urge to start analysing the verbs — that's tomorrow.</p>
+</div>
+
+<ol>
+  <li><strong>Vocabulary, pp. 84–85.</strong> Read with the audio. This list contains about a
+  dozen <em>verbs</em>, which are new in kind, not just in number. When you meet one, note the
+  form it's listed in — the plain "dictionary" form. Tomorrow you'll learn why that matters.</li>
+  <li><strong>Dialogue, pp. 82–83.</strong> Listen twice reading along. It's two people
+  arranging to meet, so you'll hear invitations and refusals before you learn how they work.</li>
+</ol>
+
+<div class="note">
+  <span class="label">Learn each verb as a pair, starting today</span>
+  <p style="margin-bottom:0">The single most useful habit in this lesson: never memorise a
+  verb's dictionary form alone. Memorise it <strong>with its <span class="jp">ます</span>
+  form</strong> — <span class="jp">いく — いきます</span>, <span class="jp">たべる —
+  たべます</span>. The pair tells you which group the verb belongs to, which is information
+  you will need for every conjugation from here to the end of Genki II. Learning them
+  separately means learning them twice.</p>
+</div>
+
+<!-- ==================== DAY 2 ==================== -->
+<div class="parthead" id="d2">
+  <span class="s">Day 2</span>
+  <h2>The Three Verb Groups</h2>
+  <p>Textbook pp. 86–88. The heaviest single day in the course. Take it slowly.</p>
+</div>
+
+<p>Every Japanese verb belongs to one of three groups, and the group decides how it
+conjugates. Get this wrong and every later form — past, negative,
+<span class="jp">て</span>-form, potential — comes out wrong too. Get it right and they all
+follow.</p>
+
+<div class="vgroup">
+  <h3><span class="jp">る</span>-verbs</h3>
+  <span class="rule">base ending in <em>e</em> or <em>i</em> &nbsp;+&nbsp; る</span>
+  <div class="verbs">たべる · ねる · おきる · みる</div>
+  <p>The base is what's left when you remove <span class="jp">る</span>:
+  <em>tabe</em>, <em>ne</em>, <em>oki</em>, <em>mi</em> — all ending in <em>e</em> or
+  <em>i</em>. So every <span class="jp">る</span>-verb ends in <em>-eru</em> or <em>-iru</em>.</p>
+</div>
+
+<div class="vgroup">
+  <h3><span class="jp">う</span>-verbs</h3>
+  <span class="rule">base ending in a <em>consonant</em> &nbsp;+&nbsp; <em>u</em></span>
+  <div class="verbs">のむ · よむ · はなす · きく · いく · <strong>かえる</strong></div>
+  <p><em>nom</em>+<em>u</em>, <em>yom</em>+<em>u</em>, <em>kik</em>+<em>u</em>. The base ends
+  in a consonant, and <em>u</em> is the suffix.</p>
+</div>
+
+<div class="vgroup">
+  <h3>Irregular — there are only two</h3>
+  <span class="rule">する &nbsp;·&nbsp; くる</span>
+  <div class="verbs">する · くる · べんきょうする</div>
+  <p><span class="jp">する</span> is hugely productive: attach it to a noun and you get a
+  verb. <span class="jp">べんきょうする</span> (to study) is noun + <span class="jp">する</span>,
+  and there are hundreds more like it. Learn <span class="jp">する</span> once, get all of them.</p>
+</div>
+
+<div class="note">
+  <span class="label">The trap: <span class="jp">かえる</span></span>
+  <p style="margin-bottom:0"><span class="jp">かえる</span> (to go home) ends in
+  <em>-eru</em>, so it looks exactly like a <span class="jp">る</span>-verb. It is not. Its
+  base is <em>kaer</em>- and the <em>r</em> belongs to the <strong>base</strong>, not the
+  suffix — so it's a <span class="jp">う</span>-verb, giving
+  <span class="jp">かえります</span>, never <span class="jp">×かえます</span>. This is why the
+  book tells you to memorise the pair rather than guess from the shape.</p>
+</div>
+
+<h3>How much you can tell from the ending</h3>
+
+<p>If a verb ends in <span class="jp">る</span>, the sound before it narrows things down but
+never settles them completely:</p>
+
+<table>
+  <thead><tr><th>Ends in…</th><th>Then it is…</th></tr></thead>
+  <tbody>
+    <tr><td><em>-aru</em> or <em>-oru</em></td><td><strong>Definitely</strong> a <span class="jp">う</span>-verb.</td></tr>
+    <tr><td><em>-uru</em></td><td>Irregular, or a <span class="jp">う</span>-verb.</td></tr>
+    <tr><td><em>-iru</em> or <em>-eru</em></td><td><em>Probably</em> a <span class="jp">る</span>-verb — but can be a <span class="jp">う</span>-verb, as <span class="jp">かえる</span> shows.</td></tr>
+  </tbody>
+</table>
+
+<h3>The <span class="jp">ます</span> form</h3>
+
+<p>Now the payoff. Each group forms the polite present tense differently:</p>
+
+<table class="conj">
+  <thead><tr><th>Group</th><th>Dictionary</th><th>Affirmative</th><th>Negative</th></tr></thead>
+  <tbody>
+    <tr><td><span class="jp">る</span>-verb</td><td>たべる</td><td class="hl">たべます</td><td class="hl">たべません</td></tr>
+    <tr><td><span class="jp">る</span>-verb</td><td>みる</td><td class="hl">みます</td><td class="hl">みません</td></tr>
+    <tr><td><span class="jp">う</span>-verb</td><td>のむ</td><td class="hl">のみます</td><td class="hl">のみません</td></tr>
+    <tr><td><span class="jp">う</span>-verb</td><td>きく</td><td class="hl">ききます</td><td class="hl">ききません</td></tr>
+    <tr><td><span class="jp">う</span>-verb</td><td>かえる</td><td class="hl">かえります</td><td class="hl">かえりません</td></tr>
+    <tr><td>irregular</td><td>する</td><td class="hl">します</td><td class="hl">しません</td></tr>
+    <tr><td>irregular</td><td>くる</td><td class="hl">きます</td><td class="hl">きません</td></tr>
+  </tbody>
+</table>
+
+<p><strong><span class="jp">る</span>-verbs:</strong> drop <span class="jp">る</span>, add
+<span class="jp">ます</span>. That's all.</p>
+
+<p><strong><span class="jp">う</span>-verbs:</strong> the final <em>u</em> becomes <em>i</em>,
+then add <span class="jp">ます</span>. In kana terms you move <strong>up one row in the same
+column</strong>: <span class="jp">む → み</span>, <span class="jp">く → き</span>,
+<span class="jp">す → し</span>, <span class="jp">る → り</span>. The hiragana grid you
+learned in week 1 is doing real grammatical work here — this is the first place it pays off.</p>
+
+<h3>What "present tense" actually means</h3>
+
+<p>A misleading name. The <span class="jp">ます</span> form covers two things, and
+<em>neither</em> is "happening right now":</p>
+
+<div class="ex">
+  <div><span class="j">わたしは よく テレビを みます。<span class="r">watashi wa yoku terebi o mimasu</span></span>
+       <span class="e"><strong>Habitual</strong> — I often watch TV.</span></div>
+  <div><span class="j">あした きょうとに いきます。<span class="r">ashita Kyooto ni ikimasu</span></span>
+       <span class="e"><strong>Future</strong> — I'll go to Kyoto tomorrow.</span></div>
+</div>
+
+<p>"I am watching TV <em>at this moment</em>" needs a different form,
+<span class="jp">〜ている</span>, which arrives in Lesson 7. Until then, don't try to say it.</p>
+
+<h3>Classify them</h3>
+<div id="q-groups"></div>
+
+<h3>Conjugate against the clock</h3>
+<p>Dictionary form in, <span class="jp">ます</span> form out. Type romaji.</p>
+<div id="d-conj"></div>
+
+<!-- ==================== DAY 3 ==================== -->
+<div class="parthead" id="d3">
+  <span class="s">Day 3</span>
+  <h2>Particles</h2>
+  <p>Textbook pp. 88–89. Four small words that carry the grammar English carries with word
+  order.</p>
+</div>
+
+<p>English says who-did-what-to-what by <em>position</em>: "the dog bit the man" differs from
+"the man bit the dog". Japanese marks it instead, with particles attached to each noun — which
+is why Japanese word order can be flexible while English cannot.</p>
+
+<div class="partgrid">
+  <div><span class="p">を</span><span class="m">direct object</span>
+    <span class="n">The thing acted on. <strong>Read <em>o</em></strong>, never <em>wo</em>.</span></div>
+  <div><span class="p">で</span><span class="m">place of action</span>
+    <span class="n">Where the event happens.</span></div>
+  <div><span class="p">に</span><span class="m">goal, or time</span>
+    <span class="n">Two jobs: where movement ends, and when something happens.</span></div>
+  <div><span class="p">へ</span><span class="m">goal of movement</span>
+    <span class="n"><strong>Read <em>e</em></strong>. Only direction — never time.</span></div>
+</div>
+
+<div class="ex">
+  <div><span class="j">コーヒーを のみます。<span class="r">koohii o nomimasu</span></span>
+       <span class="e">I drink coffee. — coffee is what's affected</span></div>
+  <div><span class="j">としょかんで ほんを よみます。<span class="r">toshokan de hon o yomimasu</span></span>
+       <span class="e">I read books at the library. — で marks the place</span></div>
+  <div><span class="j">うちに かえります。<span class="r">uchi ni kaerimasu</span></span>
+       <span class="e">I'll go home. — に marks the destination</span></div>
+  <div><span class="j">にちようびに いきます。<span class="r">nichiyoobi ni ikimasu</span></span>
+       <span class="e">I'll go on Sunday. — に marks the time</span></div>
+</div>
+
+<div class="note">
+  <span class="label"><span class="jp">に</span> or <span class="jp">へ</span>?</span>
+  <p><strong><span class="jp">へ</span> can replace <span class="jp">に</span> for a
+  destination</strong>, with movement verbs like <span class="jp">いく</span>,
+  <span class="jp">くる</span>, <span class="jp">かえる</span>. So
+  <span class="jp">うちに かえります</span> and <span class="jp">うちへ かえります</span> are
+  both fine.</p>
+  <p style="margin-bottom:0"><strong><span class="jp">へ</span> can never replace
+  <span class="jp">に</span> for time.</strong> <span class="jp">×にちようびへ</span> is wrong.
+  So if you're unsure, <span class="jp">に</span> is the safer choice — it does both jobs.</p>
+</div>
+
+<div class="note">
+  <span class="label">Two particles that lie about their spelling</span>
+  <p style="margin-bottom:0"><span class="jp">を</span> is read <strong>o</strong> and
+  <span class="jp">へ</span> is read <strong>e</strong> — exactly the rule you met in
+  <a href="week-03-marks-and-beats.html#part2">week 3</a>. Lesson 3 is where it stops being
+  trivia and starts appearing in every sentence you write.</p>
+</div>
+
+<h3>Approximate times</h3>
+
+<p>Swap <span class="jp">に</span> for <span class="jp">ごろ</span> (or use
+<span class="jp">ごろに</span>) to say "about":</p>
+
+<div class="ex">
+  <div><span class="j">じゅういちじに ねます。<span class="r">juuichiji ni nemasu</span></span>
+       <span class="e">I go to bed at eleven.</span></div>
+  <div><span class="j">じゅういちじごろ ねます。<span class="r">juuichiji goro nemasu</span></span>
+       <span class="e">I go to bed at about eleven.</span></div>
+</div>
+
+<h3>Check it</h3>
+<div id="q-particles"></div>
+
+<!-- ==================== DAY 4 ==================== -->
+<div class="parthead" id="d4">
+  <span class="s">Day 4</span>
+  <h2>Time, Frequency, and Word Order</h2>
+  <p>Textbook pp. 90–91. Mostly rules about when <em>not</em> to use <span class="jp">に</span>.</p>
+</div>
+
+<h3>When time expressions take <span class="jp">に</span></h3>
+
+<p>This trips up nearly everyone, because the rule isn't "all times take
+<span class="jp">に</span>". It splits on whether the expression is an
+<strong>absolute point</strong> or a <strong>relative one</strong>:</p>
+
+<table>
+  <thead><tr><th><span class="jp">に</span> required</th><th>No <span class="jp">に</span></th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Days of the week — <span class="jp">にちようびに</span></td>
+      <td>Relative to now — <span class="jp">きょう</span>, <span class="jp">あした</span></td>
+    </tr>
+    <tr>
+      <td>Clock times — <span class="jp">じゅうじに</span></td>
+      <td>Regular intervals — <span class="jp">まいにち</span>, <span class="jp">まいばん</span></td>
+    </tr>
+    <tr>
+      <td>Months — <span class="jp">くがつに</span></td>
+      <td><span class="jp">いつ</span> (when)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The logic: <span class="jp">に</span> pins an event to a <em>fixed point on the calendar
+or clock</em>. "Tomorrow" isn't a fixed point — it depends on when you're speaking — so it
+takes no particle. Nor does "every day", which isn't a point at all.</p>
+
+<p class="cite">Parts of the day (<span class="jp">あさ</span>,
+<span class="jp">ばん</span>) and <span class="jp">しゅうまつ</span> (weekend) normally take
+no <span class="jp">に</span>, but optionally can. Treat them as "no
+<span class="jp">に</span>" and you'll never be wrong, only occasionally less idiomatic.</p>
+
+<h3>Frequency adverbs</h3>
+
+<p>Three describe how <em>often</em>; two describe how <em>rarely</em> — and the second pair
+comes with a grammatical string attached:</p>
+
+<div class="ex">
+  <div><span class="j">まいにち · よく · ときどき<span class="r">mainichi · yoku · tokidoki</span></span>
+       <span class="e">every day · often · sometimes — normal sentence</span></div>
+  <div><span class="j">ぜんぜん · あまり<span class="r">zenzen · amari</span></span>
+       <span class="e">not at all · not much — <strong>require a negative ending</strong></span></div>
+</div>
+
+<div class="pattern">
+  <span class="jp-pat">ぜんぜん / あまり … ません</span>
+  <span class="en">these two anticipate the negative, and the sentence must deliver it</span>
+</div>
+
+<div class="ex">
+  <div><span class="j">わたしは ぜんぜん テレビを みません。<span class="r">…zenzen terebi o mimasen</span></span>
+       <span class="e">I don't watch TV at all.</span></div>
+  <div><span class="j">たけしさんは あまり べんきょうしません。<span class="r">…amari benkyooshimasen</span></span>
+       <span class="e">Takeshi doesn't study much.</span></div>
+</div>
+
+<p>Saying <span class="jp">×ぜんぜん みます</span> is ungrammatical — the adverb has set up
+an expectation the verb must satisfy. English has nothing quite like this, which is why it
+needs deliberate practice rather than just noticing.</p>
+
+<h3>Word order</h3>
+
+<p>Japanese word order is flexible in the middle and rigid at the end. <strong>The verb comes
+last. Always.</strong> Everything before it is a series of noun + particle chunks, and
+because each chunk carries its own particle, they can be rearranged without confusion:</p>
+
+<div class="order">
+  <div><span class="j">わたしは</span><span class="l">topic</span></div>
+  <div><span class="j">きょう</span><span class="l">time</span></div>
+  <div><span class="j">としょかんで</span><span class="l">place</span></div>
+  <div><span class="j">にほんごを</span><span class="l">object</span></div>
+  <div class="verb"><span class="j">べんきょうします</span><span class="l">verb</span></div>
+</div>
+
+<p class="cite">"I'll study Japanese at the library today." Move the time chunk to the front
+and the sentence still means exactly the same thing — because
+<span class="jp">きょう</span> stays <span class="jp">きょう</span> wherever it sits. That is
+what the particles buy you.</p>
+
+<h3>Check it</h3>
+<div id="q-time"></div>
+
+<!-- ==================== DAY 5 ==================== -->
+<div class="parthead" id="d5">
+  <span class="s">Day 5</span>
+  <h2>Inviting, Refusing, and the Kanji</h2>
+  <p>Textbook pp. 90–93, then the kanji list. The social half of the lesson.</p>
+</div>
+
+<h3><span class="jp">〜ませんか</span> — inviting</h3>
+
+<p>Take the <strong>negative</strong> form and add <span class="jp">か</span>. That's an
+invitation:</p>
+
+<div class="ex">
+  <div><span class="j">ひるごはんを たべませんか。<span class="r">hirugohan o tabemasen ka</span></span>
+       <span class="e">Shall we have lunch? / How about lunch?</span></div>
+  <div><span class="j">テニスを しませんか。<span class="r">tenisu o shimasen ka</span></span>
+       <span class="e">Would you like to play tennis?</span></div>
+</div>
+
+<div class="note">
+  <span class="label">The affirmative does <em>not</em> work this way</span>
+  <p style="margin-bottom:0"><span class="jp">たべますか</span> is only ever a question —
+  "do you eat lunch?" It cannot be an invitation. English can invite with either polarity
+  ("shall we eat?" / "won't you eat?"), so this asymmetry has to be learned deliberately.
+  <strong>To invite, go negative.</strong></p>
+</div>
+
+<h3>Refusing without saying no</h3>
+
+<p>Accepting is easy: <span class="jp">いいですね。</span> Refusing is where the culture sits.</p>
+
+<div class="ex">
+  <div><span class="j">どようびは、ちょっと…<span class="r">doyoobi wa, chotto…</span></span>
+       <span class="e">Saturday is… a little. — i.e. Saturday doesn't work</span></div>
+</div>
+
+<p><span class="jp">ちょっと</span> literally means "a little", and trailing off with it is
+a standard polite refusal. <strong>Japanese speakers don't normally refuse with
+<span class="jp">いいえ</span></strong> — it's too blunt. The unfinished sentence
+<em>is</em> the politeness: you've signalled the problem without stating it.</p>
+
+<p>Listen for this one. A dropped <span class="jp">ちょっと</span> is a "no", and taking it
+as hesitation you can talk someone out of is a real social mistake.</p>
+
+<h3><span class="jp">いく</span> and <span class="jp">くる</span> are anchored to the speaker</h3>
+
+<p>Someone calls you from another room. In English you shout "I'm coming!" In Japanese you
+say <span class="jp">いきます</span> — "I'm going."</p>
+
+<div class="pattern">
+  <span class="jp-pat">くる = toward where <em>I</em> am &nbsp;·&nbsp; いく = away from where <em>I</em> am</span>
+  <span class="en">anchored to the speaker's position, not the listener's</span>
+</div>
+
+<p>English anchors "come" to the <em>listener</em>. Japanese anchors both verbs to the
+<em>speaker</em>. So moving toward the person you're talking to is
+<span class="jp">いく</span>, because you're moving away from yourself.</p>
+
+<h3>The topic particle <span class="jp">は</span>, properly</h3>
+
+<p>You've used <span class="jp">は</span> since Lesson 1 as though it marked the subject. It
+doesn't. <strong>The topic need not be the subject at all</strong> — it's simply the thing
+you're announcing you'll talk about:</p>
+
+<div class="ex">
+  <div><span class="j">しゅうまつは たいてい なにを しますか。<span class="r">shuumatsu wa taitee nani o shimasu ka</span></span>
+       <span class="e">What do you usually do on weekends? — the <em>time</em> is the topic</span></div>
+  <div><span class="j">きょうは きょうとに いきます。<span class="r">kyoo wa Kyooto ni ikimasu</span></span>
+       <span class="e">Today, I'm going to Kyoto.</span></div>
+  <div><span class="j">ばんごはんは？<span class="r">bangohan wa?</span></span>
+       <span class="e">How about dinner? — an object made topic, sentence left unfinished</span></div>
+</div>
+
+<p>That last one is worth noticing: <span class="jp">ばんごはん</span> is what would be eaten
+— the <em>object</em> — yet it takes <span class="jp">は</span>. Read
+<span class="jp">は</span> as <strong>"as for…"</strong> rather than "the subject is", and
+these all become predictable.</p>
+
+<h3>The first fifteen kanji</h3>
+
+<p>Numbers, yen and time — chosen so that after this block you can read a price tag and an
+opening-hours sign. Recognition only; writing from memory is not part of this plan.</p>
+
+<div class="kanjigrid">
+  <div><span class="k">一</span><span class="r">ichi</span><span class="m">one</span></div>
+  <div><span class="k">二</span><span class="r">ni</span><span class="m">two</span></div>
+  <div><span class="k">三</span><span class="r">san</span><span class="m">three</span></div>
+  <div><span class="k">四</span><span class="r">shi · yon</span><span class="m">four</span></div>
+  <div><span class="k">五</span><span class="r">go</span><span class="m">five</span></div>
+  <div><span class="k">六</span><span class="r">roku</span><span class="m">six</span></div>
+  <div><span class="k">七</span><span class="r">shichi · nana</span><span class="m">seven</span></div>
+  <div><span class="k">八</span><span class="r">hachi</span><span class="m">eight</span></div>
+  <div><span class="k">九</span><span class="r">kyuu · ku</span><span class="m">nine</span></div>
+  <div><span class="k">十</span><span class="r">juu</span><span class="m">ten</span></div>
+  <div><span class="k">百</span><span class="r">hyaku</span><span class="m">hundred</span></div>
+  <div><span class="k">千</span><span class="r">sen</span><span class="m">thousand</span></div>
+  <div><span class="k">万</span><span class="r">man</span><span class="m">ten thousand</span></div>
+  <div><span class="k">円</span><span class="r">en</span><span class="m">yen</span></div>
+  <div><span class="k">時</span><span class="r">ji</span><span class="m">o'clock</span></div>
+</div>
+
+<div class="note">
+  <span class="label">You already know these words</span>
+  <p style="margin-bottom:0">Every reading above is a word you learned in Lesson 2 — the
+  numbers, <span class="jp">えん</span>, <span class="jp">じ</span>. So these fifteen kanji
+  are <em>new symbols for known sounds</em>, not new vocabulary. That makes them by far the
+  easiest fifteen in the book, which is presumably why they come first. The same trick as
+  week 2's katakana: convert what you have before learning anything new.</p>
+</div>
+
+<h3>Read them</h3>
+<div id="d-kanji"></div>
+
+<h3>Check the social grammar</h3>
+<div id="q-social"></div>
+
+<!-- ==================== DAY 6 ==================== -->
+<div class="parthead" id="d6">
+  <span class="s">Day 6</span>
+  <h2>Workbook and Kanji Practice</h2>
+  <p>Workbook pp. 32–39, plus the kanji sheets at workbook pp. 133–134.</p>
+</div>
+
+<p>Eight sheets, one per grammar point, ending with
+<span class="jp">答えましょう</span> (written questions) and
+<span class="jp">聞く練習</span> (listening). Production day — everything so far has been
+recognition, and building a sentence from nothing is a different skill.</p>
+
+<p><strong>The kanji sheets</strong> at workbook pp. 133–134 come in two halves:
+<em>Kanji Practice</em> (tracing and copying) and <em>Using Kanji</em> (fill-in-the-blank in
+real sentences). Given that handwriting is out of scope here, <strong>trace each character
+once</strong> for shape memory, then spend your time on the Using Kanji half — reading kanji
+in context is the skill this plan is actually building.</p>
+
+<div class="note">
+  <span class="label">If you're running short</span>
+  <p style="margin-bottom:0">Do the odd-numbered sheets and the <em>Using Kanji</em> page,
+  and skip the tracing. Never skip the listening sheet — it is the only thing in this lesson
+  that makes you decode Japanese at someone else's pace.</p>
+</div>
+
+<!-- ==================== DAY 7 ==================== -->
+<div class="parthead" id="d7">
+  <span class="s">Day 7</span>
+  <h2>Reading: <span class="jp">まいにちのせいかつ</span></h2>
+  <p>Textbook pp. 304–307. The first real passage of the course.</p>
+</div>
+
+<p>Until now every Japanese sentence you've read was an example built to demonstrate one
+point. This is a connected passage about someone's daily life, written to be read rather
+than to teach — and it uses your new verbs, particles, time expressions and kanji all at
+once.</p>
+
+<p><strong>Run the five-pass protocol.</strong> This is the method behind the whole plan's
+reading claim, and this is the first lesson where you get to use it properly:</p>
+
+<ol class="passes">
+  <li><strong>Listen only.</strong> Audio playing, eyes following. Don't read aloud, don't
+  look anything up. You're installing a model of how it should sound.</li>
+  <li><strong>Silent read.</strong> Mark every place you stalled. <em>Now</em> look up only
+  those — not the whole passage.</li>
+  <li><strong>Chorus read.</strong> Read aloud along with the audio, keeping up. Where you
+  fall behind is where your decoding is still too slow.</li>
+  <li><strong>Solo read, timed.</strong> Aloud, alone, stopwatch running. Write the time in
+  the margin.</li>
+  <li><strong>Solo read, timed again.</strong> Beat pass 4. Write that down too.</li>
+</ol>
+
+<p>Then close the book and answer the comprehension questions from memory.
+<strong>Keep both times.</strong> They're your baseline — watching Lesson 5's pass-5 time
+come in under Lesson 3's is the clearest evidence of progress this plan produces.</p>
+
+<h3>Build your own daily routine</h3>
+
+<p>The passage describes someone's day. Now describe yours, using only Lesson 3 grammar:</p>
+
+<div class="scaffold">
+  <ol>
+    <li>わたしは <span class="slot">じかん</span>に おきます。<span class="gloss">I get up at ___. Clock time takes に.</span></li>
+    <li><span class="slot">ばしょ</span>で <span class="slot">なに</span>を たべます。<span class="gloss">I eat ___ at ___. で for place, を for object.</span></li>
+    <li>まいにち <span class="slot">ばしょ</span>に いきます。<span class="gloss">I go to ___ every day. まいにち takes no に.</span></li>
+    <li>よく <span class="slot">なに</span>を します。<span class="gloss">I often do ___.</span></li>
+    <li>あまり <span class="slot">なに</span>を <span class="slot">どうし</span>ません。<span class="gloss">I don't ___ much. あまり demands the negative.</span></li>
+    <li><span class="slot">じかん</span>ごろ ねます。<span class="gloss">I go to bed at about ___.</span></li>
+  </ol>
+</div>
+
+<h3>Mixed retrieval</h3>
+<div id="q-mixed"></div>
+
+<h3>Finish with the culture note</h3>
+
+<p><strong>p. 101</strong> — <span class="jp">日本の家</span>, Japanese houses. Read it,
+don't drill it. It explains several words from this lesson's vocabulary that don't map onto
+Western housing, which is the kind of thing that quietly confuses you later if you skip it.</p>
+
+<!-- ==================== CLOSE ==================== -->
+<h2>What you can do now</h2>
+
+<ul>
+  <li>Describe what you do — habitually or in the future — with about a dozen verbs.</li>
+  <li>Say <em>where</em>, <em>when</em>, and <em>to what</em>, using
+  <span class="jp">を・で・に・へ</span>.</li>
+  <li>Invite someone to do something, and refuse an invitation the way a Japanese speaker
+  actually would.</li>
+  <li>Read fifteen kanji — enough for a price and an opening time.</li>
+  <li>Read a connected passage, which is the first time in this course that's been true.</li>
+</ul>
+
+<div class="note">
+  <span class="label">Kana speed should have arrived</span>
+  <p style="margin-bottom:0">The five-minute warm-up drill has been running since week 3, and
+  this is roughly where sub-second kana recognition is expected to land. Check it: run the
+  <a href="week-03-kana-gate.html">gate drills</a> once and compare against the times you
+  recorded then. If you're there, <strong>drop the warm-up drill to three minutes</strong>
+  and give the time to verb conjugation instead — that's the thing that now needs
+  automaticity.</p>
+</div>
+
+<h2>Before Lesson 4</h2>
+
+<p><strong>Conjugate verbs in your head, constantly.</strong> Dictionary form to
+<span class="jp">ます</span> form, in the queue, on the train. Lesson 4 adds the
+<strong>past</strong> tense on top of this machinery, and it only works if the machinery is
+automatic. A verb you have to stop and think about is a verb you can't use in conversation.</p>
+
+<div class="lesson-foot">
+  <p><strong>Next:</strong> Genki Lesson 4, <span class="jp">初めてのデート</span> — The First
+  Date. Seven days: <span class="jp">あります/います</span>, describing where things are, the
+  past tense of both <span class="jp">です</span> and verbs, and fourteen more kanji —
+  <span class="jp">日 本 人 月 火 水 木 金 土 曜 上 下 中 半</span>, the days of the week.</p>
+
+  <div class="chip-row">
+    <a class="chip" href="../index.html">&#8962; Course home</a>
+    <a class="chip" href="week-04-lesson-02-shopping.html">&larr; Lesson 2</a>
+    <a class="chip" href="../reference/genki1-roadmap.html#genki-3">The plan · Lesson 3</a>
+    <a class="chip" href="week-07-lesson-04-first-date.html">Lesson 4 &rarr;</a>
+    <a class="chip" href="../reference/kana-charts.html">Kana charts</a>
+  </div>
+
+  <div class="ask-teacher">
+    <strong>Send me your daily-routine paragraph and your two reading times.</strong> The
+    paragraph will show whether the particles have landed — <span class="jp">で</span> where
+    <span class="jp">に</span> belongs is the classic Lesson 3 error, and so is a
+    <span class="jp">に</span> stuck onto <span class="jp">まいにち</span>. The reading times
+    matter more than they look: they're the baseline every later lesson gets measured
+    against, and there is no way to reconstruct them later.
+  </div>
+</div>
+
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script src="../assets/drill.js"></script>
+<script>
+function q(prompt, answer, options, explain) {
+  return { prompt: prompt, options: options, answer: answer, explain: explain };
+}
+
+// ---------------------------------------------------------------------------
+// Day 2 — verb groups and conjugation
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-groups', {
+  title: 'Which group?',
+  questions: [
+    q('<span class="wordbig">たべる</span>Which group?', 'ru-verb', ['ru-verb','u-verb','irregular','suru-verb'],
+      '<strong>る-verb.</strong> Base <em>tabe</em>- ends in <em>e</em>, plus る.'),
+    q('<span class="wordbig">のむ</span>Which group?', 'u-verb', ['u-verb','ru-verb','irregular','suru-verb'],
+      '<strong>う-verb.</strong> Base <em>nom</em>- ends in a consonant, plus <em>u</em>.'),
+    q('<span class="wordbig">かえる</span>Which group?', 'u-verb', ['u-verb','ru-verb','irregular','suru-verb'],
+      '<strong>う-verb</strong> — the trap. It looks like a る-verb because it ends in <em>-eru</em>, but the <em>r</em> belongs to the base <em>kaer</em>-. Hence かえり<strong>ます</strong>, not ×かえます.'),
+    q('<span class="wordbig">おきる</span>Which group?', 'ru-verb', ['ru-verb','u-verb','irregular','suru-verb'],
+      '<strong>る-verb.</strong> Base <em>oki</em>- ends in <em>i</em>.'),
+    q('<span class="wordbig">くる</span>Which group?', 'irregular', ['irregular','u-verb','ru-verb','suru-verb'],
+      '<strong>Irregular.</strong> One of only two — くる and する.'),
+    q('<span class="wordbig">きく</span>Which group?', 'u-verb', ['u-verb','ru-verb','irregular','suru-verb'],
+      '<strong>う-verb.</strong> Base <em>kik</em>- plus <em>u</em>.'),
+    q('A verb ending in <em>-aru</em> or <em>-oru</em> is…', 'definitely', ['definitely','sometimes','never','rarely'],
+      'It is <strong>definitely</strong> a う-verb. That ending is the one case where the shape settles the question with no exceptions.'),
+    q('A verb ending in <em>-iru</em> or <em>-eru</em> is…', 'probably', ['probably','definitely','never','rarely'],
+      '<strong>Probably</strong> a る-verb — but not certainly, as かえる shows. This is why the book says to memorise the dictionary form together with the ます form.')
+  ]
+});
+
+Drill.mount('#d-conj', {
+  title: 'Dictionary form → ます form',
+  target: 60,
+  items: [
+    { show: 'たべる', answer: ['tabemasu'] },
+    { show: 'ねる',   answer: ['nemasu'] },
+    { show: 'おきる', answer: ['okimasu'] },
+    { show: 'みる',   answer: ['mimasu'] },
+    { show: 'のむ',   answer: ['nomimasu'] },
+    { show: 'よむ',   answer: ['yomimasu'] },
+    { show: 'はなす', answer: ['hanashimasu','hanasimasu'] },
+    { show: 'きく',   answer: ['kikimasu'] },
+    { show: 'いく',   answer: ['ikimasu'] },
+    { show: 'かえる', answer: ['kaerimasu'] },
+    { show: 'する',   answer: ['shimasu','simasu'] },
+    { show: 'くる',   answer: ['kimasu'] }
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 3 — particles
+// ---------------------------------------------------------------------------
+var PART = ['を','で','に','へ'];
+
+Quiz.mount('#q-particles', {
+  title: 'Particles',
+  questions: [
+    q('<span class="wordbig">コーヒー＿ のみます</span>"I drink coffee."', 'を', PART,
+      '<strong>を</strong> marks the direct object — the thing affected by the verb.'),
+    q('<span class="wordbig">としょかん＿ よみます</span>"I read at the library."', 'で', PART,
+      '<strong>で</strong> marks the place where the action happens.'),
+    q('<span class="wordbig">にちようび＿ いきます</span>"I\'ll go on Sunday."', 'に', PART,
+      '<strong>に</strong> for time. へ cannot do this job — it is direction only.'),
+    q('<span class="wordbig">うち＿ かえります</span>"I\'ll go home." — which is <em>safest</em>?', 'に', PART,
+      'Both <strong>に</strong> and へ work for a destination with movement verbs. に is the safer default because it also handles time; へ does not.'),
+    q('<span class="jp">を</span> is pronounced…', 'o', ['o','wo','ho','e'],
+      '<strong>o</strong>. Always. Some romaji systems spell it "wo", but the sound is <em>o</em>.'),
+    q('<span class="jp">へ</span> as a particle is pronounced…', 'e', ['e','he','ye','a'],
+      '<strong>e</strong> — the rule from week 3, now appearing in real sentences.'),
+    q('Which particle can mark <em>both</em> a destination and a time?', 'に', PART,
+      '<strong>に</strong> does both jobs. へ only does destination, which is why に is the safer choice when you are unsure.'),
+    q('"I go to bed at <em>about</em> eleven" — <span class="jp">じゅういちじ＿ ねます</span>',
+      'ごろ', ['ごろ','に','で','へ'],
+      '<strong>ごろ</strong> replaces に to mean "about". You can also say ごろに.')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 4 — time, frequency, word order
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-time', {
+  title: 'Time, frequency, word order',
+  questions: [
+    q('<span class="wordbig">あした</span>Does it take <span class="jp">に</span>?', 'no', ['no','yes','always','usually'],
+      '<strong>No.</strong> "Tomorrow" is defined relative to the present moment, so it is not a fixed point on the calendar and takes no particle.'),
+    q('<span class="wordbig">くがつ</span>Does it take <span class="jp">に</span>?', 'yes', ['yes','no','never','rarely'],
+      '<strong>Yes</strong> — くがつに. A month is an absolute point.'),
+    q('<span class="wordbig">まいにち</span>Does it take <span class="jp">に</span>?', 'no', ['no','yes','always','usually'],
+      '<strong>No.</strong> "Every day" describes an interval, not a point in time.'),
+    q('<span class="wordbig">じゅうじよんじゅうごふん</span>Does it take <span class="jp">に</span>?', 'yes', ['yes','no','never','rarely'],
+      '<strong>Yes</strong> — a clock time is an absolute point, so に is required.'),
+    q('<span class="wordbig">いつ</span>Does it take <span class="jp">に</span>?', 'no', ['no','yes','always','usually'],
+      '<strong>No.</strong> いつ ("when") takes no particle.'),
+    q('Complete: <span class="jp">わたしは ぜんぜん テレビを ＿</span>',
+      'みません', ['みません','みます','みましょう','みますか'],
+      '<strong>みません.</strong> ぜんぜん anticipates a negative and the sentence must deliver one — ×ぜんぜんみます is ungrammatical.'),
+    q('Complete: <span class="jp">たけしさんは あまり べんきょう＿</span>',
+      'しません', ['しません','します','しましょう','しますか'],
+      '<strong>しません.</strong> あまり works exactly like ぜんぜん — it requires the negative.'),
+    q('In a Japanese sentence, the verb goes…', 'last', ['last','first','second','anywhere'],
+      '<strong>Last</strong>, always. The chunks before it can be reordered freely because each carries its own particle.')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 5 — kanji + social grammar
+// ---------------------------------------------------------------------------
+Drill.mount('#d-kanji', {
+  title: 'The first fifteen kanji',
+  target: 40,
+  items: [
+    { show: '一', answer: ['ichi'] },      { show: '二', answer: ['ni'] },
+    { show: '三', answer: ['san'] },       { show: '四', answer: ['yon','shi','si'] },
+    { show: '五', answer: ['go'] },        { show: '六', answer: ['roku'] },
+    { show: '七', answer: ['nana','shichi','siti'] }, { show: '八', answer: ['hachi','hati'] },
+    { show: '九', answer: ['kyuu','ku','kyu'] },      { show: '十', answer: ['juu','ju'] },
+    { show: '百', answer: ['hyaku'] },     { show: '千', answer: ['sen'] },
+    { show: '万', answer: ['man'] },       { show: '円', answer: ['en','yen'] },
+    { show: '時', answer: ['ji'] }
+  ]
+});
+
+Quiz.mount('#q-social', {
+  title: 'Inviting, refusing, and topic は',
+  questions: [
+    q('To <em>invite</em> someone to lunch, you say…',
+      'たべませんか', ['たべませんか','たべますか','たべましょうか','たべますね'],
+      '<strong>たべませんか</strong> — the negative plus か. たべますか is only a question ("do you eat lunch?"), never an invitation.'),
+    q('Can <span class="jp">ますか</span> be used as an invitation?', 'never', ['never','always','sometimes','formally'],
+      '<strong>Never.</strong> Only the negative form invites. English can invite either way, so this asymmetry has to be learned deliberately.'),
+    q('Someone answers your invitation with <span class="jp">どようびは、ちょっと…</span>. They are…',
+      'refusing', ['refusing','accepting','agreeing','asking'],
+      'They are <strong>refusing</strong>. Trailing off with ちょっと is the standard polite no — Japanese speakers avoid いいえ for invitations because it is too blunt.'),
+    q('You are called from another room and you head over. You say…',
+      'いきます', ['いきます','きます','かえります','います'],
+      '<strong>いきます.</strong> Both verbs are anchored to the <em>speaker</em>: you are moving away from where you are, so it is いく. English "I\'m coming" anchors to the listener instead.'),
+    q('In <span class="jp">きょうは きょうとに いきます</span>, what does <span class="jp">は</span> mark?',
+      'the topic', ['the topic','the subject','the object','the place'],
+      '<strong>The topic</strong> — here a time expression. は announces what you are talking about; it does not have to be the grammatical subject.'),
+    q('In <span class="jp">ばんごはんは？</span>, <span class="jp">ばんごはん</span> would grammatically be the…',
+      'object', ['object','subject','topic','place'],
+      'The <strong>object</strong> — it is what would be eaten. Yet it takes は, which is why "as for…" is a better reading of は than "the subject is".')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 7 — mixed
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-mixed', {
+  title: 'Mixed retrieval',
+  questions: [
+    q('<span class="wordbig">かえる → ？</span>', 'かえります', ['かえります','かえます','かえりします','かえっます'],
+      '<strong>かえります.</strong> う-verb, despite the -eru ending.'),
+    q('<span class="wordbig">くる → ？</span>', 'きます', ['きます','くます','きります','こます'],
+      '<strong>きます.</strong> Irregular — the vowel changes.'),
+    q('"I study Japanese at the library" — which particle after <span class="jp">としょかん</span>?',
+      'で', PART, '<strong>で</strong> — place of action.'),
+    q('"I go to the library" — which particle after <span class="jp">としょかん</span>?',
+      'に', PART, '<strong>に</strong> — goal of movement. The same noun takes a different particle depending on the verb: で for an action happening there, に for arriving there.'),
+    q('<span class="jp">三千円</span> is read…', 'さんぜんえん', ['さんぜんえん','さんせんえん','みせんえん','さんぜんまん'],
+      '<strong>さんぜんえん.</strong> The kanji are new; the sound change is the one from Lesson 2.'),
+    q('<span class="jp">九時</span> is read…', 'くじ', ['くじ','きゅうじ','ここのじ','くうじ'],
+      '<strong>くじ.</strong> Nine o\'clock uses く, not きゅう — the irregular reading from Lesson 1.'),
+    q('Which sentence is ungrammatical?',
+      'ぜんぜんみます', ['ぜんぜんみます','ぜんぜんみません','あまりみません','よくみます'],
+      '<strong>ぜんぜんみます.</strong> ぜんぜん requires a negative ending; the others are all fine.')
+  ]
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# ---------------------------------------------------------------------------
+# The books are NOT in this repository, and must never be.
+#
+# Genki I (textbook and workbook) are copyrighted commercial works published by
+# The Japan Times. They are excluded deliberately — every page in this repo
+# cites printed book page numbers only, so the material works with any legally
+# obtained copy, print or ebook.
+#
+# (The full-resolution textbook is also 136 MB, well over GitHub's 100 MB
+# per-file hard limit, so a push containing it would be rejected regardless.)
+# ---------------------------------------------------------------------------
+*.pdf
+
+# macOS
+.DS_Store
+
+# Local tooling state
+.tokensave/
+.claude/settings.local.json

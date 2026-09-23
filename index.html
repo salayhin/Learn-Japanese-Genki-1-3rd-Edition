@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Genki I — Course Home</title>
+<link rel="stylesheet" href="assets/course.css">
+<style>
+  .hero-cta {
+    display: block; border: 2px solid var(--accent); border-radius: 10px;
+    padding: 1.2rem 1.4rem; margin: 1.8rem 0; text-decoration: none; color: var(--ink);
+    background: var(--accent-dim);
+  }
+  .hero-cta:hover { filter: brightness(1.04); }
+  .hero-cta .lbl {
+    font-family: var(--sans); font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .35rem;
+  }
+  .hero-cta .ttl { font-size: 1.3rem; font-weight: 650; letter-spacing: -.01em; display: block; }
+  .hero-cta .sub { font-size: .92rem; color: var(--ink-soft); display: block; margin-top: .35rem; }
+
+  .weeks { border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; margin: 1.4rem 0; }
+  .weeks .wrow {
+    display: grid; grid-template-columns: 4.2rem 1fr 6.5rem; gap: .9rem; align-items: center;
+    padding: .8rem 1rem; border-bottom: 1px solid var(--rule); font-size: .94rem;
+    text-decoration: none; color: var(--ink);
+  }
+  .weeks .wrow:last-child { border-bottom: 0; }
+  a.wrow:hover { background: var(--paper-warm); }
+  .weeks .wk {
+    font-family: var(--sans); font-size: .7rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--accent);
+  }
+  .weeks .body strong { display: block; }
+  .weeks .body span { font-size: .84rem; color: var(--ink-soft); }
+  .weeks .status {
+    font-family: var(--mono); font-size: .68rem; text-align: right; color: var(--ink-faint);
+    white-space: nowrap;
+  }
+  .weeks .status.ready { color: var(--good); }
+  .weeks .status.todo  { color: var(--accent); }
+  .weeks .phase-row {
+    background: var(--paper-warm); font-family: var(--sans); font-size: .68rem; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint);
+    padding: .5rem 1rem; border-bottom: 1px solid var(--rule); display: block;
+  }
+  @media (max-width: 560px) {
+    .weeks .wrow { grid-template-columns: 3.4rem 1fr; }
+    .weeks .status { grid-column: 2; text-align: left; margin-top: .2rem; }
+  }
+
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px,1fr)); gap: .8rem; margin: 1.2rem 0; }
+  .tile {
+    border: 1px solid var(--rule); border-radius: 9px; padding: 1rem 1.1rem;
+    text-decoration: none; color: var(--ink); background: var(--paper); display: block;
+  }
+  .tile:hover { border-color: var(--accent); background: var(--paper-warm); }
+  .tile strong { display: block; font-size: 1rem; margin-bottom: .25rem; }
+  .tile span { font-size: .84rem; color: var(--ink-soft); line-height: 1.45; display: block; }
+
+  .offsets { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin: 1.1rem 0; }
+  .offsets div {
+    border: 1px solid var(--rule); border-radius: 8px; padding: .8rem; text-align: center;
+    background: var(--paper-warm);
+  }
+  .offsets .n { font-family: var(--mono); font-size: 1rem; color: var(--accent); font-weight: 700; }
+  .offsets .l { font-size: .78rem; color: var(--ink-soft); display: block; margin-top: .25rem; }
+  @media (max-width: 420px) { .offsets { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="eyebrow">Course home</p>
+<h1>Genki I</h1>
+<p class="standfirst">A nine-week path from no Japanese at all to reading both syllabaries
+and holding the first five lessons of Genki I. Fifty minutes a day, five days a week,
+nothing at weekends.</p>
+
+<a class="hero-cta" href="reference/genki1-roadmap.html">
+  <span class="lbl">Start here</span>
+  <span class="ttl">The Genki I Path →</span>
+  <span class="sub">The full plan: what nine weeks actually buys, the day-by-day breakdown,
+  the fifty-minute session template, and the reading protocol. Read this before day 1.</span>
+</a>
+
+<h2>The nine weeks</h2>
+
+<div class="weeks">
+  <span class="phase-row">Phase 0 · The writing system</span>
+
+  <a class="wrow" href="lessons/week-01-hiragana.html">
+    <span class="wk">Week 1</span>
+    <span class="body"><strong>Hiragana, end to end</strong>
+      <span>All 46 characters across days 1–5, then the look-alikes</span></span>
+    <span class="status ready">5 days · ready</span>
+  </a>
+
+  <a class="wrow" href="lessons/week-02-katakana.html">
+    <span class="wk">Week 2</span>
+    <span class="body"><strong>Katakana, end to end</strong>
+      <span>20 free from hiragana, 22 families, consolidation, the four traps</span></span>
+    <span class="status ready">days 1–4 · ready</span>
+  </a>
+
+  <a class="wrow" href="lessons/week-02-katakana-in-words.html">
+    <span class="wk">Week 2</span>
+    <span class="body"><strong>Katakana in whole words</strong>
+      <span>Day 5 — how English becomes Japanese, and the words on the signs</span></span>
+    <span class="status ready">1 day · ready</span>
+  </a>
+
+  <a class="wrow" href="lessons/week-03-marks-and-beats.html">
+    <span class="wk">Week 3</span>
+    <span class="body"><strong>The marks that change everything</strong>
+      <span>Days 1–2 — voicing marks, then beats. Gate on day 3</span></span>
+    <span class="status ready">2 days · ready</span>
+  </a>
+
+  <a class="wrow" href="lessons/week-03-kana-gate.html">
+    <span class="wk">Week 3</span>
+    <span class="body"><strong>The kana gate</strong>
+      <span>Day 3 — five tests, a scoresheet, and the decision about what carries forward</span></span>
+    <span class="status ready">1 day · ready</span>
+  </a>
+
+  <span class="phase-row">Phase 1 · Genki Lessons 1–5</span>
+
+  <a class="wrow" href="lessons/week-03-lesson-01-new-friends.html">
+    <span class="wk">Wk 3–4</span>
+    <span class="body"><strong>Genki Lesson 1 · <span class="jp">あたらしいともだち</span></strong>
+      <span>X は Y です · question sentences · Noun の Noun</span></span>
+    <span class="status ready">5 days · ready</span>
+  </a>
+
+  <a class="wrow" href="lessons/week-04-lesson-02-shopping.html">
+    <span class="wk">Wk 4–5</span>
+    <span class="body"><strong>Genki Lesson 2 · <span class="jp">かいもの</span></strong>
+      <span>こそあど · numbers to 90,000 · じゃないです · ね/よ</span></span>
+    <span class="status ready">6 days · ready</span>
+  </a>
+
+  <a class="wrow" href="lessons/week-05-lesson-03-making-a-date.html">
+    <span class="wk">Wk 5–7</span>
+    <span class="body"><strong>Genki Lesson 3 · <span class="jp">デートの約束</span></strong>
+      <span>Verb groups · を で に へ · first 15 kanji · first reading passage</span></span>
+    <span class="status ready">7 days · ready</span>
+  </a>
+
+  <a class="wrow" href="lessons/week-07-lesson-04-first-date.html">
+    <span class="wk">Wk 7–8</span>
+    <span class="body"><strong>Genki Lesson 4 · <span class="jp">初めてのデート</span></strong>
+      <span>あります/います · past tense · location · days of the week</span></span>
+    <span class="status ready">7 days · ready</span>
+  </a>
+
+  <a class="wrow" href="lessons/week-08-lesson-05-okinawa.html">
+    <span class="wk">Wk 8–9</span>
+    <span class="body"><strong>Genki Lesson 5 · <span class="jp">沖縄旅行</span></strong>
+      <span>Adjectives in both tenses · 好き/きらい · 〜ましょう · 14 kanji</span></span>
+    <span class="status ready">6 days · ready</span>
+  </a>
+
+  <a class="wrow" href="lessons/week-09-assessment.html">
+    <span class="wk">Wk 9</span>
+    <span class="body"><strong>Assessment</strong>
+      <span>Day 5 — cold reading, timed kana, verb conjugation, 43 kanji</span></span>
+    <span class="status ready">1 day · ready</span>
+  </a>
+</div>
+
+<p class="cite">Every row has a lesson page here, and each one tells you which textbook pages to open and
+what to do with them — the books are the material, these pages are the teaching.
+<strong>"Lesson N" here always means Genki's own lesson</strong>, the
+one printed in the book — our materials are identified by week and day.</p>
+
+<h2>Reference</h2>
+
+<p>Print these. They are the compressed, look-it-up versions of what the lessons teach.</p>
+
+<div class="tiles">
+  <a class="tile" href="reference/kana-charts.html">
+    <strong>The Complete Kana</strong>
+    <span>All 46 hiragana, all 46 katakana, plus the 25 voiced and 33 contracted readings —
+    with the seven irregular ones marked.</span>
+  </a>
+  <a class="tile" href="reference/kana-confusables.html">
+    <strong>Confusable Kana</strong>
+    <span>The two dozen characters that cause almost all beginner misreadings, and the rules
+    that separate them.</span>
+  </a>
+  <a class="tile" href="reference/genki1-roadmap.html">
+    <strong>The Genki I Path</strong>
+    <span>The full nine-week plan, session template, reading protocol, milestones, and the
+    continuation map for Lessons 6–12.</span>
+  </a>
+</div>
+
+<h2>What you need</h2>
+
+<p>Two books, plus the publisher's free audio app. Everything on this site references the
+page numbers <strong>printed in the books</strong>, so it works with any copy you own.</p>
+
+<div class="tiles">
+  <div class="tile">
+    <strong>GENKI I — Textbook</strong>
+    <span>3rd edition, The Japan Times. ISBN 978-4-7890-1730-5.<br>
+    <span class="jp">会話・文法編</span> from p. 30, <span class="jp">読み書き編</span> from p. 296.</span>
+  </div>
+  <div class="tile">
+    <strong>GENKI I — Workbook</strong>
+    <span>3rd edition. ISBN 978-4-7890-1731-2.<br>
+    One worksheet per grammar point; kana practice sheets at pp. 121–132.</span>
+  </div>
+  <a class="tile" href="https://apps.apple.com/us/app/oto-navi-sound-navigator/id1490391845">
+    <strong>OTO Navi — audio</strong>
+    <span>The publisher's free audio app. Search the textbook's ISBN inside it.
+    <strong>Install before day 1</strong> — the reading protocol needs it.</span>
+  </a>
+</div>
+
+<p class="cite">The publisher also runs a free
+<a href="https://genki3.japantimes.co.jp/en/student/">Self-Study Room</a> with supplementary
+materials. This site contains no book content beyond page references — you supply the books.</p>
+
+<h2>Workspace</h2>
+
+<div class="tiles">
+  <a class="tile" href="MISSION.md">
+    <strong>Mission</strong>
+    <span>Why this is being learned, what success looks like, and the constraints the plan
+    is built around.</span>
+  </a>
+  <a class="tile" href="RESOURCES.md">
+    <strong>Resources</strong>
+    <span>Vetted sources for knowledge and practice, the communities worth joining, and the
+    gaps where no good resource exists.</span>
+  </a>
+  <a class="tile" href="NOTES.md">
+    <strong>Notes &amp; session log</strong>
+    <span>Working notes, the week-by-week log, open questions, and the naming conventions
+    this workspace follows.</span>
+  </a>
+</div>
+
+<h3>Learning records</h3>
+<ul style="font-size:.93rem">
+  <li><a href="learning-records/0001-two-month-scope-reality-check.md">Why the plan doesn't cover all twelve lessons</a></li>
+  <li><a href="learning-records/0002-katakana-is-from-scratch.md">Why katakana is a script to learn, not a gap to patch</a></li>
+  <li><a href="learning-records/0003-generic-beginner-path.md">Why the plan is generic, dateless, and starts from zero</a></li>
+  <li><a href="learning-records/0004-assessment-measures-storage-not-fluency.md">Why the assessment is ordered by age of material, not by topic</a></li>
+</ul>
+
+<div class="lesson-foot">
+  <p><strong>If you are starting today:</strong> read
+  <a href="reference/genki1-roadmap.html">The Genki I Path</a> first — particularly the box
+  about what nine weeks actually buys. Install OTO Navi. Print the
+  <a href="reference/kana-charts.html">kana charts</a>. Then open
+  <a href="lessons/week-01-hiragana.html">week 1, day 1</a>.</p>
+
+  <div class="ask-teacher">
+    <strong>This plan is a hypothesis, not a contract.</strong> It assumes an average pace
+    through material that suits different people differently. Ask for it to be re-cut the
+    moment it stops matching reality — if a lesson takes nine sessions instead of seven,
+    that is information, not failure.
+  </div>
+</div>
+
+</div>
+</body>
+</html>

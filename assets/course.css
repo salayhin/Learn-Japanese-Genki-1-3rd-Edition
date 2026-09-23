@@ -1,0 +1,376 @@
+/* ==========================================================================
+   Genki 1 course stylesheet — shared by every lesson and reference card.
+   Tufte-inspired: generous measure, serif text, marginal notes, prints well.
+   ========================================================================== */
+
+:root {
+  --ink:        #1a1814;
+  --ink-soft:   #565049;
+  --ink-faint:  #8b8378;
+  --paper:      #fffdf8;
+  --paper-warm: #f7f2e7;
+  --rule:       #ddd5c5;
+  --accent:     #c8511b;   /* Genki orange */
+  --accent-dim: #f3e2d8;
+  --good:       #2d6a4a;
+  --good-bg:    #e6f2ea;
+  --bad:        #9e2b20;
+  --bad-bg:     #fbe9e7;
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --jp:    "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic Medium",
+           "Noto Sans JP", Meiryo, sans-serif;
+  --mono:  "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #eae4d9; --ink-soft: #b3aa9c; --ink-faint: #7d7566;
+    --paper: #171613; --paper-warm: #201e19; --rule: #38342c;
+    --accent: #f0813f; --accent-dim: #3a2417;
+    --good: #7fd1a4; --good-bg: #17291f;
+    --bad: #f09489;  --bad-bg: #2d1a17;
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #eae4d9; --ink-soft: #b3aa9c; --ink-faint: #7d7566;
+  --paper: #171613; --paper-warm: #201e19; --rule: #38342c;
+  --accent: #f0813f; --accent-dim: #3a2417;
+  --good: #7fd1a4; --good-bg: #17291f;
+  --bad: #f09489;  --bad-bg: #2d1a17;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 3.5rem 16px 6rem;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.62;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+
+.wrap { max-width: 44rem; margin: 0 auto; }
+
+/* --- Top breadcrumb ----------------------------------------------------- */
+
+.topnav {
+  font-family: var(--sans);
+  font-size: .78rem;
+  margin: -1.6rem 0 1.8rem;
+}
+.topnav a {
+  color: var(--ink-faint);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.topnav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+@media print { .topnav { display: none; } }
+
+/* --- Masthead ----------------------------------------------------------- */
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 .7rem;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 5.5vw, 2.9rem);
+  line-height: 1.12;
+  font-weight: 600;
+  letter-spacing: -.018em;
+  margin: 0 0 .5rem;
+}
+
+.standfirst {
+  font-size: 1.12rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin: 0 0 2rem;
+  max-width: 34rem;
+}
+
+h2 {
+  font-size: 1.42rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  margin: 3rem 0 .9rem;
+  padding-bottom: .4rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+h3 {
+  font-family: var(--sans);
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 2rem 0 .6rem;
+}
+
+p { margin: 0 0 1.1rem; }
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+strong { font-weight: 650; }
+
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2.6rem 0; }
+
+/* --- Japanese text ------------------------------------------------------ */
+
+.jp   { font-family: var(--jp); font-feature-settings: "palt"; }
+.jp-l { font-family: var(--jp); font-size: 1.45em; line-height: 1.85; }
+.kana-big {
+  font-family: var(--jp);
+  font-size: 3.6rem;
+  line-height: 1;
+  display: inline-block;
+}
+ruby rt { font-size: .5em; color: var(--ink-faint); }
+
+/* --- Callouts ----------------------------------------------------------- */
+
+.note {
+  background: var(--paper-warm);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 4px 4px 0;
+  padding: 1rem 1.2rem;
+  margin: 1.6rem 0;
+  font-size: .95rem;
+}
+.note > :last-child { margin-bottom: 0; }
+.note .label {
+  font-family: var(--sans);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: .45rem;
+}
+
+.rule-box {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1.1rem 1.3rem;
+  margin: 1.6rem 0;
+  background: var(--paper-warm);
+}
+
+/* --- Tables ------------------------------------------------------------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .93rem;
+  margin: 1.4rem 0;
+  font-family: var(--sans);
+}
+th {
+  text-align: left;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border-bottom: 1.5px solid var(--rule);
+  padding: .5rem .6rem;
+}
+td { padding: .55rem .6rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+tbody tr:hover { background: var(--paper-warm); }
+td.num { font-family: var(--mono); font-size: .85em; color: var(--ink-faint); white-space: nowrap; }
+
+/* --- Contrast pair cards (for confusable kana) -------------------------- */
+
+.pair-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: .9rem;
+  margin: 1.4rem 0;
+}
+.pair {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1rem .8rem;
+  text-align: center;
+  background: var(--paper-warm);
+}
+.pair .glyph { font-family: var(--jp); font-size: 3.2rem; line-height: 1.05; display: block; }
+.pair .romaji {
+  font-family: var(--sans); font-weight: 700; font-size: 1rem;
+  letter-spacing: .04em; color: var(--accent); display: block; margin-top: .2rem;
+}
+.pair .hint { font-size: .82rem; color: var(--ink-soft); display: block; margin-top: .45rem; line-height: 1.45; }
+
+/* --- Session / plan list ------------------------------------------------ */
+
+.sessions { list-style: none; padding: 0; margin: 1.2rem 0; }
+.sessions li {
+  display: grid;
+  grid-template-columns: 4.6rem 1fr;
+  gap: .9rem;
+  padding: .6rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: .95rem;
+}
+.sessions .tag {
+  font-family: var(--mono);
+  font-size: .74rem;
+  color: var(--ink-faint);
+  padding-top: .22rem;
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .sessions li { grid-template-columns: 1fr; gap: .15rem; }
+}
+
+/* --- Buttons & quiz shell ----------------------------------------------- */
+
+button {
+  font-family: var(--sans);
+  font-size: .9rem;
+  cursor: pointer;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 6px;
+  padding: .6rem 1rem;
+  transition: background .12s, border-color .12s;
+}
+button:hover:not(:disabled) { border-color: var(--accent); background: var(--paper-warm); }
+button:disabled { opacity: .5; cursor: default; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+button.primary:hover:not(:disabled) { filter: brightness(1.08); background: var(--accent); }
+
+.widget {
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  background: var(--paper-warm);
+  padding: 1.4rem;
+  margin: 1.8rem 0;
+}
+.widget-head {
+  font-family: var(--sans);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: .8rem;
+}
+
+.q-prompt { font-size: 1.06rem; margin-bottom: 1rem; }
+.q-prompt .kana-big { margin: .3rem 0; }
+
+.opts { display: grid; gap: .5rem; }
+.opts button {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: .95rem;
+  padding: .65rem .9rem;
+}
+.opts button.correct { background: var(--good-bg); border-color: var(--good); color: var(--good); font-weight: 700; }
+.opts button.wrong   { background: var(--bad-bg);  border-color: var(--bad);  color: var(--bad); }
+
+.feedback {
+  margin-top: .9rem;
+  font-size: .92rem;
+  padding: .75rem .9rem;
+  border-radius: 6px;
+  line-height: 1.5;
+}
+.feedback.ok  { background: var(--good-bg); color: var(--good); }
+.feedback.no  { background: var(--bad-bg);  color: var(--bad); }
+
+.progress-dots { display: flex; gap: 4px; }
+.progress-dots i {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--rule); display: block;
+}
+.progress-dots i.hit  { background: var(--good); }
+.progress-dots i.miss { background: var(--bad); }
+.progress-dots i.now  { background: var(--accent); transform: scale(1.35); }
+
+.score-line { font-family: var(--mono); font-size: .85rem; color: var(--ink-faint); }
+
+/* --- Timed drill -------------------------------------------------------- */
+
+.drill-stage { text-align: center; padding: 1.2rem 0 .4rem; }
+.drill-stage .kana-big { font-size: 5rem; }
+.drill-input {
+  font-family: var(--mono);
+  font-size: 1.3rem;
+  text-align: center;
+  padding: .6rem;
+  width: 8rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--ink);
+  margin-top: 1rem;
+}
+.drill-input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.drill-clock { font-family: var(--mono); font-size: .85rem; color: var(--ink-faint); }
+
+/* --- Footer / nav ------------------------------------------------------- */
+
+.lesson-foot {
+  margin-top: 3.5rem;
+  padding-top: 1.4rem;
+  border-top: 2px solid var(--rule);
+  font-size: .93rem;
+  color: var(--ink-soft);
+}
+.chip-row { display: flex; flex-wrap: wrap; gap: .5rem; margin: .8rem 0 0; }
+.chip {
+  font-family: var(--sans);
+  font-size: .78rem;
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: .3rem .8rem;
+  color: var(--ink-soft);
+}
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+
+.ask-teacher {
+  background: var(--accent-dim);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin-top: 1.6rem;
+  font-size: .93rem;
+  color: var(--ink);
+}
+.ask-teacher strong { color: var(--accent); }
+
+.cite { font-size: .84rem; color: var(--ink-faint); }
+.cite a { color: var(--ink-faint); }
+
+/* --- Print -------------------------------------------------------------- */
+
+@media print {
+  :root { --paper: #fff; --paper-warm: #fff; --ink: #000; --rule: #bbb; }
+  body { font-size: 11.5pt; padding: 0; }
+  .widget, .no-print, .chip-row, .ask-teacher { display: none !important; }
+  h2 { page-break-after: avoid; }
+  .pair, .rule-box, table { page-break-inside: avoid; }
+  a { text-decoration: none; color: #000; }
+}

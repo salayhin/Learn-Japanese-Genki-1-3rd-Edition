@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 2 day 5 · Katakana in Whole Words</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  .drill-stage .kana-big { font-size: clamp(2rem, 9vw, 3.4rem); }
+
+  .decode {
+    border: 1px solid var(--rule); border-radius: 9px; padding: 1.1rem 1.2rem;
+    margin: 1.3rem 0; background: var(--paper-warm);
+  }
+  .decode .src {
+    font-family: var(--mono); font-size: .8rem; color: var(--ink-faint);
+    letter-spacing: .06em; text-transform: uppercase;
+  }
+  .decode .chain {
+    font-family: var(--jp); font-size: 1.9rem; letter-spacing: .1em;
+    margin: .45rem 0 .3rem; line-height: 1.4;
+  }
+  .decode .chain .sep { color: var(--ink-faint); font-size: .55em; vertical-align: middle; margin: 0 .1em; }
+  .decode .rd { font-family: var(--mono); font-size: .82rem; color: var(--accent); }
+  .decode p { margin: .55rem 0 0; font-size: .9rem; }
+  .decode p:last-child { margin-bottom: 0; }
+
+  .ruletable td:first-child { font-family: var(--mono); font-size: .82rem; white-space: nowrap; color: var(--accent); font-weight: 700; }
+  .ruletable td:nth-child(2) { font-family: var(--jp); font-size: 1.25rem; }
+
+  .wordgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(168px,1fr)); gap: .7rem; margin: 1.2rem 0; }
+  .wordgrid div {
+    border: 1px solid var(--rule); border-radius: 8px; padding: .75rem .7rem;
+    background: var(--paper); text-align: center;
+  }
+  .wordgrid div.warn { border-color: var(--accent); border-width: 2px; background: var(--paper-warm); }
+  .wordgrid .w { font-family: var(--jp); font-size: 1.5rem; line-height: 1.3; display: block; }
+  .wordgrid .m {
+    font-family: var(--sans); font-weight: 700; font-size: .84rem; color: var(--accent);
+    display: block; margin-top: .25rem;
+  }
+  .wordgrid .n { font-size: .76rem; color: var(--ink-soft); display: block; margin-top: .28rem; line-height: 1.4; }
+
+  .chop { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px,1fr)); gap: .7rem; margin: 1.2rem 0; }
+  .chop div { border: 1px solid var(--rule); border-radius: 8px; padding: .8rem; background: var(--paper-warm); }
+  .chop .full { font-family: var(--jp); font-size: .95rem; color: var(--ink-faint); text-decoration: line-through; }
+  .chop .short { font-family: var(--jp); font-size: 1.5rem; display: block; margin-top: .2rem; }
+  .chop .m { font-family: var(--sans); font-size: .8rem; color: var(--accent); font-weight: 700; display: block; margin-top: .2rem; }
+
+  .blankword { font-family: var(--jp); font-size: 1.9rem; letter-spacing: .06em; }
+  .blankword b { color: var(--accent); font-weight: 400; }
+  .wordbig { font-family: var(--jp); font-size: 2rem; letter-spacing: .04em; display: block; margin: .3rem 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="topnav"><a href="../index.html">&larr; Course home</a></p>
+
+<p class="eyebrow">Phase 0 · Week 2 · Day 5</p>
+<h1>Katakana in Whole Words</h1>
+<p class="standfirst">You can name all 46 characters. That is not yet reading. Today the
+shapes stop being shapes and start being words — and you discover that most katakana words
+are English wearing a disguise you can learn to see through.</p>
+
+<div class="note">
+  <span class="label">Where this sits</span>
+  <p style="margin-bottom:0">Last day of week 2. You have done
+  <a href="week-02-katakana.html">the four parts of katakana</a> — the twenty free ones, the
+  families, consolidation, and the traps. Today converts that into reading. Textbook
+  <span class="jp">読み書き</span> Lesson 2, <span class="cite">pp. 300–303</span>;
+  workbook katakana sheets, <span class="cite">workbook pp. 128–132</span>.</p>
+</div>
+
+<h2>The idea that changes everything</h2>
+
+<p>Reading is a <strong>word-level</strong> skill, not a character-level one. Fluent readers
+of any language don't assemble letters — they recognise chunks. You are still assembling,
+and that's correct for day 5; the point of today is to start the shift.</p>
+
+<p>Katakana makes that shift unusually cheap, because of what katakana is <em>for</em>:</p>
+
+<div class="rule-box" style="text-align:center">
+  <p style="margin-bottom:0"><strong>Most katakana words are foreign words you already know.</strong><br>
+  <span class="cite">Decode the sounds, and the meaning often arrives by itself.</span></p>
+</div>
+
+<p>This is the opposite of kanji, where decoding gets you nothing without having learned the
+word. With katakana, sounding it out <em>is</em> the answer. <span class="jp">ホテル</span>
+is <em>ho-te-ru</em> — say it aloud at speed and you hear "hotel". That trick works on a
+large fraction of the katakana you'll meet on a sign.</p>
+
+<h2>How English becomes Japanese</h2>
+
+<p>The disguise follows rules. Japanese syllables are almost all
+<strong>consonant + vowel</strong>, with <span class="jp">ン</span> the only consonant
+allowed to stand alone. So an English word full of consonant clusters has to have vowels
+inserted to make it pronounceable:</p>
+
+<div class="decode">
+  <span class="src">strike</span>
+  <div class="chain">ス<span class="sep">·</span>ト<span class="sep">·</span>ラ<span class="sep">·</span>イ<span class="sep">·</span>ク</div>
+  <span class="rd">su · to · ra · i · ku</span>
+  <p>Six English letters, five Japanese beats. <em>s</em> can't stand alone so it becomes
+  <span class="jp">ス</span> <em>su</em>; <em>t</em> becomes <span class="jp">ト</span>
+  <em>to</em>; <em>r</em> takes the <em>a</em> that was already there; final <em>k</em>
+  becomes <span class="jp">ク</span> <em>ku</em>.</p>
+</div>
+
+<p>Which vowel gets inserted isn't random:</p>
+
+<table class="ruletable">
+  <thead><tr><th>English sound</th><th>Becomes</th><th>Why, and an example</th></tr></thead>
+  <tbody>
+    <tr><td>most consonants</td><td>+ ウ</td><td>Default added vowel is <em>u</em>. <em>milk</em> → <span class="jp">ミルク</span> <em>miruku</em></td></tr>
+    <tr><td>t, d</td><td>+ オ</td><td><em>u</em> would give <span class="jp">ツ</span>/<span class="jp">ヅ</span>, wrong sounds — so <em>o</em>. <em>hint</em> → <span class="jp">ヒント</span> <em>hinto</em></td></tr>
+    <tr><td>ch, j</td><td>+ イ</td><td><em>match</em> → <span class="jp">マッチ</span> <em>matchi</em></td></tr>
+    <tr><td>l <em>and</em> r</td><td>ラ リ ル レ ロ</td><td>Japanese has one liquid for both. <em>light</em> and <em>right</em> are <strong>both</strong> <span class="jp">ライト</span></td></tr>
+    <tr><td>th</td><td>サ or ザ row</td><td><em>three</em> → <span class="jp">スリー</span>, <em>the</em> → <span class="jp">ザ</span></td></tr>
+    <tr><td>v</td><td>バ row</td><td><em>violin</em> → <span class="jp">バイオリン</span></td></tr>
+    <tr><td>f</td><td>フ + small vowel</td><td><em>fork</em> → <span class="jp">フォーク</span>, <em>café</em> → <span class="jp">カフェ</span></td></tr>
+    <tr><td>long vowel</td><td>ー</td><td><em>beer</em> → <span class="jp">ビール</span> (3 beats)</td></tr>
+    <tr><td>abrupt stop</td><td>ッ</td><td><em>bed</em> → <span class="jp">ベッド</span>, <em>cup</em> → <span class="jp">コップ</span></td></tr>
+    <tr><td>final -er, -or, -ar</td><td>アー</td><td><em>elevator</em> → <span class="jp">エレベーター</span></td></tr>
+  </tbody>
+</table>
+
+<div class="note">
+  <span class="label">The consequence nobody warns you about</span>
+  <p style="margin-bottom:0">Japanese words are <strong>longer</strong> than their English
+  originals, because every consonant drags a vowel with it. <em>Christmas</em> is two
+  syllables in English and <strong>five beats</strong> in Japanese,
+  <span class="jp">ク·リ·ス·マ·ス</span>. <em>McDonald's</em> is three and becomes
+  <strong>six</strong>, <span class="jp">マ·ク·ド·ナ·ル·ド</span>. So if a katakana word looks
+  impossibly long for the word you suspect it is, that is a point <em>in favour</em> of your
+  guess, not against it.</p>
+</div>
+
+<h2>Decode these three</h2>
+
+<p>Work each one out before reading the answer. Say it aloud, fast, and let your ear do the
+matching — this is the whole skill in miniature.</p>
+
+<div class="decode">
+  <span class="src">Try it</span>
+  <div class="chain">ク<span class="sep">·</span>リ<span class="sep">·</span>ス<span class="sep">·</span>マ<span class="sep">·</span>ス</div>
+  <span class="rd">ku · ri · su · ma · su</span>
+  <p><strong>Christmas.</strong> The <em>ch</em> cluster becomes <span class="jp">ク</span>,
+  and both loose <em>s</em> sounds pick up a <em>u</em>.</p>
+</div>
+
+<div class="decode">
+  <span class="src">Try it</span>
+  <div class="chain">ア<span class="sep">·</span>イ<span class="sep">·</span>ス<span class="sep">·</span>ク<span class="sep">·</span>リ<span class="sep">·</span>ー<span class="sep">·</span>ム</div>
+  <span class="rd">a · i · su · ku · ri · i · mu</span>
+  <p><strong>Ice cream.</strong> Seven beats. The <span class="jp">ー</span> is the long
+  <em>ea</em>, and final <em>m</em> becomes <span class="jp">ム</span>.</p>
+</div>
+
+<div class="decode">
+  <span class="src">Try it</span>
+  <div class="chain">コ<span class="sep">·</span>ン<span class="sep">·</span>ピ<span class="sep">·</span>ュ<span class="sep">·</span>ー<span class="sep">·</span>タ<span class="sep">·</span>ー</div>
+  <span class="rd">ko · n · pyu · u · ta · a</span>
+  <p><strong>Computer.</strong> Note <span class="jp">ピュ</span> is one beat, and the final
+  <em>-er</em> is <span class="jp">ター</span>, following the <em>-er → アー</em> rule.</p>
+</div>
+
+<h2>Decode against the clock</h2>
+
+<p>Eighteen words you will genuinely meet. Read each one, say it aloud, and
+<strong>type the English</strong>. No options to work backwards from — this is real reading.</p>
+
+<div id="d-decode"></div>
+
+<h2>The words on the signs</h2>
+
+<p>These are the ones worth knowing cold, because you'll be looking for them while tired and
+carrying a bag.</p>
+
+<div class="wordgrid">
+  <div><span class="w">トイレ</span><span class="m">toilet</span></div>
+  <div><span class="w">チェックイン</span><span class="m">check-in</span></div>
+  <div><span class="w">チェックアウト</span><span class="m">check-out</span></div>
+  <div><span class="w">パスポート</span><span class="m">passport</span></div>
+  <div><span class="w">エレベーター</span><span class="m">elevator</span></div>
+  <div><span class="w">エスカレーター</span><span class="m">escalator</span></div>
+  <div><span class="w">クレジットカード</span><span class="m">credit card</span></div>
+  <div><span class="w">チケット</span><span class="m">ticket</span></div>
+  <div><span class="w">タクシーのりば</span><span class="m">taxi stand</span>
+    <span class="n">Mixed scripts — <span class="jp">のりば</span> is hiragana, "boarding place".</span></div>
+  <div><span class="w">インターネット</span><span class="m">internet</span></div>
+  <div><span class="w">コインランドリー</span><span class="m">laundromat</span>
+    <span class="n">Literally "coin laundry".</span></div>
+  <div><span class="w">ドラッグストア</span><span class="m">drugstore</span></div>
+</div>
+
+<h2>Why some words look like nonsense</h2>
+
+<p>Two things will break the decode-it-and-hear-it trick, and both are worth meeting now
+rather than in a shop.</p>
+
+<h3>1 · Japanese chops long loanwords</h3>
+
+<p>Borrowed words get trimmed, usually to about four beats. If a katakana word decodes to
+something that <em>almost</em> sounds like English but stops too early, this is why:</p>
+
+<div class="chop">
+  <div><span class="full">コンビニエンスストア</span><span class="short">コンビニ</span><span class="m">convenience store</span></div>
+  <div><span class="full">スーパーマーケット</span><span class="short">スーパー</span><span class="m">supermarket</span></div>
+  <div><span class="full">エアコンディショナー</span><span class="short">エアコン</span><span class="m">air conditioner</span></div>
+  <div><span class="full">スマートフォン</span><span class="short">スマホ</span><span class="m">smartphone</span></div>
+  <div><span class="full">パーソナルコンピューター</span><span class="short">パソコン</span><span class="m">computer, PC</span></div>
+  <div><span class="full">デパートメントストア</span><span class="short">デパート</span><span class="m">department store</span></div>
+</div>
+
+<p class="cite"><span class="jp">スマホ</span> and <span class="jp">パソコン</span> show the
+trick at its most aggressive — pieces from <em>both</em> halves of the original, welded
+together. You cannot decode your way to those; they just have to be known.</p>
+
+<h3>2 · Some "English" words aren't English</h3>
+
+<p>Japanese has built its own English-looking vocabulary, called
+<span class="jp">和製英語</span> (<em>wasei-eigo</em>, "Japan-made English"). These decode
+perfectly and then mean something else — which makes them more dangerous than words you
+can't read at all.</p>
+
+<div class="wordgrid">
+  <div class="warn"><span class="w">マンション</span><span class="m">apartment</span>
+    <span class="n">Not a mansion — an ordinary flat in a concrete block.</span></div>
+  <div class="warn"><span class="w">コンセント</span><span class="m">power outlet</span>
+    <span class="n">Nothing to do with consent.</span></div>
+  <div class="warn"><span class="w">バイキング</span><span class="m">buffet</span>
+    <span class="n">From "Viking". Seen on restaurant signs constantly.</span></div>
+  <div class="warn"><span class="w">フロント</span><span class="m">reception desk</span>
+    <span class="n">The hotel front desk, not the front of anything.</span></div>
+  <div class="warn"><span class="w">クーラー</span><span class="m">air conditioning</span>
+    <span class="n">"Cooler", but it means the aircon.</span></div>
+  <div class="warn"><span class="w">サービス</span><span class="m">free of charge</span>
+    <span class="n">"Service" — but on a menu it means it's on the house.</span></div>
+</div>
+
+<p>And not every katakana word came from English at all:</p>
+
+<div class="wordgrid">
+  <div><span class="w">パン</span><span class="m">bread</span><span class="n">Portuguese <em>pão</em></span></div>
+  <div><span class="w">アルバイト</span><span class="m">part-time job</span><span class="n">German <em>Arbeit</em></span></div>
+  <div><span class="w">ズボン</span><span class="m">trousers</span><span class="n">French <em>jupon</em></span></div>
+  <div><span class="w">イクラ</span><span class="m">salmon roe</span><span class="n">Russian <em>икра</em></span></div>
+</div>
+
+<h2>Check the rules</h2>
+<div id="q-rules"></div>
+
+<h2>Fill the gap</h2>
+<p>Real words, one character missing. All options are single characters.</p>
+<div id="q-gap"></div>
+
+<h2>The traps that mean something else</h2>
+<p>These cannot be decoded — they have to be known. One word per option.</p>
+<div id="q-wasei"></div>
+
+<h2>Read a sign</h2>
+
+<p>Finally, something closer to the real thing. Each line below is the kind of text you meet
+on a door, a menu or a machine.</p>
+
+<div id="q-signs"></div>
+
+<h2>Workbook and textbook</h2>
+
+<p>With the remaining minutes, open the book. Textbook <span class="jp">読み書き</span>
+Lesson 2 (<strong>pp. 300–303</strong>) is Genki's own katakana section and ends
+with word-reading practice. The workbook's five katakana sheets
+(<strong>workbook pp. 128–132</strong>) are handwriting drills — <strong>use them as
+reading material</strong>, tracing once for shape memory rather than working them as a
+writing course. Writing kanji and kana from memory isn't part of this plan; recognising them
+at speed is.</p>
+
+<div class="note">
+  <span class="label">What a good result looks like</span>
+  <p style="margin-bottom:0">You should finish today able to decode an unfamiliar katakana
+  word given a few seconds, and to recognise perhaps a dozen on sight. Still slow, still
+  deliberate. That's right. Word-level speed comes from meeting the same words repeatedly
+  over the coming weeks, which the five-minute warm-up drill is for.</p>
+</div>
+
+<h2>Before week 3</h2>
+
+<p><strong>Do this in the real world:</strong> find katakana outside a textbook and read it.
+Product packaging in a supermarket, a café menu, the settings screen of any game or app
+switched to Japanese. Ten minutes of decoding real words beats another drill, because real
+text doesn't come pre-sorted into the character set you just studied.</p>
+
+<p><strong>Primary source:</strong>
+<a href="https://www.tofugu.com/japanese/learn-katakana/">Tofugu's <em>Learn Katakana:
+Ultimate Guide</em></a> for any characters still shaky, and the textbook's own katakana
+extras table (<strong>p. 27</strong>) for the combinations katakana uses and
+hiragana doesn't — <span class="jp">ファ</span>, <span class="jp">ティ</span>,
+<span class="jp">チェ</span>, <span class="jp">ジェ</span>, <span class="jp">ウィ</span>.</p>
+
+<div class="lesson-foot">
+  <p><strong>Next:</strong> <a href="week-03-marks-and-beats.html">week 3</a> —
+  the voicing marks (<span class="jp">゛</span> and <span class="jp">゜</span>) on day 1, then
+  beats on day 2, then the kana gate on day 3. <strong>Genki Lesson 1 starts on day 4.</strong>
+  After today you have both scripts' 46 characters and can read real words in one of them;
+  week 3 adds the remaining 58 readings per script and the timing rules.</p>
+
+  <div class="chip-row">
+    <a class="chip" href="../index.html">&#8962; Course home</a>
+    <a class="chip" href="../reference/kana-charts.html">Complete kana charts</a>
+    <a class="chip" href="../reference/kana-confusables.html">Confusables card</a>
+    <a class="chip" href="week-02-katakana.html">&larr; Week 2 · days 1–4</a>
+    <a class="chip" href="week-03-marks-and-beats.html">Week 3 · Marks &amp; beats &rarr;</a>
+    <a class="chip" href="../reference/genki1-roadmap.html">The full path</a>
+  </div>
+
+  <div class="ask-teacher">
+    <strong>Send your decode-drill misses.</strong> Words you couldn't crack fall into two
+    very different groups — ones where the <em>decoding</em> failed, which means a character
+    is still shaky and belongs in next week's warm-up, and ones where you decoded correctly
+    but didn't recognise the word, which is just vocabulary and needs no repair at all.
+    Telling those apart is worth doing, and easy to get wrong alone. Ask and I'll sort them.
+  </div>
+</div>
+
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script src="../assets/drill.js"></script>
+<script>
+// ---------------------------------------------------------------------------
+// Decode drill — katakana word in, English out. Free-typed: no options means no
+// working backwards, which is the point. Common spellings accepted.
+// ---------------------------------------------------------------------------
+Drill.mount('#d-decode', {
+  title: 'Decode the word',
+  target: 75,
+  items: [
+    { show: 'ホテル',       answer: ['hotel'] },
+    { show: 'タクシー',     answer: ['taxi','taxicab'] },
+    { show: 'レストラン',   answer: ['restaurant'] },
+    { show: 'コーヒー',     answer: ['coffee'] },
+    { show: 'ビール',       answer: ['beer'] },
+    { show: 'チケット',     answer: ['ticket'] },
+    { show: 'パスポート',   answer: ['passport'] },
+    { show: 'カメラ',       answer: ['camera'] },
+    { show: 'テーブル',     answer: ['table'] },
+    { show: 'ケーキ',       answer: ['cake'] },
+    { show: 'サラダ',       answer: ['salad'] },
+    { show: 'ジュース',     answer: ['juice'] },
+    { show: 'ミルク',       answer: ['milk'] },
+    { show: 'シャワー',     answer: ['shower'] },
+    { show: 'スプーン',     answer: ['spoon'] },
+    { show: 'ナイフ',       answer: ['knife'] },
+    { show: 'カード',       answer: ['card'] },
+    { show: 'バッグ',       answer: ['bag'] }
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Rule quiz — options are single katakana characters, so length leaks nothing.
+// ---------------------------------------------------------------------------
+function q(prompt, answer, options, explain) {
+  return { prompt: prompt, options: options, answer: answer, explain: explain };
+}
+
+Quiz.mount('#q-rules', {
+  title: 'The transformation rules',
+  questions: [
+    q('English <strong>milk</strong> ends in a bare <em>k</em>. Which character does that <em>k</em> become?',
+      'ク', ['ク','コ','カ','ケ'],
+      'ミル<strong>ク</strong>. The default inserted vowel is <em>u</em>, so <em>k</em> → ク.'),
+    q('English <strong>hint</strong> ends in a bare <em>t</em>. Which character does that <em>t</em> become?',
+      'ト', ['ト','ツ','タ','テ'],
+      'ヒン<strong>ト</strong>. <em>t</em> takes <em>o</em>, not <em>u</em> — because ツ is <em>tsu</em>, which would change the sound.'),
+    q('English <strong>bed</strong> ends in a bare <em>d</em>. Which character does that <em>d</em> become?',
+      'ド', ['ド','ヅ','ダ','デ'],
+      'ベッ<strong>ド</strong>. Same rule as <em>t</em>: <em>d</em> takes <em>o</em>, giving ド.'),
+    q('Which character starts both <strong>light</strong> and <strong>right</strong> in katakana?',
+      'ラ', ['ラ','リ','ル','レ'],
+      'Both are <strong>ラ</strong>イト. Japanese has one liquid consonant where English has two, so the words are identical.'),
+    q('English <strong>fork</strong> starts with <em>f</em>. Which character begins it?',
+      'フ', ['フ','ハ','ホ','ヒ'],
+      '<strong>フ</strong>ォーク. <em>f</em> uses フ plus a small vowel — フォ for <em>fo</em>.'),
+    q('Which character doubles the consonant in <strong>cup</strong> → <em>koppu</em>?',
+      'ッ', ['ッ','ツ','ー','ン'],
+      'コ<strong>ッ</strong>プ. The small ッ is silent but takes a full beat, doubling the following consonant.'),
+    q('Which character lengthens the vowel in <strong>beer</strong> → <em>bīru</em>?',
+      'ー', ['ー','ッ','ン','イ'],
+      'ビ<strong>ー</strong>ル. The bar holds the previous vowel for one extra beat. Katakana only.'),
+    q('English <strong>violin</strong> starts with <em>v</em>. Which character begins it?',
+      'バ', ['バ','ブ','ボ','ベ'],
+      '<strong>バ</strong>イオリン. Japanese has no native <em>v</em>, so it uses the バ row.')
+  ]
+});
+
+function wq(before, after, gloss, answer, options, explain) {
+  return {
+    prompt: '<span class="blankword">' + before + '<b>＿</b>' + after + '</span>'
+          + '<br><span class="cite">' + gloss + '</span><br>Which character fills the gap?',
+    options: options, answer: answer, explain: explain
+  };
+}
+
+Quiz.mount('#q-gap', {
+  title: 'Fill the gap',
+  questions: [
+    wq('ホ', 'ル', '<em>hoteru</em> — hotel', 'テ', ['テ','チ','タ','ト'],
+      'ホ<strong>テ</strong>ル. チ is <em>chi</em> — same two crossbars, but its vertical hooks left.'),
+    wq('', 'クシー', '<em>takushī</em> — taxi', 'タ', ['タ','ク','ケ','ワ'],
+      '<strong>タ</strong>クシー. タ is ク with a slash through it.'),
+    wq('パス', 'ート', '<em>pasupōto</em> — passport', 'ポ', ['ポ','ボ','ホ','オ'],
+      'パス<strong>ポ</strong>ート. Note the circle, not the dashes — ポ is <em>po</em>, ボ is <em>bo</em>.'),
+    wq('エレベー', 'ー', '<em>erebētā</em> — elevator', 'タ', ['タ','ダ','ナ','ケ'],
+      'エレベー<strong>タ</strong>ー. The final <em>-or</em> becomes ター, following the -er → アー rule.'),
+    wq('', 'ンビニ', '<em>konbini</em> — convenience store', 'コ', ['コ','ユ','エ','ロ'],
+      '<strong>コ</strong>ンビニ. Chopped from コンビニエンスストア.'),
+    wq('チェッ', 'イン', '<em>chekkuin</em> — check-in', 'ク', ['ク','タ','ケ','ワ'],
+      'チェッ<strong>ク</strong>イン. The small ッ before it doubles the <em>k</em>.'),
+    wq('ジュー', '', '<em>jūsu</em> — juice', 'ス', ['ス','ヌ','ノ','メ'],
+      'ジュー<strong>ス</strong>. ス is a roof plus one leg; ヌ adds a crossbar.'),
+    wq('ミル', '', '<em>miruku</em> — milk', 'ク', ['ク','ワ','ウ','タ'],
+      'ミル<strong>ク</strong>. Final <em>k</em> picks up the default <em>u</em>.')
+  ]
+});
+
+// One-word options throughout, so word count can never distinguish them.
+function mq(word, hint, answer, options, explain) {
+  return {
+    prompt: '<span class="wordbig">' + word + '</span><span class="cite">' + hint
+          + '</span><br>What does it actually mean?',
+    options: options, answer: answer, explain: explain
+  };
+}
+
+Quiz.mount('#q-wasei', {
+  title: 'Japan-made English',
+  questions: [
+    mq('マンション', '<em>manshon</em>', 'apartment', ['apartment','mansion','penthouse','farmhouse'],
+      'An ordinary <strong>apartment</strong> in a concrete block — not a mansion. If someone says they live in a マンション, picture a flat.'),
+    mq('コンセント', '<em>konsento</em>', 'socket', ['socket','consent','contract','document'],
+      'An electrical <strong>socket</strong> or power outlet. Worth knowing when hunting for somewhere to charge a phone.'),
+    mq('バイキング', '<em>baikingu</em>', 'buffet', ['buffet','viking','banquet','biking'],
+      'A <strong>buffet</strong>, from "Viking". It appears on restaurant signs constantly and means all-you-can-eat.'),
+    mq('フロント', '<em>furonto</em>', 'reception', ['reception','frontage','forefront','frontier'],
+      'The hotel <strong>reception</strong> desk. "Ask at the フロント" means ask at the front desk.'),
+    mq('クーラー', '<em>kūrā</em>', 'aircon', ['aircon','cooler','freezer','chiller'],
+      'The <strong>air conditioning</strong>, not a cool-box. So is エアコン.'),
+    mq('サービス', '<em>sābisu</em>', 'free', ['free','service','helping','tipping'],
+      'On a menu or from a server, it means it is <strong>free</strong> — on the house. Not "service charge".'),
+    mq('パン', '<em>pan</em>', 'bread', ['bread','pan','pot','bowl'],
+      '<strong>Bread</strong> — from Portuguese <em>pão</em>, borrowed in the 1500s. Not every katakana word is English.'),
+    mq('アルバイト', '<em>arubaito</em>', 'job', ['job','work','duty','task'],
+      'A part-time <strong>job</strong>, from German <em>Arbeit</em>. Often shortened further to バイト.')
+  ]
+});
+
+Quiz.mount('#q-signs', {
+  title: 'Read the sign',
+  questions: [
+    mq('チェックアウト 10:00', 'on a hotel room door', 'checkout',
+      ['checkout','checking','checkbook','checkpoint'],
+      '<strong>Check-out</strong> is at 10:00. Its partner チェックイン appears at the フロント.'),
+    mq('コインランドリー', 'a shopfront', 'laundromat',
+      ['laundromat','launderer','laundering','laundryman'],
+      'A coin <strong>laundromat</strong> — literally "coin laundry". Genuinely useful on a long trip.'),
+    mq('ドラッグストア', 'a shopfront', 'drugstore',
+      ['drugstore','superstore','bookseller','fishmonger'],
+      'A <strong>drugstore</strong> — ドラッグ + ストア. Japanese drugstores sell medicine, toiletries and snacks, so this is the sign to look for when you need painkillers.'),
+    mq('エスカレーター', 'an arrow sign', 'escalator',
+      ['escalator','elevation','escalation','excavation'],
+      '<strong>Escalator</strong>. Watch it against エレベーター (<em>elevator</em>) — the two differ by only a few characters and point to different places.'),
+    mq('クレジットカード', 'at a till', 'card',
+      ['card','cash','coin','cart'],
+      'クレジット + <strong>カード</strong> = credit <strong>card</strong>. Note the small ッ doubling the <em>t</em> in クレジット.'),
+    mq('インターネット', 'a hotel notice', 'internet',
+      ['internet','interview','interface','interlude'],
+      '<strong>Internet</strong>. Often followed by 無料 (<em>free</em>) — a kanji word you meet later.')
+  ]
+});
+</script>
+</body>
+</html>

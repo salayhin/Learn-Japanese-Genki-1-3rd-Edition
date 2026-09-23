@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 8–9 · Lesson 5 — A Trip to Okinawa</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  .drill-stage .kana-big { font-size: clamp(2rem, 9vw, 3.4rem); }
+  .jp-title { font-size: 1.5rem; color: var(--ink-soft); margin: -.3rem 0 1.3rem; letter-spacing: .04em; }
+
+  .partmap { border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; margin: 1.6rem 0; }
+  .partmap a {
+    display: grid; grid-template-columns: 4.2rem 1fr 4.8rem; gap: .8rem; align-items: baseline;
+    padding: .75rem 1rem; border-bottom: 1px solid var(--rule); text-decoration: none;
+    color: var(--ink); font-size: .93rem;
+  }
+  .partmap a:last-child { border-bottom: 0; }
+  .partmap a:hover { background: var(--paper-warm); }
+  .partmap .s { font-family: var(--sans); font-size: .7rem; font-weight: 700;
+                letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+  .partmap .c { font-family: var(--mono); font-size: .72rem; color: var(--ink-faint); text-align: right; }
+  @media (max-width: 520px) {
+    .partmap a { grid-template-columns: 3.6rem 1fr; }
+    .partmap .c { display: none; }
+  }
+
+  .parthead {
+    margin: 3.4rem 0 .3rem; padding: .9rem 1.1rem; border-radius: 8px;
+    background: var(--accent-dim); border-left: 4px solid var(--accent);
+  }
+  .parthead h2 { border: 0; margin: 0; font-size: 1.3rem; }
+  .parthead .s {
+    font-family: var(--sans); font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .3rem;
+  }
+  .parthead p { margin: .4rem 0 0; font-size: .92rem; color: var(--ink-soft); }
+
+  .pattern {
+    border: 2px solid var(--accent); border-radius: 8px; padding: .9rem 1.1rem;
+    margin: 1.3rem 0; text-align: center; background: var(--paper-warm);
+  }
+  .pattern .jp-pat { font-family: var(--jp); font-size: 1.45rem; letter-spacing: .04em; }
+  .pattern .en { font-size: .88rem; color: var(--ink-soft); display: block; margin-top: .3rem; }
+  .pattern .hi { color: var(--accent); }
+
+  .ex { margin: 1.1rem 0; }
+  .ex div {
+    padding: .6rem 0; border-bottom: 1px solid var(--rule);
+    display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; align-items: baseline;
+  }
+  .ex div:last-child { border-bottom: 0; }
+  .ex .j { font-family: var(--jp); font-size: 1.2rem; line-height: 1.5; }
+  .ex .e { font-size: .88rem; color: var(--ink-soft); font-style: italic; }
+  @media (max-width: 520px) { .ex div { grid-template-columns: 1fr; gap: .15rem; } }
+
+  .adjtable { width: 100%; border-collapse: collapse; margin: 1.2rem 0; }
+  .adjtable th { font-size: .64rem; }
+  .adjtable td { font-family: var(--jp); font-size: 1.12rem; padding: .55rem .5rem; vertical-align: top; }
+  .adjtable td:first-child { font-family: var(--sans); font-size: .76rem; font-weight: 700;
+                             color: var(--ink-faint); text-transform: uppercase; letter-spacing: .06em;
+                             white-space: nowrap; }
+  .adjtable td.new { color: var(--accent); font-weight: 600; }
+  .adjtable .alt { font-family: var(--jp); font-size: .84rem; color: var(--ink-faint);
+                   display: block; margin-top: .15rem; }
+
+  .swap { border: 1px solid var(--rule); border-radius: 9px; padding: 1rem 1.2rem;
+          margin: 1.2rem 0; background: var(--paper-warm); }
+  .swap .row { display: grid; grid-template-columns: 1fr auto 1fr; gap: .7rem;
+               align-items: center; text-align: center; padding: .5rem 0; }
+  .swap .row + .row { border-top: 1px solid var(--rule); }
+  .swap .from { font-family: var(--jp); font-size: 1.3rem; }
+  .swap .arr { color: var(--accent); font-size: 1.1rem; }
+  .swap .to { font-family: var(--jp); font-size: 1.3rem; color: var(--accent); font-weight: 600; }
+  .swap .lbl { font-family: var(--sans); font-size: .64rem; text-transform: uppercase;
+               letter-spacing: .08em; color: var(--ink-faint); display: block; margin-top: .2rem; }
+
+  .classgrid { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; margin: 1.3rem 0; }
+  .classgrid > div { border: 1px solid var(--rule); border-radius: 9px; padding: .9rem 1rem;
+                     background: var(--paper-warm); }
+  .classgrid h4 { margin: 0 0 .5rem; font-family: var(--sans); font-size: .72rem;
+                  letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+  .classgrid ul { margin: 0; padding-left: 1.1rem; }
+  .classgrid li { font-family: var(--jp); font-size: 1.05rem; margin-bottom: .3rem; line-height: 1.5; }
+  .classgrid li .g { font-family: var(--serif); font-size: .78rem; color: var(--ink-soft);
+                     font-style: italic; }
+  @media (max-width: 520px) { .classgrid { grid-template-columns: 1fr; } }
+
+  .kanjigrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px,1fr)); gap: .6rem; margin: 1.2rem 0; }
+  .kanjigrid div { border: 1px solid var(--rule); border-radius: 8px; padding: .6rem .3rem;
+                   text-align: center; background: var(--paper-warm); }
+  .kanjigrid .k { font-family: var(--jp); font-size: 2.1rem; line-height: 1.1; display: block; }
+  .kanjigrid .r { font-family: var(--mono); font-size: .64rem; color: var(--accent); display: block; margin-top: .25rem; }
+  .kanjigrid .m { font-size: .7rem; color: var(--ink-soft); display: block; margin-top: .1rem; }
+
+  .scaffold { border: 1px solid var(--rule); border-radius: 9px; padding: 1.1rem 1.3rem;
+              background: var(--paper-warm); margin: 1.3rem 0; }
+  .scaffold ol { margin: .6rem 0 0; padding-left: 1.3rem; }
+  .scaffold li { margin-bottom: .7rem; font-family: var(--jp); font-size: 1.15rem; line-height: 1.6; }
+  .scaffold li .gloss { font-family: var(--serif); font-size: .84rem; color: var(--ink-soft);
+                        font-style: italic; display: block; margin-top: .1rem; }
+  .scaffold .slot { color: var(--accent); border-bottom: 1.5px dashed var(--accent); padding: 0 .3em; }
+
+  ol.passes { padding-left: 1.3rem; }
+  ol.passes li { margin-bottom: .5rem; }
+  .wordbig { font-family: var(--jp); font-size: 1.8rem; letter-spacing: .04em; display: block; margin: .3rem 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="topnav"><a href="../index.html">&larr; Course home</a></p>
+
+<p class="eyebrow">Phase 1 · Week 8 day 4 → Week 9 day 4</p>
+<h1>Lesson 5 · A Trip to Okinawa</h1>
+<p class="jp-title"><span class="jp">沖縄旅行</span></p>
+<p class="standfirst">Six days, and the last lesson in this plan. You gain <em>description</em> —
+adjectives in both tenses, both polarities, and in front of nouns — plus how to say what you
+like, how to propose doing something together, and how to count things. Fourteen more kanji,
+including the four verbs you will see on every menu and signpost. Textbook pp. 128–145.</p>
+
+<div class="note">
+  <span class="label">What makes this lesson tricky</span>
+  <p style="margin-bottom:0">Not the number of forms. It's that you have spent four lessons
+  treating <span class="jp">です</span> as the verb, and it isn't. For an
+  <span class="jp">い</span>-adjective, <strong><span class="jp">です</span> is only
+  politeness bolted on the end</strong> — the <span class="jp">い</span> is the part that
+  carries tense. Once you see that, all eight forms fall out of two rules. Miss it, and you
+  will produce <span class="jp">×さむいでした</span> for years, which is the single most
+  recognisable beginner error in Japanese.</p>
+</div>
+
+<div class="partmap">
+  <a href="#d1"><span class="s">Day 1</span><span><strong>Vocabulary, dialogues, and the two adjective classes</strong></span><span class="c">pp. 128–131</span></a>
+  <a href="#d2"><span class="s">Day 2</span><span><strong>Adjectives, present tense</strong> — and why <span class="jp">です</span> is not the verb</span><span class="c">pp. 132–133</span></a>
+  <a href="#d3"><span class="s">Day 3</span><span><strong>Past tense and noun modification</strong> — one rule does both</span><span class="c">pp. 133–134</span></a>
+  <a href="#d4"><span class="s">Day 4</span><span><strong><span class="jp">好き/きらい</span> and <span class="jp">〜ましょう</span></strong> — liking, and proposing</span><span class="c">pp. 135–137</span></a>
+  <a href="#d5"><span class="s">Day 5</span><span><strong>Counting, and the kanji</strong> — mountains, rice fields, and four verbs</span><span class="c">p. 136 · 312–313</span></a>
+  <a href="#d6"><span class="s">Day 6</span><span><strong>Reading and retrieval</strong> — third five-pass passage</span><span class="c">pp. 312–317</span></a>
+</div>
+
+<!-- ==================== DAY 1 ==================== -->
+<div class="parthead" id="d1">
+  <span class="s">Day 1</span>
+  <h2>Vocabulary, Dialogues, and the Split</h2>
+  <p>Textbook pp. 128–131. An input day — but one structural fact has to go in first, or the
+  vocabulary will be learned in a form you can't use.</p>
+</div>
+
+<ol>
+  <li><strong>Vocabulary, pp. 130–131</strong>, with the audio. Notice that the book lists
+  the adjectives under two separate headings. That is not a formatting choice — it is the
+  most important thing on the page.</li>
+  <li><strong>Dialogues, pp. 128–129.</strong> There are two. The first is a conversation
+  about a holiday, so it's mostly past-tense description; the second is buying T-shirts,
+  which is where the counting at the end of this lesson comes from.</li>
+</ol>
+
+<h3>Two classes, and the class is part of the word</h3>
+
+<p>Every Japanese adjective belongs to one of two classes, and they conjugate differently.
+Dictionaries, including Genki's vocabulary list, write the class into the entry: an
+<span class="jp">い</span>-adjective is listed bare, a <span class="jp">な</span>-adjective is
+listed with a <span class="jp">な</span> in brackets.</p>
+
+<div class="classgrid">
+  <div>
+    <h4><span class="jp">い</span>-adjectives</h4>
+    <ul>
+      <li>さむい <span class="g">cold (weather)</span></li>
+      <li>たかい <span class="g">expensive; tall</span></li>
+      <li>おもしろい <span class="g">interesting; funny</span></li>
+      <li>むずかしい <span class="g">difficult</span></li>
+      <li>いそがしい <span class="g">busy</span></li>
+      <li>つまらない <span class="g">boring</span></li>
+    </ul>
+  </div>
+  <div>
+    <h4><span class="jp">な</span>-adjectives</h4>
+    <ul>
+      <li>げんき（な） <span class="g">healthy; energetic</span></li>
+      <li>しずか（な） <span class="g">quiet</span></li>
+      <li>にぎやか（な） <span class="g">lively</span></li>
+      <li>ひま（な） <span class="g">free, not busy</span></li>
+      <li>きれい（な） <span class="g">beautiful; clean</span></li>
+      <li>きらい（な） <span class="g">disliked</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="note">
+  <span class="label">The spelling test fails, and it fails on common words</span>
+  <p style="margin-bottom:0"><span class="jp">きれい</span> and
+  <span class="jp">きらい</span> both end in <span class="jp">い</span> and are both
+  <span class="jp">な</span>-adjectives. The reason is visible in the kanji:
+  <span class="jp">綺麗</span> is read <span class="jp">き・れい</span>, so that
+  <span class="jp">い</span> is the tail of a <em>reading</em>, not a grammatical ending.
+  You cannot see this in kana. So the class has to be memorised with the word — exactly the
+  discipline you used for verb groups in
+  <a href="week-05-lesson-03-making-a-date.html">Lesson 3</a>, and for exactly the same
+  reason: a small number of look-alike exceptions that will otherwise ambush you in every
+  sentence you build.</p>
+</div>
+
+<p>Three vocabulary items on these pages carry distinctions English doesn't make, and they
+are worth pinning down on day 1 rather than discovering later:</p>
+
+<table>
+  <thead><tr><th>Word</th><th>Only used for</th><th>Otherwise you'd say</th></tr></thead>
+  <tbody>
+    <tr><td><span class="jp">さむい</span> <span class="jp">寒い</span></td><td>Cold weather</td><td>A cold drink is <span class="jp">つめたい</span></td></tr>
+    <tr><td><span class="jp">あつい</span> <span class="jp">暑い</span></td><td>Hot weather</td><td>A hot drink is <span class="jp">あつい</span> <span class="jp">熱い</span> — same sound, different kanji</td></tr>
+    <tr><td><span class="jp">いそがしい</span> <span class="jp">忙しい</span></td><td>Busy people and busy days</td><td>A busy <em>city</em> is <span class="jp">にぎやか（な）</span></td></tr>
+  </tbody>
+</table>
+
+<p class="cite"><span class="jp">やさしい</span> is one word doing two jobs: <em>easy</em> of
+a problem, <em>kind</em> of a person. Both are common and context separates them without
+effort.</p>
+
+<h3>Check the split landed</h3>
+<div id="q-split"></div>
+
+<!-- ==================== DAY 2 ==================== -->
+<div class="parthead" id="d2">
+  <span class="s">Day 2</span>
+  <h2>Adjectives, Present Tense</h2>
+  <p>Grammar 1, pp. 132–133. Practice I, pp. 138–139. The affirmative is free; the negative
+  is where the two classes separate.</p>
+</div>
+
+<p>The affirmative is nothing at all: put <span class="jp">です</span> on the end. For a
+<span class="jp">な</span>-adjective, drop the bracketed <span class="jp">な</span> first.</p>
+
+<div class="pattern">
+  <span class="jp-pat">さむい<span class="hi">です</span> &nbsp;&nbsp;·&nbsp;&nbsp; げんき<span class="hi">です</span></span>
+  <span class="en">It is cold. &nbsp;·&nbsp; She is healthy.</span>
+</div>
+
+<p>The negative is where you have to know the class:</p>
+
+<table class="adjtable">
+  <thead><tr><th></th><th>Affirmative</th><th>Negative</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><span class="jp">い</span>-adjective<br>さむい</td>
+      <td>さむいです</td>
+      <td class="new">さむ<strong>くない</strong>です<span class="alt">or さむくありません</span></td>
+    </tr>
+    <tr>
+      <td><span class="jp">な</span>-adjective<br>げんき（な）</td>
+      <td>げんきです</td>
+      <td class="new">げんき<strong>じゃない</strong>です<span class="alt">or げんきじゃありません</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Look at the <span class="jp">な</span>-adjective row again. You have seen
+<span class="jp">じゃないです</span> before — it is the noun negative from
+<a href="week-04-lesson-02-shopping.html">Lesson 2</a>, unchanged. That is the shortcut worth
+holding on to for the rest of the book:</p>
+
+<div class="pattern">
+  <span class="jp-pat"><span class="jp">な</span>-adjectives behave like <span class="hi">nouns</span></span>
+  <span class="en">Everything you know about です after a noun applies to them directly.</span>
+</div>
+
+<h3>Why <span class="jp">×さむいじゃないです</span> is wrong</h3>
+
+<p>Because <span class="jp">じゃないです</span> is the <em>noun</em> pattern, and
+<span class="jp">さむい</span> is not a noun. An <span class="jp">い</span>-adjective negates
+itself, from the inside, by replacing its own final <span class="jp">い</span>:</p>
+
+<div class="swap">
+  <div class="row">
+    <div><span class="from">さむ<u>い</u></span><span class="lbl">dictionary</span></div>
+    <div class="arr">&rarr;</div>
+    <div><span class="to">さむ<u>くない</u></span><span class="lbl">negative</span></div>
+  </div>
+  <div class="row">
+    <div><span class="from">げんき</span><span class="lbl">noun-like stem</span></div>
+    <div class="arr">&rarr;</div>
+    <div><span class="to">げんき<u>じゃない</u></span><span class="lbl">negative</span></div>
+  </div>
+</div>
+
+<p>Both <span class="jp">くありません</span> and <span class="jp">じゃありません</span> exist
+alongside these and mean the same thing. They are the conservative forms — more at home in
+writing and in formal speech. The <span class="jp">ないです</span> versions are what you will
+hear. Use those, recognise the others.</p>
+
+<h3>The one irregular adjective</h3>
+
+<p><span class="jp">いい</span> (good) changes its first syllable to
+<span class="jp">よ</span> in <em>every</em> form except the dictionary form:</p>
+
+<div class="ex">
+  <div><span class="j">いいです</span><span class="e">It is good.</span></div>
+  <div><span class="j">よくないです</span><span class="e">It is not good.</span></div>
+</div>
+
+<p>Compound adjectives built out of <span class="jp">いい</span> inherit the irregularity —
+<span class="jp">かっこいい</span> (good-looking) gives
+<span class="jp">かっこよくないです</span>. But <span class="jp">かわいい</span> (cute, which
+arrives in Lesson 7) only <em>looks</em> as if it contains <span class="jp">いい</span>; it
+doesn't, so it behaves normally: <span class="jp">かわいくないです</span>.</p>
+
+<h3>Turning the dial</h3>
+
+<p>Three degree words, all placed <em>before</em> the adjective:</p>
+
+<div class="ex">
+  <div><span class="j">とても きれいです</span><span class="e">It is very beautiful.</span></div>
+  <div><span class="j">すごく おいしいです</span><span class="e">It is extremely tasty.</span></div>
+  <div><span class="j">ちょっと あついです</span><span class="e">It is a little hot.</span></div>
+</div>
+
+<p>And the two from <a href="week-05-lesson-03-making-a-date.html">Lesson 3</a> that force a
+negative ending now apply to adjectives too:
+<span class="jp">あまり おもしろくないです</span> (not very interesting),
+<span class="jp">ぜんぜん むずかしくなかったです</span> (not difficult at all). If you find
+yourself writing <span class="jp">あまり</span> and then an affirmative, the sentence has gone
+wrong before you reached the end.</p>
+
+<h3>Present tense — accuracy</h3>
+<div id="q-present"></div>
+
+<h3>Present negative — speed</h3>
+<p>Type the negative, either with or without <span class="jp">です</span>. Both classes are
+mixed together on purpose: deciding <em>which rule</em> is the skill, and you don't practise
+it by doing ten of one kind in a row.</p>
+<div id="d-neg"></div>
+
+<!-- ==================== DAY 3 ==================== -->
+<div class="parthead" id="d3">
+  <span class="s">Day 3</span>
+  <h2>Past Tense, and Adjectives in Front of Nouns</h2>
+  <p>Grammar 2 and 3, pp. 133–134. Practice II–III, pp. 140–142.</p>
+</div>
+
+<table class="adjtable">
+  <thead><tr><th></th><th>Past affirmative</th><th>Past negative</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><span class="jp">い</span>-adjective<br>さむい</td>
+      <td class="new">さむ<strong>かった</strong>です</td>
+      <td class="new">さむくな<strong>かった</strong>です</td>
+    </tr>
+    <tr>
+      <td><span class="jp">な</span>-adjective<br>げんき（な）</td>
+      <td class="new">げんき<strong>でした</strong></td>
+      <td class="new">げんきじゃな<strong>かった</strong>です</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Three of those four cells contain <span class="jp">かった</span>, which is not a
+coincidence. Here is the whole of adjective conjugation, compressed:</p>
+
+<div class="pattern">
+  <span class="jp-pat">Past of an <span class="jp">い</span>-adjective: &nbsp; <span class="hi">い &rarr; かった</span></span>
+  <span class="en">And every negative ends in ない, which is い-shaped — so the same rule conjugates it.</span>
+</div>
+
+<p>Follow that through. <span class="jp">さむくない</span> ends in
+<span class="jp">い</span>, so it takes <span class="jp">かった</span> like any
+<span class="jp">い</span>-adjective: <span class="jp">さむくなかった</span>.
+<span class="jp">げんきじゃない</span> also ends in <span class="jp">い</span>, so it does the
+same: <span class="jp">げんきじゃなかった</span>. You are not learning four separate past
+forms — you are learning one, plus <span class="jp">でした</span> for the
+noun-like affirmative you already had from
+<a href="week-07-lesson-04-first-date.html">Lesson 4</a>.</p>
+
+<p>This pays off well beyond this lesson. When verbs get their plain negative in Lesson 8,
+<span class="jp">たべない</span> will conjugate to <span class="jp">たべなかった</span> by
+this identical rule. In Japanese, negation is an adjective.</p>
+
+<div class="note">
+  <span class="label">The two errors to watch for in your own writing</span>
+  <p><span class="jp">×さむいでした</span> — putting the tense on
+  <span class="jp">です</span>. Tense lives in <span class="jp">かった</span>;
+  <span class="jp">です</span> never moves.</p>
+  <p style="margin-bottom:0"><span class="jp">×げんきかったです</span> — applying the
+  <span class="jp">い</span> rule to a <span class="jp">な</span>-adjective. This is the same
+  error as day 2's, in the other direction, and it means the class didn't stick.</p>
+</div>
+
+<h3>Adjectives in front of nouns</h3>
+
+<p>So far every adjective has been the <em>predicate</em> — the thing the sentence asserts.
+They can also sit in front of a noun and describe it, the way English does with "an
+interesting film". The rule is one line per class:</p>
+
+<div class="swap">
+  <div class="row">
+    <div><span class="from">おもしろい</span><span class="lbl">dictionary form, straight in</span></div>
+    <div class="arr">&rarr;</div>
+    <div><span class="to">おもしろいえいが</span><span class="lbl">an interesting film</span></div>
+  </div>
+  <div class="row">
+    <div><span class="from">きれい（な）</span><span class="lbl">the な comes back</span></div>
+    <div class="arr">&rarr;</div>
+    <div><span class="to">きれいなしゃしん</span><span class="lbl">a beautiful photo</span></div>
+  </div>
+</div>
+
+<p>That is what the bracketed <span class="jp">な</span> in the vocabulary list has been for
+all along. It isn't decoration and it isn't optional — it is the form the adjective takes
+everywhere <em>except</em> directly before <span class="jp">です</span>, which is the one
+place it drops out. Calling them "<span class="jp">な</span>-adjectives" names them after
+their normal shape, not their exception.</p>
+
+<p>Once an adjective is attached, the whole phrase behaves as a single noun and takes
+particles exactly as a bare noun would:</p>
+
+<div class="ex">
+  <div><span class="j">きのう、おもしろいえいがを みました。</span><span class="e">Yesterday I saw an interesting film.</span></div>
+  <div><span class="j">きょうとで きれいなしゃしんを とりました。</span><span class="e">I took a beautiful photo in Kyoto.</span></div>
+  <div><span class="j">ここは とても にぎやかなまちです。</span><span class="e">This is a very lively city.</span></div>
+</div>
+
+<p class="cite">Modifiers are never made polite. <span class="jp">×おもしろいですえいが</span>
+is wrong: politeness attaches once, at the end of the sentence, to the final predicate. This
+is worth noticing now because it is the first hint of a much larger fact — Japanese marks
+politeness at sentence level, not word level.</p>
+
+<h3>Past tense and modification — accuracy</h3>
+<div id="q-past"></div>
+
+<h3>Past affirmative — speed</h3>
+<p>Both classes mixed again. Type the past affirmative.</p>
+<div id="d-past"></div>
+
+<!-- ==================== DAY 4 ==================== -->
+<div class="parthead" id="d4">
+  <span class="s">Day 4</span>
+  <h2><span class="jp">好き</span>, <span class="jp">きらい</span>, and <span class="jp">〜ましょう</span></h2>
+  <p>Grammar 4 and 5, pp. 135–136. Expression notes, p. 137. Practice IV–V, pp. 142–143.</p>
+</div>
+
+<p>In English, <em>like</em> is a verb and takes an object: <em>I like fish</em>. In Japanese
+it is an adjective, and adjectives have no objects. So the thing you like is not the object —
+it's the <strong>subject</strong>, and it takes <span class="jp">が</span>.</p>
+
+<div class="pattern">
+  <span class="jp-pat">X は &nbsp; Y <span class="hi">が</span> &nbsp; すきです</span>
+  <span class="en">As for X, Y is likeable. → X likes Y.</span>
+</div>
+
+<div class="ex">
+  <div><span class="j">ロバートさんは にほんごのクラスが すきです。</span><span class="e">Robert likes his Japanese class.</span></div>
+  <div><span class="j">やましたせんせいは さかなが きらいです。</span><span class="e">Professor Yamashita dislikes fish.</span></div>
+</div>
+
+<p>The <span class="jp">が</span> is the error everybody makes, and they make it for a good
+reason: English has trained you to feel that <em>fish</em> is the object, so
+<span class="jp">を</span> feels right. It isn't. If you translate the pattern literally as
+"<em>as for X, Y is likeable</em>", the <span class="jp">が</span> stops feeling strange —
+<span class="jp">が</span> has marked subjects since Lesson 4's
+<span class="jp">あります</span> sentences.</p>
+
+<h3>Turning it up, and turning it off</h3>
+
+<p>Japanese intensifies these two with a prefix rather than a degree adverb, and the prefixed
+forms are far commoner than <span class="jp">とても好き</span> — the reverse of English,
+where "very much" is the ordinary intensifier:</p>
+
+<div class="ex">
+  <div><span class="j">だいすきです</span><span class="e">to love; to like very much</span></div>
+  <div><span class="j">だいきらいです</span><span class="e">to hate</span></div>
+</div>
+
+<p>And if you want neither, the pattern doubles up on <span class="jp">も</span> and closes
+with a single negative:</p>
+
+<div class="pattern">
+  <span class="jp-pat">すき<span class="hi">でも</span> きらい<span class="hi">でも</span> ないです</span>
+  <span class="en">I neither like it nor dislike it.</span>
+</div>
+
+<p>Because <span class="jp">好き</span> is a <span class="jp">な</span>-adjective, day 3's
+rule applies unchanged when it modifies a noun:
+<span class="jp">これは わたしの すきな ほんです</span> — <em>this is my favourite book</em>.
+And when you contrast two things, <span class="jp">は</span> displaces
+<span class="jp">が</span>, which is the contrast marker doing the job it has done since
+Lesson 1: <span class="jp">やさいは すきですが、にくは きらいです</span>.</p>
+
+<h3><span class="jp">〜ましょう</span> and <span class="jp">〜ましょうか</span></h3>
+
+<p>Take any verb's <span class="jp">ます</span> form and swap the ending. That is the entire
+rule — it is the same stem you have been using since Lesson 3, doing one more job:</p>
+
+<div class="swap">
+  <div class="row">
+    <div><span class="from">たべ<u>ます</u></span><span class="lbl">polite form</span></div>
+    <div class="arr">&rarr;</div>
+    <div><span class="to">たべ<u>ましょう</u></span><span class="lbl">let's eat</span></div>
+  </div>
+  <div class="row">
+    <div><span class="from">のみ<u>ます</u></span><span class="lbl">polite form</span></div>
+    <div class="arr">&rarr;</div>
+    <div><span class="to">のみ<u>ましょうか</u></span><span class="lbl">shall we drink?</span></div>
+  </div>
+</div>
+
+<p>You now have three ways to propose something, and they are not interchangeable — they sit
+at different points in the same conversation:</p>
+
+<table>
+  <thead><tr><th>Form</th><th>Where it belongs</th></tr></thead>
+  <tbody>
+    <tr><td><span class="jp">〜ませんか</span></td><td><strong>Opening.</strong> Invites someone who has not yet agreed to anything. Negative-shaped because it leaves them room to decline.</td></tr>
+    <tr><td><span class="jp">〜ましょうか</span></td><td><strong>Middle.</strong> Checks a specific proposal — "shall we?" — once the idea is on the table.</td></tr>
+    <tr><td><span class="jp">〜ましょう</span></td><td><strong>Settling.</strong> "Let's." Assumes agreement, so it sounds pushy if you use it before you have any.</td></tr>
+  </tbody>
+</table>
+
+<p class="cite">A real exchange runs straight down that table:
+<span class="jp">いっしょに えいがに いきませんか</span> &rarr;
+<span class="jp">いいですね</span> &rarr;
+<span class="jp">じゃあ、ろくじに いきましょう</span>.</p>
+
+<h3>Two expressions from p. 137</h3>
+
+<p><span class="jp">そうですね</span> agrees with what you just heard. Stretch the final
+<span class="jp">ね</span> into <span class="jp">そうですねえ</span> and it becomes a stall —
+the spoken equivalent of "well, let me see", and an extremely useful thing to have when you
+need three seconds to assemble a sentence.</p>
+
+<p><span class="jp">そうですか</span> is different: falling intonation means "I see, I didn't
+know that"; rising intonation means "really? are you sure?". Same four syllables, opposite
+social effect, and the only thing separating them is your pitch.</p>
+
+<h3>Liking and proposing</h3>
+<div id="q-suki"></div>
+
+<!-- ==================== DAY 5 ==================== -->
+<div class="parthead" id="d5">
+  <span class="s">Day 5</span>
+  <h2>Counting, and Fourteen Kanji</h2>
+  <p>Grammar 6, p. 136, with the counter table at pp. 380–381. Then the kanji at
+  pp. 312–313 and the workbook kanji sheets.</p>
+</div>
+
+<p>Japanese doesn't count things with a bare number. It uses a number plus a
+<strong>counter</strong> — a classifier chosen to match the kind of thing being counted.
+English does this occasionally, in "three <em>sheets</em> of paper" or "two <em>head</em> of
+cattle"; Japanese does it always.</p>
+
+<div class="pattern">
+  <span class="jp-pat">Tシャツ<span class="hi">を</span> &nbsp; さんまい &nbsp; かいました</span>
+  <span class="en">I bought three T-shirts. — item first, quantity after.</span>
+</div>
+
+<p>Two things to take from that sentence. First, the number word comes <em>after</em> the
+item, which is the reverse of English. Second, <strong>the counter phrase has no
+particle</strong> — <span class="jp">を</span> is already attached to
+<span class="jp">Tシャツ</span>. The quantity behaves as an adverb modifying the verb, which
+is why it can float loose in the sentence rather than sitting glued to the noun.</p>
+
+<p><span class="jp">〜まい</span> (<span class="jp">枚</span>) is the counter for flat things:
+sheets of paper, tickets, plates, shirts, cards. It's a good first one to own, because almost
+everything you buy or are handed while travelling is flat. Other counters — for people, for
+books, for long thin objects — arrive in later lessons, and the sound changes at the joins
+follow the same logic as the <span class="jp">さんびゃく / ろっぴゃく</span> shifts you met in
+<a href="week-04-lesson-02-shopping.html">Lesson 2</a>. The full table is at pp. 380–381; look
+at it, don't memorise it.</p>
+
+<h3>The kanji</h3>
+
+<div class="kanjigrid">
+  <div><span class="k">山</span><span class="r">やま・サン</span><span class="m">mountain</span></div>
+  <div><span class="k">川</span><span class="r">かわ・セン</span><span class="m">river</span></div>
+  <div><span class="k">元</span><span class="r">もと・ゲン</span><span class="m">origin</span></div>
+  <div><span class="k">気</span><span class="r">キ</span><span class="m">spirit</span></div>
+  <div><span class="k">天</span><span class="r">テン</span><span class="m">heaven</span></div>
+  <div><span class="k">私</span><span class="r">わたし・シ</span><span class="m">I; private</span></div>
+  <div><span class="k">今</span><span class="r">いま・コン</span><span class="m">now</span></div>
+  <div><span class="k">田</span><span class="r">た・だ</span><span class="m">rice field</span></div>
+  <div><span class="k">女</span><span class="r">おんな・ジョ</span><span class="m">woman</span></div>
+  <div><span class="k">男</span><span class="r">おとこ・ダン</span><span class="m">man</span></div>
+  <div><span class="k">見</span><span class="r">み・ケン</span><span class="m">to see</span></div>
+  <div><span class="k">行</span><span class="r">い・コウ</span><span class="m">to go</span></div>
+  <div><span class="k">食</span><span class="r">た・ショク</span><span class="m">to eat</span></div>
+  <div><span class="k">飲</span><span class="r">の・イン</span><span class="m">to drink</span></div>
+</div>
+
+<p>This set breaks into four groups, and learning it that way is far quicker than learning
+fourteen separate shapes.</p>
+
+<p><strong>Four you can read off the page.</strong> <span class="jp">山</span> is three peaks.
+<span class="jp">川</span> is three lines of flowing water. <span class="jp">田</span> is a
+paddy divided by its paths. <span class="jp">女</span> is a seated figure. These are
+pictographs, the oldest layer of the writing system, and they are drawings that stopped being
+drawings.</p>
+
+<p><strong>One character that unlocks a dozen words.</strong>
+<span class="jp">気</span> — spirit, air, mood — is among the highest-frequency kanji in
+Japanese. <span class="jp">元気</span> is <em>origin-spirit</em>, your underlying vitality,
+hence "healthy, energetic" and the greeting <span class="jp">お元気ですか</span>.
+<span class="jp">天気</span> is <em>heaven-spirit</em>, the weather. Beyond this lesson it
+gives you <span class="jp">電気</span> (electricity), <span class="jp">人気</span>
+(popularity) and <span class="jp">気持ち</span> (feeling). Watch the pair
+<span class="jp">てんき</span> and <span class="jp">でんき</span>: one voicing mark apart,
+and the mark is doing all the work.</p>
+
+<p><strong>Four verbs, and the division of labour.</strong>
+<span class="jp">見る・行く・食べる・飲む</span>. Look at what the kana after the kanji is
+doing: <span class="jp">食べる</span>, <span class="jp">食べます</span>,
+<span class="jp">食べました</span> — the kanji never changes, the kana carries every
+conjugation. That split, called <em>okurigana</em>, is why kanji make Japanese
+<em>easier</em> to read once you know a few hundred: the meaning is a fixed shape your eye
+catches instantly, and the grammar hangs off the end of it. <span class="jp">食</span> and
+<span class="jp">飲</span> together also give you <span class="jp">食べ物</span> and
+<span class="jp">飲み物</span> — the two headings on any menu.</p>
+
+<p><strong>Names and doors.</strong> <span class="jp">山</span>,
+<span class="jp">川</span> and <span class="jp">田</span> are three of the commonest
+components of Japanese surnames — <span class="jp">山川</span>,
+<span class="jp">山田</span>, <span class="jp">田中</span>, <span class="jp">小川</span> —
+so fourteen strokes buy you a real slice of the name-reading problem. And
+<span class="jp">女</span> and <span class="jp">男</span> are the two characters on every
+public toilet door in Japan. Spend thirty seconds on those two. Getting it wrong is the kind
+of mistake you only make once.</p>
+
+<div class="note">
+  <span class="label">One reading that isn't a reading</span>
+  <p style="margin-bottom:0"><span class="jp">今日</span> is
+  <span class="jp">きょう</span> — "today". Neither character is taking its normal reading;
+  the sound is attached to the <em>compound</em>, not to its parts. Japanese calls these
+  <span class="jp">熟字訓</span>, and there are a few dozen of them. They cannot be worked
+  out, only learned whole, and they are all extremely common — so learn each one the moment
+  you meet it rather than trying to reason about it.</p>
+</div>
+
+<h3>Kanji — speed</h3>
+<p>Single characters and compounds mixed. Type the reading in romaji.</p>
+<div id="d-kanji"></div>
+
+<h3>Counting and kanji — accuracy</h3>
+<div id="q-count"></div>
+
+<h3>Workbook</h3>
+<p>Workbook pp. 50–58 for the grammar, kanji sheets pp. 137–138 for stroke order. Write the
+fourteen characters by hand, in the given stroke order, even though your goal is reading.
+Writing a character is the most demanding form of retrieval available for it, and the
+recognition gain is out of proportion to the time it costs.</p>
+
+<!-- ==================== DAY 6 ==================== -->
+<div class="parthead" id="d6">
+  <span class="s">Day 6</span>
+  <h2>Reading: <span class="jp">りょこう</span></h2>
+  <p>Textbook pp. 312–317. Your third five-pass passage — and the last session before the
+  assessment.</p>
+</div>
+
+<p>This one is worth the whole lesson on its own, because it isn't textbook prose. It's a
+social-media post and a handwritten postcard: two formats you will actually meet, written the
+way people actually write them.</p>
+
+<ol class="passes">
+  <li><strong>Listen only.</strong> Audio on, eyes following, nothing looked up.</li>
+  <li><strong>Silent read.</strong> Mark where you stall; look up only those.</li>
+  <li><strong>Chorus read.</strong> Aloud, along with the audio, keeping up.</li>
+  <li><strong>Solo read, timed.</strong> Write the time down.</li>
+  <li><strong>Solo read, timed again.</strong> Beat pass 4.</li>
+</ol>
+
+<div class="note">
+  <span class="label">Three data points now</span>
+  <p style="margin-bottom:0">Put the Lesson 3, Lesson 4 and Lesson 5 times side by side. The
+  absolute numbers matter less than the <strong>shape of the gap between pass 4 and
+  pass 5</strong>. If that gap is shrinking from lesson to lesson, your decoding is becoming
+  automatic and re-reading is buying you less because there is less left to buy — which is
+  precisely the result you want. Bring all six numbers to the assessment.</p>
+</div>
+
+<h3>Two things the postcard will teach you</h3>
+
+<p><strong>It runs vertically.</strong> Characters go down the column, and the columns
+themselves progress <em>right to left</em>, so a vertical text starts at the top-right corner
+and a vertical book opens from what you would call the back. Nothing about the language
+changes — but your eyes have never done this, and the first minute is slow. That is normal
+and it passes quickly.</p>
+
+<p><strong>The address runs largest to smallest.</strong> Postcode, then prefecture, then
+city, then district, then block and house number, and the person's name last. Exactly the
+reverse of the Western order — and the same logic as a Japanese date, which is year, then
+month, then day. Once you notice that Japanese consistently goes outside-in, addresses stop
+needing to be memorised.</p>
+
+<h3>Describe a trip you have taken</h3>
+
+<p>Every sentence below uses something from this lesson. Fill the slots, then say the whole
+thing aloud:</p>
+
+<div class="scaffold">
+  <ol>
+    <li><span class="slot">ばしょ</span>に いきました。<span class="gloss">I went to ___.</span></li>
+    <li>てんきは <span class="slot">けいようし</span>かったです。<span class="gloss">The weather was ___. い-adjective, past.</span></li>
+    <li>ホテルは <span class="slot">けいようし</span>じゃなかったです。<span class="gloss">The hotel was not ___. な-adjective, past negative.</span></li>
+    <li>そこで <span class="slot">けいようし</span>な しゃしんを とりました。<span class="gloss">I took a ___ photo there. The な comes back.</span></li>
+    <li><span class="slot">たべもの</span>が だいすきです。<span class="gloss">I love ___. が, not を.</span></li>
+    <li>でも、<span class="slot">たべもの</span>は あまり すきじゃないです。<span class="gloss">But I don't much like ___. Contrast は.</span></li>
+    <li>おみやげを <span class="slot">すうじ</span>まい かいました。<span class="gloss">I bought ___ flat souvenirs. No particle on the counter.</span></li>
+    <li>また <span class="slot">ばしょ</span>に いきましょう。<span class="gloss">Let's go to ___ again.</span></li>
+  </ol>
+</div>
+
+<h3>Mixed retrieval — all five lessons</h3>
+<div id="q-mixed"></div>
+
+<h3>Finish with the culture note</h3>
+
+<p><strong>p. 145</strong> — <span class="jp">日本の祭り</span>, Japanese festivals. Read it.
+Six festivals, placed on a map, most of them in a short summer window. If a trip is in
+prospect, this page is the difference between arriving during Gion Matsuri by accident and
+arriving during it on purpose.</p>
+
+<!-- ==================== CLOSE ==================== -->
+<h2>What you can do now</h2>
+
+<ul>
+  <li>Describe anything — in the present or the past, positive or negative.</li>
+  <li>Put a description in front of a noun, which is how most real sentences carry them.</li>
+  <li>Say what you like, love, dislike and hate, and ask someone else.</li>
+  <li>Propose doing something together, at the right level of pushiness.</li>
+  <li>Count flat objects, and read a price, a date and a day of the week.</li>
+  <li>Read 43 kanji, all 104 kana, and a short passage written for adults.</li>
+</ul>
+
+<div class="note">
+  <span class="label">This is the end of the nine-week plan</span>
+  <p style="margin-bottom:0">Five Genki lessons, the complete writing system, roughly 200
+  words, and three timed readings to measure yourself against. That is a real elementary
+  foundation, and it is the honest amount of ground that 45 minutes a day on weekdays covers
+  in two months. One session remains:
+  <a href="week-09-assessment.html">the assessment</a>, which introduces
+  nothing new and exists to tell you what month three should open with.</p>
+</div>
+
+<h2>If you carry on</h2>
+
+<p><strong>Lesson 6 is the <span class="jp">て</span>-form</strong>, and it is the
+highest-leverage single thing in elementary Japanese. It is the hinge that connects clauses,
+makes requests, expresses permission, and builds the progressive — most of what you currently
+cannot say is waiting behind it. Everything in this lesson feeds it: the
+<span class="jp">て</span>-form has its own conjugation table, and you will learn it far
+faster because you have now done this twice, once for verbs and once for adjectives, and know
+what the exercise feels like.</p>
+
+<div class="lesson-foot">
+  <p><strong>Next:</strong> the <a href="week-09-assessment.html">week-9
+  assessment</a> — cold reading, the full 104-kana timed drill, twenty verbs conjugated
+  against a clock, and all 43 kanji in isolation. No new material. What breaks is the
+  syllabus for month three.</p>
+
+  <div class="chip-row">
+    <a class="chip" href="../index.html">&#8962; Course home</a>
+    <a class="chip" href="week-07-lesson-04-first-date.html">&larr; Lesson 4</a>
+    <a class="chip" href="../reference/genki1-roadmap.html#genki-5">The plan · Lesson 5</a>
+    <a class="chip" href="week-09-assessment.html">Assessment &rarr;</a>
+    <a class="chip" href="../reference/kana-charts.html">Kana charts</a>
+  </div>
+
+  <div class="ask-teacher">
+    <strong>Send me your trip paragraph and all six reading times.</strong> The paragraph
+    shows whether the class split has landed: <span class="jp">×きれいかったです</span> and
+    <span class="jp">×さむいでした</span> are the two Lesson 5 errors, and both feel
+    completely fluent from the inside. I'll also check your
+    <span class="jp">好き</span> sentences for <span class="jp">を</span> where
+    <span class="jp">が</span> belongs — that one survives for months if nobody points at it.
+    The six reading times are the only evidence of whether the plan did what it was designed
+    to do, so don't skip them.
+  </div>
+</div>
+
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script src="../assets/drill.js"></script>
+<script>
+function q(prompt, answer, options, explain) {
+  return { prompt: prompt, options: options, answer: answer, explain: explain };
+}
+var PART = ['が','に','で','を'];
+
+// ---------------------------------------------------------------------------
+// Day 1 — the i / na split
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-split', {
+  title: 'Which class, and which word?',
+  questions: [
+    q('Which of these is a <span class="jp">な</span>-adjective?', 'きれい',
+      ['きれい','おいしい','たのしい','むずかしい'],
+      '<strong>きれい.</strong> It ends in <span class="jp">い</span> and is still a <span class="jp">な</span>-adjective — the <span class="jp">い</span> is the tail of a reading (<span class="jp">綺麗</span> = <span class="jp">き・れい</span>), not a grammatical ending.'),
+    q('Which of these is an <span class="jp">い</span>-adjective?', 'こわい',
+      ['こわい','しずか','にぎやか','ひま'],
+      '<strong>こわい</strong> (frightening). The other three are <span class="jp">な</span>-adjectives, and none of them ends in <span class="jp">い</span> — most <span class="jp">な</span>-adjectives don\'t.'),
+    q('Which ends in <span class="jp">い</span> but is <em>not</em> an <span class="jp">い</span>-adjective?',
+      'きらい', ['きらい','ふるい','やすい','あつい'],
+      '<strong>きらい</strong> (disliked) — a <span class="jp">な</span>-adjective, like <span class="jp">きれい</span>. These two are the pair that catch everyone, and they are both extremely common.'),
+    q('How do you know which class a word belongs to?', 'memorise it',
+      ['memorise it','check spelling','count syllables','read context'],
+      '<strong>Memorise it</strong> with the word, the way you memorised verb groups in Lesson 3. Spelling is right most of the time and wrong on the words you use most.'),
+    q('<span class="jp">やさしい</span> means kind, and also…', 'easy',
+      ['easy','cheap','quiet','new'],
+      '<strong>Easy</strong> — of a problem or a class. One word, two jobs, and context separates them without effort.'),
+    q('<span class="jp">さむい</span> is used for…', 'weather',
+      ['weather','objects','drinks','people'],
+      '<strong>Weather</strong> only. A cold drink is <span class="jp">つめたい</span>. The same split exists on the hot side: <span class="jp">暑い</span> for weather, <span class="jp">熱い</span> for things — both read <span class="jp">あつい</span>.'),
+    q('<span class="jp">いそがしい</span> is used for…', 'people',
+      ['people','places','objects','weather'],
+      '<strong>People</strong> and days. A busy <em>city</em> is <span class="jp">にぎやか（な）</span> — lively — which carries a warmth that English "busy" doesn\'t.'),
+    q('<span class="jp">ひま（な）</span> means…', 'free',
+      ['free','tired','ready','early'],
+      '<strong>Free</strong> — not busy, having spare time. It is the direct opposite of <span class="jp">いそがしい</span>, and it is a <span class="jp">な</span>-adjective.')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 2 — present tense
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-present', {
+  title: 'Adjectives, present tense',
+  questions: [
+    q('<span class="wordbig">さむい → negative</span>Which ending replaces the <span class="jp">い</span>?',
+      'くないです', ['くないです','いないです','じゃないです','をないです'],
+      '<strong>さむくないです.</strong> The <span class="jp">い</span> is dropped and <span class="jp">くない</span> takes its place. <span class="jp">じゃないです</span> is the <em>noun</em> pattern — using it here is the commonest error in the lesson.'),
+    q('Present negative of <span class="jp">げんき（な）</span> is…', 'げんきじゃないです',
+      ['げんきじゃないです','げんきくなかたです','げんきじゃありです','げんきいなかたです'],
+      '<strong>げんきじゃないです.</strong> Nothing new — it is Lesson 2\'s noun negative, because <span class="jp">な</span>-adjectives behave like nouns. The bracketed <span class="jp">な</span> drops before <span class="jp">です</span>.'),
+    q('Why is <span class="jp">×さむいじゃないです</span> wrong?', 'wrong adjective class',
+      ['wrong adjective class','wrong tense marker','wrong polite ending','wrong word order'],
+      '<strong>Wrong class.</strong> <span class="jp">じゃないです</span> belongs to nouns and <span class="jp">な</span>-adjectives. An <span class="jp">い</span>-adjective negates itself from the inside: <span class="jp">さむくないです</span>.'),
+    q('The negative of <span class="jp">いい</span> is…', 'よくないです',
+      ['よくないです','いくないです','いいくないです','いじゃないです'],
+      '<strong>よくないです.</strong> <span class="jp">いい</span> is the one irregular adjective — its first syllable becomes <span class="jp">よ</span> in every form except the dictionary form.'),
+    q('<span class="jp">かっこいい</span> negative — which is right?', 'かっこよくないです',
+      ['かっこよくないです','かっこいくないです','かっこいよくないです','かっこじゃないです'],
+      '<strong>かっこよくないです.</strong> It is built out of <span class="jp">いい</span>, so it inherits the irregularity. <span class="jp">かわいい</span> only looks as if it is, and stays regular: <span class="jp">かわいくないです</span>.'),
+    q('<span class="jp">とても</span> and <span class="jp">ちょっと</span> go…', 'before',
+      ['before','behind','between','beneath'],
+      '<strong>Before</strong> the adjective: <span class="jp">とてもきれいです</span>, <span class="jp">ちょっとあついです</span>.'),
+    q('<span class="jp">あまり</span> requires the sentence to end…', 'negative',
+      ['negative','positive','politely','casually'],
+      '<strong>Negative</strong> — the Lesson 3 rule, now applying to adjectives: <span class="jp">あまりおもしろくないです</span>. <span class="jp">ぜんぜん</span> behaves the same way.'),
+    q('Which negative is the more formal one?', 'くありません',
+      ['くありません','くないです','じゃないです','くなかった'],
+      '<strong>くありません.</strong> The <span class="jp">ありません</span> forms are conservative and more at home in writing; the <span class="jp">ないです</span> forms are what you will hear. Both are correct.')
+  ]
+});
+
+Drill.mount('#d-neg', {
+  title: 'Dictionary form → present negative',
+  target: 115,
+  items: [
+    { show: 'さむい',     answer: ['samukunaidesu','samukunai'] },
+    { show: 'たかい',     answer: ['takakunaidesu','takakunai'] },
+    { show: 'おおきい',   answer: ['ookikunaidesu','ookikunai','okikunaidesu','okikunai'] },
+    { show: 'あたらしい', answer: ['atarashikunaidesu','atarashikunai','atarasikunaidesu','atarasikunai'] },
+    { show: 'いい',       answer: ['yokunaidesu','yokunai'] },
+    { show: 'かっこいい', answer: ['kakkoyokunaidesu','kakkoyokunai'] },
+    { show: 'やさしい',   answer: ['yasashikunaidesu','yasashikunai','yasasikunaidesu','yasasikunai'] },
+    { show: 'つまらない', answer: ['tsumaranakunaidesu','tsumaranakunai','tumaranakunaidesu','tumaranakunai'] },
+    { show: 'げんきな',   answer: ['genkijanaidesu','genkijanai','genkidehanaidesu','genkidewanaidesu'] },
+    { show: 'しずかな',   answer: ['shizukajanaidesu','shizukajanai','sizukajanaidesu','sizukajanai'] },
+    { show: 'ひまな',     answer: ['himajanaidesu','himajanai'] },
+    { show: 'きれいな',   answer: ['kireijanaidesu','kireijanai'] }
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 3 — past tense and noun modification
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-past', {
+  title: 'Past tense, and adjectives before nouns',
+  questions: [
+    q('Past affirmative of <span class="jp">さむい</span> is…', 'さむかったです',
+      ['さむかったです','さむいでした','さむくたです','さむいかたです'],
+      '<strong>さむかったです.</strong> <span class="jp">い → かった</span>, and <span class="jp">です</span> rides along unchanged.'),
+    q('Why is <span class="jp">×さむいでした</span> wrong?', 'い carries the tense',
+      ['い carries the tense','です carries the tense','さむい is a noun','でした is not polite'],
+      '<strong>The <span class="jp">い</span> carries it.</strong> <span class="jp">です</span> is only politeness bolted on the end and never changes shape after an <span class="jp">い</span>-adjective.'),
+    q('Past affirmative of <span class="jp">げんき（な）</span> is…', 'げんきでした',
+      ['げんきでした','げんきました','げんきかった','げんきくした'],
+      '<strong>げんきでした.</strong> <span class="jp">な</span>-adjectives are noun-like, so the past of <span class="jp">です</span> is <span class="jp">でした</span> — Lesson 4, unchanged. <span class="jp">げんきかった</span> applies the <span class="jp">い</span> rule to the wrong class.'),
+    q('Past negative of <span class="jp">さむい</span> is…', 'さむくなかったです',
+      ['さむくなかったです','さむいなかったです','さむくじゃなかった','さむいじゃなかった'],
+      '<strong>さむくなかったです.</strong> Build the present negative <span class="jp">さむくない</span>, notice it ends in <span class="jp">い</span>, then conjugate it like any <span class="jp">い</span>-adjective.'),
+    q('<span class="jp">さむくない</span> conjugates like…', 'an い-adjective',
+      ['an い-adjective','a な-adjective','an う-verb','a る-verb'],
+      '<strong>An <span class="jp">い</span>-adjective.</strong> This is the unifying trick: every negative ends in <span class="jp">ない</span>, which is <span class="jp">い</span>-shaped, so one rule handles all of them — <span class="jp">さむくなかった</span>, <span class="jp">げんきじゃなかった</span>, and later <span class="jp">たべなかった</span>.'),
+    q('"an interesting film" is…', 'おもしろいえいが',
+      ['おもしろいえいが','おもしろなえいが','おもしろくえいが','おもしろのえいが'],
+      '<strong>おもしろいえいが.</strong> <span class="jp">い</span>-adjectives modify in their plain dictionary form, straight in front of the noun — no particle, no <span class="jp">です</span>.'),
+    q('"a beautiful photo" is…', 'きれいなしゃしん',
+      ['きれいなしゃしん','きれいしゃしん','きれいのしゃしん','きれいいしゃしん'],
+      '<strong>きれいなしゃしん.</strong> The <span class="jp">な</span> that dictionaries put in brackets reappears in front of a noun. It only disappears directly before <span class="jp">です</span>.'),
+    q('Can a noun modifier be made polite — <span class="jp">×おもしろいですえいが</span>?', 'never',
+      ['never','always','formally','sometimes'],
+      '<strong>Never.</strong> Politeness attaches once, at the end of the sentence, to the final predicate. Japanese marks it at sentence level, not word level.'),
+    q('A busy <em>city</em> is…', 'にぎやか',
+      ['にぎやか','いそがしい','たのしい','しずかな'],
+      '<strong>にぎやか（な）</strong> — lively, bustling. <span class="jp">忙しい</span> is reserved for people and days.')
+  ]
+});
+
+Drill.mount('#d-past', {
+  title: 'Dictionary form → past affirmative',
+  target: 100,
+  items: [
+    { show: 'さむい',     answer: ['samukattadesu','samukatta'] },
+    { show: 'たかい',     answer: ['takakattadesu','takakatta'] },
+    { show: 'おもしろい', answer: ['omoshirokattadesu','omoshirokatta','omosirokattadesu','omosirokatta'] },
+    { show: 'いそがしい', answer: ['isogashikattadesu','isogashikatta','isogasikattadesu','isogasikatta'] },
+    { show: 'たのしい',   answer: ['tanoshikattadesu','tanoshikatta','tanosikattadesu','tanosikatta'] },
+    { show: 'むずかしい', answer: ['muzukashikattadesu','muzukashikatta','muzukasikattadesu','muzukasikatta'] },
+    { show: 'いい',       answer: ['yokattadesu','yokatta'] },
+    { show: 'つまらない', answer: ['tsumaranakattadesu','tsumaranakatta','tumaranakattadesu','tumaranakatta'] },
+    { show: 'げんきな',   answer: ['genkideshita','genkidesita'] },
+    { show: 'しずかな',   answer: ['shizukadeshita','sizukadesita','shizukadesita','sizukadeshita'] },
+    { show: 'にぎやかな', answer: ['nigiyakadeshita','nigiyakadesita'] },
+    { show: 'きれいな',   answer: ['kireideshita','kireidesita'] }
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 4 — suki / kirai / mashou
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-suki', {
+  title: 'Liking, disliking, and proposing',
+  questions: [
+    q('<span class="wordbig">ロバートさんは クラス＿ すきです</span>', 'が', PART,
+      '<strong>が.</strong> <span class="jp">好き</span> is an adjective, not a verb, so it has no object. The thing you like is the <em>subject</em>.'),
+    q('In <span class="jp">X は Y が すきです</span>, Y is the…', 'subject',
+      ['subject','object','topic','target'],
+      '<strong>Subject.</strong> Read the pattern as "as for X, Y is likeable" and the <span class="jp">が</span> stops feeling strange.'),
+    q('Why does <span class="jp">を</span> feel right here?', 'English uses verbs',
+      ['English uses verbs','English uses nouns','Japanese drops topics','Japanese drops objects'],
+      '<strong>Because English makes "like" a verb</strong> with an object. Japanese makes it an adjective, and adjectives take subjects. The interference is purely from your first language.'),
+    q('"To hate" is…', 'だいきらい',
+      ['だいきらい','だいすきだ','とてもすき','あまりすき'],
+      '<strong>だいきらい.</strong> It pairs with <span class="jp">だいすき</span> ("love"). Both prefixed forms are commoner than adding <span class="jp">とても</span> — the reverse of English.'),
+    q('"I neither like nor dislike it" repeats which particle?', 'も', ['も','が','は','を'],
+      '<strong>も</strong>, twice: <span class="jp">すきでも きらいでも ないです</span>. One <span class="jp">ないです</span> closes both halves.'),
+    q('"my favourite book" is…', 'わたしのすきなほん',
+      ['わたしのすきなほん','わたしのすきいほん','わたしのすきでほん','わたしのすきをほん'],
+      '<strong>わたしのすきなほん.</strong> <span class="jp">好き</span> is a <span class="jp">な</span>-adjective, so the <span class="jp">な</span> returns before the noun.'),
+    q('<span class="wordbig">たべます → "let\'s eat"</span>', 'たべましょう',
+      ['たべましょう','たべましょか','たべませんか','たべましたか'],
+      '<strong>たべましょう.</strong> Replace <span class="jp">ます</span> with <span class="jp">ましょう</span> — the same stem you have used since Lesson 3.'),
+    q('<span class="jp">〜ましょうか</span> differs from <span class="jp">〜ましょう</span> by…', 'asking',
+      ['asking','urging','stating','ending'],
+      '<strong>Asking.</strong> <span class="jp">ましょう</span> settles it ("let\'s"); <span class="jp">ましょうか</span> checks first ("shall we?").'),
+    q('Lesson 3\'s <span class="jp">〜ませんか</span> differs how?', 'it invites',
+      ['it invites','it settles','it refuses','it repeats'],
+      '<strong>It invites</strong> someone who has not yet agreed. <span class="jp">ましょう</span> assumes agreement, so it sounds pushy if you open with it. A real exchange runs <span class="jp">ませんか</span> → <span class="jp">いいですね</span> → <span class="jp">ましょう</span>.'),
+    q('<span class="jp">そうですね</span> means…', 'I agree',
+      ['I agree','I refuse','I wonder','I forgot'],
+      '<strong>I agree.</strong> Stretch the <span class="jp">ね</span> into <span class="jp">そうですねえ</span> and it becomes a stall instead — "well, let me see".')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 5 — counting and kanji
+// ---------------------------------------------------------------------------
+Drill.mount('#d-kanji', {
+  title: 'Lesson 5 kanji',
+  target: 60,
+  items: [
+    { show: '山', answer: ['yama','san'] },        { show: '川', answer: ['kawa','sen','gawa'] },
+    { show: '元', answer: ['gen','moto','gan'] },  { show: '気', answer: ['ki'] },
+    { show: '天', answer: ['ten'] },               { show: '私', answer: ['watashi','shi','watasi','si'] },
+    { show: '今', answer: ['ima','kon'] },         { show: '田', answer: ['ta','da'] },
+    { show: '女', answer: ['onna','jo'] },         { show: '男', answer: ['otoko','dan'] },
+    { show: '見', answer: ['mi','ken'] },          { show: '行', answer: ['i','kou','koo','gyou'] },
+    { show: '食', answer: ['ta','shoku','syoku'] },{ show: '飲', answer: ['no','in'] },
+    { show: '天気',   answer: ['tenki'] },
+    { show: '元気',   answer: ['genki'] },
+    { show: '今日',   answer: ['kyou','kyoo','kyo'] },
+    { show: '食べ物', answer: ['tabemono'] },
+    { show: '飲み物', answer: ['nomimono'] },
+    { show: '女の人', answer: ['onnanohito'] },
+    { show: '男の人', answer: ['otokonohito'] },
+    { show: '山田',   answer: ['yamada'] }
+  ]
+});
+
+Quiz.mount('#q-count', {
+  title: 'Counting, and the kanji',
+  questions: [
+    q('The number word usually comes…', 'after',
+      ['after','before','beside','between'],
+      '<strong>After</strong> the item: <span class="jp">Tシャツを さんまい かいました</span>. English does the opposite.'),
+    q('<span class="jp">〜まい</span> counts…', 'flat things',
+      ['flat things','long things','living things','bound things'],
+      '<strong>Flat things</strong> — paper, tickets, plates, shirts, cards. The full counter table is at pp. 380–381.'),
+    q('A counter phrase takes which particle?', 'none', ['none','が','を','に'],
+      '<strong>None.</strong> It behaves as an adverb modifying the verb, which is why it floats loose rather than sitting glued to the noun.'),
+    q('<span class="jp">天気</span> is read…', 'てんき',
+      ['てんき','てんぎ','でんき','だんき'],
+      '<strong>てんき</strong> — weather. <span class="jp">でんき</span> is <span class="jp">電気</span>, electricity. One voicing mark apart, and the mark does all the work.'),
+    q('<span class="jp">元気</span> literally means…', 'origin spirit',
+      ['origin spirit','heaven spirit','rice spirit','private spirit'],
+      '<strong>Origin spirit</strong> — your underlying vitality, hence "healthy, energetic" and the greeting <span class="jp">お元気ですか</span>.'),
+    q('Which kanji is a picture of a rice field?', '田', ['田','山','川','女'],
+      '<strong>田</strong> — a paddy divided by its paths. <span class="jp">山</span> is three peaks and <span class="jp">川</span> three lines of flowing water; all three are pictographs.'),
+    q('<span class="jp">今日</span> is read…', 'きょう',
+      ['きょう','いまにち','こんにち','こんじつ'],
+      '<strong>きょう.</strong> Neither character takes its normal reading — the sound belongs to the compound, not its parts. Japanese calls these <span class="jp">熟字訓</span>, and they can only be learned whole.'),
+    q('In <span class="jp">食べます</span>, the kana after the kanji…', 'carries the conjugation',
+      ['carries the conjugation','carries the meaning','marks the politeness','marks the emphasis'],
+      '<strong>Carries the conjugation.</strong> <span class="jp">食</span> never changes shape across <span class="jp">食べる・食べます・食べました</span>. That division of labour is why kanji make reading <em>faster</em> once you know a few hundred.'),
+    q('<span class="jp">女</span> and <span class="jp">男</span> matter most on…', 'toilet doors',
+      ['toilet doors','train doors','shop signs','street names'],
+      '<strong>Toilet doors</strong> — every public one in Japan. Thirty seconds well spent.')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 6 — mixed retrieval across all five lessons
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-mixed', {
+  title: 'Mixed retrieval — Lessons 1 to 5',
+  questions: [
+    q('<span class="wordbig">たかい → past negative</span>', 'たかくなかったです',
+      ['たかくなかったです','たかいなかったです','たかくじゃなかった','たかいじゃなかった'],
+      '<strong>たかくなかったです.</strong> Present negative <span class="jp">たかくない</span>, then <span class="jp">ない → なかった</span>.'),
+    q('"I did not go" is…', 'いきませんでした',
+      ['いきませんでした','いかなかったです','いきじゃなかった','いきませんかった'],
+      '<strong>いきませんでした.</strong> Verbs take <span class="jp">ませんでした</span>; adjectives and nouns take <span class="jp">じゃなかったです</span>. Keeping those two apart is most of Lessons 4 and 5.'),
+    q('<span class="wordbig">あそこに ねこが ＿</span>', 'います',
+      ['います','あります','でした','ました'],
+      '<strong>います</strong> — a cat is animate. The place takes <span class="jp">に</span> and the thing takes <span class="jp">が</span>.'),
+    q('<span class="wordbig">きょうとは しずか＿ まちです</span>', 'な', ['な','の','に','が'],
+      '<strong>な.</strong> <span class="jp">しずか</span> is a <span class="jp">な</span>-adjective and it is modifying a noun, so the <span class="jp">な</span> is present.'),
+    q('Which of these is <em>not</em> an <span class="jp">い</span>-adjective?', 'きれい',
+      ['きれい','こわい','ふるい','やすい'],
+      '<strong>きれい.</strong> The class is a fact about the word, not about its spelling — the same discipline as verb groups in Lesson 3.'),
+    q('"Let\'s go to Okinawa together."', 'いきましょう',
+      ['いきましょう','いきましょか','いきましたか','いきますでしょ'],
+      '<strong>いきましょう.</strong> <span class="jp">ます → ましょう</span>.'),
+    q('<span class="jp">行</span> in <span class="jp">旅行</span> is read…', 'こう',
+      ['こう','ぎょう','いく','おこ'],
+      '<strong>こう</strong> — <span class="jp">りょこう</span>, travel. The same character is <span class="jp">い</span> in <span class="jp">行く</span>: on-yomi inside compounds, kun-yomi with okurigana attached.'),
+    q('A Japanese address is written…', 'largest first',
+      ['largest first','smallest first','name first','street first'],
+      '<strong>Largest first</strong> — postcode, prefecture, city, district, block, then the name. The same outside-in logic as a Japanese date: year, month, day.'),
+    q('In vertical writing, the columns progress…', 'right to left',
+      ['right to left','left to right','top to bottom','bottom to top'],
+      '<strong>Right to left.</strong> Characters run down each column, and the columns march leftwards — so a vertical book opens from what you would call the back.'),
+    q('<span class="jp">まん</span> in <span class="jp">いちまん</span> is…', 'ten thousand',
+      ['ten thousand','one thousand','one hundred','ten million'],
+      '<strong>Ten thousand</strong> — from Lesson 2. Japanese groups large numbers in fours, not threes, which is why <span class="jp">ひゃくまん</span> is a million.')
+  ]
+});
+</script>
+</body>
+</html>

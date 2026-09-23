@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 3–4 · Lesson 1 — New Friends</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  .drill-stage .kana-big { font-size: clamp(2rem, 9vw, 3.4rem); }
+
+  .partmap { border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; margin: 1.6rem 0; }
+  .partmap a, .partmap div.row {
+    display: grid; grid-template-columns: 4.2rem 1fr 4.6rem; gap: .8rem; align-items: baseline;
+    padding: .75rem 1rem; border-bottom: 1px solid var(--rule); text-decoration: none;
+    color: var(--ink); font-size: .93rem;
+  }
+  .partmap a:last-child { border-bottom: 0; }
+  .partmap a:hover { background: var(--paper-warm); }
+  .partmap .s { font-family: var(--sans); font-size: .7rem; font-weight: 700;
+                letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+  .partmap .c { font-family: var(--mono); font-size: .72rem; color: var(--ink-faint); text-align: right; }
+  @media (max-width: 520px) {
+    .partmap a { grid-template-columns: 3.6rem 1fr; }
+    .partmap .c { display: none; }
+  }
+
+  .parthead {
+    margin: 3.4rem 0 .3rem; padding: .9rem 1.1rem; border-radius: 8px;
+    background: var(--accent-dim); border-left: 4px solid var(--accent);
+  }
+  .parthead h2 { border: 0; margin: 0; font-size: 1.3rem; }
+  .parthead .s {
+    font-family: var(--sans); font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .3rem;
+  }
+  .parthead p { margin: .4rem 0 0; font-size: .92rem; color: var(--ink-soft); }
+
+  .pattern {
+    border: 2px solid var(--accent); border-radius: 8px; padding: .9rem 1.1rem;
+    margin: 1.3rem 0; text-align: center; background: var(--paper-warm);
+  }
+  .pattern .jp-pat { font-family: var(--jp); font-size: 1.6rem; letter-spacing: .04em; }
+  .pattern .en { font-size: .88rem; color: var(--ink-soft); display: block; margin-top: .3rem; }
+
+  .ex { margin: 1.1rem 0; }
+  .ex div {
+    padding: .6rem 0; border-bottom: 1px solid var(--rule);
+    display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; align-items: baseline;
+  }
+  .ex div:last-child { border-bottom: 0; }
+  .ex .j { font-family: var(--jp); font-size: 1.25rem; line-height: 1.5; }
+  .ex .r { font-family: var(--mono); font-size: .72rem; color: var(--ink-faint); display: block; }
+  .ex .e { font-size: .88rem; color: var(--ink-soft); font-style: italic; }
+  @media (max-width: 520px) { .ex div { grid-template-columns: 1fr; gap: .15rem; } }
+
+  .nobox { display: grid; grid-template-columns: 1fr auto 1fr; gap: .5rem; align-items: center;
+           text-align: center; max-width: 24rem; margin: 1.2rem auto; }
+  .nobox .cell { border: 1px solid var(--rule); border-radius: 8px; padding: .7rem .5rem; background: var(--paper-warm); }
+  .nobox .cell.main { border-color: var(--accent); border-width: 2px; }
+  .nobox .lbl { font-family: var(--sans); font-size: .66rem; font-weight: 700; letter-spacing: .09em;
+                text-transform: uppercase; color: var(--ink-faint); display: block; margin-top: .3rem; }
+  .nobox .cell.main .lbl { color: var(--accent); }
+  .nobox .no { font-family: var(--jp); font-size: 1.8rem; color: var(--accent); }
+
+  .scaffold {
+    border: 1px solid var(--rule); border-radius: 9px; padding: 1.1rem 1.3rem;
+    background: var(--paper-warm); margin: 1.3rem 0;
+  }
+  .scaffold ol { margin: .6rem 0 0; padding-left: 1.3rem; }
+  .scaffold li { margin-bottom: .7rem; font-family: var(--jp); font-size: 1.2rem; line-height: 1.6; }
+  .scaffold li .gloss { font-family: var(--serif); font-size: .84rem; color: var(--ink-soft);
+                        font-style: italic; display: block; margin-top: .1rem; }
+  .scaffold .slot { color: var(--accent); border-bottom: 1.5px dashed var(--accent); padding: 0 .3em; }
+
+  .jp-title {
+    font-size: 1.5rem; color: var(--ink-soft); margin: -.3rem 0 1.3rem;
+    letter-spacing: .04em;
+  }
+  .wordbig { font-family: var(--jp); font-size: 1.8rem; letter-spacing: .04em; display: block; margin: .3rem 0; }
+  .sentence { font-family: var(--jp); font-size: 1.5rem; line-height: 1.7; display: block; margin: .3rem 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="topnav"><a href="../index.html">&larr; Course home</a></p>
+
+<p class="eyebrow">Phase 1 · Week 3 day 4 → Week 4 day 3</p>
+<h1>Lesson 1 · New Friends</h1>
+<p class="jp-title"><span class="jp">あたらしいともだち</span></p>
+<p class="standfirst">Five days, three grammar points, and at the end of it you can introduce
+yourself to a stranger and understand what they tell you back. Textbook pp. 36–55, with
+greetings and numbers first at pp. 30–35.</p>
+
+<div class="note">
+  <span class="label">A different kind of session from here on</span>
+  <p>Phase 0 taught you a writing system, which is a closed set — 104 readings and then
+  you're done. Grammar isn't like that. From today, <strong>the textbook is the primary
+  material and this page is the guide through it.</strong> Open the book alongside this.</p>
+  <p style="margin-bottom:0">This block is <strong>five days, not six</strong>, because
+  Lesson 1's <span class="jp">読み書き</span> half was hiragana and katakana — you already
+  did it in weeks 1 and 2.</p>
+</div>
+
+<div class="partmap">
+  <a href="#d1"><span class="s">Day 1</span><span><strong>Greetings, numbers, vocabulary, dialogue</strong> — no grammar analysis, just sound and meaning</span><span class="c">pp. 30–40</span></a>
+  <a href="#d2"><span class="s">Day 2</span><span><strong><span class="jp">X は Y です</span></strong> — the sentence that does most of the work in beginner Japanese</span><span class="c">p. 41</span></a>
+  <a href="#d3"><span class="s">Day 3</span><span><strong>Questions</strong> — <span class="jp">か</span>, and the <span class="jp">なん</span> family</span><span class="c">p. 42</span></a>
+  <a href="#d4"><span class="s">Day 4</span><span><strong><span class="jp">Noun の Noun</span></strong> + workbook</span><span class="c">p. 43</span></a>
+  <a href="#d5"><span class="s">Day 5</span><span><strong>Retrieval and production</strong> — build and say your own self-introduction</span><span class="c">p. 55</span></a>
+</div>
+
+<!-- ==================== DAY 1 ==================== -->
+<div class="parthead" id="d1">
+  <span class="s">Day 1</span>
+  <h2>Greetings, Numbers, Vocabulary, Dialogue</h2>
+  <p>Input day. No analysis, no grammar. You are getting the sound of the language into your
+  ear and the vocabulary in front of your eyes.</p>
+</div>
+
+<p>In order, with the book open:</p>
+
+<ol>
+  <li><strong>Greetings, pp. 30–34.</strong> Listen and repeat aloud. These are fixed
+  phrases — don't try to parse them grammatically, because several of them don't parse by
+  the rules you're about to learn. <span class="jp">こんにちは</span> ends in
+  <span class="jp">は</span> read <em>wa</em> for a reason you'll meet tomorrow.</li>
+
+  <li><strong>Numbers, p. 35.</strong> Read them aloud. Then read the Expression Notes on
+  numbers at p. 44 — it lists where the readings change irregularly, which is the part that
+  actually catches people. There's a drill for exactly that below.</li>
+
+  <li><strong>Vocabulary, pp. 38–40.</strong> Read the whole list once with the audio. Don't
+  try to memorise it. The starred words are the ones in the dialogue — those are the
+  priority. The Additional Vocabulary section (countries, majors, occupations, family) is
+  there for you to pick the handful that describe <em>your</em> life; ignore the rest.</li>
+
+  <li><strong>Dialogue, pp. 36–37.</strong> Listen twice while reading along. First pass:
+  just follow. Second pass: notice how much you can already decode now that you read both
+  scripts.</li>
+</ol>
+
+<h3>The numbers that change shape</h3>
+
+<p>Most Japanese numbers have more than one reading, and which one you use depends on what
+follows. This catches every beginner, and it matters immediately because you will be saying
+times and ages by day 3. The irregular ones:</p>
+
+<div id="q-numbers"></div>
+
+<p class="cite">Full table in the textbook at pp. 380–381, and the reasoning in the
+Expression Notes at p. 44.</p>
+
+<!-- ==================== DAY 2 ==================== -->
+<div class="parthead" id="d2">
+  <span class="s">Day 2</span>
+  <h2><span class="jp">X は Y です</span></h2>
+  <p>Textbook p. 41. One pattern, and an enormous amount of what you can say in your first
+  month sits inside it.</p>
+</div>
+
+<div class="pattern">
+  <span class="jp-pat">〜です。</span>
+  <span class="en">It is… / I am… / That's a…</span>
+</div>
+
+<p><span class="jp">です</span> attaches to a noun and makes a complete, polite sentence.
+That's the whole mechanism. <span class="jp">がくせいです</span> is a full sentence meaning
+"(I) am a student."</p>
+
+<h3>Three things English does that Japanese doesn't</h3>
+
+<p>Each of these feels like something is missing. Nothing is missing — the language simply
+doesn't mark it.</p>
+
+<div class="ex">
+  <div><span class="j">がくせいです。<span class="r">gakusee desu</span></span>
+       <span class="e">(I) am a student. — no word for "I"</span></div>
+  <div><span class="j">がくせいです。<span class="r">gakusee desu</span></span>
+       <span class="e">…or "a student", or "students". No a/the, no plural.</span></div>
+</div>
+
+<ol>
+  <li><strong>No subject, most of the time.</strong> Japanese drops the subject whenever it's
+  obvious who or what is being talked about. A sentence with no "I" in it is normal, not
+  incomplete — and adding one where it isn't needed sounds oddly insistent.</li>
+  <li><strong>No articles.</strong> There is no <em>a</em> and no <em>the</em>.</li>
+  <li><strong>No plural marking.</strong> <span class="jp">がくせい</span> is "student" or
+  "students"; context decides.</li>
+</ol>
+
+<h3>When you do need to say what you're talking about</h3>
+
+<p>If it isn't clear, name the topic and mark it with <span class="jp">は</span>:</p>
+
+<div class="pattern">
+  <span class="jp-pat">X は Y です。</span>
+  <span class="en">X is Y. / As for X, it is Y.</span>
+</div>
+
+<div class="ex">
+  <div><span class="j">わたしは がくせいです。<span class="r">watashi wa gakusee desu</span></span>
+       <span class="e">I am a student.</span></div>
+  <div><span class="j">せんこうは にほんごです。<span class="r">senkoo wa nihongo desu</span></span>
+       <span class="e">My major is Japanese.</span></div>
+  <div><span class="j">やまださんは せんせいです。<span class="r">Yamada san wa sensee desu</span></span>
+       <span class="e">Mr./Ms. Yamada is a teacher.</span></div>
+</div>
+
+<div class="note">
+  <span class="label">は is read <em>wa</em> here — and you already met this</span>
+  <p style="margin-bottom:0">When <span class="jp">は</span> does this topic-marking job it
+  is read <strong>wa</strong>, not <em>ha</em>. This is the rule from
+  <a href="week-03-marks-and-beats.html">week 3</a>, and it is why
+  <span class="jp">こんにちは</span> ends the way it does — there's a fossilised topic
+  particle sitting at the end of the greeting. Inside an ordinary word,
+  <span class="jp">は</span> is still <em>ha</em>.</p>
+</div>
+
+<div class="note">
+  <span class="label">Two words to be careful with</span>
+  <p><strong><span class="jp">さん</span> is never used about yourself.</strong> It goes
+  after someone else's name — given or family — as a neutral title. Saying
+  <span class="jp">わたしは ○○さんです</span> about yourself is a genuine mistake, not just
+  stiff.</p>
+  <p style="margin-bottom:0"><strong><span class="jp">あなた</span> is not the everyday word
+  for "you."</strong> English speakers reach for it constantly and it sounds wrong. Use the
+  person's name plus <span class="jp">さん</span> instead — you address someone by name even
+  when speaking directly to them. See p. 45.</p>
+</div>
+
+<h3>Check it</h3>
+<div id="q-desu"></div>
+
+<!-- ==================== DAY 3 ==================== -->
+<div class="parthead" id="d3">
+  <span class="s">Day 3</span>
+  <h2>Questions</h2>
+  <p>Textbook p. 42. Asking is easier in Japanese than in almost any other language you
+  could have picked.</p>
+</div>
+
+<p>Take any statement. Put <span class="jp">か</span> on the end. It's now a question.
+No word order changes, no auxiliary verb, no "do you".</p>
+
+<div class="ex">
+  <div><span class="j">がくせいです。<span class="r">gakusee desu</span></span>
+       <span class="e">(I) am a student.</span></div>
+  <div><span class="j">がくせいですか。<span class="r">gakusee desu ka</span></span>
+       <span class="e">Are (you) a student?</span></div>
+</div>
+
+<p class="cite">Japanese doesn't customarily use a question mark — the
+<span class="jp">か</span> already does that job, so a full stop is normal.</p>
+
+<h3>The <span class="jp">なん</span> family</h3>
+
+<p>For questions that need more than yes or no, put a question word where the answer would
+go. Lesson 1 gives you four, all built on <span class="jp">なん</span>:</p>
+
+<table>
+  <thead><tr><th>Word</th><th>Asks</th><th>Example answer</th></tr></thead>
+  <tbody>
+    <tr><td class="jp" style="font-size:1.2em">なん</td><td>what</td><td class="jp">にほんごです</td></tr>
+    <tr><td class="jp" style="font-size:1.2em">なんじ</td><td>what time</td><td class="jp">くじです</td></tr>
+    <tr><td class="jp" style="font-size:1.2em">なんさい</td><td>how old</td><td class="jp">にじゅっさいです</td></tr>
+    <tr><td class="jp" style="font-size:1.2em">なんねんせい</td><td>what year at school</td><td class="jp">にねんせいです</td></tr>
+    <tr><td class="jp" style="font-size:1.2em">なんばん</td><td>what number</td><td class="jp">ろくです</td></tr>
+  </tbody>
+</table>
+
+<div class="note">
+  <span class="label"><span class="jp">なん</span> or <span class="jp">なに</span>?</span>
+  <p style="margin-bottom:0">Same word, two readings. Use <strong><span class="jp">なん</span></strong>
+  directly before <span class="jp">です</span> or before a counter like
+  <span class="jp">じ</span> (o'clock). Use <strong><span class="jp">なに</span></strong>
+  before a particle. So <span class="jp">なんですか</span> (what is it?) but
+  <span class="jp">なにじん</span> (what nationality). You'll meet the
+  <span class="jp">なに</span> cases properly in Lesson 3; for now,
+  <span class="jp">なん</span> covers almost everything in this lesson.</p>
+</div>
+
+<h3>Answering</h3>
+
+<p>Notice that the answer reuses the question's frame and drops the topic, because by then
+it's obvious:</p>
+
+<div class="ex">
+  <div><span class="j">せんこうは なんですか。<span class="r">senkoo wa nan desu ka</span></span>
+       <span class="e">What's your major?</span></div>
+  <div><span class="j">けいざいです。<span class="r">keezai desu</span></span>
+       <span class="e">Economics. — not "my major is economics"</span></div>
+</div>
+
+<h3>Check it</h3>
+<div id="q-questions"></div>
+
+<!-- ==================== DAY 4 ==================== -->
+<div class="parthead" id="d4">
+  <span class="s">Day 4</span>
+  <h2><span class="jp">Noun の Noun</span>, and the workbook</h2>
+  <p>Textbook p. 43, then workbook pp. 16–21.</p>
+</div>
+
+<p><span class="jp">の</span> glues two nouns together. It's often taught as "possessive,
+like apostrophe-s", which is true but far too narrow — it does much more than ownership.</p>
+
+<div class="nobox">
+  <div class="cell"><span class="jp" style="font-size:1.3rem">Noun₁</span><span class="lbl">restriction</span></div>
+  <div><span class="no">の</span></div>
+  <div class="cell main"><span class="jp" style="font-size:1.3rem">Noun₂</span><span class="lbl">main idea</span></div>
+</div>
+
+<p><strong>The second noun is what the thing actually is.</strong> The first one narrows it
+down. Get that direction right and <span class="jp">の</span> never confuses you again:</p>
+
+<div class="ex">
+  <div><span class="j">たけしさんの でんわばんごう<span class="r">Takeshi san no denwa bangoo</span></span>
+       <span class="e">Takeshi's phone number — it's a <strong>number</strong></span></div>
+  <div><span class="j">だいがくの せんせい<span class="r">daigaku no sensee</span></span>
+       <span class="e">a college professor — it's a <strong>teacher</strong></span></div>
+  <div><span class="j">にほんごの がくせい<span class="r">nihongo no gakusee</span></span>
+       <span class="e">a student of Japanese — it's a <strong>student</strong></span></div>
+  <div><span class="j">にほんの だいがく<span class="r">Nihon no daigaku</span></span>
+       <span class="e">a university in Japan — it's a <strong>university</strong></span></div>
+</div>
+
+<div class="note">
+  <span class="label">The test that catches the error</span>
+  <p style="margin-bottom:0">Ask: <em>what is this thing?</em>
+  <span class="jp">たけしさんの でんわばんごう</span> is a phone number, so
+  <span class="jp">でんわばんごう</span> goes second. Reversing it —
+  <span class="jp">でんわばんごうの たけしさん</span> — would mean a Takeshi belonging to a
+  phone number. English speakers reverse this constantly in week one, because English puts
+  the main idea last too ("Takeshi's phone number") but <em>feels</em> like it leads with the
+  owner.</p>
+</div>
+
+<h3>A の phrase behaves like one noun</h3>
+
+<p>Once joined, the whole thing slots anywhere a single noun could go — including as the
+topic of a sentence:</p>
+
+<div class="ex">
+  <div><span class="j">たけしさんの おかあさんは こうこうの せんせいです。
+       <span class="r">Takeshi san no okaasan wa kookoo no sensee desu</span></span>
+       <span class="e">Takeshi's mother is a high school teacher.</span></div>
+</div>
+
+<p>Two <span class="jp">の</span> phrases, one <span class="jp">は</span>, one
+<span class="jp">です</span> — and that is a real, natural Japanese sentence built entirely
+from three days of grammar.</p>
+
+<h3>Check it</h3>
+<div id="q-no"></div>
+
+<h3>Then the workbook</h3>
+
+<p>Spend the rest of the session on <strong>workbook pp. 16–21</strong>. One sheet per
+grammar point, numbered to match the textbook, so if a sheet stumps you the explanation is
+easy to find. Don't skip the <em>Time and Telephone Numbers</em> sheet at p. 19 — numbers
+are the first thing you'll need to understand out loud in a shop, and it's the only sheet
+that drills them.</p>
+
+<!-- ==================== DAY 5 ==================== -->
+<div class="parthead" id="d5">
+  <span class="s">Day 5</span>
+  <h2>Retrieval and Production</h2>
+  <p>Closed book first, then build something of your own.</p>
+</div>
+
+<p>Start with the quizzes above, re-run cold — they reshuffle, so a re-run is a new test and
+not a replay. Then do the thing this lesson was actually for.</p>
+
+<h3>Build your <span class="jp">じこしょうかい</span></h3>
+
+<p>A self-introduction. Every line below uses only Lesson 1 grammar, so you can construct
+this entirely from what you now know. Fill the slots with facts about yourself — look up the
+words you need in the Additional Vocabulary at pp. 39–40.</p>
+
+<div class="scaffold">
+  <ol>
+    <li>はじめまして。<span class="gloss">How do you do. (Fixed phrase, first meeting only.)</span></li>
+    <li><span class="slot">なまえ</span>です。<span class="gloss">I'm ___. Your name. No さん on yourself.</span></li>
+    <li><span class="slot">くに</span>じんです。<span class="gloss">I'm ___ese. Country + じん.</span></li>
+    <li><span class="slot">だいがく</span>の がくせいです。<span class="gloss">I'm a student at ___. Noun の Noun.</span></li>
+    <li>せんこうは <span class="slot">せんこう</span>です。<span class="gloss">My major is ___. X は Y です.</span></li>
+    <li><span class="slot">すうじ</span>ねんせいです。<span class="gloss">I'm a ___-year student. Watch よねんせい for 4.</span></li>
+    <li>どうぞ よろしく おねがいします。<span class="gloss">Pleased to meet you. (Fixed phrase.)</span></li>
+  </ol>
+</div>
+
+<p><strong>Say it out loud, five times, without reading.</strong> Then record yourself on
+your phone and listen back — you will hear things you cannot feel while speaking, especially
+beat length on <span class="jp">がくせい</span> and <span class="jp">だいがく</span>.</p>
+
+<h3>Ask the other side of it</h3>
+
+<p>You can also now ask each of those questions. Practise both roles — say the question,
+then the answer, then the question again:</p>
+
+<div class="ex">
+  <div><span class="j">おなまえは なんですか。<span class="r">onamae wa nan desu ka</span></span>
+       <span class="e">What is your name?</span></div>
+  <div><span class="j">せんこうは なんですか。<span class="r">senkoo wa nan desu ka</span></span>
+       <span class="e">What is your major?</span></div>
+  <div><span class="j">なんねんせいですか。<span class="r">nannensee desu ka</span></span>
+       <span class="e">What year are you in?</span></div>
+  <div><span class="j">でんわばんごうは なんばんですか。<span class="r">denwa bangoo wa nanban desu ka</span></span>
+       <span class="e">What's your phone number?</span></div>
+</div>
+
+<h3>Mixed retrieval</h3>
+<p>Everything from the lesson, interleaved and out of order.</p>
+<div id="q-mixed"></div>
+
+<h3>Useful Expressions: time</h3>
+
+<p>Finish with <strong>p. 55</strong>, the <span class="jp">じかん</span> page. It's a
+reference sheet rather than a grammar point — read it, don't drill it. You'll come back to
+it whenever you need to say a time, and Lesson 4 builds on it properly.</p>
+
+<!-- ==================== CLOSE ==================== -->
+<h2>What you can do now</h2>
+
+<ul>
+  <li>Introduce yourself: name, nationality, school, major, year.</li>
+  <li>Ask another person all of the same, and understand the answer.</li>
+  <li>Say and understand a time, an age, and a phone number.</li>
+  <li>Join two nouns with <span class="jp">の</span> — which quietly multiplies everything
+  above, because any noun in any slot can become a two-noun phrase.</li>
+</ul>
+
+<div class="note">
+  <span class="label">If it felt thin, that's correct</span>
+  <p style="margin-bottom:0">Three grammar points in five days is a gentle start, and it is
+  meant to be — you are also still building kana speed in the warm-ups. Lesson 2 doubles the
+  grammar count and Lesson 3 brings verbs, particles and the first kanji. Enjoy this one.</p>
+</div>
+
+<h2>Before Lesson 2</h2>
+
+<p><strong>Keep the kana drill in your warm-up.</strong> It runs until roughly Lesson 3.
+Character speed is still being built and Lesson 1's vocabulary gave it real material to work
+on for the first time.</p>
+
+<p><strong>Read the Culture Note on Japanese names, p. 45.</strong> Family name first,
+given name second — which matters the moment anyone introduces themselves to you, and
+explains why <span class="jp">さん</span> attaches to either.</p>
+
+<div class="lesson-foot">
+  <p><strong>Next:</strong> Genki Lesson 2, <span class="jp">かいもの</span> — Shopping.
+  Six days, seven grammar points, and the first lesson that lets you do something
+  transactional in the real world: ask what a thing is, whose it is, how much it costs, and
+  decline it politely.</p>
+
+  <div class="chip-row">
+    <a class="chip" href="../index.html">&#8962; Course home</a>
+    <a class="chip" href="../reference/genki1-roadmap.html#genki-1">The plan · Lesson 1</a>
+    <a class="chip" href="../reference/kana-charts.html">Kana charts</a>
+    <a class="chip" href="week-03-kana-gate.html">&larr; Week 3 · Kana gate</a>
+    <a class="chip" href="week-04-lesson-02-shopping.html">Lesson 2 &rarr;</a>
+  </div>
+
+  <div class="ask-teacher">
+    <strong>Say your self-introduction to me.</strong> Type it out and I'll check it — the
+    errors that matter in week one are not vocabulary but the small structural ones:
+    <span class="jp">さん</span> on yourself, a reversed <span class="jp">の</span>, a
+    <span class="jp">は</span> where none is needed. Those calcify fast if nobody catches
+    them, and they are invisible from the inside. Ask about anything above that is unclear.
+  </div>
+</div>
+
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script src="../assets/drill.js"></script>
+<script>
+// Options within a question are matched for length or word count so that
+// formatting can never hint at the answer.
+function q(prompt, answer, options, explain) {
+  return { prompt: prompt, options: options, answer: answer, explain: explain };
+}
+
+// ---------------------------------------------------------------------------
+// Day 1 — the irregular number readings
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-numbers', {
+  title: 'Numbers that change reading',
+  questions: [
+    q('<strong>4 o\'clock</strong> is read…', 'よじ', ['よじ','しじ','よんじ','ようじ'],
+      '<strong>よじ</strong>. 4 is normally よん, but before じ (o\'clock) it becomes よ.'),
+    q('<strong>7 o\'clock</strong> is read…', 'しちじ', ['しちじ','ななじ','しっじ','しちし'],
+      '<strong>しちじ</strong>. 7 is normally なな, but seven o\'clock uses しち.'),
+    q('<strong>9 o\'clock</strong> is read…', 'くじ', ['くじ','きゅじ','きゅうじ','ここじ'],
+      '<strong>くじ</strong>. 9 is normally きゅう, but nine o\'clock is く.'),
+    q('<strong>4th-year student</strong> is read…', 'よねんせい', ['よねんせい','しねんせい','よんねんせい','ようねんせい'],
+      '<strong>よねんせい</strong>. Again 4 shortens to よ before ねんせい.'),
+    q('<strong>1 year old</strong> is read…', 'いっさい', ['いっさい','いちさい','ひとさい','いんさい'],
+      '<strong>いっさい</strong>. いち becomes いっ before さい — the small っ appears and takes a beat.'),
+    q('<strong>8 years old</strong> is read…', 'はっさい', ['はっさい','はちさい','やっさい','はんさい'],
+      '<strong>はっさい</strong>. Same contraction: はち → はっ before さい.'),
+    q('Reading a phone number digit by digit, <strong>0</strong> is usually…', 'ゼロ', ['ゼロ','ゼル','レロ','ゼリ'],
+      '<strong>ゼロ</strong> (in katakana, as a loanword) or れい. Both are common; ゼロ is more usual in phone numbers.')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 2 — X は Y です
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-desu', {
+  title: 'X は Y です',
+  questions: [
+    q('You are asked what you do and reply "I\'m a student." The most natural sentence is…',
+      'がくせいです。', ['がくせいです。','わたしがくせいです。','がくせいはです。','わたしはがくせい。'],
+      '<strong>がくせいです。</strong> The subject is obvious from context, so it is dropped. Adding わたしは here is not wrong, just unnecessary — and です is required, not optional.'),
+    q('In <span class="jp">わたしは がくせいです</span>, the character <span class="jp">は</span> is read…',
+      'wa', ['wa','ha','ba','pa'],
+      'Read <strong>wa</strong>, because it is the topic particle. Inside an ordinary word it would still be <em>ha</em>.'),
+    q('<span class="jp">がくせいです</span> could mean…',
+      'either', ['either','student','students','neither'],
+      '<strong>Either.</strong> Japanese marks no plural and has no articles, so this is "a student", "the student" or "students" — context decides.'),
+    q('Which is correct when introducing <em>yourself</em> as Tanaka?',
+      'たなかです。', ['たなかです。','たなかさんです。','たなかさんは。','たなかはです。'],
+      '<strong>たなかです。</strong> さん is a title for other people. Never attach it to your own name.'),
+    q('Talking <em>to</em> Ms. Hart, the natural way to say "you" is…',
+      'ハートさん', ['ハートさん','あなたは','あなたさん','ハートは'],
+      'Use the name plus さん: <strong>ハートさん</strong>. あなた exists but is not the everyday word for "you" and often sounds wrong (p. 45).'),
+    q('"My major is Japanese" — which is right?',
+      'せんこうは にほんごです。',
+      ['せんこうは にほんごです。','にほんごは せんこうです。','せんこうの にほんごです。','せんこうは にほんごか。'],
+      '<strong>せんこうは にほんごです。</strong> The topic is the major; what it <em>is</em> comes before です. Reversing it says "Japanese is a major".')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 3 — questions
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-questions', {
+  title: 'Questions',
+  questions: [
+    q('Turn <span class="jp">りゅうがくせいです</span> into a question.',
+      'りゅうがくせいですか。', ['りゅうがくせいですか。','りゅうがくせいかです。','かりゅうがくせいです。','りゅうがくせいです？'],
+      'Add <strong>か</strong> at the end: りゅうがくせいですか。 Word order does not change, and a question mark is not customary — か already does that job.'),
+    q('Asking the time, you say…', 'なんじですか。', ['なんじですか。','なんですか。','なんさいですか。','なんばんですか。'],
+      '<strong>なんじですか。</strong> じ is the counter for o\'clock, so なん attaches directly to it.'),
+    q('Asking someone\'s age, you say…', 'なんさいですか。', ['なんさいですか。','なんじですか。','なんねんですか。','なんばんですか。'],
+      '<strong>なんさいですか。</strong> さい is the counter for years of age.'),
+    q('Asking what year of school someone is in, you say…',
+      'なんねんせいですか。', ['なんねんせいですか。','なんさいですか。','なんねんですか。','なんがくせいですか。'],
+      '<strong>なんねんせいですか。</strong> ねんせい is the "year student" counter — different from ねん (year) alone.'),
+    q('Before <span class="jp">です</span> and before counters, "what" is read…',
+      'なん', ['なん','なに','なんの','なにの'],
+      '<strong>なん</strong>. なに appears before particles instead — as in なにじん (what nationality).'),
+    q('Someone asks <span class="jp">せんこうは なんですか</span>. The most natural answer is…',
+      'けいざいです。', ['けいざいです。','せんこうけいざい。','けいざいはです。','せんこうはけいざい。'],
+      '<strong>けいざいです。</strong> The topic was set by the question, so the answer drops it and just states the value.')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 4 — Noun の Noun
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-no', {
+  title: 'Noun の Noun',
+  questions: [
+    q('In <span class="jp">にほんごの がくせい</span>, the thing being described is a…',
+      'student', ['student','language','teacher','country'],
+      'A <strong>student</strong>. The second noun is always the main idea; the first one narrows it. So this is a student <em>of Japanese</em>.'),
+    q('In <span class="jp">だいがくの せんせい</span>, the thing being described is a…',
+      'teacher', ['teacher','college','student','subject'],
+      'A <strong>teacher</strong> — specifically a college one. せんせい is second, so せんせい is what it is.'),
+    q('"Takeshi\'s phone number" is…',
+      'たけしさんの でんわばんごう',
+      ['たけしさんの でんわばんごう','でんわばんごうの たけしさん','たけしさんは でんわばんごう','でんわばんごうは たけしさん'],
+      '<strong>たけしさんの でんわばんごう</strong>. Ask "what <em>is</em> this thing?" — a phone number. So でんわばんごう goes second.'),
+    q('"A university in Japan" is…',
+      'にほんの だいがく', ['にほんの だいがく','だいがくの にほん','にほんは だいがく','だいがくは にほん'],
+      '<strong>にほんの だいがく</strong>. It is a university, so だいがく is the main idea and goes second.'),
+    q('A <span class="jp">の</span> phrase such as <span class="jp">こうこうの せんせい</span> behaves like…',
+      'one noun', ['one noun','two nouns','a sentence','a question'],
+      'Like <strong>one noun</strong>. That is why it can be the topic of a sentence, or sit before です, exactly where a single noun would.'),
+    q('"Takeshi\'s mother is a high school teacher" is…',
+      'たけしさんの おかあさんは こうこうの せんせいです。',
+      ['たけしさんの おかあさんは こうこうの せんせいです。',
+       'たけしさんは おかあさんの こうこうの せんせいです。',
+       'おかあさんの たけしさんは せんせいの こうこうです。',
+       'たけしさんの おかあさんの こうこうは せんせいです。'],
+      'Two の phrases, one topic, one です: <strong>たけしさんの おかあさんは こうこうの せんせいです。</strong> The first phrase is the topic; the second is what she is.')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 5 — mixed retrieval
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-mixed', {
+  title: 'Mixed retrieval',
+  questions: [
+    q('"I am a second-year student." Which is right?',
+      'にねんせいです。', ['にねんせいです。','にねんせいか。','にねんせいはです。','にさいです。'],
+      '<strong>にねんせいです。</strong> にさい would mean "two years old".'),
+    q('Which sentence asks for a phone number?',
+      'でんわばんごうは なんばんですか。',
+      ['でんわばんごうは なんばんですか。','でんわばんごうは なんじですか。',
+       'でんわばんごうは なんさいですか。','でんわばんごうは だれですか。'],
+      '<strong>なんばん</strong> — "what number". なんじ asks a time and なんさい an age.'),
+    q('<span class="jp">9 じ</span> is read…', 'くじ', ['くじ','きゅじ','きゅうじ','ここじ'],
+      '<strong>くじ</strong>. One of the irregular counter readings from day 1.'),
+    q('Introducing yourself as a student of Sakura University:',
+      'さくらだいがくの がくせいです。',
+      ['さくらだいがくの がくせいです。','がくせいの さくらだいがくです。',
+       'さくらだいがくは がくせいです。','がくせいは さくらだいがくです。'],
+      '<strong>さくらだいがくの がくせいです。</strong> You are a student, so がくせい is the main idea and goes second.'),
+    q('Which is the correct way to say "I\'m Japanese"?',
+      'にほんじんです。', ['にほんじんです。','にほんごです。','にほんです。','にほんじんさんです。'],
+      '<strong>にほんじんです。</strong> にほんご is the language; にほん is the country; じん makes it a person. And no さん on yourself.'),
+    q('In <span class="jp">こんにちは</span>, the final <span class="jp">は</span> is read…',
+      'wa', ['wa','ha','ba','na'],
+      'Read <strong>wa</strong> — a topic particle fossilised inside the greeting, which is why it is spelled は and not わ.')
+  ]
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 3 days 1–2 · Dakuten and Yōon</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  /* Yōon items are two characters wide, so ease the drill glyph down a notch. */
+  .drill-stage .kana-big { font-size: clamp(2.6rem, 11vw, 4.2rem); }
+
+  .shift {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(128px,1fr));
+    gap: .8rem; margin: 1.3rem 0;
+  }
+  .shift div {
+    border: 1px solid var(--rule); border-radius: 8px; padding: .9rem .6rem;
+    text-align: center; background: var(--paper-warm);
+  }
+  .shift .pairline { font-family: var(--jp); font-size: 2rem; line-height: 1.25; }
+  .shift .rm {
+    font-family: var(--mono); font-size: .8rem; color: var(--accent);
+    display: block; margin-top: .3rem; font-weight: 700;
+  }
+  .beats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(190px,1fr));
+    gap: .9rem; margin: 1.4rem 0;
+  }
+  .beats div {
+    border: 1px solid var(--rule); border-radius: 8px; padding: 1rem;
+    background: var(--paper);
+  }
+  .beats .w { font-family: var(--jp); font-size: 1.9rem; line-height: 1.3; }
+  .beats .split {
+    font-family: var(--mono); font-size: .8rem; color: var(--ink-soft);
+    margin-top: .4rem; letter-spacing: .02em;
+  }
+  .beats .n {
+    font-family: var(--sans); font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--accent); margin-top: .45rem;
+  }
+  .beatbar { display: flex; gap: 4px; margin-top: .5rem; }
+  .beatbar span {
+    height: 8px; flex: 1; background: var(--accent); border-radius: 2px; opacity: .8;
+  }
+  .beatbar span.silent { background: var(--rule); }
+  .blankword { font-family: var(--jp); font-size: 2.1rem; letter-spacing: .06em; }
+  .blankword b { color: var(--accent); font-weight: 400; }
+  .wordbig { font-family: var(--jp); font-size: 2.3rem; letter-spacing: .04em; display: block; margin: .3rem 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="topnav"><a href="../index.html">&larr; Course home</a></p>
+
+<p class="eyebrow">Phase 0 · Week 3</p>
+<h1>The Marks That Change Everything</h1>
+<p class="standfirst">You now know 92 shapes — both full scripts. This lesson adds 116 more
+readings without adding a single new shape, using five small marks and one idea:
+Japanese is counted in <em>beats</em>.</p>
+
+<div class="note">
+  <span class="label">This one is worth two sittings</span>
+  <p style="margin-bottom:0">There is more here than fits comfortably in fifty minutes.
+  Split it: <strong>Part 1 (the voicing marks) on day 1, Part 2 (beats) on day 2</strong>,
+  with the kana gate on day 3. Part 2 is the more important half and the one that
+  actually decides whether you can read aloud — do not let it get squeezed into the last ten
+  minutes of a tired session.</p>
+</div>
+
+<h2>The whole system, before we start</h2>
+
+<p>Nearly every learner meets <span class="jp">が</span>, <span class="jp">きゃ</span> and
+<span class="jp">っ</span> as three unrelated pieces of trivia. They are not. They are five
+marks doing two jobs:</p>
+
+<table>
+  <thead><tr><th>Mark</th><th>Job</th><th>Effect on beats</th></tr></thead>
+  <tbody>
+    <tr><td class="jp" style="font-size:1.5em">゛</td><td>Voices the consonant: <em>k→g, s→z, t→d, h→b</em></td><td>None</td></tr>
+    <tr><td class="jp" style="font-size:1.5em">゜</td><td>Turns <em>h</em> into <em>p</em></td><td>None</td></tr>
+    <tr><td class="jp" style="font-size:1.5em">ゃゅょ</td><td>Fuses with the previous kana</td><td><strong>Two characters become one beat</strong></td></tr>
+    <tr><td class="jp" style="font-size:1.5em">っ</td><td>Doubles the next consonant</td><td><strong>Silent, but takes a full beat</strong></td></tr>
+    <tr><td class="jp" style="font-size:1.5em">ー</td><td>Extends the previous vowel (katakana)</td><td><strong>Takes a full beat</strong></td></tr>
+  </tbody>
+</table>
+
+<p>The first two add <em>sounds</em>. The last three change <em>timing</em> — and timing
+is what separates reading aloud from reciting characters.</p>
+
+<hr>
+
+<h2 id="part1">Part 1 · The voicing marks</h2>
+
+<p>Two dashes in the top-right corner voice the consonant. The shape underneath never
+changes, and the mark works identically in both scripts — so this is genuinely one rule,
+not fifty new characters.</p>
+
+<div class="shift">
+  <div><div class="pairline">か → が<br>カ → ガ</div><span class="rm">ka → ga</span></div>
+  <div><div class="pairline">さ → ざ<br>サ → ザ</div><span class="rm">sa → za</span></div>
+  <div><div class="pairline">た → だ<br>タ → ダ</div><span class="rm">ta → da</span></div>
+  <div><div class="pairline">は → ば<br>ハ → バ</div><span class="rm">ha → ba</span></div>
+  <div><div class="pairline">は → ぱ<br>ハ → パ</div><span class="rm">ha → pa</span></div>
+</div>
+
+<div class="rule-box">
+  <p style="margin-bottom:.4rem"><strong>The rule in one line</strong></p>
+  <p style="text-align:center;font-family:var(--mono);font-size:1rem;margin-bottom:.7rem">
+    k → g &nbsp;·&nbsp; s → z &nbsp;·&nbsp; t → d &nbsp;·&nbsp; h → b &nbsp;·&nbsp; h + <span class="jp">゜</span> → p
+  </p>
+  <p style="margin-bottom:0"><span class="jp">は</span> is the busy one: it is the only row
+  that takes both marks, giving <em>ha → ba</em> with <span class="jp">゛</span> and
+  <em>ha → pa</em> with <span class="jp">゜</span>. Everything else takes only
+  <span class="jp">゛</span>. Say the pairs aloud with a hand on your throat — the voiced
+  one buzzes, the plain one doesn't. That is literally the entire distinction.</p>
+</div>
+
+<h3>The three that misbehave</h3>
+
+<p>The four irregular readings you already know (<span class="jp">し</span> <em>shi</em>,
+<span class="jp">ち</span> <em>chi</em>, <span class="jp">つ</span> <em>tsu</em>,
+<span class="jp">ふ</span> <em>fu</em>) carry their irregularity through the voicing rule:</p>
+
+<div class="shift">
+  <div><div class="pairline">し → じ</div><span class="rm">shi → ji</span></div>
+  <div><div class="pairline">ち → ぢ</div><span class="rm">chi → ji</span></div>
+  <div><div class="pairline">つ → づ</div><span class="rm">tsu → zu</span></div>
+  <div><div class="pairline">ふ → ぶ</div><span class="rm">fu → bu</span></div>
+</div>
+
+<p>So <span class="jp">じ</span> and <span class="jp">ぢ</span> sound identical, and
+<span class="jp">ず</span> and <span class="jp">づ</span> sound identical. In practice
+you will see <span class="jp">じ</span> and <span class="jp">ず</span> almost every time —
+<span class="jp">ぢ</span> and <span class="jp">づ</span> survive in a handful of compound
+words and you can treat them as curiosities to recognise, not rules to apply.</p>
+
+<h3>Check it</h3>
+<div id="quiz-daku"></div>
+
+<hr>
+
+<h2 id="part2">Part 2 · Beats</h2>
+
+<p>This is the half that matters most, and the half most self-learners never quite
+internalise. English is stress-timed: we squash and stretch syllables around stressed
+ones. <strong>Japanese is beat-timed</strong> — every unit gets roughly equal length,
+like a metronome. Get the beat count wrong and you are saying a different word, even
+with every sound correct.</p>
+
+<div class="rule-box" style="text-align:center">
+  <p style="margin-bottom:0"><strong>One kana = one beat.</strong><br>
+  <span class="cite">Except for the three marks below, which is the whole reason they need a lesson.</span></p>
+</div>
+
+<h3>Small <span class="jp">ゃ ゅ ょ</span> — two characters, one beat</h3>
+
+<p>An <em>i</em>-column kana plus a small <span class="jp">ゃゅょ</span> fuse into a single
+beat. Written small, they merge; written full size, they don't — and that is a real
+difference in meaning, not a nicety:</p>
+
+<div class="beats">
+  <div>
+    <span class="w">きょう</span>
+    <div class="split">kyo &middot; u</div>
+    <div class="beatbar"><span></span><span></span></div>
+    <div class="n">2 beats — "today"</div>
+  </div>
+  <div>
+    <span class="w">きよう</span>
+    <div class="split">ki &middot; yo &middot; u</div>
+    <div class="beatbar"><span></span><span></span><span></span></div>
+    <div class="n">3 beats — "dexterous"</div>
+  </div>
+</div>
+
+<p>Same three characters. The only difference is the size of the middle one. If you read
+<span class="jp">きょう</span> as three beats, you have said a different word.</p>
+
+<h3>Small <span class="jp">っ</span> — silent, but still a beat</h3>
+
+<p>The small <em>tsu</em> makes no sound of its own. It doubles the following consonant
+and holds a beat of stopped breath. Beginners almost always swallow it, which is why
+their Japanese sounds rushed:</p>
+
+<div class="beats">
+  <div>
+    <span class="w">きて</span>
+    <div class="split">ki &middot; te</div>
+    <div class="beatbar"><span></span><span></span></div>
+    <div class="n">2 beats — "come"</div>
+  </div>
+  <div>
+    <span class="w">きって</span>
+    <div class="split">ki &middot; <em>(hold)</em> &middot; te</div>
+    <div class="beatbar"><span></span><span class="silent"></span><span></span></div>
+    <div class="n">3 beats — "postage stamp"</div>
+  </div>
+</div>
+
+<p class="cite">The grey bar is the silent beat. It is the sound of an English speaker
+saying "black cat" and pausing fractionally on the <em>k</em> — you already make this
+sound, you just don't count it.</p>
+
+<h3><span class="jp">ー</span> — the long-vowel bar</h3>
+
+<p>Katakana only. It holds the previous vowel for one more beat. Hiragana does the same
+job by doubling the vowel instead (<span class="jp">おう</span>,
+<span class="jp">えい</span>):</p>
+
+<div class="beats">
+  <div>
+    <span class="w">コーヒー</span>
+    <div class="split">ko &middot; o &middot; hi &middot; i</div>
+    <div class="beatbar"><span></span><span></span><span></span><span></span></div>
+    <div class="n">4 beats — "coffee"</div>
+  </div>
+  <div>
+    <span class="w">ビール</span>
+    <div class="split">bi &middot; i &middot; ru</div>
+    <div class="beatbar"><span></span><span></span><span></span></div>
+    <div class="n">3 beats — "beer"</div>
+  </div>
+</div>
+
+<div class="note">
+  <span class="label">Why a traveller should care</span>
+  <p style="margin-bottom:0">Because the words you will most need are full of these marks.
+  <span class="jp">チェックイン</span> is five beats. <span class="jp">スーツケース</span>
+  is six. <span class="jp">きっぷ</span> (<em>ticket</em>) is three, with a silent one in
+  the middle. Say them with the wrong beat count at a hotel desk and you will get a
+  polite, baffled pause — the sounds were right, the rhythm wasn't.</p>
+</div>
+
+<h3>Count the beats</h3>
+
+<p>The single most useful drill on this page. Say each word aloud, tap the beats on the
+desk, then answer.</p>
+
+<div id="quiz-beats"></div>
+
+<hr>
+
+<h2>Katakana goes one step further</h2>
+
+<p>Katakana has to spell sounds Japanese doesn't natively have, so it extends the
+small-vowel trick past <span class="jp">ゃゅょ</span> to the ordinary vowels. Hiragana
+never does this. You don't need to memorise the set — just recognise that
+<strong>a small vowel means "fuse with the character before it"</strong> and read it
+phonetically:</p>
+
+<div class="shift">
+  <div><div class="pairline">ファ</div><span class="rm">fa</span></div>
+  <div><div class="pairline">フィ</div><span class="rm">fi</span></div>
+  <div><div class="pairline">チェ</div><span class="rm">che</span></div>
+  <div><div class="pairline">ジェ</div><span class="rm">je</span></div>
+  <div><div class="pairline">ティ</div><span class="rm">ti</span></div>
+  <div><div class="pairline">ウェ</div><span class="rm">we</span></div>
+  <div><div class="pairline">ヴ</div><span class="rm">vu</span></div>
+</div>
+
+<p>You meet these constantly in exactly the vocabulary you need:
+<span class="jp">チェックイン</span> (<em>check-in</em>), <span class="jp">カフェ</span>
+(<em>café</em>), <span class="jp">フォーク</span> (<em>fork</em>),
+<span class="jp">パーティー</span> (<em>party</em>). Full table in the textbook,
+p. 27.</p>
+
+<h2>Read them cold</h2>
+
+<p>Mixed voiced kana and <span class="jp">ゃゅょ</span> combinations, both scripts,
+no chart. Type the romaji and press Enter.</p>
+
+<div id="drill-mixed"></div>
+
+<h2>Before the gate</h2>
+
+<p><strong>Primary source:</strong> the textbook's own treatment — <em>GENKI I</em>,
+Japanese Writing System, <strong>pp. 20–27</strong>. It is compact,
+authoritative, and it is the version your course will keep referring back to. Ten minutes.</p>
+
+<p><strong>Then:</strong> Day 3 is the <a href="../reference/genki1-roadmap.html">kana
+gate</a> — all 104 readings in both scripts, timed. The standard is <strong>100% accuracy</strong>;
+speed will still be short of target and that is expected, because it is built by the
+five-minute warm-up drill over the following weeks. Put the
+<a href="../reference/kana-charts.html">complete charts</a> somewhere you can glance at them,
+and use the drills on this page, on
+<a href="week-01-hiragana.html">week 1</a> and on
+<a href="week-02-katakana.html">week 2</a> as your warm-ups. <strong>Genki Lesson 1
+starts on day 4.</strong></p>
+
+<div class="lesson-foot">
+  <p><strong>What you have after this:</strong> both scripts, all 104 readings each, and
+  the timing rules that turn characters into speech. That is the entire writing system
+  minus kanji — and kanji don't start until Genki Lesson 3.</p>
+
+  <div class="chip-row">
+    <a class="chip" href="../index.html">&#8962; Course home</a>
+    <a class="chip" href="../reference/kana-charts.html">Complete kana charts</a>
+    <a class="chip" href="../reference/kana-confusables.html">Confusables card</a>
+    <a class="chip" href="week-02-katakana.html">← Week 2 · Katakana</a>
+    <a class="chip" href="week-01-hiragana.html">← Week 1 · Hiragana</a>
+    <a class="chip" href="../reference/genki1-roadmap.html">Roadmap</a>
+  </div>
+
+  <div class="ask-teacher">
+    <strong>Beats are the thing to ask me about.</strong> They are hard to verify alone,
+    because you cannot hear your own rhythm the way a listener does. If you are unsure
+    whether you are holding <span class="jp">っ</span>, tell me the words you're practising
+    and I'll give you minimal pairs to test yourself against — and once OTO Navi is
+    installed, the audio is your judge.
+  </div>
+</div>
+
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script src="../assets/drill.js"></script>
+<script>
+// ---- Part 1: voicing ------------------------------------------------------
+// Options are always single characters, so length can never leak the answer.
+function q(sound, answer, options, explain) {
+  return {
+    prompt: 'Which character is read <strong>' + sound + '</strong>?',
+    options: options, answer: answer, explain: explain
+  };
+}
+
+Quiz.mount('#quiz-daku', {
+  title: 'Voiced kana',
+  questions: [
+    q('ga', 'が', ['が','か','ざ','さ'],
+      'か + ゛ = が. <em>k</em> voices to <em>g</em>.'),
+    q('za', 'ざ', ['ざ','さ','だ','た'],
+      'さ + ゛ = ざ. <em>s</em> voices to <em>z</em>.'),
+    q('do', 'ど', ['ど','と','ぼ','ほ'],
+      'と + ゛ = ど. <em>t</em> voices to <em>d</em>.'),
+    q('ba', 'ば', ['ば','ぱ','は','な'],
+      'は + ゛ = ば. Watch for ぱ (<em>pa</em>), which is the same shape with a <strong>circle</strong> instead of dashes.'),
+    q('pa', 'ぱ', ['ぱ','ば','は','ま'],
+      'は + ゜ = ぱ. The circle is handakuten — only the <em>h</em> row takes it.'),
+    q('go', 'ご', ['ご','こ','ぞ','そ'],
+      'こ + ゛ = ご.'),
+    q('ze', 'ぜ', ['ぜ','せ','で','て'],
+      'せ + ゛ = ぜ.'),
+    q('pe', 'ぺ', ['ぺ','べ','へ','ほ'],
+      'へ + ゜ = ぺ. Compare べ (<em>be</em>) — dashes, not a circle.'),
+    q('bu', 'ぶ', ['ぶ','ぷ','ふ','む'],
+      'ふ + ゛ = ぶ. Note ふ is <em>fu</em>, but it voices to <em>bu</em>, not <em>vu</em>.'),
+    q('gi', 'ぎ', ['ぎ','き','じ','し'],
+      'き + ゛ = ぎ.')
+  ]
+});
+
+// ---- Part 2: beats --------------------------------------------------------
+// Every option is exactly "N beats" — identical length and word count.
+function bq(word, gloss, answer, explain) {
+  return {
+    prompt: '<span class="wordbig">' + word + '</span>'
+          + '<span class="cite">' + gloss + '</span><br>How many beats?',
+    options: ['2 beats', '3 beats', '4 beats', '5 beats'],
+    answer: answer, explain: explain
+  };
+}
+
+Quiz.mount('#quiz-beats', {
+  title: 'Beat counting',
+  questions: [
+    bq('きょう', '<em>kyō</em> — today', '2 beats',
+      'きょ fuses into one beat, then う. <strong>kyo · u</strong>. Written き<strong>よ</strong>う with a full-size よ it would be three beats — and a different word.'),
+    bq('きって', '<em>kitte</em> — postage stamp', '3 beats',
+      '<strong>ki · (hold) · te</strong>. The small っ makes no sound but takes a full beat. Without it, きて is two beats and means "come".'),
+    bq('コーヒー', '<em>kōhī</em> — coffee', '4 beats',
+      '<strong>ko · o · hi · i</strong>. Each ー holds the previous vowel for a full extra beat. English "coffee" is two syllables; this is four.'),
+    bq('とうきょう', '<em>Tōkyō</em> — Tokyo', '4 beats',
+      '<strong>to · u · kyo · u</strong>. Both long vowels are real beats. English says it in two; Japanese takes four.'),
+    bq('ビール', '<em>bīru</em> — beer', '3 beats',
+      '<strong>bi · i · ru</strong>. Useful to get right.'),
+    bq('がっこう', '<em>gakkō</em> — school', '4 beats',
+      '<strong>ga · (hold) · ko · u</strong>. A silent beat and a long vowel in one short word.'),
+    bq('チェックイン', '<em>chekkuin</em> — check-in', '5 beats',
+      '<strong>che · (hold) · ku · i · n</strong>. チェ fuses to one beat; ッ is silent but counted; ン is its own beat.'),
+    bq('じゅぎょう', '<em>jugyō</em> — class, lesson', '3 beats',
+      '<strong>ju · gyo · u</strong>. Two fusions in a row, then the long vowel. Five characters, three beats.')
+  ]
+});
+
+// ---- Mixed reading drill --------------------------------------------------
+Drill.mount('#drill-mixed', {
+  title: 'Voiced kana and yōon — mixed scripts',
+  target: 26,
+  items: [
+    { show: 'が', answer: ['ga'] },      { show: 'ジ', answer: ['ji','zi'] },
+    { show: 'ぞ', answer: ['zo'] },      { show: 'デ', answer: ['de'] },
+    { show: 'ど', answer: ['do'] },      { show: 'バ', answer: ['ba'] },
+    { show: 'び', answer: ['bi'] },      { show: 'プ', answer: ['pu'] },
+    { show: 'ぺ', answer: ['pe'] },      { show: 'ぽ', answer: ['po'] },
+    { show: 'ぐ', answer: ['gu'] },      { show: 'ゼ', answer: ['ze'] },
+    { show: 'だ', answer: ['da'] },      { show: 'ボ', answer: ['bo'] },
+    { show: 'きゃ', answer: ['kya'] },   { show: 'シュ', answer: ['shu','syu'] },
+    { show: 'ちょ', answer: ['cho','tyo'] }, { show: 'ニュ', answer: ['nyu'] },
+    { show: 'ひょ', answer: ['hyo'] },   { show: 'ミャ', answer: ['mya'] },
+    { show: 'りゅ', answer: ['ryu'] },   { show: 'ギョ', answer: ['gyo'] },
+    { show: 'じゃ', answer: ['ja','zya','jya'] }, { show: 'ビョ', answer: ['byo'] },
+    { show: 'ぴゃ', answer: ['pya'] },   { show: 'ジュ', answer: ['ju','zyu','jyu'] }
+  ]
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 2 · Katakana, End to End</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  .partmap { border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; margin: 1.6rem 0; }
+  .partmap a {
+    display: grid; grid-template-columns: 5.4rem 1fr 3.2rem; gap: .8rem; align-items: baseline;
+    padding: .75rem 1rem; border-bottom: 1px solid var(--rule); text-decoration: none;
+    color: var(--ink); font-size: .93rem;
+  }
+  .partmap a:last-child { border-bottom: 0; }
+  .partmap a:hover { background: var(--paper-warm); }
+  .partmap .s { font-family: var(--mono); font-size: .74rem; color: var(--accent); }
+  .partmap .c { font-family: var(--mono); font-size: .74rem; color: var(--ink-faint); text-align: right; }
+  @media (max-width: 520px) {
+    .partmap a { grid-template-columns: 4.4rem 1fr; }
+    .partmap .c { display: none; }
+  }
+
+  .parthead {
+    margin: 3.5rem 0 .3rem; padding: .9rem 1.1rem; border-radius: 8px;
+    background: var(--accent-dim); border-left: 4px solid var(--accent);
+  }
+  .parthead h2 { border: 0; margin: 0; font-size: 1.35rem; }
+  .parthead .s {
+    font-family: var(--sans); font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .3rem;
+  }
+  .parthead p { margin: .4rem 0 0; font-size: .92rem; color: var(--ink-soft); }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(146px,1fr)); gap: .75rem; margin: 1.2rem 0; }
+  .grid div {
+    border: 1px solid var(--rule); border-radius: 8px; padding: .85rem .6rem;
+    text-align: center; background: var(--paper-warm);
+  }
+  .grid div.strong { border-color: var(--accent); border-width: 2px; }
+  .grid .pair { font-family: var(--jp); font-size: 2.3rem; line-height: 1.15; }
+  .grid .pair .to { color: var(--ink-faint); font-size: .55em; vertical-align: middle; margin: 0 .12em; }
+  .grid .g { font-family: var(--jp); font-size: 2.7rem; line-height: 1.05; display: block; }
+  .grid .rm {
+    font-family: var(--sans); font-weight: 700; font-size: .9rem; color: var(--accent);
+    display: block; margin-top: .15rem; letter-spacing: .05em;
+  }
+  .grid .src { font-family: var(--jp); font-size: .74rem; color: var(--ink-faint); display: block; margin-top: .25rem; }
+  .grid .hint { font-size: .77rem; color: var(--ink-soft); display: block; margin-top: .35rem; line-height: 1.4; }
+
+  .famline {
+    font-family: var(--jp); font-size: 2.4rem; letter-spacing: .12em; text-align: center;
+    margin: .3rem 0 .1rem; line-height: 1.3;
+  }
+  .famline .arrow { font-family: var(--sans); font-size: .5em; color: var(--accent); vertical-align: middle; margin: 0 .1em; }
+  .fam {
+    border: 1px solid var(--rule); border-radius: 8px; padding: 1rem 1.1rem;
+    margin: 1rem 0; background: var(--paper);
+  }
+  .fam h3 { margin: 0 0 .3rem; }
+  .fam p { margin: .5rem 0 0; font-size: .9rem; }
+  .fam p:last-child { margin-bottom: 0; }
+
+  .matrix { width: 100%; border-collapse: collapse; margin: 1.4rem 0; table-layout: fixed; }
+  .matrix th { text-align: center; font-size: .66rem; padding: .45rem .2rem; }
+  .matrix th.rh {
+    text-align: right; width: 8rem; border-bottom: 0; border-right: 1.5px solid var(--rule);
+    vertical-align: middle; font-size: .66rem; line-height: 1.4;
+  }
+  .matrix td { text-align: center; padding: 1rem .3rem; border: 1px solid var(--rule); background: var(--paper-warm); }
+  .matrix td .g { font-family: var(--jp); font-size: 3rem; line-height: 1; display: block; }
+  .matrix td .rm { font-family: var(--sans); font-weight: 700; font-size: .9rem; color: var(--accent); display: block; margin-top: .2rem; }
+  .arrowbig { font-size: 1.4rem; color: var(--accent); line-height: 1; }
+
+  .tally { display: flex; gap: .6rem; flex-wrap: wrap; margin: 1.3rem 0; }
+  .tally div { flex: 1 1 120px; border: 1px solid var(--rule); border-radius: 8px; padding: .75rem; text-align: center; background: var(--paper); }
+  .tally .big { font-family: var(--sans); font-size: 1.8rem; font-weight: 700; color: var(--accent); line-height: 1; }
+  .tally .lbl { font-size: .75rem; color: var(--ink-soft); margin-top: .3rem; display: block; line-height: 1.35; }
+
+  .blankword { font-family: var(--jp); font-size: 2rem; letter-spacing: .06em; }
+  .blankword b { color: var(--accent); font-weight: 400; }
+  .wordbig { font-family: var(--jp); font-size: 2.2rem; letter-spacing: .04em; display: block; margin: .3rem 0; }
+  @media (max-width: 520px) {
+    .grid .pair { font-size: 1.95rem; }
+    .matrix th.rh { width: 5rem; font-size: .58rem; }
+    .matrix td .g { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="topnav"><a href="../index.html">&larr; Course home</a></p>
+
+<p class="eyebrow">Phase 0 · Week 2</p>
+<h1>Katakana, End to End</h1>
+<p class="standfirst">All 46 characters, in four sittings, sorted by how much work each one
+actually costs you. Twenty are nearly free, twenty-two hang off something you'll already
+know, and four need a rule of their own.</p>
+
+<div class="note">
+  <span class="label">One part per day — don't do this in one sitting</span>
+  <p>Katakana writes Japan's foreign loanwords, which for a traveller is most of the words
+  that matter: <span class="jp">ホテル</span>, <span class="jp">タクシー</span>,
+  <span class="jp">コンビニ</span>, <span class="jp">パスポート</span>. Same 46 sounds as
+  hiragana, different shapes.</p>
+  <p style="margin-bottom:0">Forty-six characters will not fit in one sitting, and trying is
+  how people end up recognising none of them. Each part below is one day, with day 5
+  left free for reading whole words. <strong>Stop at the end of a part even if you feel
+  fine.</strong> The overnight gap is doing work you cannot do by pushing harder.</p>
+</div>
+
+<div class="note">
+  <span class="label">Do week 1 first</span>
+  <p style="margin-bottom:0">This lesson assumes you can read hiragana — not perfectly, but
+  reliably. Part 1 hands you twenty katakana <em>for free</em> by pointing at their hiragana
+  twins, and that only works if the twins are solid. If you haven't done
+  <a href="week-01-hiragana.html">week 1</a>, start there; it costs one
+  week and saves more than one.</p>
+</div>
+
+<div class="partmap">
+  <a href="#part1"><span class="s">Day 1</span><span><strong>The ones you already know</strong> — katakana built from the same kanji as a hiragana you can read</span><span class="c">20</span></a>
+  <a href="#part2"><span class="s">Day 2</span><span><strong>The families</strong> — the rest, taught as variations on shapes from Part 1</span><span class="c">22</span></a>
+  <a href="#part3"><span class="s">Day 3</span><span><strong>Consolidation</strong> — all 42 mixed, plus real words. No new characters</span><span class="c">—</span></a>
+  <a href="#part4"><span class="s">Day 4</span><span><strong>The four traps</strong> — <span class="jp">シ ツ ン ソ</span>, and the one rule that settles them</span><span class="c">4</span></a>
+</div>
+
+<h2>Why the order is what it is</h2>
+
+<p>The usual advice is to learn katakana with picture mnemonics, and Part 2 does exactly
+that where it's needed. But mnemonics are <em>expensive</em> — each one is a new thing to
+remember, and a story about a character is one more link in the chain between seeing a
+shape and hearing a sound. So the cheap routes come first:</p>
+
+<ol>
+  <li><strong>Point at knowledge you already have.</strong> About twenty katakana were
+  carved from the same kanji as a hiragana you can already read. Free.</li>
+  <li><strong>Build new characters out of learned ones.</strong> Sixteen of the remaining
+  twenty-two are one stroke away from something in Part 1. Cheap.</li>
+  <li><strong>Spend the mnemonic budget on the six that need it.</strong></li>
+  <li><strong>Discriminate last.</strong> <span class="jp">シ/ツ/ン/ソ</span> come at the end
+  because telling shapes apart is a different task from learning them, and it only works
+  once both shapes are in your head.</li>
+</ol>
+
+<!-- ==================== PART 1 ==================== -->
+<div class="parthead" id="part1">
+  <span class="s">Part 1 · Day 1</span>
+  <h2>The Ones You Already Know</h2>
+  <p>Twenty characters, no memorisation. Read each pair aloud once and move on.</p>
+</div>
+
+<p>Both scripts were built from kanji at around the same time by different groups.
+Hiragana came from cursive <em>whole</em> kanji, smoothed into a flowing shape. Katakana
+came from <strong>fragments</strong> — scribes annotating Chinese texts grabbed one piece
+of a character as shorthand. So when a hiragana and a katakana share a source kanji, the
+katakana usually looks like the hiragana with the curves taken out. That's a family
+resemblance you can see, not a fact to memorise.</p>
+
+<h3>The free one</h3>
+
+<div class="grid">
+  <div class="strong">
+    <div class="pair">へ<span class="to">→</span>ヘ</div><span class="rm">he</span>
+    <span class="src">from 部</span>
+    <span class="hint">The <strong>same shape</strong>. Some fonts make the katakana slightly sharper. That is the entire difference.</span>
+  </div>
+</div>
+
+<h3>Close resemblances</h3>
+
+<div class="grid">
+  <div><div class="pair">か<span class="to">→</span>カ</div><span class="rm">ka</span><span class="src">from 加</span><span class="hint">Drop か's right-hand tick.</span></div>
+  <div><div class="pair">き<span class="to">→</span>キ</div><span class="rm">ki</span><span class="src">from 幾</span><span class="hint">Straighten き, lose the bottom curl.</span></div>
+  <div><div class="pair">せ<span class="to">→</span>セ</div><span class="rm">se</span><span class="src">from 世</span><span class="hint">Same frame, one fewer stroke.</span></div>
+  <div><div class="pair">り<span class="to">→</span>リ</div><span class="rm">ri</span><span class="src">from 利</span><span class="hint">Two strokes, same arrangement, straightened.</span></div>
+  <div><div class="pair">も<span class="to">→</span>モ</div><span class="rm">mo</span><span class="src">from 毛</span><span class="hint">Same skeleton; the katakana stops curving.</span></div>
+  <div><div class="pair">や<span class="to">→</span>ヤ</div><span class="rm">ya</span><span class="src">from 也</span><span class="hint">Diagonal and crossbar survive; the loop doesn't.</span></div>
+  <div><div class="pair">に<span class="to">→</span>ニ</div><span class="rm">ni</span><span class="src">from 仁</span><span class="hint">Only the <strong>right</strong> half — the two bars.</span></div>
+  <div><div class="pair">う<span class="to">→</span>ウ</div><span class="rm">u</span><span class="src">from 宇</span><span class="hint">Same tick on top; the body squares off.</span></div>
+</div>
+
+<h3>Recognisable fragments</h3>
+
+<div class="grid">
+  <div><div class="pair">な<span class="to">→</span>ナ</div><span class="rm">na</span><span class="src">from 奈</span><span class="hint">Just the top-left cross.</span></div>
+  <div><div class="pair">い<span class="to">→</span>イ</div><span class="rm">i</span><span class="src">from 以</span><span class="hint">The left stroke of い, with a lean.</span></div>
+  <div><div class="pair">ろ<span class="to">→</span>ロ</div><span class="rm">ro</span><span class="src">from 呂</span><span class="hint">呂 is two stacked boxes. Katakana took one.</span></div>
+  <div><div class="pair">ゆ<span class="to">→</span>ユ</div><span class="rm">yu</span><span class="src">from 由</span><span class="hint">ゆ's bottom-right corner, squared.</span></div>
+  <div><div class="pair">む<span class="to">→</span>ム</div><span class="rm">mu</span><span class="src">from 牟</span><span class="hint">む's opening angle, everything else dropped.</span></div>
+  <div><div class="pair">ら<span class="to">→</span>ラ</div><span class="rm">ra</span><span class="src">from 良</span><span class="hint">Same two-part build, straightened.</span></div>
+  <div><div class="pair">ひ<span class="to">→</span>ヒ</div><span class="rm">hi</span><span class="src">from 比</span><span class="hint">比 is two halves; each script kept one. The lean matches.</span></div>
+  <div><div class="pair">と<span class="to">→</span>ト</div><span class="rm">to</span><span class="src">from 止</span><span class="hint">と's vertical plus tick, at right angles.</span></div>
+  <div><div class="pair">め<span class="to">→</span>メ</div><span class="rm">me</span><span class="src">from 女</span><span class="hint">The crossing X inside め, extracted.</span></div>
+  <div><div class="pair">て<span class="to">→</span>テ</div><span class="rm">te</span><span class="src">from 天</span><span class="hint">天's crossbars plus the descending stroke.</span></div>
+  <div><div class="pair">ほ<span class="to">→</span>ホ</div><span class="rm">ho</span><span class="src">from 保</span><span class="hint">Both keep 保's right-hand component.</span></div>
+</div>
+
+<div class="note">
+  <span class="label">An honest caveat</span>
+  <p style="margin-bottom:0">Some of these are strong (<span class="jp">へ/ヘ</span>,
+  <span class="jp">か/カ</span>, <span class="jp">き/キ</span>) and some are faint
+  (<span class="jp">ひ/ヒ</span>, <span class="jp">ほ/ホ</span>, <span class="jp">む/ム</span>).
+  The shared origin is real in every case, but a faint resemblance is a weaker hook. If a
+  pair doesn't click, don't force it — note it and it joins Part 2's mnemonic batch. The
+  goal is cheap wins, not stubborn ones.</p>
+</div>
+
+<h3>Check them — sound to character</h3>
+<div id="q-bridge"></div>
+
+<h3>And the direction that matters — character to sound</h3>
+<div id="d-bridge"></div>
+
+<p class="cite"><strong>Stop here for day 1.</strong> Twenty of forty-six done, without
+learning a single mnemonic — just by pointing at hiragana you already read.</p>
+
+<!-- ==================== PART 2 ==================== -->
+<div class="parthead" id="part2">
+  <span class="s">Part 2 · Day 2</span>
+  <h2>The Families</h2>
+  <p>Twenty-two characters. Sixteen are one stroke from something you learned in Part 1 —
+  only six need a story.</p>
+</div>
+
+<p>This is the heaviest session in the whole plan, so it is organised to be as light as it
+can be. Most of these aren't new shapes; they're <em>modifications</em> of shapes you met
+on day 1. Learn the family, get three or four characters.</p>
+
+<div class="fam">
+  <h3>The ク family — add strokes</h3>
+  <div class="famline">ク <span class="arrow">+slash→</span> タ <span class="arrow">+vertical→</span> ケ</div>
+  <p><strong>ku · ta · ke</strong> — <span class="jp">ク</span> is the base: a narrow corner
+  cutting in from the left. Put a slash through it and it's <span class="jp">タ</span>. Drop
+  a long vertical through instead and it's <span class="jp">ケ</span>.</p>
+  <p class="cite">Watch these against <span class="jp">ワ</span> and <span class="jp">ウ</span>
+  below — <span class="jp">ク</span> is narrower, and its top stroke cuts inward.</p>
+</div>
+
+<div class="fam">
+  <h3>The ノ family — one stroke, then build</h3>
+  <div class="famline">ノ <span class="arrow">+cross→</span> メ <span class="arrow">+roof→</span> ヌ &nbsp;·&nbsp; ス</div>
+  <p><strong>no · me · nu · su</strong> — <span class="jp">ノ</span> is a single diagonal,
+  the simplest character in the script. Cross it and you have <span class="jp">メ</span>
+  (which you already know, from <span class="jp">め</span>). Put a roof on
+  <span class="jp">メ</span> and it's <span class="jp">ヌ</span>. Take the crossbar back off
+  and it's <span class="jp">ス</span> — roof plus one leg.</p>
+</div>
+
+<div class="fam">
+  <h3>The ワ family — フ plus a leg</h3>
+  <div class="famline">フ <span class="arrow">+left→</span> ワ <span class="arrow">+bar→</span> ヲ</div>
+  <p><strong>fu · wa · o</strong> — <span class="jp">フ</span> is a single bent stroke.
+  Give it a left-hand leg and it's <span class="jp">ワ</span>. Put a bar through
+  <span class="jp">ワ</span> and it's <span class="jp">ヲ</span>, which is rare enough that
+  recognising it is plenty.</p>
+  <p class="cite">You already know <span class="jp">ウ</span> (<em>u</em>) from
+  <span class="jp">う</span> — it's <span class="jp">ワ</span> wearing the little hat. That
+  hat is the only difference, and it's the one to watch for.</p>
+</div>
+
+<div class="fam">
+  <h3>The オ family — off a character you know</h3>
+  <div class="famline">ホ <span class="arrow">−feet→</span> オ <span class="arrow">+hat→</span> ネ</div>
+  <p><strong>o · ne</strong> — you learned <span class="jp">ホ</span> (<em>ho</em>) in Part 1.
+  Take its two symmetrical feet away and what's left is <span class="jp">オ</span>. Put a
+  small stroke on top of <span class="jp">オ</span> and you get <span class="jp">ネ</span>.</p>
+</div>
+
+<div class="fam">
+  <h3>The テ family — one character, one difference</h3>
+  <div class="famline">テ <span class="arrow">leg kicks left→</span> チ</div>
+  <p><strong>chi</strong> — <span class="jp">テ</span> (<em>te</em>) you know from
+  <span class="jp">て</span>. <span class="jp">チ</span> has the same two crossbars, but its
+  vertical <strong>hooks to the left</strong> at the bottom instead of dropping straight
+  from the centre. That hook is the whole distinction.</p>
+</div>
+
+<div class="fam">
+  <h3>The レ family</h3>
+  <div class="famline">レ <span class="arrow">+left leg→</span> ル</div>
+  <p><strong>re · ru</strong> — <span class="jp">レ</span> is a single stroke like a tick.
+  Add a second leg on the left and it becomes <span class="jp">ル</span>, whose right leg
+  curls up at the end.</p>
+</div>
+
+<div class="fam">
+  <h3>The two that are just numbers</h3>
+  <div class="famline">ハ <span class="arrow">←八</span> &nbsp;&nbsp;&nbsp; ミ <span class="arrow">←三</span></div>
+  <p><strong>ha · mi</strong> — <span class="jp">ハ</span> comes from
+  <span class="jp">八</span>, the kanji for <em>eight</em>, and looks exactly like it.
+  <span class="jp">ミ</span> comes from <span class="jp">三</span>, the kanji for
+  <em>three</em> — three strokes, written fast and slanted. Two characters, two kanji you'll
+  meet in Genki Lesson 3 anyway.</p>
+</div>
+
+<h3>The six that need a hook</h3>
+
+<p>No shortcut for these. Hooks below are starting points — if one of your own works
+better, use yours, because a mnemonic you invented is always stickier than one you were
+handed.</p>
+
+<div class="grid">
+  <div><span class="g">ア</span><span class="rm">a</span><span class="hint">A capital <strong>A</strong> that lost its right leg.</span></div>
+  <div><span class="g">エ</span><span class="rm">e</span><span class="hint">An <strong>e</strong>ngineer's I-beam. It is the kanji 工, "construction".</span></div>
+  <div><span class="g">コ</span><span class="rm">ko</span><span class="hint">A <strong>co</strong>rner bracket, open to the left.</span></div>
+  <div><span class="g">サ</span><span class="rm">sa</span><span class="hint">A <strong>sa</strong>pling: one bar, two shoots coming up through it.</span></div>
+  <div><span class="g">マ</span><span class="rm">ma</span><span class="hint">Compare ア: マ's leg tucks <em>inward</em>, ア's descends separately.</span></div>
+  <div><span class="g">ヨ</span><span class="rm">yo</span><span class="hint">A capital <strong>E</strong> facing the wrong way.</span></div>
+</div>
+
+<div class="tally">
+  <div><span class="big">16</span><span class="lbl">built from Part 1</span></div>
+  <div><span class="big">6</span><span class="lbl">needed a hook</span></div>
+  <div><span class="big">42</span><span class="lbl">known after today</span></div>
+</div>
+
+<h3>Check them</h3>
+<div id="q-fam"></div>
+
+<h3>Character to sound</h3>
+<div id="d-fam"></div>
+
+<p class="cite"><strong>Stop here for day 2.</strong> Forty-two of forty-six. The last four
+are Part 4, and they get a day to themselves for good reason.</p>
+
+<!-- ==================== PART 3 ==================== -->
+<div class="parthead" id="part3">
+  <span class="s">Part 3 · Day 3</span>
+  <h2>Consolidation</h2>
+  <p>No new characters. Forty-two shapes learned across two days need one day of nothing
+  but retrieval.</p>
+</div>
+
+<p>This session looks like the least productive one in the plan and is among the most
+important. You have met these characters; you have not yet <em>retrieved</em> them cold,
+mixed, out of the order you learned them in. Recognition inside a lesson is not the same
+skill as recognition on a sign.</p>
+
+<p>Run the drill below. Then run it again. Expect it to feel worse than Part 2 felt — that
+is the desirable difficulty doing its job, not evidence that Part 2 failed.</p>
+
+<div id="d-all42"></div>
+
+<h3>Now words</h3>
+
+<p>Reading happens at word level, not character level. Every word here uses only characters
+from Parts 1 and 2, plus the long-vowel bar <span class="jp">ー</span>.</p>
+
+<div id="q-words"></div>
+
+<div class="note">
+  <span class="label">If the drill went badly</span>
+  <p style="margin-bottom:0">Below about 80% is a signal to <strong>repeat this session
+  tomorrow</strong> rather than push on to Part 4. Phase 0 has nine sessions and one of them
+  is slack. Spending it here is a much better trade than arriving at the kana gate with
+  forty shaky characters and four sharp ones.</p>
+</div>
+
+<!-- ==================== PART 4 ==================== -->
+<div class="parthead" id="part4">
+  <span class="s">Part 4 · Day 4</span>
+  <h2>The Four Traps</h2>
+  <p><span class="jp">シ ツ ン ソ</span> — four characters that cause more misreadings than
+  the other forty-two combined.</p>
+</div>
+
+<p>These come last on purpose. Telling <span class="jp">シ</span> from
+<span class="jp">ツ</span> is a <em>discrimination</em> task: it sharpens a distinction
+between two things you already hold. Attempted before you know the script, it just produces
+four shapes that all blur together.</p>
+
+<p>Most people try to memorise them as four separate pictures and keep mixing them up,
+because as pictures they genuinely are nearly identical. The way out is to stop looking at
+the whole character and ask two narrow questions instead.</p>
+
+<div class="rule-box">
+  <p style="margin-bottom:.7rem"><strong>1. How many short strokes?</strong><br>
+  <strong>Two</strong> → <span class="jp">シ</span> or <span class="jp">ツ</span>.
+  <strong>One</strong> → <span class="jp">ン</span> or <span class="jp">ソ</span>.</p>
+  <p style="margin-bottom:0"><strong>2. Which way does the long stroke sweep?</strong><br>
+  <span class="arrowbig">↗</span> <strong>Up</strong>, bottom-left to top-right →
+  <span class="jp">シ</span> or <span class="jp">ン</span>.<br>
+  <span class="arrowbig">↙</span> <strong>Down</strong>, top-right to bottom-left →
+  <span class="jp">ツ</span> or <span class="jp">ソ</span>.</p>
+</div>
+
+<table class="matrix">
+  <tr><th class="rh"></th><th>Two short strokes</th><th>One short stroke</th></tr>
+  <tr>
+    <th class="rh">Long stroke<br><span class="arrowbig">↗</span> <strong>UP</strong></th>
+    <td><span class="g">シ</span><span class="rm">shi</span></td>
+    <td><span class="g">ン</span><span class="rm">n</span></td>
+  </tr>
+  <tr>
+    <th class="rh">Long stroke<br><span class="arrowbig">↙</span> <strong>DOWN</strong></th>
+    <td><span class="g">ツ</span><span class="rm">tsu</span></td>
+    <td><span class="g">ソ</span><span class="rm">so</span></td>
+  </tr>
+</table>
+
+<h3>Why the sweep isn't arbitrary</h3>
+
+<p>A rule you understand survives a bad night's sleep; a rule you memorised does not. Each
+of these kept its source kanji's writing direction — which its hiragana cousin also kept.
+So the sweep is one you already know from hiragana:</p>
+
+<div class="grid">
+  <div><div class="pair">し<span class="to">→</span>シ</div><span class="hint"><span class="jp">し</span> finishes curving <strong>upward</strong>. So does <span class="jp">シ</span>.</span></div>
+  <div><div class="pair">つ<span class="to">→</span>ツ</div><span class="hint"><span class="jp">つ</span> is drawn from the <strong>top</strong>, across and down. So is <span class="jp">ツ</span>.</span></div>
+  <div><div class="pair">ん<span class="to">→</span>ン</div><span class="hint"><span class="jp">ん</span> finishes sweeping <strong>upward</strong>. So does <span class="jp">ン</span>.</span></div>
+  <div><div class="pair">そ<span class="to">→</span>ソ</div><span class="hint"><span class="jp">そ</span> finishes sweeping <strong>down</strong> and left. So does <span class="jp">ソ</span>.</span></div>
+</div>
+
+<div class="note">
+  <span class="label">When the font fights you</span>
+  <p style="margin-bottom:0">Some display fonts flatten the sweep. Backup cue: on
+  <span class="jp">シ</span> and <span class="jp">ン</span> the short strokes
+  <strong>stack vertically</strong> down the left edge. On <span class="jp">ツ</span> and
+  <span class="jp">ソ</span> they sit <strong>side by side</strong> along the top. Two cues,
+  same answer.</p>
+</div>
+
+<h3>Check the rule</h3>
+<div id="q-traps"></div>
+
+<h3>In real words</h3>
+<div id="q-trapwords"></div>
+
+<h3>Speed — the four traps</h3>
+<p>Type the romaji, press Enter. Don't apply the rule consciously if you can avoid it —
+let the shape answer for you.</p>
+<div id="d-traps"></div>
+
+<h3>And finally, all 46</h3>
+<p>The complete script, mixed. This is a rehearsal for the kana gate in week 3.</p>
+<div id="d-all46"></div>
+
+<div class="note">
+  <span class="label">What a good result looks like</span>
+  <p style="margin-bottom:0">Accurate and <strong>slow</strong>. That is correct at the end of
+  week 2 and you should not be discouraged by it. Forty-six characters learned in four days
+  will not be automatic in four days — nothing is. Speed is built by the five-minute warm-up
+  drill across the following weeks and typically arrives around Genki Lesson 3.</p>
+</div>
+
+<h2>Before week 3</h2>
+
+<p><strong>Primary source:</strong>
+<a href="https://www.tofugu.com/japanese/learn-katakana/">Tofugu's <em>Learn Katakana:
+Ultimate Guide</em></a> — the best free kana resource in existence, and mnemonic-led, which
+is the right approach for shapes that are arbitrary by nature. Use it as a <em>second angle</em>
+on whichever characters this lesson left shaky rather than reading it start to finish. Tofugu also publish a free downloadable version of it, linked from that same page, which is worth having on your phone.</p>
+
+<p><strong>Also:</strong> install <a href="https://apps.apple.com/us/app/oto-navi-sound-navigator/id1490391845">OTO
+Navi</a> and search your textbook's ISBN (978-4-7890-1730-5). It's the publisher's free
+official audio, and every reading session from Genki Lesson 1 onward depends on it.</p>
+
+<div class="lesson-foot">
+  <p><strong>Next:</strong>
+  <a href="week-02-katakana-in-words.html">day 5 — katakana in whole words</a>. The shapes
+  stop being shapes: you learn how English becomes Japanese, so an unfamiliar katakana word
+  can be decoded rather than memorised. Uses Genki 読み書き Lesson 2 (pp. 300–303)
+  and the workbook's five katakana sheets (workbook pp. 128–132).</p>
+
+  <p>Then <a href="week-03-marks-and-beats.html">week 3</a>: the voicing marks, the beat
+  rules, and the kana gate.</p>
+
+  <div class="chip-row">
+    <a class="chip" href="../index.html">&#8962; Course home</a>
+    <a class="chip" href="../reference/kana-charts.html">Complete kana charts</a>
+    <a class="chip" href="../reference/kana-confusables.html">Confusables card</a>
+    <a class="chip" href="week-01-hiragana.html">← Week 1 · Hiragana</a>
+    <a class="chip" href="week-03-marks-and-beats.html">Week 3 · Marks &amp; beats →</a>
+    <a class="chip" href="../reference/genki1-roadmap.html">Roadmap</a>
+  </div>
+
+  <div class="ask-teacher">
+    <strong>Tell me how each part went, not just the last one.</strong> Which Part 1
+    resemblances felt faint, which Part 2 families stuck, and your Part 3 drill score — that
+    score in particular decides whether day 5 pushes on or repeats. Part 3 is the one
+    people skip because it feels unproductive; if you're tempted to skip it, tell me and
+    I'll make the case again. Ask me anything here — if a hook isn't landing, I'll build you
+    a different one.
+  </div>
+</div>
+
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script src="../assets/drill.js"></script>
+<script>
+// ---------------------------------------------------------------------------
+// Single source of truth for the whole script.
+// ---------------------------------------------------------------------------
+var KATAKANA = [
+  ['ア','a'],  ['イ','i'],  ['ウ','u'],  ['エ','e'],  ['オ','o'],
+  ['カ','ka'], ['キ','ki'], ['ク','ku'], ['ケ','ke'], ['コ','ko'],
+  ['サ','sa'], ['シ','shi'],['ス','su'], ['セ','se'], ['ソ','so'],
+  ['タ','ta'], ['チ','chi'],['ツ','tsu'],['テ','te'], ['ト','to'],
+  ['ナ','na'], ['ニ','ni'], ['ヌ','nu'], ['ネ','ne'], ['ノ','no'],
+  ['ハ','ha'], ['ヒ','hi'], ['フ','fu'], ['ヘ','he'], ['ホ','ho'],
+  ['マ','ma'], ['ミ','mi'], ['ム','mu'], ['メ','me'], ['モ','mo'],
+  ['ヤ','ya'], ['ユ','yu'], ['ヨ','yo'],
+  ['ラ','ra'], ['リ','ri'], ['ル','ru'], ['レ','re'], ['ロ','ro'],
+  ['ワ','wa'], ['ヲ','o'],  ['ン','n']
+];
+
+// Romaji systems differ; accept common alternates rather than marking a correct
+// reading wrong on a spelling technicality. Keyed by character, since ヲ and オ
+// both read "o" but only ヲ may be typed "wo".
+var ALT = {
+  'シ': ['shi','si'], 'チ': ['chi','ti'], 'ツ': ['tsu','tu'],
+  'フ': ['fu','hu'],  'ン': ['n','nn'],   'ヲ': ['o','wo']
+};
+
+function item(pair) { return { show: pair[0], answer: ALT[pair[0]] || [pair[1]] }; }
+function itemsFor(chars) {
+  return KATAKANA.filter(function (p) { return chars.indexOf(p[0]) !== -1; }).map(item);
+}
+
+var BRIDGE = ['ヘ','カ','キ','セ','リ','モ','ヤ','ニ','ウ','ナ',
+              'イ','ロ','ユ','ム','ラ','ヒ','ト','メ','テ','ホ'];          // 20
+var FAMILY = ['ア','エ','オ','ク','ケ','コ','サ','ス','タ','チ','ヌ',
+              'ネ','ノ','ハ','フ','マ','ミ','ヨ','ル','レ','ワ','ヲ'];      // 22
+var TRAPS  = ['シ','ツ','ン','ソ'];                                        // 4
+
+// ---------------------------------------------------------------------------
+// Drills
+// ---------------------------------------------------------------------------
+Drill.mount('#d-bridge',  { title: 'Part 1 — the twenty', target: 24, items: itemsFor(BRIDGE) });
+Drill.mount('#d-fam',     { title: 'Part 2 — the twenty-two', target: 30, items: itemsFor(FAMILY) });
+Drill.mount('#d-all42',   { title: 'Part 3 — all forty-two, mixed', target: 55,
+                            items: itemsFor(BRIDGE.concat(FAMILY)) });
+Drill.mount('#d-traps',   { title: 'Part 4 — the four traps', target: 12,
+                            items: itemsFor(TRAPS).concat(itemsFor(TRAPS)).concat(itemsFor(TRAPS)) });
+Drill.mount('#d-all46',   { title: 'All forty-six — gate rehearsal', target: 60,
+                            items: KATAKANA.map(item) });
+
+// ---------------------------------------------------------------------------
+// Quizzes. Options are always single characters, so option length never leaks
+// the answer — and they are always katakana, so hiragana knowledge can't carry you.
+// ---------------------------------------------------------------------------
+function q(sound, answer, options, explain) {
+  return {
+    prompt: 'Which <strong>katakana</strong> is read <strong>' + sound + '</strong>?',
+    options: options, answer: answer, explain: explain
+  };
+}
+
+Quiz.mount('#q-bridge', {
+  title: 'Part 1 — sound to character',
+  questions: [
+    q('he', 'ヘ', ['ヘ','ニ','ト','ウ'], 'ヘ — identical to hiragana へ. Both from 部.'),
+    q('ka', 'カ', ['カ','キ','ナ','ヤ'], 'カ — か with the right-hand tick removed. Both from 加.'),
+    q('ki', 'キ', ['キ','カ','テ','モ'], 'キ — き straightened. Both from 幾. Careful: テ also has two crossbars, but its vertical drops from the centre.'),
+    q('ni', 'ニ', ['ニ','イ','ロ','ト'], 'ニ — the two bars on the right of に. Both from 仁.'),
+    q('ro', 'ロ', ['ロ','カ','ホ','ム'], 'ロ — one box from 呂, which is two stacked boxes. Hiragana ろ smoothed the whole thing.'),
+    q('yu', 'ユ', ['ユ','ヤ','ニ','ラ'], 'ユ — from 由, same as ゆ.'),
+    q('mu', 'ム', ['ム','メ','ロ','セ'], 'ム — the opening angle of む. Both from 牟.'),
+    q('me', 'メ', ['メ','ム','ナ','イ'], 'メ — the crossing X hiding inside め. Both from 女.'),
+    q('to', 'ト', ['ト','イ','リ','ヒ'], 'ト — と’s vertical and tick at right angles. Both from 止.'),
+    q('ri', 'リ', ['リ','ト','イ','ニ'], 'リ — り straightened. Both from 利. Note how close it sits to イ: リ’s strokes are parallel and upright.'),
+    q('ho', 'ホ', ['ホ','ロ','キ','テ'], 'ホ — from 保, same as ほ.'),
+    q('hi', 'ヒ', ['ヒ','ト','リ','セ'], 'ヒ — from 比. A fainter resemblance to ひ than most; flag it if it didn’t land.')
+  ]
+});
+
+Quiz.mount('#q-fam', {
+  title: 'Part 2 — sound to character',
+  questions: [
+    q('ku', 'ク', ['ク','タ','ケ','ワ'], 'ク — the base of the family. タ adds a slash; ケ adds a long vertical.'),
+    q('ta', 'タ', ['タ','ク','ケ','ナ'], 'タ — ク with a slash through it.'),
+    q('ke', 'ケ', ['ケ','ク','タ','サ'], 'ケ — ク with a long vertical dropped through.'),
+    q('nu', 'ヌ', ['ヌ','ス','メ','ノ'], 'ヌ — メ with a roof on top. ス is the same roof but with no crossbar.'),
+    q('su', 'ス', ['ス','ヌ','ノ','メ'], 'ス — roof plus one leg, no crossing stroke.'),
+    q('no', 'ノ', ['ノ','ス','メ','レ'], 'ノ — a single diagonal, the simplest shape in the script.'),
+    q('fu', 'フ', ['フ','ワ','ウ','ク'], 'フ — one bent stroke. Add a left leg for ワ.'),
+    q('wa', 'ワ', ['ワ','ウ','フ','ク'], 'ワ — フ with a left leg. ウ is ワ wearing the little hat.'),
+    q('o',  'オ', ['オ','ホ','ネ','ヲ'], 'オ — ホ with its two feet removed. (ヲ also reads "o" but is the rare object particle; オ is the ordinary vowel.)'),
+    q('ne', 'ネ', ['ネ','オ','ホ','ヌ'], 'ネ — オ with a small stroke on top.'),
+    q('chi','チ', ['チ','テ','キ','サ'], 'チ — same two crossbars as テ, but the vertical <strong>hooks left</strong> at the bottom.'),
+    q('ru', 'ル', ['ル','レ','ノ','ハ'], 'ル — レ with a second leg on the left.'),
+    q('re', 'レ', ['レ','ル','ノ','ト'], 'レ — a single tick-like stroke.'),
+    q('ha', 'ハ', ['ハ','ミ','ノ','ル'], 'ハ — straight from 八, the kanji for <em>eight</em>.'),
+    q('mi', 'ミ', ['ミ','ハ','ヨ','エ'], 'ミ — from 三, the kanji for <em>three</em>: three strokes, slanted.'),
+    q('a',  'ア', ['ア','マ','ヤ','ナ'], 'ア — a capital A missing its right leg. Against マ: ア’s left stroke descends separately.'),
+    q('ma', 'マ', ['マ','ア','ヤ','ム'], 'マ — the leg tucks <em>inward</em>, unlike ア.'),
+    q('e',  'エ', ['エ','ヨ','コ','ミ'], 'エ — the kanji 工, an I-beam.'),
+    q('ko', 'コ', ['コ','ユ','エ','ロ'], 'コ — a corner bracket, open to the left. ユ has a foot; エ is closed top and bottom.'),
+    q('sa', 'サ', ['サ','キ','セ','チ'], 'サ — one bar with two shoots coming up through it.'),
+    q('yo', 'ヨ', ['ヨ','エ','ミ','コ'], 'ヨ — a capital E facing the wrong way.')
+  ]
+});
+
+function wq(before, after, gloss, answer, options, explain) {
+  return {
+    prompt: '<span class="blankword">' + before + '<b>＿</b>' + after + '</span>'
+          + '<br><span class="cite">' + gloss + '</span><br>Which character fills the gap?',
+    options: options, answer: answer, explain: explain
+  };
+}
+
+Quiz.mount('#q-words', {
+  title: 'Part 3 — read the word',
+  questions: [
+    wq('ホ','ル', '<em>hoteru</em> — hotel', 'テ', ['テ','ト','キ','セ'],
+      'ホ<strong>テ</strong>ル. All three came from Part 1.'),
+    wq('','ーヒー', '<em>kōhī</em> — coffee', 'コ', ['コ','カ','ロ','ニ'],
+      '<strong>コ</strong>ーヒー. Each ー holds the previous vowel one extra beat, so this is four beats, not two.'),
+    wq('カ','ー', '<em>karē</em> — curry', 'レ', ['レ','リ','ル','ト'],
+      'カ<strong>レ</strong>ー. Watch レ against リ: レ is one stroke, リ is two.'),
+    wq('ト','レ', '<em>toire</em> — toilet', 'イ', ['イ','リ','ニ','ヒ'],
+      'ト<strong>イ</strong>レ. Possibly the most useful word on this page.'),
+    wq('メ','ュー', '<em>menyū</em> — menu', 'ニ', ['ニ','ナ','モ','イ'],
+      'メ<strong>ニ</strong>ュー. The small ュ fuses with ニ into one beat: <em>nyu</em>, not <em>ni-yu</em>.'),
+    wq('','ート', '<em>nōto</em> — notebook', 'ノ', ['ノ','ホ','ナ','メ'],
+      '<strong>ノ</strong>ート. One stroke — the base of the ノ/メ/ヌ/ス family.'),
+    wq('タク','ー', '<em>takushī</em> — taxi', 'シ', ['シ','ツ','ソ','ン'],
+      'タク<strong>シ</strong>ー. Part 4 covers exactly this — for now, two short strokes and an upward sweep.'),
+    wq('パ','ポート', '<em>pasupōto</em> — passport', 'ス', ['ス','ヌ','ノ','メ'],
+      'パ<strong>ス</strong>ポート. パ and ポ carry the handakuten circle, which is week 3.')
+  ]
+});
+
+Quiz.mount('#q-traps', {
+  title: 'Part 4 — sound to character',
+  questions: [
+    q('shi','シ', TRAPS, 'シ — two short strokes, long stroke sweeps <strong>up</strong>. Its hiragana cousin し also curves up.'),
+    q('so', 'ソ', TRAPS, 'ソ — one short stroke, sweeping <strong>down</strong>. Compare そ, which also finishes downward.'),
+    q('tsu','ツ', TRAPS, 'ツ — two short strokes, sweeping <strong>down</strong>. つ is drawn from the top downward.'),
+    q('n',  'ン', TRAPS, 'ン — one short stroke, sweeping <strong>up</strong>. Like ん, which also finishes with an upward sweep.'),
+    q('shi','シ', TRAPS, '<strong>Two</strong> strokes narrows it to シ/ツ; <strong>up</strong> picks シ.'),
+    q('so', 'ソ', TRAPS, '<strong>One</strong> stroke narrows it to ン/ソ; <strong>down</strong> picks ソ.')
+  ]
+});
+
+Quiz.mount('#q-trapwords', {
+  title: 'Part 4 — the traps in words',
+  questions: [
+    wq('タク','ー', '<em>takushī</em> — taxi', 'シ', TRAPS,
+      'タク<strong>シ</strong>ー. The ー holds the vowel: <em>shi</em> becomes <em>shī</em>.'),
+    wq('コ','ビニ', '<em>konbini</em> — convenience store', 'ン', TRAPS,
+      'コ<strong>ン</strong>ビニ. ン is the only katakana that is a bare consonant, so it turns <em>ko</em> into <em>kon</em>.'),
+    wq('スー','ケース', '<em>sūtsukēsu</em> — suitcase', 'ツ', TRAPS,
+      'スー<strong>ツ</strong>ケース. Two short strokes, sweeping down.'),
+    wq('','ース', '<em>sōsu</em> — sauce', 'ソ', TRAPS,
+      '<strong>ソ</strong>ース. One short stroke, sweeping down.'),
+    wq('レストラ','', '<em>resutoran</em> — restaurant', 'ン', TRAPS,
+      'レストラ<strong>ン</strong>. Word-final ン is extremely common — it is how katakana writes a trailing <em>-n</em>.'),
+    wq('','ャワー', '<em>shawā</em> — shower', 'シ', TRAPS,
+      '<strong>シ</strong>ャワー. The small ャ fuses with シ into a single beat: <em>sha</em>, not <em>shi-ya</em>.'),
+    wq('チェックイ','', '<em>chekkuin</em> — check-in', 'ン', TRAPS,
+      'チェックイ<strong>ン</strong>. Note the small ッ too — it doubles the following <em>k</em>.'),
+    wq('','アー', '<em>tsuā</em> — tour', 'ツ', TRAPS,
+      '<strong>ツ</strong>アー. Hold this against ソース in this same set — same position, same downward sweep. The only difference is stroke count: two for ツ, one for ソ.')
+  ]
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 4–5 · Lesson 2 — Shopping</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  .drill-stage .kana-big { font-size: clamp(2rem, 9vw, 3.4rem); }
+
+  .jp-title { font-size: 1.5rem; color: var(--ink-soft); margin: -.3rem 0 1.3rem; letter-spacing: .04em; }
+
+  .partmap { border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; margin: 1.6rem 0; }
+  .partmap a {
+    display: grid; grid-template-columns: 4.2rem 1fr 4.8rem; gap: .8rem; align-items: baseline;
+    padding: .75rem 1rem; border-bottom: 1px solid var(--rule); text-decoration: none;
+    color: var(--ink); font-size: .93rem;
+  }
+  .partmap a:last-child { border-bottom: 0; }
+  .partmap a:hover { background: var(--paper-warm); }
+  .partmap .s { font-family: var(--sans); font-size: .7rem; font-weight: 700;
+                letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+  .partmap .c { font-family: var(--mono); font-size: .72rem; color: var(--ink-faint); text-align: right; }
+  @media (max-width: 520px) {
+    .partmap a { grid-template-columns: 3.6rem 1fr; }
+    .partmap .c { display: none; }
+  }
+
+  .parthead {
+    margin: 3.4rem 0 .3rem; padding: .9rem 1.1rem; border-radius: 8px;
+    background: var(--accent-dim); border-left: 4px solid var(--accent);
+  }
+  .parthead h2 { border: 0; margin: 0; font-size: 1.3rem; }
+  .parthead .s {
+    font-family: var(--sans); font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .3rem;
+  }
+  .parthead p { margin: .4rem 0 0; font-size: .92rem; color: var(--ink-soft); }
+
+  .pattern {
+    border: 2px solid var(--accent); border-radius: 8px; padding: .9rem 1.1rem;
+    margin: 1.3rem 0; text-align: center; background: var(--paper-warm);
+  }
+  .pattern .jp-pat { font-family: var(--jp); font-size: 1.5rem; letter-spacing: .04em; }
+  .pattern .en { font-size: .88rem; color: var(--ink-soft); display: block; margin-top: .3rem; }
+
+  .ex { margin: 1.1rem 0; }
+  .ex div {
+    padding: .6rem 0; border-bottom: 1px solid var(--rule);
+    display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; align-items: baseline;
+  }
+  .ex div:last-child { border-bottom: 0; }
+  .ex .j { font-family: var(--jp); font-size: 1.2rem; line-height: 1.5; }
+  .ex .r { font-family: var(--mono); font-size: .72rem; color: var(--ink-faint); display: block; }
+  .ex .e { font-size: .88rem; color: var(--ink-soft); font-style: italic; }
+  @media (max-width: 520px) { .ex div { grid-template-columns: 1fr; gap: .15rem; } }
+
+  .kosoado { width: 100%; border-collapse: collapse; margin: 1.3rem 0; table-layout: fixed; }
+  .kosoado th { font-size: .64rem; padding: .45rem .25rem; text-align: center; }
+  .kosoado th.rh { text-align: right; width: 6.6rem; border-right: 1.5px solid var(--rule);
+                   border-bottom: 0; color: var(--accent); font-size: .64rem; line-height: 1.35; }
+  .kosoado td { text-align: center; border: 1px solid var(--rule); padding: .65rem .2rem;
+                background: var(--paper-warm); }
+  .kosoado .k { font-family: var(--jp); font-size: 1.35rem; display: block; line-height: 1.3; }
+  .kosoado .g { font-size: .7rem; color: var(--ink-faint); display: block; margin-top: .15rem; }
+  .kosoado tr.doh td { background: var(--accent-dim); }
+  @media (max-width: 560px) {
+    .kosoado th.rh { width: 4.2rem; font-size: .56rem; }
+    .kosoado .k { font-size: 1.05rem; }
+    .kosoado .g { display: none; }
+  }
+
+  .numgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(128px,1fr)); gap: .6rem; margin: 1.2rem 0; }
+  .numgrid div { border: 1px solid var(--rule); border-radius: 8px; padding: .7rem .5rem;
+                 text-align: center; background: var(--paper-warm); }
+  .numgrid div.odd { border-color: var(--accent); border-width: 2px; }
+  .numgrid .n { font-family: var(--mono); font-size: .95rem; font-weight: 700; color: var(--accent); }
+  .numgrid .k { font-family: var(--jp); font-size: 1.2rem; display: block; margin-top: .2rem; }
+
+  .scaffold { border: 1px solid var(--rule); border-radius: 9px; padding: 1.1rem 1.3rem;
+              background: var(--paper-warm); margin: 1.3rem 0; }
+  .scaffold ol { margin: .6rem 0 0; padding-left: 1.3rem; }
+  .scaffold li { margin-bottom: .7rem; font-family: var(--jp); font-size: 1.15rem; line-height: 1.6; }
+  .scaffold li .gloss { font-family: var(--serif); font-size: .84rem; color: var(--ink-soft);
+                        font-style: italic; display: block; margin-top: .1rem; }
+  .scaffold .slot { color: var(--accent); border-bottom: 1.5px dashed var(--accent); padding: 0 .3em; }
+
+  .wordbig { font-family: var(--jp); font-size: 1.8rem; letter-spacing: .04em; display: block; margin: .3rem 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="topnav"><a href="../index.html">&larr; Course home</a></p>
+
+<p class="eyebrow">Phase 1 · Week 4 day 4 → Week 5 day 4</p>
+<h1>Lesson 2 · Shopping</h1>
+<p class="jp-title"><span class="jp">かいもの</span></p>
+<p class="standfirst">Six days, seven grammar points, and the first lesson that lets you do
+something transactional: point at a thing, ask what it is and what it costs, say no to it
+politely, and buy it. Textbook pp. 56–81.</p>
+
+<div class="note">
+  <span class="label">Where this sits</span>
+  <p style="margin-bottom:0">Six days rather than five, because the grammar count doubles.
+  Still no kanji — those start in Lesson 3 — and no <span class="jp">読み書き</span> passage,
+  since Lesson 2's reading half was katakana and you did it in
+  <a href="week-02-katakana.html">week 2</a>. Keep the five-minute kana drill in your
+  warm-up; speed is still being built.</p>
+</div>
+
+<div class="partmap">
+  <a href="#d1"><span class="s">Day 1</span><span><strong>Vocabulary, dialogue, and the number system</strong> — including the one that breaks English speakers</span><span class="c">pp. 56–60</span></a>
+  <a href="#d2"><span class="s">Day 2</span><span><strong><span class="jp">こそあど</span> part 1</strong> — <span class="jp">これ/それ/あれ/どれ</span> and <span class="jp">この/その/あの/どの</span></span><span class="c">pp. 60–61</span></a>
+  <a href="#d3"><span class="s">Day 3</span><span><strong><span class="jp">こそあど</span> part 2</strong> — places, and <span class="jp">だれの</span></span><span class="c">p. 62</span></a>
+  <a href="#d4"><span class="s">Day 4</span><span><strong><span class="jp">も</span>, <span class="jp">じゃないです</span>, <span class="jp">ね/よ</span></strong> — likewise, not, and the social layer</span><span class="c">pp. 62–64</span></a>
+  <a href="#d5"><span class="s">Day 5</span><span><strong>Workbook</strong> — one sheet per grammar point</span><span class="c">wb 25–31</span></a>
+  <a href="#d6"><span class="s">Day 6</span><span><strong>Retrieval and a shopping roleplay</strong> — build the whole transaction</span><span class="c">p. 81</span></a>
+</div>
+
+<!-- ==================== DAY 1 ==================== -->
+<div class="parthead" id="d1">
+  <span class="s">Day 1</span>
+  <h2>Vocabulary, Dialogue, and Numbers</h2>
+  <p>Input day, plus the one piece of Lesson 2 that is genuinely hard for an English speaker
+  and has nothing to do with grammar.</p>
+</div>
+
+<ol>
+  <li><strong>Vocabulary, pp. 58–60.</strong> Read once with the audio. This list is full of
+  concrete objects — bags, watches, shoes, umbrellas — which makes it far easier to hold
+  than Lesson 1's abstract nouns. The starred words appear in the dialogue.</li>
+  <li><strong>Dialogue, pp. 56–57.</strong> Listen twice, reading along. It's a shop
+  transaction, so you'll hear the shape of the whole lesson before you learn any of it.</li>
+  <li><strong>Numbers, p. 67</strong> and the Expression Notes at <strong>p. 65</strong>.
+  Details below — do this part properly, it pays off immediately.</li>
+</ol>
+
+<h3>Japanese counts in ten-thousands</h3>
+
+<p>English chunks big numbers in <strong>thousands</strong>: thousand, million, billion —
+each one a thousand times the last. Japanese chunks in <strong>ten-thousands</strong>, using
+a unit English doesn't have: <span class="jp">まん</span> (10,000).</p>
+
+<div class="pattern">
+  <span class="jp-pat">10,000 = いちまん</span>
+  <span class="en">and everything above it is counted in <em>man</em>, not thousands</span>
+</div>
+
+<div class="ex">
+  <div><span class="j">20,000 → にまん<span class="r">niman</span></span>
+       <span class="e">2 × 10,000 — <strong>not</strong> "twenty thousand"</span></div>
+  <div><span class="j">1,000,000 → ひゃくまん<span class="r">hyakuman</span></span>
+       <span class="e">100 × 10,000 — a million is "a hundred man"</span></div>
+</div>
+
+<p>This is not a vocabulary problem, it's a <em>re-chunking</em> problem: you have to stop
+hearing "twenty-thousand" and start hearing "two-man". It takes a few weeks and it is the
+main reason beginners freeze at a till. Practise by reading prices aloud.</p>
+
+<div class="note">
+  <span class="label">One to memorise flat</span>
+  <p style="margin-bottom:0">10,000 is <strong><span class="jp">いちまん</span></strong>, not
+  just <span class="jp">まん</span> — even though 10 is plain <span class="jp">じゅう</span>,
+  100 is plain <span class="jp">ひゃく</span>, and 1,000 is plain
+  <span class="jp">せん</span>. <span class="jp">まん</span> alone is wrong. The book flags
+  this with an asterisk on p. 67 for good reason.</p>
+</div>
+
+<h3>The hundreds and thousands that change sound</h3>
+
+<p>Counters beginning with <em>h</em> (like <span class="jp">ひゃく</span>) shift after 3, 6
+and 8. Counters beginning with <em>s</em> (like <span class="jp">せん</span>) shift after 3
+and 8. Six irregulars in total — everything else is regular:</p>
+
+<div class="numgrid">
+  <div class="odd"><span class="n">300</span><span class="k">さんびゃく</span></div>
+  <div class="odd"><span class="n">600</span><span class="k">ろっぴゃく</span></div>
+  <div class="odd"><span class="n">800</span><span class="k">はっぴゃく</span></div>
+  <div class="odd"><span class="n">3,000</span><span class="k">さんぜん</span></div>
+  <div class="odd"><span class="n">8,000</span><span class="k">はっせん</span></div>
+  <div class="odd"><span class="n">10,000</span><span class="k">いちまん</span></div>
+</div>
+
+<p class="cite">Full table at p. 67, and the general counter table at pp. 380–381.
+These six are the ones to drill; the rest follow the pattern you'd guess.</p>
+
+<h3>Drill the numbers</h3>
+<div id="q-numbers"></div>
+
+<!-- ==================== DAY 2 ==================== -->
+<div class="parthead" id="d2">
+  <span class="s">Day 2</span>
+  <h2><span class="jp">こそあど</span>, part 1</h2>
+  <p>Textbook pp. 60–61. Twelve words that are really one system.</p>
+</div>
+
+<p>Japanese has a tidy set of demonstratives built on four prefixes. Learn the prefixes and
+the endings separately and you get the whole grid for free, rather than memorising twelve
+unrelated words:</p>
+
+<table class="kosoado">
+  <tr>
+    <th class="rh"></th>
+    <th>thing<br>(alone)</th>
+    <th>+ noun<br>(modifies)</th>
+    <th>place</th>
+  </tr>
+  <tr>
+    <th class="rh"><span class="jp">こ</span><br>near me</th>
+    <td><span class="k">これ</span><span class="g">this one</span></td>
+    <td><span class="k">この</span><span class="g">this ～</span></td>
+    <td><span class="k">ここ</span><span class="g">here</span></td>
+  </tr>
+  <tr>
+    <th class="rh"><span class="jp">そ</span><br>near you</th>
+    <td><span class="k">それ</span><span class="g">that one</span></td>
+    <td><span class="k">その</span><span class="g">that ～</span></td>
+    <td><span class="k">そこ</span><span class="g">there</span></td>
+  </tr>
+  <tr>
+    <th class="rh"><span class="jp">あ</span><br>far from both</th>
+    <td><span class="k">あれ</span><span class="g">that one</span></td>
+    <td><span class="k">あの</span><span class="g">that ～</span></td>
+    <td><span class="k">あそこ</span><span class="g">over there</span></td>
+  </tr>
+  <tr class="doh">
+    <th class="rh"><span class="jp">ど</span><br>which?</th>
+    <td><span class="k">どれ</span><span class="g">which one</span></td>
+    <td><span class="k">どの</span><span class="g">which ～</span></td>
+    <td><span class="k">どこ</span><span class="g">where</span></td>
+  </tr>
+</table>
+
+<div class="note">
+  <span class="label">Three-way, not two-way</span>
+  <p style="margin-bottom:0">English has <em>this</em> and <em>that</em>. Japanese has three:
+  near <strong>me</strong>, near <strong>you</strong>, and far from <strong>both</strong>.
+  The middle one is the one English speakers forget — if the thing is in the other person's
+  hand, it is <span class="jp">それ</span>, even though in English you'd still say "that".</p>
+</div>
+
+<h3><span class="jp">これ</span> or <span class="jp">この</span>?</h3>
+
+<p>Same meaning, different grammar. <span class="jp">これ</span> stands alone as a noun.
+<span class="jp">この</span> cannot stand alone — it must be glued to a noun before the
+sentence can continue:</p>
+
+<div class="ex">
+  <div><span class="j">これは いくらですか。<span class="r">kore wa ikura desu ka</span></span>
+       <span class="e">How much is this one?</span></div>
+  <div><span class="j">このとけいは いくらですか。<span class="r">kono tokee wa ikura desu ka</span></span>
+       <span class="e">How much is this watch?</span></div>
+</div>
+
+<p>So <span class="jp">これ</span> takes <span class="jp">は</span> directly;
+<span class="jp">この</span> needs a noun first, and the noun takes
+<span class="jp">は</span>. Saying <span class="jp">このは…</span> is not a thing.</p>
+
+<div class="note">
+  <span class="label">Politeness: don't point at people with <span class="jp">これ</span></span>
+  <p style="margin-bottom:0">The <span class="jp">この</span> series is fine for people —
+  <span class="jp">あのがくせい</span>, "that student over there". The
+  <span class="jp">これ</span> series used of a person can come across as impolite, because
+  it treats them as a <em>thing</em>. The book notes it's acceptable when referring back to
+  someone already mentioned, or pointing at a photo. Use
+  <span class="jp">あの + noun</span> and you're always safe.</p>
+</div>
+
+<div class="note">
+  <span class="label">Question words can't be topics</span>
+  <p style="margin-bottom:0"><span class="jp">どれ</span> and <span class="jp">どの</span>
+  take <strong><span class="jp">が</span></strong>, not <span class="jp">は</span>:
+  <span class="jp">どのがくせいが にほんじんですか</span>. You haven't formally met
+  <span class="jp">が</span> yet — it arrives in Lesson 8 — so for now just learn this as a
+  fact about question words. The <em>why</em> is that <span class="jp">は</span> marks known,
+  shared information, and a question word is by definition the unknown part.</p>
+</div>
+
+<h3>Check it</h3>
+<div id="q-kosoado"></div>
+
+<!-- ==================== DAY 3 ==================== -->
+<div class="parthead" id="d3">
+  <span class="s">Day 3</span>
+  <h2>Places, and <span class="jp">だれの</span></h2>
+  <p>Textbook p. 62. A short day — take the spare minutes for yesterday's grid.</p>
+</div>
+
+<p>The third column of the grid: <span class="jp">ここ / そこ / あそこ / どこ</span>. Note
+the odd one out — <span class="jp">あそこ</span> has an extra syllable where you'd expect
+<span class="jp">あこ</span>.</p>
+
+<p>This gives you the single most useful question in a strange city:</p>
+
+<div class="ex">
+  <div><span class="j">すみません。ゆうびんきょくは どこですか。
+       <span class="r">sumimasen. yuubinkyoku wa doko desu ka</span></span>
+       <span class="e">Excuse me. Where is the post office?</span></div>
+  <div><span class="j">あそこです。<span class="r">asoko desu</span></span>
+       <span class="e">It's over there.</span></div>
+</div>
+
+<p class="cite">Answers more specific than "over there" — next to, behind, in front of —
+come in Lesson 4.</p>
+
+<h3><span class="jp">だれの</span> — whose</h3>
+
+<p>You already know <span class="jp">の</span> joins two nouns. Put the question word
+<span class="jp">だれ</span> (who) in the first slot and you're asking who something belongs
+to:</p>
+
+<div class="pattern">
+  <span class="jp-pat">だれの + Noun</span>
+  <span class="en">whose ～</span>
+</div>
+
+<div class="ex">
+  <div><span class="j">これは だれの かばんですか。<span class="r">kore wa dare no kaban desu ka</span></span>
+       <span class="e">Whose bag is this?</span></div>
+  <div><span class="j">それは ソラさんの かばんです。<span class="r">sore wa Sora san no kaban desu</span></span>
+       <span class="e">That's Sora's bag.</span></div>
+</div>
+
+<p>Look at how the answer mirrors the question: <span class="jp">これ</span> becomes
+<span class="jp">それ</span>, because the thing has moved from near the speaker to near the
+listener. That swap is the grid doing real work.</p>
+
+<h3>Check it</h3>
+<div id="q-places"></div>
+
+<!-- ==================== DAY 4 ==================== -->
+<div class="parthead" id="d4">
+  <span class="s">Day 4</span>
+  <h2><span class="jp">も</span>, <span class="jp">じゃないです</span>, and <span class="jp">ね / よ</span></h2>
+  <p>Textbook pp. 62–64. Three small things that transform how natural you sound.</p>
+</div>
+
+<h3>1 · <span class="jp">も</span> — "too"</h3>
+
+<div class="pattern">
+  <span class="jp-pat">A は X です。&nbsp;&nbsp; B も X です。</span>
+  <span class="en">A is X. B is X too.</span>
+</div>
+
+<p>Two things about <span class="jp">も</span> catch English speakers, and both come from the
+same source — in English "too" floats to the end of the sentence, in Japanese it is welded
+to the item it's about.</p>
+
+<div class="ex">
+  <div><span class="j">たけしさんは にほんじんです。<span class="r">Takeshi san wa nihonjin desu</span></span>
+       <span class="e">Takeshi is Japanese.</span></div>
+  <div><span class="j">ゆいさんも にほんじんです。<span class="r">Yui san mo nihonjin desu</span></span>
+       <span class="e">Yui is Japanese too.</span></div>
+</div>
+
+<ol>
+  <li><strong><span class="jp">も</span> replaces <span class="jp">は</span>.</strong> It
+  does not join it. <span class="jp">ゆいさんはも</span> is not a thing.</li>
+  <li><strong>It attaches to the <em>likewise</em> item.</strong> Above, Yui gets
+  <span class="jp">も</span> because Yui is the one that matches something already said.
+  Put it elsewhere and you change the meaning.</li>
+</ol>
+
+<h3>2 · <span class="jp">じゃないです</span> — negation</h3>
+
+<p>To negate <span class="jp">X は Y です</span>, swap <span class="jp">です</span> for
+<span class="jp">じゃないです</span>:</p>
+
+<div class="ex">
+  <div><span class="j">やまださんは がくせいです。<span class="r">Yamada san wa gakusee desu</span></span>
+       <span class="e">Mr. Yamada is a student.</span></div>
+  <div><span class="j">やまださんは がくせいじゃないです。<span class="r">…gakusee ja nai desu</span></span>
+       <span class="e">Mr. Yamada is not a student.</span></div>
+</div>
+
+<p>There are three registers of the same thing. Recognise all three; produce the first:</p>
+
+<table>
+  <thead><tr><th>Form</th><th>Register</th></tr></thead>
+  <tbody>
+    <tr><td class="jp" style="font-size:1.15em">じゃないです</td><td>Colloquial. Use this one.</td></tr>
+    <tr><td class="jp" style="font-size:1.15em">じゃありません</td><td>More conservative speech.</td></tr>
+    <tr><td class="jp" style="font-size:1.15em">ではありません</td><td>Formal; the right choice in writing.</td></tr>
+  </tbody>
+</table>
+
+<p class="cite"><span class="jp">じゃ</span> is simply a contraction of
+<span class="jp">では</span> — which is why the formal version looks longer. Same word,
+different amount of smoothing.</p>
+
+<div class="note">
+  <span class="label">Two traps</span>
+  <p><strong>They need a noun.</strong> Neither <span class="jp">です</span> nor
+  <span class="jp">じゃない</span> can stand alone. Answering
+  <span class="jp">いいえ、じゃないです</span> is ungrammatical — you must repeat the noun:
+  <span class="jp">いいえ、にほんじんじゃないです</span>.</p>
+  <p style="margin-bottom:0"><strong>This does not negate adjectives.</strong>
+  <span class="jp">たかいです</span> ("it's expensive") cannot become
+  <span class="jp">たかいじゃないです</span>, because <span class="jp">たかい</span> is not a
+  noun. Adjectives have their own conjugation and it arrives in Lesson 5. Until then, avoid
+  negating them.</p>
+</div>
+
+<h3>3 · <span class="jp">ね</span> and <span class="jp">よ</span></h3>
+
+<p>Sentence-final tags that say something about <em>you and the listener</em> rather than
+about the facts. Neither is optional-sounding once you're used to them — Japanese without
+them sounds flat and slightly cold.</p>
+
+<div class="ex">
+  <div><span class="j">…ですね。<span class="r">…desu ne</span></span>
+       <span class="e"><strong>ね</strong> — seeking agreement. "…right?" / "…isn't it?"</span></div>
+  <div><span class="j">…ですよ。<span class="r">…desu yo</span></span>
+       <span class="e"><strong>よ</strong> — telling them something they may not know.</span></div>
+</div>
+
+<p>Use <span class="jp">ね</span> when you expect the listener already shares your view, and
+<span class="jp">よ</span> when you're supplying information and want them to take it from
+you. Getting them backwards is a small but very audible error: <span class="jp">よ</span>
+where <span class="jp">ね</span> belongs can sound like you're correcting someone.</p>
+
+<h3>Check it</h3>
+<div id="q-mo-nai"></div>
+
+<!-- ==================== DAY 5 ==================== -->
+<div class="parthead" id="d5">
+  <span class="s">Day 5</span>
+  <h2>Workbook</h2>
+  <p>Workbook pp. 25–31 — one sheet per grammar point, numbered to match the textbook.</p>
+</div>
+
+<p>Production day. Everything so far has been recognition; these sheets make you build
+sentences, which is a different and harder skill. Work in order — they're sequenced to match
+the grammar numbering, so if a sheet stumps you the explanation is one page-flip away.</p>
+
+<p>The set covers numbers, the two <span class="jp">こそあど</span> halves, places and
+<span class="jp">だれの</span>, then <span class="jp">も</span> with
+<span class="jp">じゃないです</span>, finishing with
+<span class="jp">こたえましょう</span> (written questions) and
+<span class="jp">きくれんしゅう</span> (listening, three or four tasks).</p>
+
+<div class="note">
+  <span class="label">Don't skip the listening sheet</span>
+  <p style="margin-bottom:0">It's the only part of this lesson that makes you decode Japanese
+  at someone else's pace rather than your own — which is exactly the situation a real shop
+  puts you in. If it's too fast, use OTO Navi's speed control and the three-second rewind
+  rather than giving up on it.</p>
+</div>
+
+<!-- ==================== DAY 6 ==================== -->
+<div class="parthead" id="d6">
+  <span class="s">Day 6</span>
+  <h2>Retrieval and a Shopping Roleplay</h2>
+  <p>Closed book, then build the whole transaction end to end.</p>
+</div>
+
+<p>Re-run the quizzes above cold first — they reshuffle, so a second run is a new test.
+Then assemble the thing this lesson was for.</p>
+
+<h3>The transaction</h3>
+
+<p>Every line uses only Lesson 1 and 2 grammar. Say both parts aloud, swapping roles, until
+you can do it without reading:</p>
+
+<div class="scaffold">
+  <ol>
+    <li>すみません。<span class="gloss">Excuse me. (Gets attention; also means "sorry".)</span></li>
+    <li>この<span class="slot">もの</span>は いくらですか。<span class="gloss">How much is this ___? この + noun.</span></li>
+    <li><span class="slot">ねだん</span>えんです。<span class="gloss">It's ___ yen. Watch the sound changes.</span></li>
+    <li>あれも <span class="slot">ねだん</span>えんですか。<span class="gloss">Is that one over there ___ yen too? も, not は.</span></li>
+    <li>いいえ、<span class="slot">ねだん</span>えんじゃないです。<span class="gloss">No, it's not ___ yen. Repeat the noun — じゃないです can't stand alone.</span></li>
+    <li>たかいですね。<span class="gloss">That's expensive, isn't it. ね seeks agreement.</span></li>
+    <li>じゃあ、これを ください。<span class="gloss">Then I'll take this one, please.</span></li>
+  </ol>
+</div>
+
+<h3>Asking for things: <span class="jp">ください</span> and <span class="jp">おねがいします</span></h3>
+
+<p>From the Expression Notes at p. 65 — both mean roughly "please give me X", and the
+difference is worth knowing:</p>
+
+<table>
+  <thead><tr><th>Phrase</th><th>When</th></tr></thead>
+  <tbody>
+    <tr><td class="jp" style="font-size:1.1em">(〜を)ください</td>
+        <td>Requesting a concrete item. The everyday default.</td></tr>
+    <tr><td class="jp" style="font-size:1.1em">(〜を)おねがいします</td>
+        <td>Slightly more upscale for an object — common when ordering food. Also the one
+            that works for <em>abstract</em> requests: a repair, an explanation, someone's
+            understanding.</td></tr>
+    <tr><td class="jp" style="font-size:1.1em">(〜を)どうぞ</td>
+        <td>Not a request — this is what the <em>other</em> person says when offering
+            something to you. "Here you are."</td></tr>
+  </tbody>
+</table>
+
+<h3>Mixed retrieval</h3>
+<div id="q-mixed"></div>
+
+<h3>Finish with the classroom page</h3>
+
+<p><strong>p. 81</strong>, Useful Expressions — <span class="jp">きょうしつ</span>, phrases
+for a classroom. Read it, don't drill it. Several of them are worth having even without a
+class: "how do you say ～ in Japanese?", "please say it again", "I don't understand".
+Those are survival phrases for any conversation with a native speaker.</p>
+
+<h3>And the money</h3>
+
+<p><strong>p. 66</strong>, Culture Notes — Japanese currency. Worth two minutes: the note
+that Japan still runs substantially on <strong>cash</strong>, and that small shops and
+restaurants may not take cards even in big cities, is practical information rather than
+trivia.</p>
+
+<!-- ==================== CLOSE ==================== -->
+<h2>What you can do now</h2>
+
+<ul>
+  <li>Point at anything and ask what it is, whose it is, and what it costs.</li>
+  <li>Distinguish near-me, near-you, and over-there — a three-way split English doesn't have.</li>
+  <li>Say a price up to the tens of thousands, and understand one said to you.</li>
+  <li>Negate a noun sentence, and say "this one too".</li>
+  <li>Soften or assert a statement with <span class="jp">ね</span> and
+  <span class="jp">よ</span>, which is the first thing in this course that makes you sound
+  like a person rather than a textbook.</li>
+</ul>
+
+<h2>Before Lesson 3</h2>
+
+<p><strong>Read prices out loud in the wild.</strong> Any price you see this week, anywhere,
+convert it to Japanese in your head. The <span class="jp">まん</span> re-chunking only
+becomes automatic through repetition, and it's the thing most likely to strand you at a till.</p>
+
+<p><strong>Brace for Lesson 3.</strong> It's the hardest block in this plan and gets seven
+days: verbs arrive, along with particles <span class="jp">を・で・に・へ</span>, and the
+first fifteen kanji. Nothing to pre-read — just know that if it feels like a step up, that's
+accurate and it was planned for.</p>
+
+<div class="lesson-foot">
+  <p><strong>Next:</strong> Genki Lesson 3, <span class="jp">デートの約束</span> — Making a
+  Date. Verb conjugation, verb types, the present tense, time references,
+  <span class="jp">〜ませんか</span>, frequency adverbs, word order, and the topic particle
+  properly. Plus <span class="jp">一 二 三 四 五 六 七 八 九 十 百 千 万 円 時</span>.</p>
+
+  <div class="chip-row">
+    <a class="chip" href="../index.html">&#8962; Course home</a>
+    <a class="chip" href="week-03-lesson-01-new-friends.html">&larr; Lesson 1</a>
+    <a class="chip" href="../reference/genki1-roadmap.html#genki-2">The plan · Lesson 2</a>
+    <a class="chip" href="week-05-lesson-03-making-a-date.html">Lesson 3 &rarr;</a>
+    <a class="chip" href="../reference/kana-charts.html">Kana charts</a>
+  </div>
+
+  <div class="ask-teacher">
+    <strong>Type me your shopping roleplay.</strong> Both sides of it. The errors worth
+    catching in Lesson 2 are structural and nearly invisible from the inside: a
+    <span class="jp">も</span> sitting next to <span class="jp">は</span> instead of
+    replacing it, <span class="jp">この</span> used where <span class="jp">これ</span>
+    belongs, a bare <span class="jp">じゃないです</span> with no noun, or
+    <span class="jp">よ</span> where <span class="jp">ね</span> was wanted. That last one
+    changes how you come across, not just whether you're correct.
+  </div>
+</div>
+
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script src="../assets/drill.js"></script>
+<script>
+function q(prompt, answer, options, explain) {
+  return { prompt: prompt, options: options, answer: answer, explain: explain };
+}
+
+// ---------------------------------------------------------------------------
+// Day 1 — numbers
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-numbers', {
+  title: 'Numbers and prices',
+  questions: [
+    q('<strong>300</strong> is read…', 'さんびゃく', ['さんびゃく','さんひゃく','さんぴゃく','みひゃく'],
+      '<strong>さんびゃく</strong>. ひゃく voices to びゃく after 3.'),
+    q('<strong>600</strong> is read…', 'ろっぴゃく', ['ろっぴゃく','ろくひゃく','ろっびゃく','ろくぴゃく'],
+      '<strong>ろっぴゃく</strong>. Both halves change: ろく shortens to ろっ and ひゃく becomes ぴゃく.'),
+    q('<strong>800</strong> is read…', 'はっぴゃく', ['はっぴゃく','はちひゃく','はっびゃく','はちぴゃく'],
+      '<strong>はっぴゃく</strong>. Same double change as 600.'),
+    q('<strong>3,000</strong> is read…', 'さんぜん', ['さんぜん','さんせん','さんぞん','みせん'],
+      '<strong>さんぜん</strong>. せん voices to ぜん after 3.'),
+    q('<strong>8,000</strong> is read…', 'はっせん', ['はっせん','はちせん','はっぜん','はちぜん'],
+      '<strong>はっせん</strong>. はち shortens to はっ, but せん does <em>not</em> voice here.'),
+    q('<strong>10,000</strong> is read…', 'いちまん', ['いちまん','まん','じゅうせん','ひとまん'],
+      '<strong>いちまん</strong> — the いち is required, unlike じゅう, ひゃく and せん which stand alone. Bare まん is wrong.'),
+    q('<strong>20,000</strong> is read…', 'にまん', ['にまん','にじゅうせん','にせんじゅう','にひゃくまん'],
+      '<strong>にまん</strong> = 2 × 10,000. Japanese chunks in ten-thousands, so there is no "twenty thousand".'),
+    q('<strong>1,000,000</strong> is read…', 'ひゃくまん', ['ひゃくまん','せんせん','じゅうまん','まんまん'],
+      '<strong>ひゃくまん</strong> = 100 × 10,000. A million is "a hundred man" — the clearest demonstration of the re-chunking.')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 2 — kosoado
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-kosoado', {
+  title: 'これ / この and the grid',
+  questions: [
+    q('A watch is in <em>your own</em> hand. You ask its price. Which?',
+      'これは', ['これは','それは','あれは','どれが'],
+      '<strong>これは</strong> — こ is near the speaker.'),
+    q('The watch is in <em>the shop assistant\'s</em> hand. Which?',
+      'それは', ['それは','これは','あれは','どれが'],
+      '<strong>それは</strong> — そ is near the listener. English would still say "that", which is why this one gets forgotten.'),
+    q('The watch is in a case across the room, away from both of you. Which?',
+      'あれは', ['あれは','これは','それは','どれが'],
+      '<strong>あれは</strong> — あ is far from both people.'),
+    q('Complete: <span class="jp">___ とけいは いくらですか</span> — "How much is this watch?"',
+      'この', ['この','これ','ここ','これは'],
+      '<strong>この</strong>. A noun follows, so you need the の form. これ stands alone and cannot be glued to とけい.'),
+    q('Complete: <span class="jp">___ は いくらですか</span> — "How much is this one?"',
+      'これ', ['これ','この','ここ','こちら'],
+      '<strong>これ</strong>. Nothing follows but は, so you need the standalone form.'),
+    q('Which particle follows <span class="jp">どの がくせい</span>?',
+      'が', ['が','は','も','の'],
+      '<strong>が</strong>. Question words cannot take は, because は marks known information and a question word is the unknown. You meet が properly in Lesson 8.'),
+    q('Pointing out a student across the room, the safest phrasing is…',
+      'あのがくせい', ['あのがくせい','あれのがくせい','あれがくせい','あそこがくせい'],
+      '<strong>あのがくせい</strong>. The この series is fine for people; あれ used of a person can sound impolite because it treats them as an object.')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 3 — places and だれの
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-places', {
+  title: 'Places and ownership',
+  questions: [
+    q('"Where is the post office?" — which word asks <em>where</em>?',
+      'どこ', ['どこ','どれ','どの','だれ'],
+      '<strong>どこ</strong>. ど + the place ending.'),
+    q('"It\'s over there" — pointing somewhere far from both of you.',
+      'あそこ', ['あそこ','あこ','そこ','ここ'],
+      '<strong>あそこ</strong>. Note the extra syllable — it is not あこ, which is the one irregularity in the grid.'),
+    q('You mean the spot right where <em>the listener</em> is standing.',
+      'そこ', ['そこ','ここ','あそこ','どこ'],
+      '<strong>そこ</strong> — そ is the listener\'s zone, in places just as in things.'),
+    q('"Whose bag is this?" — which fills the gap? <span class="jp">これは ___ かばんですか</span>',
+      'だれの', ['だれの','だれは','だれが','どれの'],
+      '<strong>だれの</strong>. だれ is "who"; add の to join it to the following noun, exactly like any other Noun の Noun.'),
+    q('Someone asks <span class="jp">これは だれの かばんですか</span> while holding it. You answer about the same bag. You start with…',
+      'それは', ['それは','これは','あれは','どれが'],
+      '<strong>それは</strong>. The bag is near <em>them</em> now, so the word flips from これ to それ. The grid is relative to who is speaking.')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 4 — mo, ja nai desu, ne/yo
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-mo-nai', {
+  title: 'も, じゃないです, ね / よ',
+  questions: [
+    q('"Takeshi is Japanese. Yui is Japanese too." The second sentence begins…',
+      'ゆいさんも', ['ゆいさんも','ゆいさんはも','ゆいさんは','ゆいさんもは'],
+      '<strong>ゆいさんも</strong>. も <em>replaces</em> は — the two never appear together.'),
+    q('In Japanese, <span class="jp">も</span> attaches to…',
+      'the item', ['the item','the ending','the subject','the object'],
+      '<strong>The item</strong> that is "likewise" — the thing that matches something already said. English floats "too" to the end of the sentence; Japanese welds it to the word.'),
+    q('Negate <span class="jp">やまださんは がくせいです</span>.',
+      'がくせいじゃないです', ['がくせいじゃないです','がくせいくないです','じゃないがくせいです','がくせいないです'],
+      '<strong>がくせいじゃないです</strong>. Swap です for じゃないです; the noun stays put.'),
+    q('Which is the most <em>formal</em>, and right for writing?',
+      'ではありません', ['ではありません','じゃありません','じゃないです','ではないです'],
+      '<strong>ではありません</strong>. じゃ is a contraction of では, so the uncontracted form is the formal one.'),
+    q('Someone asks <span class="jp">にほんじんですか</span> and you are not. The correct answer is…',
+      'いいえ、にほんじんじゃないです。',
+      ['いいえ、にほんじんじゃないです。','いいえ、じゃないです。','いいえ、ないです。','いいえ、じゃありません。'],
+      'You must repeat the noun: <strong>いいえ、にほんじんじゃないです。</strong> Neither です nor じゃない can stand without one.'),
+    q('How often can <span class="jp">たかいです</span> ("it\'s expensive") be negated with <span class="jp">じゃないです</span>?',
+      'never', ['never','always','formally','sometimes'],
+      '<strong>Never.</strong> たかい is an adjective, not a noun, and じゃないです only negates nouns. Adjective conjugation arrives in Lesson 5 — until then, avoid negating adjectives.'),
+    q('You believe the listener already agrees with you. You end with…',
+      'ね', ['ね','よ','か','も'],
+      '<strong>ね</strong> — seeking confirmation or agreement, roughly "…right?"'),
+    q('You are telling the listener something you think they don\'t know. You end with…',
+      'よ', ['よ','ね','か','も'],
+      '<strong>よ</strong> — asserting information you are confident about. Using よ where ね belongs can sound like you are correcting the person.')
+  ]
+});
+
+// ---------------------------------------------------------------------------
+// Day 6 — mixed
+// ---------------------------------------------------------------------------
+Quiz.mount('#q-mixed', {
+  title: 'Mixed retrieval',
+  questions: [
+    q('<strong>¥3,000</strong> is read…', 'さんぜんえん', ['さんぜんえん','さんせんえん','さんびゃくえん','さんまんえん'],
+      '<strong>さんぜんえん</strong>. せん voices after 3.'),
+    q('<strong>¥25,000</strong> is read…', 'にまんごせんえん',
+      ['にまんごせんえん','にじゅうごせんえん','にせんごひゃくえん','にまんごひゃくえん'],
+      '<strong>にまんごせんえん</strong> = 2 man + 5 sen. Read the man block first, then the rest.'),
+    q('Asking for a concrete item in a shop, the everyday phrase is…',
+      'ください', ['ください','どうぞ','ありがとう','すみません'],
+      '<strong>ください</strong>. おねがいします is slightly more upscale and also covers abstract requests; どうぞ is what the <em>other</em> person says when handing it over.'),
+    q('The shop assistant holds out the menu to you and says…',
+      'どうぞ', ['どうぞ','ください','おねがい','すみません'],
+      '<strong>どうぞ</strong> — used when making an offer. It is not a request.'),
+    q('"Is that one over there expensive too?" begins…',
+      'あれも', ['あれも','あれは','あのも','あれはも'],
+      '<strong>あれも</strong>. Far from both people, and も replaces は.'),
+    q('Complete: <span class="jp">これは ___ かばんですか</span> — "Whose bag is this?"',
+      'だれの', ['だれの','だれは','どれの','なんの'],
+      '<strong>だれの</strong>.'),
+    q('Which cannot stand alone as a full answer?',
+      'じゃないです', ['じゃないです','そうです','はい','いいえ'],
+      '<strong>じゃないです</strong> needs a noun in front of it. そうです, はい and いいえ are all complete on their own.')
+  ]
+});
+</script>
+</body>
+</html>
