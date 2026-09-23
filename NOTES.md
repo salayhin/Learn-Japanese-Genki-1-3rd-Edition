@@ -167,3 +167,23 @@ week-3 standard and *is* the week-9 one.
 - Bash is currently blocked in this workspace by a failing RTK hook integrity
   check (`~/.claude/hooks/rtk-rewrite.sh`), so lessons can't be auto-opened from
   the CLI. File tools work fine. Fix: `rtk init -g --auto-patch`.
+
+## Reading challenge (practice/reading-challenge.html)
+
+Flip-card deck across Lessons 1–5, requested by the learner as a separate page. Engine is
+`assets/flashcards.js` (reusable: any page can set `window.FLASHCARDS` and include
+`[data-flashcards]`); styles are the `.fc-*` block in `course.css`. Romaji is generated from
+kana, never typed — a chunk ending in は/へ is read as the particle (wa/e), which relies on
+sentences keeping Genki-style spaces after particles.
+
+- **Words** are pulled from the lesson pages' vocabulary tables (affixes like 〜じん dropped).
+  If a lesson's vocab table changes, regenerate the word cards so the two stay in step.
+- **Kanji** cards use only the kanji in each lesson page's kanji grid (L3 numbers/円/時,
+  L4 日本人月火水木金土曜上下中半, L5 山川元気天私今田女男見行食飲). Anything else stays kana.
+- **Sentences are our own**, built from L1–5 vocabulary and grammar only. The learner asked
+  for "all sentences from the Genki book"; the copyright rule above wins, so the page says
+  plainly that the book's own sentences are in its 会話/練習 sections.
+- Each card is tagged with the latest lesson it needs. When Lesson 6 is built, add its
+  words/kanji/sentences and a sixth lesson chip.
+- Primary-source link is the official GENKI 3rd site, genki3.japantimes.co.jp/en/ (The Japan
+  Times — the learner called it "Japan Foundation"; it isn't).
