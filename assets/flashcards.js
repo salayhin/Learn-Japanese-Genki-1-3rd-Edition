@@ -159,7 +159,7 @@
     var opts = { lessons: { 1: true, 2: true, 3: true, 4: true, 5: true },
                  kinds: { word: true, kanji: true, sentence: true },
                  size: 20, onlyMissed: false };
-    var queue = [], done = 0, total = 0, firstTry = 0, missedThis = {}, current = null, flipped = false;
+    var queue = [], done = 0, shown = 0, total = 0, firstTry = 0, missedThis = {}, current = null, flipped = false;
 
     /* Setup panel */
     var setup = el('div', 'fc-setup');
@@ -256,7 +256,7 @@
 
     function start(list) {
       queue = list.slice();
-      total = queue.length; done = 0; firstTry = 0; missedThis = {};
+      total = queue.length; done = 0; shown = 0; firstTry = 0; missedThis = {};
       setup.hidden = true; result.hidden = true; stage.hidden = false;
       next();
       card.focus();
@@ -265,6 +265,7 @@
     function next() {
       if (!queue.length) return finish();
       current = queue.shift();
+      shown++;
       flipped = false;
       card.classList.remove('flipped');
       front.hidden = false;
@@ -272,7 +273,8 @@
       grade.classList.remove('show');
       hint.style.visibility = 'visible';
 
-      var tag = '<span class="fc-tag">L' + current.lesson + ' · ' + KINDS[current.kind] + '</span>';
+      var again = missedThis[current.jp] ? ' · <span class="fc-again">Again</span>' : '';
+      var tag = '<span class="fc-tag">L' + current.lesson + ' · ' + KINDS[current.kind] + again + '</span>';
       front.innerHTML = tag + '<div class="fc-jp fc-' + current.kind + '">' + esc(current.jp) + '</div>';
 
       var reading = current.kana || current.jp;
@@ -283,7 +285,10 @@
         + '<div class="fc-en">' + esc(current.en) + '</div>';
 
       barFill.style.width = (100 * done / total) + '%';
-      root.querySelector('.fc-count').textContent = (done + 1) + ' / ' + total;
+      // "Card N" rises on every grade, missed or not, so a miss visibly moves
+      // on; "left" counts cards still to get right, including re-queued misses.
+      var left = queue.length + 1;
+      root.querySelector('.fc-count').textContent = 'Card ' + shown + ' · ' + left + ' left';
       play(inner, 'fc-next');
     }
 

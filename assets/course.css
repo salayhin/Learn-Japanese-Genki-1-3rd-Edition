@@ -546,6 +546,8 @@ table.vocab.hide-en tr:not(.grp):hover td { background: var(--paper-warm); }
   font-family: var(--sans); font-size: .64rem; font-weight: 700;
   letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint);
 }
+/* A missed card coming back round. */
+.fc-again { color: var(--bad); }
 .fc-jp { font-family: var(--jp); line-height: 1.5; overflow-wrap: anywhere; }
 .fc-word, .fc-kanji { font-size: clamp(2.3rem, 9vw, 3.4rem); }
 .fc-sentence { font-size: clamp(1.35rem, 5vw, 1.8rem); letter-spacing: .02em; }
