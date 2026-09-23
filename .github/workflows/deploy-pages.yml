@@ -1,0 +1,51 @@
+name: Deploy to GitHub Pages
+
+# The course is plain static HTML with no build step, so this uploads the
+# repository as-is and publishes it. Every push to main redeploys.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it — a half-applied
+# deploy is worse than a slightly stale one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Guard — no book PDFs may ever be published
+        run: |
+          found=$(git ls-files '*.pdf' '*.epub' '*.mobi')
+          if [ -n "$found" ]; then
+            echo "::error::Copyrighted book files are tracked in git and would be published:"
+            echo "$found"
+            exit 1
+          fi
+          echo "No PDF/ebook files tracked — safe to publish."
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
