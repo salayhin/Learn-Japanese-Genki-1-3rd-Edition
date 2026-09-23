@@ -40,6 +40,9 @@ book page numbers**, so the material works with any legally obtained copy, print
 Audio is free from [**OTO Navi**](https://apps.apple.com/us/app/oto-navi-sound-navigator/id1490391845),
 the publisher's own app. Several sessions depend on it — install it before week 1.
 
+The publisher's official site, [**GENKI 3rd Edition**](https://genki3.japantimes.co.jp/en/),
+has the audio downloads, answer keys and free self-study tools that go with the books.
+
 ---
 
 ## Getting started
