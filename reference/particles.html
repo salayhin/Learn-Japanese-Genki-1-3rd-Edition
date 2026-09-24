@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Particles · Lessons 1–5</title>
+<link rel="stylesheet" href="../assets/course.css?v=4">
+<style>
+  .fork { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; margin: 1.4rem 0; }
+  .fork > div {
+    border: 1px solid var(--rule); border-radius: 10px; padding: 1rem 1.1rem;
+    background: var(--paper-warm);
+  }
+  .fork .p { font-family: var(--jp); font-size: 2.6rem; line-height: 1; color: var(--accent); }
+  .fork .q { font-family: var(--sans); font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+             text-transform: uppercase; color: var(--ink-faint); margin: .5rem 0 .6rem; }
+  .fork ul { margin: 0; padding-left: 1.1rem; font-size: .92rem; }
+  .fork li { margin-bottom: .45rem; }
+  .fork .ex { font-family: var(--jp); display: block; font-size: 1rem; }
+  .fork .pg { font-family: var(--mono); font-size: .7rem; color: var(--ink-faint); }
+  @media (max-width: 560px) { .fork { grid-template-columns: 1fr; } }
+
+  .pairs td.jp { font-size: 1.05rem; white-space: nowrap; }
+  .pairs b { color: var(--accent); font-weight: 700; }
+  .pairs td.en { font-size: .86rem; color: var(--ink-soft); }
+
+  table.ptable td.pt { font-family: var(--jp); font-size: 1.5rem; color: var(--accent); width: 3rem; text-align: center; }
+  table.ptable td.ex { font-family: var(--jp); white-space: nowrap; }
+  table.ptable td.ex b { color: var(--accent); }
+  table.ptable tr.les td {
+    background: var(--accent-dim); font-family: var(--sans); font-size: .66rem; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--accent); padding: .45rem .6rem;
+  }
+  /* On a phone the four columns crush the Japanese, so each row becomes a
+     small card: particle on the left, job then example stacked beside it. */
+  @media (max-width: 560px) {
+    table.ptable thead { display: none; }
+    table.ptable tr:not(.les) {
+      display: grid; grid-template-columns: 2.6rem 1fr auto; column-gap: .6rem;
+      border-bottom: 1px solid var(--rule); padding: .55rem 0;
+    }
+    table.ptable tr:not(.les) td { border: 0; padding: 0; }
+    table.ptable td.pt { grid-row: 1 / span 2; width: auto; }
+    table.ptable td.ex { grid-column: 2 / span 2; margin-top: .3rem; font-size: 1.05rem; }
+    table.ptable td.num { grid-column: 3; grid-row: 1; }
+    table.ptable tr.les { display: block; }
+    table.ptable tr.les td { display: block; }
+    .errs li { grid-template-columns: 1fr; gap: .2rem; }
+    .pairs td.jp { white-space: normal; }
+  }
+
+  .errs { list-style: none; padding: 0; margin: 1rem 0; }
+  .errs li { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; padding: .5rem 0;
+             border-bottom: 1px solid var(--rule); font-family: var(--jp); font-size: 1rem; }
+  .errs .bad { color: var(--bad); text-decoration: line-through; text-decoration-thickness: 1px; }
+  .errs .good { color: var(--good); }
+  .errs small { display: block; font-family: var(--serif); font-size: .8rem; color: var(--ink-soft); }
+  .later { opacity: .6; }
+  .q-prompt .jp { font-size: 1.3rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="topnav"><a href="../index.html">&larr; Course home</a></p>
+
+<p class="eyebrow">Reference · Genki Lessons 1–5</p>
+<h1>Particles</h1>
+<p class="standfirst">Every particle Genki teaches up to Lesson 5 on one page, with the rule that
+catches the most people, に or で, first.</p>
+
+<nav class="quicklinks">
+  <span class="lbl">Jump to</span>
+  <a href="#ni-de">に or で</a>
+  <a href="#all">All particles</a>
+  <a href="#none">No particle</a>
+  <a href="#practice">Practice</a>
+</nav>
+
+<p>A particle comes <em>after</em> the word it marks and tells you what that word is doing in
+the sentence. English shows this with word order; Japanese shows it with particles. That's
+why you can move a phrase around in Japanese and still be understood, as long as its
+particle comes with it
+(textbook p. 88).</p>
+
+<!-- ==================================================================== -->
+<h2 id="ni-de">に or で? Ask one question</h2>
+
+<p>Both can come after a place, so you can't choose by looking at the place. Look at the
+<strong>verb</strong> and ask: <em>does something <strong>happen</strong> there, or does something
+<strong>arrive at</strong> or <strong>exist in</strong> it?</em></p>
+
+<div class="fork">
+  <div>
+    <span class="p">で</span>
+    <p class="q">Something happens there</p>
+    <ul>
+      <li>Where an action takes place
+        <span class="ex">としょかん<b>で</b> べんきょうします</span>
+        <span class="pg">Lesson 3 · pp. 88–89</span></li>
+      <li>Where an event is held, even with あります
+        <span class="ex">だいがく<b>で</b> テストが あります</span>
+        <span class="pg">Lesson 4 · p. 107</span></li>
+    </ul>
+  </div>
+  <div>
+    <span class="p">に</span>
+    <p class="q">Something arrives, exists, or is pinned there</p>
+    <ul>
+      <li>Where you go, come or return to
+        <span class="ex">がっこう<b>に</b> いきます</span>
+        <span class="pg">Lesson 3 · p. 89</span></li>
+      <li>A fixed point in time
+        <span class="ex">にちようび<b>に</b> · 三時<b>に</b></span>
+        <span class="pg">Lesson 3 · pp. 89–90</span></li>
+      <li>Where something or someone exists
+        <span class="ex">こうえん<b>に</b> いぬが います</span>
+        <span class="pg">Lesson 4 · p. 107</span></li>
+      <li>The person you meet, the person you ask
+        <span class="ex">ともだち<b>に</b> あいます</span>
+        <span class="pg">Lesson 4 · p. 105 · Lesson 5 · p. 131</span></li>
+      <li>The vehicle you get on
+        <span class="ex">バス<b>に</b> のります</span>
+        <span class="pg">Lesson 5 · p. 131</span></li>
+    </ul>
+  </div>
+</div>
+
+<h3>Same place, different particle</h3>
+<p>Each pair keeps the place the same. Only the verb changes, and the verb decides.</p>
+
+<table class="pairs">
+  <tbody>
+    <tr><td class="jp">がっこう<b>に</b> いきます</td><td class="en">I go <em>to</em> school. You arrive there.</td></tr>
+    <tr><td class="jp">がっこう<b>で</b> べんきょうします</td><td class="en">I study <em>at</em> school. Something happens there.</td></tr>
+    <tr><td class="jp">うち<b>に</b> ねこが います</td><td class="en">There's a cat at home. It exists there.</td></tr>
+    <tr><td class="jp">うち<b>で</b> ばんごはんを たべます</td><td class="en">I eat dinner at home. Something happens there.</td></tr>
+    <tr><td class="jp">だいがく<b>に</b> としょかんが あります</td><td class="en">There's a library at the university. A thing exists.</td></tr>
+    <tr><td class="jp">だいがく<b>で</b> テストが あります</td><td class="en">There's a test at the university. An event is held.</td></tr>
+  </tbody>
+</table>
+
+<div class="note">
+  <span class="label">The trap in the last pair</span>
+  <p>Both sentences end in <span class="jp">あります</span>, so the verb alone doesn't tell you.
+  Ask what the <span class="jp">が</span> word is. A <strong>thing</strong> (a library) exists:
+  <span class="jp">に</span>. An <strong>event</strong> (a test, a party, a class) happens:
+  <span class="jp">で</span>. The book makes this point on p. 107.</p>
+</div>
+
+<h3>に or へ?</h3>
+<p>For where you're going, <span class="jp">へ</span> (read <em>e</em>) can replace
+<span class="jp">に</span>: <span class="jp">うちへ かえります</span> is fine.
+<span class="jp">へ</span> only means direction, so it can never mark a time: ×<span class="jp">にちようびへ</span>.
+If you're unsure, use <span class="jp">に</span>, which works in both cases (p. 89).</p>
+
+<h3>The errors that feel right</h3>
+<ul class="errs">
+  <li><span class="bad">としょかんに べんきょうします</span><span class="good">としょかんで べんきょうします<small>Studying happens there → で.</small></span></li>
+  <li><span class="bad">こうえんで いぬが います</span><span class="good">こうえんに いぬが います<small>Existing isn't an action → に.</small></span></li>
+  <li><span class="bad">まいにちに コーヒーを のみます</span><span class="good">まいにち コーヒーを のみます<small>"Every day" isn't a fixed point → no particle.</small></span></li>
+  <li><span class="bad">ともだちを あいました</span><span class="good">ともだちに あいました<small>English "meet a friend" has an object, but Japanese uses に.</small></span></li>
+  <li><span class="bad">バスを のりました</span><span class="good">バスに のりました<small>You get <em>onto</em> the bus → に.</small></span></li>
+</ul>
+
+<p class="later"><strong>Not yet:</strong> <span class="jp">で</span> also means <em>by</em> or
+<em>with</em>, as in <span class="jp">バスで いきます</span> (I go by bus). That use first
+appears in <strong>Lesson 10</strong> (p. 238). Put it next to
+<span class="jp">バスに のります</span> when you get there, because the two are easy to mix up.</p>
+
+<!-- ==================================================================== -->
+<h2 id="all">All particles, Lessons 1–5</h2>
+
+<p>In the order Genki introduces them. The page numbers are the grammar notes in the
+textbook, so you can go back to the book's own explanation.</p>
+
+<table class="ptable">
+  <thead><tr><th></th><th>Job</th><th>Example</th><th>Page</th></tr></thead>
+  <tbody>
+    <tr class="les"><td colspan="4">Lesson 1</td></tr>
+    <tr><td class="pt">は</td><td>Topic: what the sentence is about. Read <em>wa</em>.</td><td class="ex">わたし<b>は</b> がくせいです</td><td class="num">p. 41</td></tr>
+    <tr><td class="pt">か</td><td>Turns a sentence into a question. Nothing else moves.</td><td class="ex">がくせいです<b>か</b></td><td class="num">p. 42</td></tr>
+    <tr><td class="pt">の</td><td>Joins two nouns. The second noun is the main one.</td><td class="ex">にほんご<b>の</b> せんせい</td><td class="num">p. 43</td></tr>
+
+    <tr class="les"><td colspan="4">Lesson 2</td></tr>
+    <tr><td class="pt">の</td><td>"Whose": だれの. It can also stand in for the noun: "Mary's".</td><td class="ex">だれ<b>の</b> かさですか</td><td class="num">p. 62</td></tr>
+    <tr><td class="pt">も</td><td>"Too, also". It <em>replaces</em> は, が or を.</td><td class="ex">わたし<b>も</b> がくせいです</td><td class="num">pp. 62–63</td></tr>
+    <tr><td class="pt">が</td><td>After a question word, which can never take は.</td><td class="ex">どれ<b>が</b> いいですか</td><td class="num">p. 61</td></tr>
+    <tr><td class="pt">ね</td><td>End of sentence: "…isn't it?" Asks the listener to agree.</td><td class="ex">おいしいです<b>ね</b></td><td class="num">pp. 63–65</td></tr>
+    <tr><td class="pt">よ</td><td>End of sentence: tells the listener something they don't know.</td><td class="ex">おいしいです<b>よ</b></td><td class="num">pp. 63–65</td></tr>
+
+    <tr class="les"><td colspan="4">Lesson 3</td></tr>
+    <tr><td class="pt">を</td><td>Direct object: the thing the action is done to. Read <em>o</em>.</td><td class="ex">コーヒー<b>を</b> のみます</td><td class="num">p. 88</td></tr>
+    <tr><td class="pt">で</td><td>Where an action happens.</td><td class="ex">うち<b>で</b> たべます</td><td class="num">pp. 88–89</td></tr>
+    <tr><td class="pt">に</td><td>Where you go, and a fixed point in time.</td><td class="ex">七時<b>に</b> がっこう<b>に</b> いきます</td><td class="num">pp. 89–90</td></tr>
+    <tr><td class="pt">へ</td><td>Direction of movement only. Read <em>e</em>.</td><td class="ex">うち<b>へ</b> かえります</td><td class="num">p. 89</td></tr>
+    <tr><td class="pt">は</td><td>The topic doesn't have to be the subject. A time or an object can be the topic: "as for…".</td><td class="ex">しゅうまつ<b>は</b> なにを しますか</td><td class="num">p. 91</td></tr>
+
+    <tr class="les"><td colspan="4">Lesson 4</td></tr>
+    <tr><td class="pt">が</td><td>The thing or person that exists, with あります / います.</td><td class="ex">いぬ<b>が</b> います</td><td class="num">p. 107</td></tr>
+    <tr><td class="pt">に</td><td>Where something exists, and the person you meet.</td><td class="ex">あそこ<b>に</b> あります</td><td class="num">pp. 105, 107</td></tr>
+    <tr><td class="pt">で</td><td>Where an event is held, even with あります.</td><td class="ex">だいがく<b>で</b> テストが あります</td><td class="num">p. 107</td></tr>
+    <tr><td class="pt">も</td><td>Joins onto に and で (<span class="jp">にも, でも</span>) instead of replacing them.</td><td class="ex">こうえん<b>にも</b> いきました</td><td class="num">p. 111</td></tr>
+    <tr><td class="pt">と</td><td>"And" between nouns, and "together with" a person.</td><td class="ex">ともだち<b>と</b> いきました</td><td class="num">p. 113</td></tr>
+
+    <tr class="les"><td colspan="4">Lesson 5</td></tr>
+    <tr><td class="pt">が</td><td>The thing you like or dislike, with すき / きらい. Not を.</td><td class="ex">やさい<b>が</b> すきです</td><td class="num">p. 135</td></tr>
+    <tr><td class="pt">に</td><td>The vehicle you board, and the person you ask.</td><td class="ex">バス<b>に</b> のります</td><td class="num">p. 131</td></tr>
+  </tbody>
+</table>
+
+<div class="note">
+  <span class="label">Why も behaves two ways</span>
+  <p>Lesson 2's rule was "も replaces は". Lesson 4 adds the rest: も <strong>replaces</strong>
+  は, が and を, but <strong>joins onto</strong> に and で. So you write
+  <span class="jp">わたしも</span>, never ×<span class="jp">わたしはも</span>, but you write
+  <span class="jp">こうえんにも</span>, and dropping the に loses the meaning.</p>
+</div>
+
+<!-- ==================================================================== -->
+<h2 id="none">When there is no particle</h2>
+
+<p>Some words take no particle at all. Adding one isn't more careful; it's wrong.</p>
+
+<table>
+  <thead><tr><th>Word type</th><th>Example</th><th>Page</th></tr></thead>
+  <tbody>
+    <tr><td>Time relative to now</td><td class="jp">きょう · あした · きのう</td><td class="num">p. 90</td></tr>
+    <tr><td>Regular intervals</td><td class="jp">まいにち · まいばん</td><td class="num">p. 90</td></tr>
+    <tr><td>How long something lasts</td><td class="jp">いちじかん まちました</td><td class="num">p. 112</td></tr>
+    <tr><td>Number + counter</td><td class="jp">Ｔシャツを にまい かいました</td><td class="num">p. 136</td></tr>
+    <tr><td>"Around" a time: ごろ replaces に</td><td class="jp">十一時ごろ ねます</td><td class="num">p. 90</td></tr>
+  </tbody>
+</table>
+
+<!-- ==================================================================== -->
+<h2 id="practice">Practice</h2>
+
+<p>Answer before you look at the options if you can: say the particle out loud first, then
+tap it. A dash (—) means no particle. A missed question comes back at the end.</p>
+
+<div id="q-nide"></div>
+<div id="q-all"></div>
+
+<div class="lesson-foot">
+  <p><strong>Primary source:</strong> the grammar notes in the <em>Genki I</em> textbook, at the
+  pages listed above. For each particle in real conversation, the publisher's
+  <a href="https://genki3.japantimes.co.jp/en/student/">Video Collection of GENKI Sentence
+  Patterns</a> (free, in the Self-study Room) has one short scene per pattern.</p>
+
+  <div class="chip-row">
+    <a class="chip" href="../lessons/week-05-lesson-03-making-a-date.html">Lesson 3: を・で・に・へ</a>
+    <a class="chip" href="../lessons/week-07-lesson-04-first-date.html">Lesson 4: あります / います</a>
+    <a class="chip" href="../lessons/week-08-lesson-05-okinawa.html">Lesson 5: すき / きらい</a>
+    <a class="chip" href="../practice/reading-challenge.html">Reading challenge</a>
+  </div>
+
+  <div class="ask-teacher">
+    <strong>Not sure which particle a sentence needs?</strong> Ask your teacher (the agent).
+    Paste the sentence you wrote and ask it to name the job each particle is doing. That's
+    the fastest way to find the に/で mistakes that feel right to you.
+  </div>
+</div>
+
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script>
+function q(prompt, answer, options, explain) {
+  return { prompt: '<span class="jp">' + prompt + '</span>', options: options, answer: answer, explain: explain };
+}
+
+Quiz.mount('#q-nide', {
+  title: 'に or で?',
+  questions: [
+    q('としょかん＿ べんきょうします。', 'で', ['に','で','を','—'],
+      '<strong>で.</strong> Studying happens there. (p. 88)'),
+    q('あした きょうと＿ いきます。', 'に', ['に','で','を','—'],
+      '<strong>に.</strong> Where you are going. へ would also be fine here. (p. 89)'),
+    q('こうえん＿ いぬが います。', 'に', ['に','で','が','—'],
+      '<strong>に.</strong> The dog exists there; nothing happens. (p. 107)'),
+    q('だいがく＿ テストが あります。', 'で', ['に','で','が','—'],
+      '<strong>で.</strong> A test is an event, so it takes で even with あります. (p. 107)'),
+    q('だいがく＿ としょかんが あります。', 'に', ['に','で','が','—'],
+      '<strong>に.</strong> A library is a thing, and it exists there. (p. 107)'),
+    q('にちようび＿ テニスを します。', 'に', ['に','で','を','—'],
+      '<strong>に.</strong> Days of the week are fixed points in time. (p. 90)'),
+    q('まいにち＿ コーヒーを のみます。', '—', ['に','で','を','—'],
+      '<strong>No particle.</strong> まいにち isn\'t a point in time. ×まいにちに is the classic error. (p. 90)'),
+    q('きのう＿ えいがを みました。', '—', ['に','で','を','—'],
+      '<strong>No particle.</strong> きのう is relative to today, not a fixed point. (p. 90)'),
+    q('三時＿ ねます。', 'に', ['に','で','を','—'],
+      '<strong>に.</strong> A clock time is a fixed point. (p. 90)'),
+    q('ともだち＿ あいました。', 'に', ['に','で','を','—'],
+      '<strong>に.</strong> あう marks the person with に, not を. (p. 105)'),
+    q('バス＿ のりました。', 'に', ['に','で','を','—'],
+      '<strong>に.</strong> You get on to the vehicle. (p. 131) バスで, "by bus", is Lesson 10.'),
+    q('カフェ＿ ともだちを まちました。', 'で', ['に','で','を','—'],
+      '<strong>で.</strong> Waiting is something you do there. (p. 88)'),
+    q('やまださん＿ でんわばんごうを ききました。', 'に', ['に','で','を','—'],
+      '<strong>に.</strong> The person you ask takes に. (p. 131)'),
+    q('うち＿ ばんごはんを たべます。', 'で', ['に','で','を','—'],
+      '<strong>で.</strong> Eating happens there. (p. 88)')
+  ]
+});
+
+Quiz.mount('#q-all', {
+  title: 'All particles, Lessons 1–5',
+  questions: [
+    q('わたし＿ だいがくせいです。', 'は', ['は','が','の','を'],
+      '<strong>は.</strong> The topic, read <em>wa</em>. (Lesson 1, p. 41)'),
+    q('にほんご＿ せんせい', 'の', ['の','は','と','に'],
+      '<strong>の.</strong> A teacher of Japanese. The second noun is the main one. (Lesson 1, p. 43)'),
+    q('これは いくらです＿。', 'か', ['か','ね','よ','の'],
+      '<strong>か.</strong> Makes a question. (Lesson 1, p. 42)'),
+    q('たけしさんは がくせいです。ゆいさん＿ がくせいです。', 'も', ['も','は','と','の'],
+      '<strong>も.</strong> "Yui is a student too." It replaces は. (Lesson 2, p. 62)'),
+    q('どれ＿ いいですか。', 'が', ['が','は','を','の'],
+      '<strong>が.</strong> A question word can never take は. (Lesson 2, p. 61)'),
+    q('いい てんきです＿。 ("Nice weather, isn\'t it?")', 'ね', ['ね','よ','か','の'],
+      '<strong>ね.</strong> You both know it; you\'re asking for agreement. (Lesson 2, p. 63)'),
+    q('この さかな、おいしいです＿。 ("It\'s good, I\'m telling you.")', 'よ', ['ね','よ','か','の'],
+      '<strong>よ.</strong> You\'re telling them something new. (Lesson 2, p. 63)'),
+    q('コーヒー＿ のみます。', 'を', ['を','が','に','で'],
+      '<strong>を.</strong> The thing you drink, read <em>o</em>. (Lesson 3, p. 88)'),
+    q('うち＿ かえります。 Which one is read <em>e</em>?', 'へ', ['へ','で','を','が'],
+      '<strong>へ.</strong> Direction only, and it can replace に here. (Lesson 3, p. 89)'),
+    q('あそこに りゅうがくせい＿ います。', 'が', ['が','は','を','で'],
+      '<strong>が.</strong> The person who exists, with います. (Lesson 4, p. 107)'),
+    q('ともだち＿ えいがを みました。 ("with a friend")', 'と', ['と','に','で','の'],
+      '<strong>と.</strong> "Together with". (Lesson 4, p. 113)'),
+    q('ぎんこうに いきました。こうえん＿も いきました。', 'に', ['に','で','を','—'],
+      '<strong>に.</strong> も joins onto に rather than replacing it: こうえんにも. (Lesson 4, p. 111)'),
+    q('いちじかん＿ まちました。', '—', ['に','で','を','—'],
+      '<strong>No particle.</strong> A length of time stands alone. (Lesson 4, p. 112)'),
+    q('わたしは やさい＿ すきです。', 'が', ['が','を','は','に'],
+      '<strong>が.</strong> すき is an adjective, so the thing you like takes が, not を. (Lesson 5, p. 135)'),
+    q('Ｔシャツを にまい＿ かいました。', '—', ['に','で','を','—'],
+      '<strong>No particle.</strong> A number plus counter works like an adverb. (Lesson 5, p. 136)')
+  ]
+});
+</script>
+</body>
+</html>

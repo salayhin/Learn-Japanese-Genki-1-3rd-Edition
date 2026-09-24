@@ -98,6 +98,7 @@ own scoresheet accordingly.
 
 - [**The full nine-week roadmap**](reference/genki1-roadmap.html) — session template, milestones, what to cut when you fall behind
 - [Complete kana charts](reference/kana-charts.html) — 104 readings per script, printable
+- [Particles, Lessons 1–5](reference/particles.html) — every particle up to Lesson 5, に or で first, with practice quizzes
 - [Kana look-alikes](reference/kana-confusables.html) — the シ/ツ/ン/ソ grid and everything else that catches people
 
 ---
@@ -146,7 +147,7 @@ Two conventions worth knowing if you read the source:
 
 ```
 index.html              Course home — the nine weeks, linked
-reference/              Roadmap, kana charts, look-alike guide
+reference/              Roadmap, kana charts, look-alike guide, particles
 lessons/                Eleven lesson pages, keyed by week
 assets/                 course.css · quiz.js · drill.js
 learning-records/       Design decisions and the reasoning behind them

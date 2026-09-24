@@ -187,3 +187,16 @@ sentences keeping Genki-style spaces after particles.
   words/kanji/sentences and a sixth lesson chip.
 - Primary-source link is the official GENKI 3rd site, genki3.japantimes.co.jp/en/ (The Japan
   Times — the learner called it "Japan Foundation"; it isn't).
+
+## Particles reference (reference/particles.html)
+
+Learner asked for particles on a **separate page, Lessons 1–5 only**, rather than
+spread into the lesson pages. Leads with に vs で (one question: does something *happen*
+there, or *arrive/exist*?), then every particle L1–5 with book page, then the no-particle
+cases, then two quiz.js quizzes. Book facts checked in the textbook: で/に pp. 88–90,
+あう person に p. 105, existence/event p. 107, にも/でも p. 111, と p. 113, のる 〜に and
+きく personに p. 131. で for means (バスで) is **Lesson 10, p. 238**, shown greyed as "not yet".
+
+**Open fix, not yet made:** the Lesson 3 page's grammar summary (card 3 · Particles) lists
+バスで as a Lesson 3 use of で. It's Lesson 10. Offered to the learner; not changed because
+they asked for lesson pages to be left alone.
